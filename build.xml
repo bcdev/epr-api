@@ -1,0 +1,148 @@
+<project name="make-epr_c_api.zip" default="build_zip" basedir=".">
+
+    <!-- ==================================== -->
+    <!-- set global properties for this build -->
+    <!-- ==================================== -->
+    <property name="version" value="2.0.6"/>
+    <property name="home" value="."/>
+    <property name="build" value="./build_for_zip"/>
+    <property name="src" value="./src"/>
+    <property name="prj" value="./prj"/>
+    <property name="docs_html" value="./docs/epr_c_api"/>
+    <property name="html_output" value="docs/epr_c_api"/>
+    <property name="docs_img" value="./docs/images"/>
+    <property name="examples" value="examples"/>
+    <property name="epr_api" value="epr_api-${version}"/>
+
+    <!-- ================================================================================ -->
+    <!-- inits the src, srcTest, lib, classes and docs/api-doc directories in debug -->
+    <!-- ================================================================================ -->
+    <target name="init">
+        <!-- Create the time stamp -->
+        <tstamp/>
+        <!-- Create the debug directory structure -->
+        <delete dir="${build}"/>
+        <mkdir dir="${build}/${epr_api}"/>
+        <mkdir dir="${build}/${epr_api}/${src}"/>
+        <mkdir dir="${build}/${epr_api}/${src}/${examples}"/>
+        <mkdir dir="${build}/${epr_api}/docs"/>
+        <mkdir dir="${build}/${epr_api}/docs/html"/>
+        <mkdir dir="${build}/${epr_api}/docs/images"/>
+        <mkdir dir="${build}/${epr_api}/prj/codeblocks"/>
+        <mkdir dir="${build}/${epr_api}/prj/unix"/>
+        <mkdir dir="${build}/${epr_api}/prj/unix/tests"/>
+        <!--The following three lines are necessary for execute the makefile-->
+        <mkdir dir="${build}/${epr_api}/build"/>
+        <mkdir dir="${build}/${epr_api}/build/debug"/>
+        <mkdir dir="${build}/${epr_api}/build/release"/>
+    </target>
+
+    <!-- ========================================= -->
+    <!-- copy the recources to the build directory -->
+    <!-- ========================================= -->
+    <target name="copy_generate_resources" depends="init">
+        <copy todir="${build}/${epr_api}/${prj}/codeblocks">
+            <fileset dir="${prj}/win__code_blocks">
+                <include name="**"/>
+                <exclude name="**/.svn"/>
+                <exclude name="**/.DS_Store"/>
+                <exclude name="**/bin/"/>
+                <exclude name="**/obj/"/>
+                <exclude name="**/api_unit_tests/"/>
+                <exclude name="**/bccunit_lib/"/>
+                <exclude name="**/epr_main_test/"/>
+                <exclude name="**/epr_subset_test/"/>
+                <exclude name="**/epr_test_endian/"/>
+                <exclude name="**/write_rgb/"/>
+                <exclude name="epr_all.workspace"/>
+            </fileset>
+        </copy>
+        <copy todir="${build}/${epr_api}/${prj}/unix">
+            <fileset dir="${prj}/unix">
+                <include name="**/cc_make_examples.sh"/>
+                <include name="**/gcc_make_examples.sh"/>
+                <include name="**/cc_make_api_tests.sh"/>
+                <include name="**/gcc_make_api_tests.sh"/>
+            </fileset>
+        </copy>
+        <copy todir="${build}/${epr_api}/${src}">
+            <fileset dir="${src}">
+                <include name="*.c"/>
+                <include name="*.h"/>
+                <include name="*.def"/>
+            </fileset>
+        </copy>
+        <copy todir="${build}/${epr_api}/${src}/utils">
+            <fileset dir="${src}/utils">
+                <include name="*.c"/>
+            </fileset>
+        </copy>
+        <copy todir="${build}/${epr_api}/${src}/api-test">
+            <fileset dir="${src}/api-test">
+                <include name="*.c"/>
+            </fileset>
+        </copy>
+        <copy todir="${build}/${epr_api}/${src}/${examples}">
+            <fileset dir="${src}/${examples}">
+                <include name="*.c"/>
+                <include name="*.h"/>
+                <exclude name="write_rgb.c"/>
+                <exclude name="tiff.h"/>
+                <exclude name="tiffio.h"/>
+            </fileset>
+        </copy>
+        <copy todir="${build}/${epr_api}">
+            <fileset dir="${home}">
+                <include name="CHANGELOG.txt"/>
+                <include name="LICENSE.txt"/>
+                <include name="README.txt"/>
+                <include name="VERSION.txt"/>
+                <include name="makefile"/>
+            </fileset>
+        </copy>
+        <copy todir="${build}/${epr_api}/docs">
+            <fileset dir="${home}/docs">
+                <include name="Doxyfile.txt"/>
+                <include name="*.html"/>
+            </fileset>
+        </copy>
+
+        <copy todir="${build}/${epr_api}/docs/images">
+            <fileset dir="${docs_img}">
+                <include name="*.gif"/>
+            </fileset>
+        </copy>
+        <mkdir dir="${build}/${epr_api}/${html_output}"/>
+        <copy todir="${build}/${epr_api}/${html_output}">
+            <fileset dir="${home}/${html_output}">
+                <include name="custom.css"/>
+            </fileset>
+        </copy>
+        <exec dir="${build}/${epr_api}/docs" executable="cmd">
+            <arg value="/c"/>
+            <arg value="doxygen"/>
+            <arg value="Doxyfile.txt"/>
+        </exec>
+        <delete>
+            <fileset dir="${build}/${epr_api}/docs">
+                <include name="Doxyfile.txt"/>
+                <include name="*.html"/>
+            </fileset>
+        </delete>
+        <copy todir="${build}/${epr_api}/docs/html">
+            <fileset dir="${build}/${epr_api}/${html_output}"/>
+        </copy>
+        <delete dir="${build}/${epr_api}/${html_output}"/>
+    </target>
+
+    <!-- ==================== -->
+    <!-- creates the zip file -->
+    <!-- ==================== -->
+    <target name="build_zip" depends="copy_generate_resources">
+        <zip zipfile="${epr_api}.zip"
+            basedir="${build}"
+            update="false"/>
+        <delete dir="${build}"/>
+    </target>
+</project>
+

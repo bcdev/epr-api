@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<BrowseTracker_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="..\..\..\src\epr_api.c" open="0" top="0" tabpos="0">
+		<Cursor position="3463" topLine="117" />
+	</File>
+	<File name="..\..\..\src\epr_api.def" open="0" top="0" tabpos="0">
+		<Cursor position="380" topLine="0" />
+	</File>
+	<File name="..\..\..\src\epr_api.h" open="1" top="0" tabpos="1">
+		<Cursor position="959" topLine="18" />
+	</File>
+	<File name="..\..\..\src\epr_band.c" open="0" top="0" tabpos="0">
+		<Cursor position="68602" topLine="1786" />
+	</File>
+	<File name="..\..\..\src\epr_band.h" open="0" top="0" tabpos="0">
+		<Cursor position="11856" topLine="239" />
+	</File>
+	<File name="..\..\..\src\epr_bitmask.h" open="0" top="0" tabpos="0">
+		<Cursor position="15145" topLine="470" />
+	</File>
+	<File name="..\..\..\src\epr_core.c" open="0" top="0" tabpos="0">
+		<Cursor position="6102" topLine="185" />
+	</File>
+	<File name="..\..\..\src\epr_core.h" open="0" top="0" tabpos="0">
+		<Cursor position="4761" topLine="161" />
+	</File>
+	<File name="..\..\..\src\epr_dataset.c" open="0" top="0" tabpos="0">
+		<Cursor position="11153" topLine="330" />
+	</File>
+	<File name="..\..\..\src\epr_dataset.h" open="0" top="0" tabpos="0">
+		<Cursor position="1718" topLine="31" />
+	</File>
+	<File name="..\..\..\src\epr_dsd.c" open="0" top="0" tabpos="0">
+		<Cursor position="21784" topLine="599" />
+	</File>
+	<File name="..\..\..\src\epr_dsd.h" open="0" top="0" tabpos="0">
+		<Cursor position="2915" topLine="68" />
+	</File>
+	<File name="..\..\..\src\epr_dump.c" open="0" top="0" tabpos="0">
+		<Cursor position="7246" topLine="219" />
+	</File>
+	<File name="..\..\..\src\epr_field.c" open="0" top="0" tabpos="0">
+		<Cursor position="9251" topLine="315" />
+	</File>
+	<File name="..\..\..\src\epr_field.h" open="0" top="0" tabpos="0">
+		<Cursor position="2125" topLine="56" />
+	</File>
+	<File name="..\..\..\src\epr_msph.c" open="0" top="0" tabpos="0">
+		<Cursor position="19227" topLine="529" />
+	</File>
+	<File name="..\..\..\src\epr_param.c" open="0" top="0" tabpos="0">
+		<Cursor position="6155" topLine="179" />
+	</File>
+	<File name="..\..\..\src\epr_param.h" open="0" top="0" tabpos="0">
+		<Cursor position="1642" topLine="36" />
+	</File>
+	<File name="..\..\..\src\epr_product.c" open="0" top="0" tabpos="0">
+		<Cursor position="12162" topLine="354" />
+	</File>
+	<File name="..\..\..\src\epr_ptrarray.h" open="1" top="1" tabpos="2">
+		<Cursor position="834" topLine="108" />
+		<BrowseMarks positions="" />
+		<Book_Marks positions="" />
+	</File>
+	<File name="..\..\..\src\epr_record.c" open="0" top="0" tabpos="0">
+		<Cursor position="12765" topLine="409" />
+	</File>
+	<File name="..\..\..\src\epr_record.h" open="0" top="0" tabpos="0">
+		<Cursor position="2466" topLine="52" />
+	</File>
+	<File name="..\..\..\src\epr_swap.c" open="0" top="0" tabpos="0">
+		<Cursor position="6345" topLine="208" />
+	</File>
+	<File name="..\..\..\src\epr_typconv.c" open="0" top="0" tabpos="0">
+		<Cursor position="29037" topLine="882" />
+	</File>
+</BrowseTracker_layout_file>

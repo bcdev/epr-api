@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Workspace">
+		<Project filename="epr_api\epr_api.cbp" active="1" />
+		<Project filename="write_bands\write_bands.cbp">
+			<Depends filename="epr_api\epr_api.cbp" />
+		</Project>
+		<Project filename="write_bitmask\write_bitmask.cbp">
+			<Depends filename="epr_api\epr_api.cbp" />
+		</Project>
+		<Project filename="write_ndvi\write_ndvi.cbp">
+			<Depends filename="epr_api\epr_api.cbp" />
+		</Project>
+		<Project filename="write_rgb\write_rgb.cbp">
+			<Depends filename="epr_api\epr_api.cbp" />
+		</Project>
+		<Project filename="swap_eo\swap_eo.cbp" />
+		<Project filename="epr_test_endian\epr_test_endian.cbp" />
+		<Project filename="api_tests\api_tests.cbp">
+			<Depends filename="epr_api\epr_api.cbp" />
+		</Project>
+		<Project filename="api_unit_tests\api_unit_tests.cbp">
+			<Depends filename="epr_api\epr_api.cbp" />
+		</Project>
+		<Project filename="epr_subset_test\epr_subset_test.cbp">
+			<Depends filename="epr_api\epr_api.cbp" />
+		</Project>
+		<Project filename="bccunit_lib\bccunit_lib.cbp" />
+		<Project filename="epr_main_test\epr_main_test.cbp">
+			<Depends filename="epr_api\epr_api.cbp" />
+			<Depends filename="bccunit_lib\bccunit_lib.cbp" />
+		</Project>
+	</Workspace>
+</CodeBlocks_workspace_file>

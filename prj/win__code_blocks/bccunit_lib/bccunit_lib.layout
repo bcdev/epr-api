@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Release" />
+	<File name="..\..\..\bccunit\src\bccunit.c" open="0" top="0" tabpos="0">
+		<Cursor position="4227" topLine="126" />
+	</File>
+	<File name="..\..\..\bccunit\src\bccunit.h" open="0" top="0" tabpos="0">
+		<Cursor position="3417" topLine="87" />
+	</File>
+</CodeBlocks_layout_file>
