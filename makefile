@@ -7,22 +7,22 @@ THISDIR= .
 SRCDIR = ./src
 OUTDIR = ./build/$(CONFIG)
 
-TARGET = $(OUTDIR)/epr_api
-
-
 ## CFLAGS = -xCC -Xc -xildoff -v -I.
 
-# for solaris uncomment
+# for solaris
 # COMPILE = cc -Kpic -G -CFLAGS -I$(SRCDIR) -I$(THISDIR) $(OPTIONS)
 # LINK    = ld -G
+# TARGET  = $(OUTDIR)/libepr_api.so
 
-# for linux uncomment
+# for linux
 COMPILE = gcc -fPIC -ansi -c -I$(SRCDIR) -I$(THISDIR) $(OPTIONS)
 LINK    = ld -shared
+TARGET  = $(OUTDIR)/libepr_api.so
 
-# for MacOSX uncomment
+# for Mac OS X
 # COMPILE = gcc -fPIC -ansi -c -I$(SRCDIR) -I$(THISDIR) $(OPTIONS)
 # LINK    = ld -dylib
+# TARGET  = $(OUTDIR)/libepr_api.dylib
 
 HEADERS=\
   $(SRCDIR)/epr_api.h\

@@ -3,7 +3,7 @@
 
 
 ----------------------------------------------------------------------
-Changes from Version 2.0.5 to Version 2.0.6 (of 28. April 2009)
+Changes from Version 2.0.5 to Version 2.0.6 (of 5. May 2009)
 ----------------------------------------------------------------------
 Support of MER_FRS (full resulution full swath) products
 Support of IODD7

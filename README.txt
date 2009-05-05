@@ -3,7 +3,7 @@
                      ENVISAT Product Reader API for C
                               Version 2.0.6
 
-                              28. April 2009
+                              5. May 2009
 
 
 Contents
@@ -34,6 +34,7 @@ Introduction
         or COTS software systems which allow for extension using a
         C or C++ interface.
 
+
 The EPR-API for C (epr-c-api)
 
     The epr-c-api is a rich library of functions for reading data from ENVISAT
@@ -43,15 +44,15 @@ The EPR-API for C (epr-c-api)
     makes it possible to read any data field contained in a product file.
 
     The epr-c-api is written in pure ANSI C and should compile with every
-    ANSI conformant C-compiler. Just copy all *.h *.c files contained in the
-    src/ folder of the distribution to your own source folder of your project
+    ANSI conformant C-compiler. Just copy all '*.h' and '*.c' files contained in
+	the 'src' folder of the distribution to your own source folder of your project
     and include them in your development environment.
 
-    Use make to generate a dynamic library of the epr-c-api.
-
     Examples:
+	
        You'll find some starting points for your own applications in the examples
        directory:
+	   
        epr_api-XXX/
          |- src/examples/         - contains source code examples for developers
            |- write_bands.c
@@ -59,7 +60,9 @@ The EPR-API for C (epr-c-api)
            |- write_ndvi.c
 
        Compile the examples with console:
-          To compile the examples, use the scripts in:
+          
+		  To compile the examples, use the scripts in:
+		  
           epr_api-XXX/
             |- prj/unix
 
@@ -67,13 +70,27 @@ The EPR-API for C (epr-c-api)
           cygwin (http://www.cygwin.com/) to compile the examples.
 
        Compile the examples with an IDE:
-          Also all users can use Code::Blocks (http://www.codeblocks.org/) a cross
+          
+		  Also all users can use Code::Blocks (http://www.codeblocks.org/) a cross
           platform  IDE (integrated developmenht engine) to compile an work with the
           examples and the api-source code.
 
           Load the project settings from:
-          epr_api-XXX/
+          
+		  epr_api-XXX/
             |- prj/codeblocks
+
+		Build a library of the epr-c-api:
+		
+			A library of the epr-c-api can be built by using the 'makefile' which is
+			provided with the distribution.  Note that the 'makefile' is provided as
+			is. The manner how to build a library depends on the operating system as
+			well as on the type of library being built.
+			
+			Settings are provided for building shared (or dynamic) libraries for Linux,
+			Solaris and Mac OS X. For other operating systems please consider your
+			system guidelines in order to find out the correct settings. 
+			
 
 Release Notes
 
@@ -82,18 +99,20 @@ Release Notes
     Naturally, this software will improve and grow through
     extensive testing and user feedback.
 
+
 Documentation
 
-    The documentation is located in the EPR-API-INSTALL-FOLDER at:
+    The documentation is located at:
 
-    $EPR-API-INSTALL-FOLDER$/
+    epr_api-XXX/
       |- docs/
         |- html/    - API documentation for C
 
-    Aditional you can find the documentation to the supported ENVISAT product
-    tables (required as a reference  for dataset-,field-,band- and flag-names) at:
+    Aditional documentation listing the supported ENVISAT product tables (required as
+	a reference  for dataset-, field-, band- and flag-names) can be found at:
 
     http://www.brockmann-consult.de/beam/doc/help/general/envisat-products/index.html
+
 
 Zip Archive Contents
 
@@ -112,6 +131,7 @@ Zip Archive Contents
      |- LICENSE.txt           - the GNU public license
      |- makefile          - the makefile to buld the epr-c-api static library
                             ready to use in your projects
+
 
 Bug Reports and Feedback
 
