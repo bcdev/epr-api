@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <BrowseTracker_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="..\..\..\src\test\epr_main_test.c" open="1" top="0" tabpos="1">
+	<File name="..\..\..\src\test\epr_main_test.c" open="1" top="1" tabpos="1">
 		<Cursor position="10886" topLine="308" />
-		<BrowseMarks positions="" />
-		<Book_Marks positions="" />
 	</File>
 </BrowseTracker_layout_file>

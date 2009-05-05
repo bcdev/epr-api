@@ -58,10 +58,8 @@
 	<File name="..\..\..\src\epr_product.c" open="0" top="0" tabpos="0">
 		<Cursor position="12162" topLine="354" />
 	</File>
-	<File name="..\..\..\src\epr_ptrarray.h" open="1" top="1" tabpos="2">
+	<File name="..\..\..\src\epr_ptrarray.h" open="1" top="0" tabpos="2">
 		<Cursor position="834" topLine="108" />
-		<BrowseMarks positions="" />
-		<Book_Marks positions="" />
 	</File>
 	<File name="..\..\..\src\epr_record.c" open="0" top="0" tabpos="0">
 		<Cursor position="12765" topLine="409" />
