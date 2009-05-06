@@ -118,9 +118,7 @@
                 <include name="custom.css"/>
             </fileset>
         </copy>
-        <exec dir="${build}/${epr_api}/docs" executable="cmd">
-            <arg value="/c"/>
-            <arg value="doxygen"/>
+        <exec dir="${build}/${epr_api}/docs" executable="doxygen">
             <arg value="Doxyfile.txt"/>
         </exec>
         <delete>
