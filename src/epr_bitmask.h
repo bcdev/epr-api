@@ -24,7 +24,7 @@ extern "C"
 #endif
 
 
-#define FLAG_MASK_NOT_COMPUTED ((ulong) -1)
+#define FLAG_MASK_NOT_COMPUTED ((uint) -1)
 
 typedef struct EPR_BmTerm               EPR_SBmTerm;
 typedef struct EPR_BmEvalContext        EPR_SBmEvalContext;
@@ -66,7 +66,7 @@ struct EPR_BmTerm {
         struct /*BMT_REF*/ {
             char* band_name;
             char* flag_name;
-            ulong flag_mask;
+            uint flag_mask;
             EPR_SRaster* flag_raster;
         } ref;
         struct /*BMT_NOT*/ {

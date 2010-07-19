@@ -53,7 +53,7 @@ void byte_swap_short(short *buffer, uint number_of_swaps)
 
 
 /*
-   Function: byte_swap_long.c
+   Function: byte_swap_int.c
 */
 /**
  *
@@ -62,9 +62,9 @@ void byte_swap_short(short *buffer, uint number_of_swaps)
  *
  *
  */
-void byte_swap_long(long *buffer, uint number_of_swaps)
+void byte_swap_int(int *buffer, uint number_of_swaps)
 {
-   long *temp = buffer;
+   int *temp = buffer;
    uint swap_loop;
 
    for (swap_loop = 0, temp = buffer; swap_loop < number_of_swaps; swap_loop++, temp++) {
@@ -96,7 +96,7 @@ void byte_swap_ushort(ushort* buffer, uint number_of_swaps)
 }
 
 /*
- *  Function: byte_swap_ulong.c
+ *  Function: byte_swap_uint.c
  */
 /**
  *
@@ -109,13 +109,13 @@ void byte_swap_ushort(ushort* buffer, uint number_of_swaps)
  * @param number_of_swaps number of elements to convert
  *
  */
-void byte_swap_ulong(ulong* buffer, uint number_of_swaps)
+void byte_swap_uint(uint* buffer, uint number_of_swaps)
 {
-   byte_swap_long((long*) buffer, number_of_swaps);
+   byte_swap_int((int*) buffer, number_of_swaps);
 }
 
 /*
- *  Function: byte_swap_long.c
+ *  Function: byte_swap_int.c
  */
 /**
  *
@@ -130,7 +130,7 @@ void byte_swap_ulong(ulong* buffer, uint number_of_swaps)
  */
 void byte_swap_float(float* buffer, uint number_of_swaps)
 {
-   byte_swap_long((long*) buffer, number_of_swaps);
+   byte_swap_int((int*) buffer, number_of_swaps);
 }
 
 /**
@@ -151,7 +151,7 @@ void byte_swap_float(float* buffer, uint number_of_swaps)
  */
 int epr_is_little_endian_order()
 {
-    ulong le_value = EPR_LE_MAGIC_NUMBER;
+    uint le_value = EPR_LE_MAGIC_NUMBER;
     return (((uchar*)(&le_value))[0] == EPR_LE_MAGIC_BYTE_0)
         && (((uchar*)(&le_value))[1] == EPR_LE_MAGIC_BYTE_1)
         && (((uchar*)(&le_value))[2] == EPR_LE_MAGIC_BYTE_2)
@@ -170,7 +170,7 @@ int epr_is_little_endian_order()
  */
 int epr_is_big_endian_order()
 {
-    ulong be_value = EPR_BE_MAGIC_NUMBER;
+    uint be_value = EPR_BE_MAGIC_NUMBER;
     return (((uchar*)(&be_value))[0] == EPR_LE_MAGIC_BYTE_0)
         && (((uchar*)(&be_value))[1] == EPR_LE_MAGIC_BYTE_1)
         && (((uchar*)(&be_value))[2] == EPR_LE_MAGIC_BYTE_2)
@@ -198,7 +198,7 @@ void epr_swap_endian_order(const EPR_SField* field)
             /* no conversion required */
             break;
         case e_tid_time:
-            byte_swap_ulong((ulong*)field->elems, 3);
+            byte_swap_uint((uint*)field->elems, 3);
             break;
         case e_tid_spare:
             /* no conversion required */
@@ -209,11 +209,11 @@ void epr_swap_endian_order(const EPR_SField* field)
         case e_tid_short:
             byte_swap_short((short*) field->elems, field->info->num_elems);
             break;
-        case e_tid_ulong:
-            byte_swap_ulong((ulong*) field->elems, field->info->num_elems);
+        case e_tid_uint:
+            byte_swap_uint((uint*) field->elems, field->info->num_elems);
             break;
-        case e_tid_long:
-            byte_swap_long((long*) field->elems, field->info->num_elems);
+        case e_tid_int:
+            byte_swap_int((int*) field->elems, field->info->num_elems);
             break;
         case e_tid_float:
             byte_swap_float((float*) field->elems, field->info->num_elems);

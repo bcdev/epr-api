@@ -66,10 +66,14 @@ EPR_EDataTypeId epr_str_to_data_type_id(const char* str)
         return e_tid_ushort;
     else if (epr_equal_names(str, "SShort") || epr_equal_names(str, "short"))
         return e_tid_short;
+    else if (epr_equal_names(str, "UInt") || epr_equal_names(str, "uint"))
+        return e_tid_uint;
+    else if (epr_equal_names(str, "SInt") || epr_equal_names(str, "int"))
+        return e_tid_int;
     else if (epr_equal_names(str, "ULong") || epr_equal_names(str, "ulong"))
-        return e_tid_ulong;
+        return e_tid_uint;
     else if (epr_equal_names(str, "SLong") || epr_equal_names(str, "long"))
-        return e_tid_long;
+        return e_tid_int;
     else if (epr_equal_names(str, "Float") || epr_equal_names(str, "float"))
         return e_tid_float;
     else if (epr_equal_names(str, "Double") || epr_equal_names(str, "double"))
@@ -109,10 +113,10 @@ const char* epr_data_type_id_to_str(EPR_EDataTypeId data_type_id)
             return "ushort";
         case e_tid_short:
             return "short";
-        case e_tid_ulong:
-            return "ulong";
-        case e_tid_long:
-            return "long";
+        case e_tid_uint:
+            return "uint";
+        case e_tid_int:
+            return "int";
         case e_tid_float:
             return "float";
         case e_tid_double:
@@ -153,10 +157,10 @@ uint epr_get_data_type_size(EPR_EDataTypeId data_type_id)
             return sizeof(ushort);
         case e_tid_short:
             return sizeof(short);
-        case e_tid_ulong:
-            return sizeof(ulong);
-        case e_tid_long:
-            return sizeof(long);
+        case e_tid_uint:
+            return sizeof(uint);
+        case e_tid_int:
+            return sizeof(int);
         case e_tid_float:
             return sizeof(float);
         case e_tid_double:
@@ -166,9 +170,9 @@ uint epr_get_data_type_size(EPR_EDataTypeId data_type_id)
         case e_tid_spare:
             return sizeof(uchar);
         case e_tid_time:
-            return sizeof (long)   /* days */
-                +  sizeof (ulong)  /* seconds */
-                +  sizeof (ulong); /* microseconds */
+            return sizeof (int)   /* days */
+                +  sizeof (uint)  /* seconds */
+                +  sizeof (uint); /* microseconds */
         default:
             return 0;
     }
@@ -314,17 +318,17 @@ FILE* epr_open_file(char* file_path)
 
 
 /**
- * Converts the given string into a long number.
+ * Converts the given string into an int number.
  *
  * @param str the string to be converted.
- * @return the long type number represented by the given string.
+ * @return the int type number represented by the given string.
  *         If the string can not be converted,
  *         the value of <code>1</code> is returned.
  */
-long epr_str_to_number(const char* str)
+int epr_str_to_number(const char* str)
 {
    char   *stopstring;
-   long   l;
+   int   l;
    assert(str != NULL);
 
    if (strcmp(str, "*") == 0) return 1;
@@ -336,13 +340,13 @@ long epr_str_to_number(const char* str)
     {
         epr_set_err(e_err_illegal_conversion,
                 "failed to convert string to integer: errno = EDOM");
-        return -1L;
+        return -1;
     }
     if (errno == ERANGE)
     {
         epr_set_err(e_err_illegal_conversion,
                 "failed to convert string to integer: errno = ERANGE");
-        return -1L;
+        return -1;
     }
 
     return l;

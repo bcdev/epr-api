@@ -96,9 +96,9 @@ EPR_SRecord* epr_read_sph(EPR_SProductId* product_id)
 
     char* code_block;
     int numread;
-    ulong sph_length = 0;
-    ulong sph_without_dsd_length = 0;
-    ulong dsd_number = 0;
+    uint sph_length = 0;
+    uint sph_without_dsd_length = 0;
+    uint dsd_number = 0;
 
     epr_clear_err();
 
@@ -111,14 +111,14 @@ EPR_SRecord* epr_read_sph(EPR_SProductId* product_id)
     }
 
     field = epr_get_field(product_id->mph_record, "SPH_SIZE");
-    sph_length = ((ulong*) field->elems)[0];
+    sph_length = ((uint*) field->elems)[0];
     if (sph_length == 0) {
         epr_set_err(e_err_invalid_value,
             "epr_read_sph: wrong MPH: SPH_SIZE must be > 0");
         return NULL;
     }
     field = epr_get_field(product_id->mph_record, "NUM_DSD");
-    dsd_number = ((ulong*) field->elems)[0];
+    dsd_number = ((uint*) field->elems)[0];
     if (dsd_number == 0) {
         epr_set_err(e_err_invalid_value,
             "epr_read_sph: wrong MPH: NUM_DSD must be > 0");
@@ -272,7 +272,7 @@ EPR_SRecord* epr_parse_header(const char* header_name, const char* ascii_source)
                 /*if INTEGER_LONG value*/
                 } else if ((strlen(token_value) > 1)) {
 
-                    epr_parse_long_token(header_values, token_value, &num_elems, &num_bytes, &tp);
+                    epr_parse_int_token(header_values, token_value, &num_elems, &num_bytes, &tp);
 
                     epr_free_string(token_value);
                     token_value = NULL;
@@ -385,7 +385,7 @@ void epr_parse_double_token(EPR_SPtrArray* header_values, char* token_value, uin
 }
 
 
-void epr_parse_long_token(EPR_SPtrArray* header_values, char* token_value, uint* num_elems, uint* num_bytes, EPR_EDataTypeId* tp)
+void epr_parse_int_token(EPR_SPtrArray* header_values, char* token_value, uint* num_elems, uint* num_bytes, EPR_EDataTypeId* tp)
 {
     char * token_value_o;
     char * tmp;
@@ -395,24 +395,24 @@ void epr_parse_long_token(EPR_SPtrArray* header_values, char* token_value, uint*
     uint dlina;
     uint i;
     char value_buffer[32];
-    long lmp;
-    ulong ulmp;
-    int flag_long = 0;
+    int lmp;
+    uint ulmp;
+    int flag_int = 0;
     int flag_negative = 0;
     int cyc = 0;
 
     pos_value = 0;
     *num_elems = 0;
-    flag_long = 0;
+    flag_int = 0;
     flag_negative = 0;
 
     if (strchr(token_value, '-') != NULL) {
-        flag_long = 1;
-        *num_bytes = sizeof(long);
-        *tp = e_tid_long;
+        flag_int = 1;
+        *num_bytes = sizeof(int);
+        *tp = e_tid_int;
     } else {
-        *num_bytes = sizeof(ulong);
-        *tp = e_tid_ulong;
+        *num_bytes = sizeof(uint);
+        *tp = e_tid_uint;
     }
 
     while ((tmp = epr_str_tok(token_value + 1, "+-", &pos_value)) != NULL) {
@@ -421,8 +421,8 @@ void epr_parse_long_token(EPR_SPtrArray* header_values, char* token_value, uint*
                         "epr_parse_header: invalid ascii header: illegal value");
             cyc ++;
             tmp = epr_clone_string("-999999");
-            *num_bytes = sizeof(long);
-            *tp = e_tid_long;
+            *num_bytes = sizeof(int);
+            *tp = e_tid_int;
             epr_add_ptr_array_elem(header_values, tmp);
         } else {
             cyc ++;
@@ -442,8 +442,8 @@ void epr_parse_long_token(EPR_SPtrArray* header_values, char* token_value, uint*
             strcat(token_value_o, tmp);
             dlina = (uint)strlen(token_value_o);
             tmp_v = epr_create_string(dlina);
-            /*if long*/
-            if (flag_long == 1) {
+            /*if int*/
+            if (flag_int == 1) {
                 lmp = strtol(token_value_o, &stopstring, 10);
                 if (lmp != 0) {
                     tmp_v[0] = token_value_o[0];
@@ -451,20 +451,20 @@ void epr_parse_long_token(EPR_SPtrArray* header_values, char* token_value, uint*
                     if (token_value_o[0] == '+') strncpy(tmp_v + 0, token_value_o + i, dlina - i);
                     if (token_value_o[0] == '-') strncpy(tmp_v + 1, token_value_o + i, dlina - i);
                     sprintf(value_buffer, "%ld", lmp);
-                    /*if long value too large*/
+                    /*if int value too large*/
                     if (strcmp(tmp_v, value_buffer) != 0)
-                        epr_log(e_log_warning, "product header: long integer value out of range");
+                        epr_log(e_log_warning, "product header: int integer value out of range");
                 }
-            } else if (flag_long == 0) {
+            } else if (flag_int == 0) {
                 ulmp = strtoul(token_value_o, &stopstring, 10);
                 if (ulmp != 0UL) {
                     tmp_v[0] = token_value_o[0];
                     for (i = 1; i < dlina; i ++) if (token_value_o[i] != '0') break;
                     strncpy(tmp_v, token_value_o + i, dlina - i);
                     sprintf(value_buffer, "%lu", ulmp);
-                    /*if ulong value too large*/
+                    /*if uint value too large*/
                     if (strcmp(tmp_v, value_buffer) != 0)
-                        epr_log(e_log_warning, "product header: unsigned long integer value out of range");
+                        epr_log(e_log_warning, "product header: unsigned int integer value out of range");
                 }
             }
             epr_free_string(tmp_v);
@@ -506,11 +506,11 @@ void epr_set_header_field_values(EPR_SRecord* record, EPR_SPtrArray* header_valu
                 case e_tid_uchar:
                     *(((uchar*)field->elems) + field_info_index) = (uchar) tmp[field_info_index];
                     break;
-                case e_tid_long:
-                    *(((long*)field->elems) + field_info_index) = strtol(tmp, &stopstring, 10);
+                case e_tid_int:
+                    *(((int*)field->elems) + field_info_index) = strtol(tmp, &stopstring, 10);
                     break;
-                case e_tid_ulong:
-                    *(((ulong*)field->elems) + field_info_index) = strtoul(tmp, &stopstring, 10);
+                case e_tid_uint:
+                    *(((uint*)field->elems) + field_info_index) = strtoul(tmp, &stopstring, 10);
                     break;
                 case e_tid_string:;
                     /*epr_assign_string(&(char*)field->elems, tmp);*/
@@ -529,10 +529,10 @@ void epr_set_header_field_values(EPR_SRecord* record, EPR_SPtrArray* header_valu
 }
 
 
-ulong epr_compare_param(EPR_SProductId* product_id)
+uint epr_compare_param(EPR_SProductId* product_id)
 {
     EPR_SDSD* dsd;
-    ulong of;
+    uint of;
 
     epr_clear_err();
 

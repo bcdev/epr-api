@@ -129,11 +129,11 @@ void epr_print_field(const EPR_SField* field, FILE* ostream)
             case e_tid_short:
                 fprintf(ostream, "%d", ((short*) field->elems)[i]);
                 break;
-            case e_tid_ulong:
-                fprintf(ostream, "%lu", ((ulong*) field->elems)[i]);
+            case e_tid_uint:
+                fprintf(ostream, "%lu", ((uint*) field->elems)[i]);
                 break;
-            case e_tid_long:
-                fprintf(ostream, "%ld", ((long*) field->elems)[i]);
+            case e_tid_int:
+                fprintf(ostream, "%ld", ((int*) field->elems)[i]);
                 break;
             case e_tid_float:
                 fprintf(ostream, "%f", ((float*) field->elems)[i]);
@@ -219,11 +219,11 @@ void epr_print_element(const EPR_SRecord* record, uint field_index, uint element
             case e_tid_short:
                 fprintf(ostream, "%d", ((short*) field->elems)[element_index]);
                 break;
-            case e_tid_ulong:
-                fprintf(ostream, "%lu", ((ulong*) field->elems)[element_index]);
+            case e_tid_uint:
+                fprintf(ostream, "%lu", ((uint*) field->elems)[element_index]);
                 break;
-            case e_tid_long:
-                fprintf(ostream, "%ld", ((long*) field->elems)[element_index]);
+            case e_tid_int:
+                fprintf(ostream, "%ld", ((int*) field->elems)[element_index]);
                 break;
             case e_tid_float:
                 fprintf(ostream, "%f", ((float*) field->elems)[element_index]);

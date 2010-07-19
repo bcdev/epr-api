@@ -31,7 +31,7 @@ void epr_set_header_field_values(EPR_SRecord* record, EPR_SPtrArray* header_valu
 ulong epr_compare_param(EPR_SProductId* product_id);
 
 void epr_parse_double_token(EPR_SPtrArray* header_values, char* token_value, uint* value_number, uint* l, EPR_EDataTypeId* tp);
-void epr_parse_long_token(EPR_SPtrArray* header_values, char* token_value, uint* value_number, uint* l, EPR_EDataTypeId* tp);
+void epr_parse_int_token(EPR_SPtrArray* header_values, char* token_value, uint* value_number, uint* l, EPR_EDataTypeId* tp);
 #ifdef __cplusplus
 } /* extern "C" */
 #endif

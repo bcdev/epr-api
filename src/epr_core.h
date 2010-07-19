@@ -99,9 +99,9 @@ struct EPR_API
     int little_endian_order;
 
     /**
-     * A unsigned long value indicating head length
+     * A unsigned int value indicating head length
      */
-    ulong epr_head_size;
+    uint epr_head_size;
 
     /**
      * The directory path to the record info database.
@@ -243,7 +243,7 @@ EPR_EDataTypeId epr_str_to_data_type_id(const char* str);
 
 char* epr_build_db_file_istream_name(EPR_SProductId* product_id, char* what);
 FILE* epr_open_file(char* path_to_file);
-long epr_str_to_number(const char* str);
+int epr_str_to_number(const char* str);
 uint epr_parse_value_count(EPR_SProductId* product_id, const char* str);
 uint epr_param_to_value(const char* str, EPR_SPtrArray* param_table);
 void epr_make_os_compatible_path(char* path);

@@ -1,6 +1,12 @@
 
-           CHANGELOG for the EPR-API, VERSION 2.1
+           CHANGELOG for the EPR-API, VERSION 2.2
 
+
+----------------------------------------------------------------------
+Changes from Version 2.1 to Version 2.2 (of 19. July 2010)
+----------------------------------------------------------------------
+Generally replaced usage of data type "long" by "int" since "long" is 
+ambiguous with respect to 32bit and 64bit operating systems.
 
 ----------------------------------------------------------------------
 Changes from Version 2.0.5 to Version 2.1 (of 6. May 2009)

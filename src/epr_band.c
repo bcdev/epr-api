@@ -500,7 +500,7 @@ EPR_SRaster* epr_create_raster(EPR_EDataTypeId data_type,
                                uint source_step_x,
                                uint source_step_y) {
     EPR_SRaster* raster = NULL;
-    ulong num_elems;
+    uint num_elems;
 
     epr_clear_err();
 
@@ -705,7 +705,7 @@ int epr_read_band_measurement_data(EPR_SBandId* band_id,
     uint rec_numb;
     int iY, raster_pos, delta_raster_pos;
     int offset_x_mirrored = 0;
-    ulong scan_line_length;
+    uint scan_line_length;
     EPR_FLineDecoder decode_func;
     uint scene_width;
 
@@ -714,7 +714,7 @@ int epr_read_band_measurement_data(EPR_SBandId* band_id,
     if (strncmp(EPR_ENVISAT_PRODUCT_MERIS, product_id->id_string, 3) == 0) {
         sph_record = product_id->sph_record;
         field = epr_get_field(sph_record, "LINE_LENGTH");
-        scan_line_length = epr_get_field_elem_as_ulong(field, 0);
+        scan_line_length = epr_get_field_elem_as_uint(field, 0);
     } else if (strncmp(EPR_ENVISAT_PRODUCT_AATSR, product_id->id_string, 3) == 0) {
         scan_line_length = EPR_ATS_LINE_LENGTH;
     } else if (strncmp(EPR_ENVISAT_PRODUCT_ASAR, product_id->id_string, 3) == 0) {
@@ -789,8 +789,8 @@ int epr_read_band_measurement_data(EPR_SBandId* band_id,
             mirror_uchar_array((uchar*)raster->buffer, raster->raster_width, raster->raster_height);
         } else if (band_datatype == e_tid_ushort || band_datatype == e_tid_short) {
             mirror_ushort_array((ushort*)raster->buffer, raster->raster_width, raster->raster_height);
-        } else if (band_datatype == e_tid_ulong || band_datatype == e_tid_long) {
-            mirror_ulong_array((ulong*)raster->buffer, raster->raster_width, raster->raster_height);
+        } else if (band_datatype == e_tid_uint || band_datatype == e_tid_int) {
+            mirror_uint_array((uint*)raster->buffer, raster->raster_width, raster->raster_height);
         } else {
             epr_set_err(e_err_illegal_data_type,
                         "epr_read_band_measurement_data: internal error: unknown data type");
@@ -833,7 +833,7 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
     EPR_ESampleModel band_smod = 0;
     uint rec_size = 0;
     uint rec_numb = 0;
-    ulong lines_per_tie_pt, samples_per_tie_pt, scan_line_length;
+    uint lines_per_tie_pt, samples_per_tie_pt, scan_line_length;
     int iY, raster_pos, delta_raster_pos;
     EPR_FArrayTransformer transform_array_func = NULL;
     int y_beg, y_end, y_beg_old, y_end_old;
@@ -869,11 +869,11 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
         num_elems = field_info->num_elems;
         sph_record = product_id->sph_record;
         field = epr_get_field(sph_record, "LINES_PER_TIE_PT");
-        lines_per_tie_pt = epr_get_field_elem_as_ulong(field, 0);
+        lines_per_tie_pt = epr_get_field_elem_as_uint(field, 0);
         field = epr_get_field(sph_record, "SAMPLES_PER_TIE_PT");
-        samples_per_tie_pt = epr_get_field_elem_as_ulong(field, 0);
+        samples_per_tie_pt = epr_get_field_elem_as_uint(field, 0);
         field = epr_get_field(sph_record, "LINE_LENGTH");
-        scan_line_length = epr_get_field_elem_as_ulong(field, 0);
+        scan_line_length = epr_get_field_elem_as_uint(field, 0);
     } else if (strncmp(EPR_ENVISAT_PRODUCT_AATSR, product_id->id_string, 3) == 0) {
         scan_offset_y = 0.5F;
         scan_line_length = EPR_ATS_LINE_LENGTH;
@@ -1028,7 +1028,7 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
 }
 
 
-ulong epr_get_raster_elem_size(const EPR_SRaster* raster) {
+uint epr_get_raster_elem_size(const EPR_SRaster* raster) {
     if (raster == NULL) {
         epr_set_err(e_err_invalid_raster, "epr_get_raster_elem_size: raster must not be NULL");
         return 0;
@@ -1036,7 +1036,7 @@ ulong epr_get_raster_elem_size(const EPR_SRaster* raster) {
     return raster->elem_size;
 }
 
-void* epr_get_raster_elem_addr(const EPR_SRaster* raster, ulong offset) {
+void* epr_get_raster_elem_addr(const EPR_SRaster* raster, uint offset) {
     if (raster == NULL) {
         epr_set_err(e_err_invalid_raster, "epr_get_raster_elem_addr: raster must not be NULL");
         return 0;
@@ -1044,7 +1044,7 @@ void* epr_get_raster_elem_addr(const EPR_SRaster* raster, ulong offset) {
     return ((uchar*) raster->buffer) + epr_get_raster_elem_size(raster) * offset;
 }
 
-void* epr_get_raster_pixel_addr(const EPR_SRaster* raster, ulong x, ulong y) {
+void* epr_get_raster_pixel_addr(const EPR_SRaster* raster, uint x, uint y) {
     if (raster == NULL) {
         epr_set_err(e_err_invalid_raster, "epr_get_raster_pixel_addr: raster must not be NULL");
         return 0;
@@ -1052,7 +1052,7 @@ void* epr_get_raster_pixel_addr(const EPR_SRaster* raster, ulong x, ulong y) {
     return epr_get_raster_elem_addr(raster, y * raster->raster_width + x);
 }
 
-void* epr_get_raster_line_addr(const EPR_SRaster* raster, ulong y) {
+void* epr_get_raster_line_addr(const EPR_SRaster* raster, uint y) {
     if (raster == NULL) {
         epr_set_err(e_err_invalid_raster, "epr_get_raster_line_addr: raster must not be NULL");
         return 0;
@@ -1060,7 +1060,7 @@ void* epr_get_raster_line_addr(const EPR_SRaster* raster, ulong y) {
     return epr_get_raster_elem_addr(raster, y * raster->raster_width);
 }
 
-ulong epr_get_raster_width(EPR_SRaster* raster) {
+uint epr_get_raster_width(EPR_SRaster* raster) {
     if (raster == NULL) {
         epr_set_err(e_err_invalid_raster, "epr_get_raster_width: raster must not be NULL");
         return 0;
@@ -1068,7 +1068,7 @@ ulong epr_get_raster_width(EPR_SRaster* raster) {
     return raster->raster_width;
 }
 
-ulong epr_get_raster_height(EPR_SRaster* raster) {
+uint epr_get_raster_height(EPR_SRaster* raster) {
     if (raster == NULL) {
         epr_set_err(e_err_invalid_raster, "epr_get_raster_height: raster must not be NULL");
         return 0;
@@ -1133,10 +1133,10 @@ EPR_FLineDecoder select_line_decode_function(EPR_EDataTypeId band_tid,
              && band_smod == e_smod_2TOF
              && raw_tid == e_tid_uchar)
         decode_func = decode_line_uchar_2_to_f_to_float;
-    else if (band_tid == e_tid_ulong
+    else if (band_tid == e_tid_uint
              && band_smod == e_smod_3TOI
              && raw_tid == e_tid_uchar)
-        decode_func = decode_line_uchar_3_to_i_to_ulong;
+        decode_func = decode_line_uchar_3_to_i_to_uint;
     else {
         return NULL;
     }
@@ -1151,10 +1151,10 @@ EPR_FArrayTransformer select_transform_array_function(EPR_EDataTypeId band_tid,
         transform_array_func = transform_array_short_to_float;
     else if (band_tid == e_tid_float && raw_tid == e_tid_ushort)
         transform_array_func = transform_array_ushort_to_float;
-    else if (band_tid == e_tid_float && raw_tid == e_tid_long)
-        transform_array_func = transform_array_long_to_float;
-    else if (band_tid == e_tid_float && raw_tid == e_tid_ulong)
-        transform_array_func = transform_array_ulong_to_float;
+    else if (band_tid == e_tid_float && raw_tid == e_tid_int)
+        transform_array_func = transform_array_int_to_float;
+    else if (band_tid == e_tid_float && raw_tid == e_tid_uint)
+        transform_array_func = transform_array_uint_to_float;
     else {
         return NULL;
     }
@@ -1510,7 +1510,7 @@ void decode_line_uchar_2_of_2_to_float(void* source_array,
     }
 }
 
-void decode_line_uchar_3_to_i_to_ulong(void* source_array,
+void decode_line_uchar_3_to_i_to_uint(void* source_array,
                                        EPR_SBandId* band_id,
                                        int offset_x,
                                        int raster_width,
@@ -1519,7 +1519,7 @@ void decode_line_uchar_3_to_i_to_ulong(void* source_array,
                                        int raster_pos) {
     int x, x1, x2, n;
     uchar* sa = (uchar*) source_array;
-    ulong* buf = (ulong*) raster_buffer;
+    uint* buf = (uint*) raster_buffer;
 
     x1 = offset_x;
     x2 = x1 + raster_width - 1;
@@ -1548,7 +1548,7 @@ void decode_line_uchar_3_to_i_to_ulong(void* source_array,
  */
 void decode_tiepoint_band(float* sa_beg,
                           float* sa_end,
-                          ulong samples_per_tie_pt,
+                          uint samples_per_tie_pt,
                           uint num_elems,
                           EPR_SBandId* band_id,
                           int offset_x,
@@ -1562,7 +1562,7 @@ void decode_tiepoint_band(float* sa_beg,
     int ix;
     float x_mod;
     uint x_knot;
-    int longi_flag = 0;
+    int inti_flag = 0;
     int intersection = 0;
     float circle;
     float half_circle;
@@ -1573,9 +1573,9 @@ void decode_tiepoint_band(float* sa_beg,
     null_point = 0.5F * (EPR_LONGI_ABS_MAX + EPR_LONGI_ABS_MIN);
 
     if (strncmp(band_id->band_name, EPR_LONGI_BAND_NAME, strlen(EPR_LONGI_BAND_NAME)) == 0) {
-        longi_flag = 1;
+        inti_flag = 1;
     } else {
-        longi_flag = 0;
+        inti_flag = 0;
     }
 
     for (ix = offset_x; ix < offset_x + raster_width; ix += s_x) {
@@ -1590,7 +1590,7 @@ void decode_tiepoint_band(float* sa_beg,
         }
         x_mod -= x_knot;
 
-        if (longi_flag == 1) {
+        if (inti_flag == 1) {
             if (fabs((float)(sa_beg[x_knot + 1] - sa_beg[x_knot])) > half_circle ||
                     fabs((float)(sa_beg[x_knot] - sa_end[x_knot])) > half_circle ||
                     fabs((float)(sa_end[x_knot] - sa_end[x_knot + 1])) > half_circle ||
@@ -1617,7 +1617,7 @@ void decode_tiepoint_band(float* sa_beg,
                                     sa_beg[x_knot], sa_beg[x_knot + 1],
                                     sa_end[x_knot], sa_end[x_knot + 1]);
 
-        if (longi_flag == 1 &&
+        if (inti_flag == 1 &&
                 intersection == 1 &&
                 raster_buffer[raster_pos] > EPR_LONGI_ABS_MAX) {
             raster_buffer[raster_pos] -= circle;
@@ -1657,24 +1657,24 @@ void transform_array_ushort_to_float (void* sourceArray,
     }
 }
 
-void transform_array_long_to_float (void* sourceArray,
+void transform_array_int_to_float (void* sourceArray,
                                     EPR_SBandId* band_id,
                                     float* raster_buffer,
                                     uint nel) {
     uint ix;
-    long* sa = (long*) sourceArray;
+    int* sa = (int*) sourceArray;
 
     for (ix = 0; ix < nel; ix ++) {
         raster_buffer[ix] = band_id->scaling_offset + band_id->scaling_factor * sa[ix];
     }
 }
 
-void transform_array_ulong_to_float (void* sourceArray,
+void transform_array_uint_to_float (void* sourceArray,
                                      EPR_SBandId* band_id,
                                      float* raster_buffer,
                                      uint nel) {
     uint ix;
-    ulong* sa = (ulong*) sourceArray;
+    uint* sa = (uint*) sourceArray;
 
     for (ix = 0; ix < nel; ix ++) {
         raster_buffer[ix] = band_id->scaling_offset + band_id->scaling_factor * sa[ix];
@@ -1726,9 +1726,9 @@ void mirror_ushort_array(ushort* raster_buffer, uint raster_width, uint raster_h
     }
 }
 
-void mirror_ulong_array(ulong* raster_buffer, uint raster_width, uint raster_height) {
+void mirror_uint_array(uint* raster_buffer, uint raster_width, uint raster_height) {
     uint w, h, pol_w, offset;
-    ulong tmp;
+    uint tmp;
     pol_w = raster_width / 2;
 
     for (h = 0; h < raster_height; h ++) {
@@ -1773,9 +1773,9 @@ void epr_zero_invalid_pixels(EPR_SRaster* raster, EPR_SRaster* bm_raster) {
             }
         }
         break;
-        case e_tid_long:
-        case e_tid_ulong: {
-            long* pixels = (long*) raster->buffer;
+        case e_tid_int:
+        case e_tid_uint: {
+            int* pixels = (int*) raster->buffer;
             for (bm_pos = 0; bm_pos < bm_len; bm_pos++) {
                 if (bm_pixels[bm_pos] == 0) {
                     pixels[bm_pos] = 0;

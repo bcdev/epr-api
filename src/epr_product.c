@@ -38,8 +38,8 @@
 
 #include "epr_dddb.h"
 
-ulong epr_compute_scene_width(const EPR_SProductId* product_id);
-ulong epr_compute_scene_height(const EPR_SProductId* product_id);
+uint epr_compute_scene_width(const EPR_SProductId* product_id);
+uint epr_compute_scene_height(const EPR_SProductId* product_id);
 
 /*********************************** PRODUCT ***********************************/
 
@@ -55,7 +55,7 @@ EPR_SProductId* epr_open_product(const char* product_file_path) {
     EPR_SProductId* product_id = NULL;
     char message_buffer[80];
     int s_par;
-    ulong compare_ok = 0;
+    uint compare_ok = 0;
 
     epr_clear_err();
     if (!epr_check_api_init_flag()) {
@@ -414,30 +414,30 @@ EPR_SRecord* epr_get_mph(const EPR_SProductId* product_id) {
  *
  * @return width pixel number, or <code>0</code> if an error occured.
  */
-ulong epr_compute_scene_width(const EPR_SProductId* product_id) {
+uint epr_compute_scene_width(const EPR_SProductId* product_id) {
     EPR_SRecord* sph_record = NULL;
-    ulong scan_line_length;
+    uint scan_line_length;
 
     if (product_id == NULL) {
         epr_set_err(e_err_null_pointer,
                     "epr_compute_scene_width: product ID must not be NULL");
-        return (ulong)0;
+        return (uint)0;
     }
 
     sph_record = product_id->sph_record;
 
     if (strncmp(EPR_ENVISAT_PRODUCT_MERIS, product_id->id_string, 3) == 0) {
         const EPR_SField* field = field = epr_get_field(sph_record, "LINE_LENGTH");
-        scan_line_length = epr_get_field_elem_as_ulong(field, 0);
+        scan_line_length = epr_get_field_elem_as_uint(field, 0);
     } else if (strncmp(EPR_ENVISAT_PRODUCT_AATSR, product_id->id_string, 3) == 0) {
         scan_line_length = EPR_ATS_LINE_LENGTH;
     } else if (strncmp(EPR_ENVISAT_PRODUCT_ASAR, product_id->id_string, 3) == 0) {
         const EPR_SField* field = field = epr_get_field(sph_record, "LINE_LENGTH");
-        scan_line_length = epr_get_field_elem_as_ulong(field, 0);
+        scan_line_length = epr_get_field_elem_as_uint(field, 0);
     } else {
         epr_set_err(e_err_illegal_arg,
                     "epr_compute_scene_width: unknown product type");
-        scan_line_length = (ulong)0;
+        scan_line_length = (uint)0;
     }
 
     return scan_line_length;
@@ -450,7 +450,7 @@ ulong epr_compute_scene_width(const EPR_SProductId* product_id) {
  * @param product_id the product identifier, must not be <code>NULL</code>
  * @return height pixel number, or <code>0</code> if an error occured.
  */
-ulong epr_compute_scene_height(const EPR_SProductId* product_id) {
+uint epr_compute_scene_height(const EPR_SProductId* product_id) {
     EPR_SDSD* dsd = NULL;
     uint min_num_mds_recs = 0;
     uint dsd_index;
@@ -458,7 +458,7 @@ ulong epr_compute_scene_height(const EPR_SProductId* product_id) {
     if (product_id == NULL) {
         epr_set_err(e_err_null_pointer,
                     "epr_compute_scene_height: product ID must not be NULL");
-        return (ulong)0;
+        return (uint)0;
     }
 
     for (dsd_index = 0; dsd_index < product_id->dsd_array->length; dsd_index++) {

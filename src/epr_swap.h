@@ -27,8 +27,8 @@ extern "C"
 
 void byte_swap_short(short *buffer, uint number_of_swaps);
 void byte_swap_ushort(ushort* buffer, uint number_of_swaps);
-void byte_swap_long(long *buffer, uint number_of_swaps);
-void byte_swap_ulong(ulong* buffer, uint number_of_swaps);
+void byte_swap_long(int *buffer, uint number_of_swaps);
+void byte_swap_uint(uint* buffer, uint number_of_swaps);
 void byte_swap_float(float* buffer, uint number_of_swaps);
 void epr_swap_endian_order(const EPR_SField* field);
 int epr_is_big_endian_order();

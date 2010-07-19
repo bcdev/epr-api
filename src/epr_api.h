@@ -54,10 +54,10 @@ enum EPR_DataTypeId
     e_tid_ushort  = 3,
     /** An array of signed 16-bit integers, C type is <code>short*</code> */
     e_tid_short   = 4,
-    /** An array of unsigned 32-bit integers, C type is <code>ulong*</code> */
-    e_tid_ulong   = 5,
-    /** An array of signed 32-bit integers, C type is <code>long*</code> */
-    e_tid_long    = 6,
+    /** An array of unsigned 32-bit integers, C type is <code>uint*</code> */
+    e_tid_uint    = 5,
+    /** An array of signed 32-bit integers, C type is <code>int*</code> */
+    e_tid_int     = 6,
     /** An array of 32-bit floating point numbers, C type is <code>float*</code> */
     e_tid_float   = 7,
     /** An array of 64-bit floating point numbers, C type is <code>double*</code> */
@@ -197,7 +197,7 @@ typedef unsigned int   uint;
 typedef unsigned long  ulong;
 
 
-typedef long EPR_Magic;
+typedef int EPR_Magic;
 
 #define EPR_MAGIC_PRODUCT_ID     0xCAFFEE64
 #define EPR_MAGIC_DATASET_ID     0xEFEABDCA
@@ -502,8 +502,8 @@ struct EPR_Field
      * -# <code>char*</code> - array of signed 8-bit integer fields
      * -# <code>unsigned short*</code> - array of unsigned 16-bit integer elements
      * -# <code>short*</code> - array of signed 16-bit integer elements
-     * -# <code>unsigned long*</code> - array of unsigned 32-bit integer elements
-     * -# <code>long*</code> - array of signed 32-bit integer elements
+     * -# <code>unsigned int*</code> - array of unsigned 32-bit integer elements
+     * -# <code>int*</code> - array of signed 32-bit integer elements
      * -# <code>float*</code> - array of signed 32-bit floating point elements
      * -# <code>double*</code> - array of signed 64-bit floating point elements
      * -# <code>EPR_STime*</code> - array of MJD elements
@@ -537,39 +537,39 @@ struct EPR_Raster
     /**
      * The size in byte of a single element (sample) of this raster's buffer.
      */
-    ulong elem_size;
+    uint elem_size;
 
     /**
      * The width of the source .
      */
-    ulong source_width;
+    uint source_width;
 
      /**
      * The height of the source.
      */
-    ulong source_height;
+    uint source_height;
 
      /**
      * The sub-sampling for the across-track direction in pixel.
      */
-    ulong source_step_x;
+    uint source_step_x;
 
      /**
      * The sub-sampling for the along-track direction in pixel.
      */
-    ulong source_step_y;
+    uint source_step_y;
 
      /**
      * The width of the raster in pixel.
      * <br>raster_width  = (source_width  - 1) / source_step_x + 1
      */
-    ulong raster_width;
+    uint raster_width;
 
      /**
      * The height of the raster in pixel.
      * <br>raster_height = (source_height - 1) / source_step_y + 1
      */
-    ulong raster_height;
+    uint raster_height;
 
      /**
      * The elements of this raster.
@@ -763,9 +763,9 @@ struct EPR_BandId
  */
 struct EPR_Time
 {
-    long  days;
-    ulong seconds;
-    ulong microseconds;
+    int  days;
+    uint seconds;
+    uint microseconds;
 };
 
 
@@ -1264,8 +1264,8 @@ char epr_get_field_elem_as_char(const EPR_SField* field, uint elem_index);
 uchar epr_get_field_elem_as_uchar(const EPR_SField* field, uint elem_index);
 short epr_get_field_elem_as_short(const EPR_SField* field, uint elem_index);
 ushort epr_get_field_elem_as_ushort(const EPR_SField* field, uint elem_index);
-long epr_get_field_elem_as_long(const EPR_SField* field, uint elem_index);
-ulong epr_get_field_elem_as_ulong(const EPR_SField* field, uint elem_index);
+int epr_get_field_elem_as_int(const EPR_SField* field, uint elem_index);
+uint epr_get_field_elem_as_uint(const EPR_SField* field, uint elem_index);
 float epr_get_field_elem_as_float(const EPR_SField* field, uint elem_index);
 double epr_get_field_elem_as_double(const EPR_SField* field, uint elem_index);
 const EPR_STime* epr_get_field_elem_as_mjd(const EPR_SField* field);
@@ -1292,8 +1292,8 @@ const char* epr_get_field_elems_char(const EPR_SField* field);
 const uchar* epr_get_field_elems_uchar(const EPR_SField* field);
 const short* epr_get_field_elems_short(const EPR_SField* field);
 const ushort* epr_get_field_elems_ushort(const EPR_SField* field);
-const long* epr_get_field_elems_long(const EPR_SField* field);
-const ulong* epr_get_field_elems_ulong(const EPR_SField* field);
+const int* epr_get_field_elems_int(const EPR_SField* field);
+const uint* epr_get_field_elems_uint(const EPR_SField* field);
 const float* epr_get_field_elems_float(const EPR_SField* field);
 const double* epr_get_field_elems_double(const EPR_SField* field);
 /*@}*/
@@ -1314,10 +1314,10 @@ const double* epr_get_field_elems_double(const EPR_SField* field);
  * @return the actual number of elements copied
  */
 /*@{*/
-uint epr_copy_field_elems_as_doubles(const EPR_SField* field, double* buffer, uint num_elems);
+uint epr_copy_field_elems_as_ints(const EPR_SField* field, int* buffer, uint num_elems);
+uint epr_copy_field_elems_as_uints(const EPR_SField* field, uint* buffer, uint num_elems);
 uint epr_copy_field_elems_as_floats(const EPR_SField* field, float* buffer, uint num_elems);
-uint epr_copy_field_elems_as_longs(const EPR_SField* field, long* buffer, uint num_elems);
-uint epr_copy_field_elems_as_ulongs(const EPR_SField* field, ulong* buffer, uint num_elems);
+uint epr_copy_field_elems_as_doubles(const EPR_SField* field, double* buffer, uint num_elems);
 /*@}*/
 
 
@@ -1443,22 +1443,22 @@ int epr_read_band_raster(EPR_SBandId* band_id,
 /**
  * @todo 1 se/nf - doku
  */
-ulong epr_get_raster_elem_size(const EPR_SRaster* raster);
+uint epr_get_raster_elem_size(const EPR_SRaster* raster);
 
 /**
  * @todo 1 se/nf - doku
  */
-void* epr_get_raster_elem_addr(const EPR_SRaster* raster, ulong offset);
+void* epr_get_raster_elem_addr(const EPR_SRaster* raster, uint offset);
 
 /**
  * @todo 1 se/nf - doku
  */
-void* epr_get_raster_pixel_addr(const EPR_SRaster* raster, ulong x, ulong y);
+void* epr_get_raster_pixel_addr(const EPR_SRaster* raster, uint x, uint y);
 
 /**
  * @todo 1 se/nf - doku
  */
-void* epr_get_raster_line_addr(const EPR_SRaster* raster, ulong y);
+void* epr_get_raster_line_addr(const EPR_SRaster* raster, uint y);
 
 
 /**
@@ -1468,7 +1468,7 @@ void* epr_get_raster_line_addr(const EPR_SRaster* raster, ulong y);
  * @return the raster's total scene width in pixels, or <code>0</code>
  *         if an error occured.
  */
-ulong epr_get_raster_width(EPR_SRaster* raster);
+uint epr_get_raster_width(EPR_SRaster* raster);
 
 /**
  * Gets the raster's scene height in pixels.
@@ -1477,7 +1477,7 @@ ulong epr_get_raster_width(EPR_SRaster* raster);
  * @return the raster's total scene height in pixels, or <code>0</code>
  *         if an error occured.
  */
-ulong epr_get_raster_height(EPR_SRaster* raster);
+uint epr_get_raster_height(EPR_SRaster* raster);
 
 
 
@@ -1545,8 +1545,8 @@ void epr_free_raster(EPR_SRaster* raster);
  *
  * @return the typed value at the given co-ordinate.
  */
-ulong epr_get_pixel_as_ulong(const EPR_SRaster* raster, int x, int y);
-long epr_get_pixel_as_long(const EPR_SRaster* raster, int x, int y);
+uint epr_get_pixel_as_uint(const EPR_SRaster* raster, int x, int y);
+int epr_get_pixel_as_int(const EPR_SRaster* raster, int x, int y);
 float epr_get_pixel_as_float(const EPR_SRaster* raster, int x, int y);
 double epr_get_pixel_as_double(const EPR_SRaster* raster, int x, int y);
 /*@}*/

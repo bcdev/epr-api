@@ -276,7 +276,7 @@ const ushort* epr_get_field_elems_ushort(const EPR_SField* field)
 }
 
 /**
- * Interpretes a memory as a <code>long</code> value.
+ * Interpretes a memory as a <code>int</code> value.
  *
  * <p> If an error occurs the method returns <code>0</code> (zero).
  * Whether an error really occured when zero is returned can by determined by
@@ -286,54 +286,54 @@ const ushort* epr_get_field_elems_ushort(const EPR_SField* field)
  * @param elem_index the index of the element
  * in the given array to convert
  *
- * @return a <code>long</code> value
+ * @return a <code>int</code> value
  */
-long epr_get_field_elem_as_long(const EPR_SField* field, uint elem_index)
+int epr_get_field_elem_as_int(const EPR_SField* field, uint elem_index)
 {
     epr_clear_err();
 
     if (field == NULL) {
         epr_set_err(e_err_invalid_field_name,
                     "epr_get_field_elem_as_long: invalid field name");
-        return (long)0;
+        return (int)0;
     }
     if (elem_index >= field->info->num_elems) {
         epr_set_err(e_err_invalid_value,
                     "epr_get_field_elem_as_long: invalid elem_index parameter");
-        return (long)0;
+        return (int)0;
     }
 
     if (field->info->data_type_id == e_tid_uchar) {
-        return (long)((uchar*) field->elems)[elem_index];
+        return (int)((uchar*) field->elems)[elem_index];
     }
     if (field->info->data_type_id == e_tid_char) {
-        return (long)((char*) field->elems)[elem_index];
+        return (int)((char*) field->elems)[elem_index];
     }
     if (field->info->data_type_id == e_tid_ushort) {
-        return (long)((ushort*) field->elems)[elem_index];
+        return (int)((ushort*) field->elems)[elem_index];
     }
     if (field->info->data_type_id == e_tid_short) {
-        return (long)((short*) field->elems)[elem_index];
+        return (int)((short*) field->elems)[elem_index];
     }
-    if (field->info->data_type_id == e_tid_long) {
-        return (long)((long*) field->elems)[elem_index];
+    if (field->info->data_type_id == e_tid_int) {
+        return (int)((int*) field->elems)[elem_index];
     }
 
     epr_set_err(e_err_invalid_data_format,
                 "epr_get_field_elem_as_long: invalid type");
 
-    return (long)0;
+    return (int)0;
 }
 
 /**
- * Interpretes a memory data as a <code>long</code> data
+ * Interpretes a memory data as a <code>int</code> data
  *
  * @param field the pointer at the array to convert
  *
- * @return the <code>long</code> typed element
+ * @return the <code>int</code> typed element
  *         or <code>NULL</code> if an error occured.
  */
-const long* epr_get_field_elems_long(const EPR_SField* field)
+const int* epr_get_field_elems_int(const EPR_SField* field)
 {
     epr_clear_err();
 
@@ -342,84 +342,84 @@ const long* epr_get_field_elems_long(const EPR_SField* field)
                     "epr_get_field_elems_as_longs: invalid field name");
         return NULL;
     }
-    if (field->info->data_type_id != e_tid_long) {
+    if (field->info->data_type_id != e_tid_int) {
         epr_set_err(e_err_invalid_data_format,
                     "epr_get_field_elems_as_longs: invalid type");
         return NULL;
     }
-    return (long*) field->elems;
+    return (int*) field->elems;
 }
 
 /**
- * Interpretes a memory as a <code>ulong</code> value
+ * Interpretes a memory as a <code>uint</code> value
  *
  * @param field the pointer at the array to convert
  * @param elem_index the index of the element
  * in the given array to convert
  *
- * @return the <code>ulong</code> typed element
+ * @return the <code>uint</code> typed element
  *         or <code>error_code</code> if an error occured.
  */
-ulong epr_get_field_elem_as_ulong(const EPR_SField* field, uint elem_index)
+uint epr_get_field_elem_as_uint(const EPR_SField* field, uint elem_index)
 {
     epr_clear_err();
 
     if (field == NULL) {
         epr_set_err(e_err_invalid_field_name,
-                    "epr_get_field_elem_as_ulong: invalid field name");
-        return (ulong)0;
+                    "epr_get_field_elem_as_uint: invalid field name");
+        return (uint)0;
     }
     if (elem_index >= field->info->num_elems) {
         epr_set_err(e_err_invalid_value,
-                    "epr_get_field_elem_as_ulong: invalid elem_index parameter");
-        return (ulong)0;
+                    "epr_get_field_elem_as_uint: invalid elem_index parameter");
+        return (uint)0;
     }
 
-    if (field->info->data_type_id == e_tid_ulong) {
-        return (ulong)((ulong*) field->elems)[elem_index];
+    if (field->info->data_type_id == e_tid_uint) {
+        return (uint)((uint*) field->elems)[elem_index];
     }
     if (field->info->data_type_id == e_tid_uchar) {
-        return (ulong)((uchar*) field->elems)[elem_index];
+        return (uint)((uchar*) field->elems)[elem_index];
     }
     if (field->info->data_type_id == e_tid_char) {
-        return (ulong)((char*) field->elems)[elem_index];
+        return (uint)((char*) field->elems)[elem_index];
     }
     if (field->info->data_type_id == e_tid_ushort) {
-        return (ulong)((ushort*) field->elems)[elem_index];
+        return (uint)((ushort*) field->elems)[elem_index];
     }
     if (field->info->data_type_id == e_tid_short) {
-        return (ulong)((short*) field->elems)[elem_index];
+        return (uint)((short*) field->elems)[elem_index];
     }
 
     epr_set_err(e_err_invalid_data_format,
-                "epr_get_field_elem_as_ulong: invalid type");
+                "epr_get_field_elem_as_uint: invalid type");
 
-    return (ulong)0;
+    return (uint)0;
 }
 
 /**
- * Interpretes a memory data as a <code>ulong</code> data
+ * Interpretes a memory data as a <code>uint</code> data
  *
  * @param field the pointer at the array to convert
  *
- * @return the <code>ulong</code> typed element
+ * @return the <code>uint</code> typed element
  *         or <code>NULL</code> if an error occured.
  */
-const ulong* epr_get_field_elems_ulong(const EPR_SField* field)
+const uint* epr_get_field_elems_uint(const EPR_SField* field)
 {
     epr_clear_err();
 
     if (field == NULL) {
         epr_set_err(e_err_invalid_field_name,
-                    "epr_get_field_elems_as_ulongs: invalid field name");
+                    "epr_get_field_elems_as_uints: invalid field name");
         return NULL;
     }
-    if (field->info->data_type_id != e_tid_ulong) {
+    if (field->info->data_type_id != e_tid_uint) {
         epr_set_err(e_err_invalid_data_format,
-                    "epr_get_field_elems_as_ulongs: invalid type");
+                    "epr_get_field_elems_as_uints: invalid type");
         return NULL;
     }
-    return (ulong*) field->elems;
+    return (uint*) field->elems;
 }
 
 /**
@@ -463,11 +463,11 @@ float epr_get_field_elem_as_float(const EPR_SField* field, uint elem_index)
     if (field->info->data_type_id == e_tid_short) {
         return (float)((short*) field->elems)[elem_index];
     }
-    if (field->info->data_type_id == e_tid_ulong) {
-        return (float)((ulong*) field->elems)[elem_index];
+    if (field->info->data_type_id == e_tid_uint) {
+        return (float)((uint*) field->elems)[elem_index];
     }
-    if (field->info->data_type_id == e_tid_long) {
-        return (float)((long*) field->elems)[elem_index];
+    if (field->info->data_type_id == e_tid_int) {
+        return (float)((int*) field->elems)[elem_index];
     }
 
     epr_set_err(e_err_invalid_data_format,
@@ -545,11 +545,11 @@ double epr_get_field_elem_as_double(const EPR_SField* field, uint elem_index)
     if (field->info->data_type_id == e_tid_short) {
         return (double)((short*) field->elems)[elem_index];
     }
-    if (field->info->data_type_id == e_tid_ulong) {
-        return (double)((ulong*) field->elems)[elem_index];
+    if (field->info->data_type_id == e_tid_uint) {
+        return (double)((uint*) field->elems)[elem_index];
     }
-    if (field->info->data_type_id == e_tid_long) {
-        return (double)((long*) field->elems)[elem_index];
+    if (field->info->data_type_id == e_tid_int) {
+        return (double)((int*) field->elems)[elem_index];
     }
 
     epr_set_err(e_err_invalid_data_format,
@@ -688,13 +688,13 @@ uint epr_copy_field_elems_as_doubles(const EPR_SField* field, double* buffer, ui
         for (i = 0; i < num_elems_min; i++) {
             buffer[i] = (double)((short*) field->elems)[i];
         }
-    } else if (field->info->data_type_id == e_tid_ulong) {
+    } else if (field->info->data_type_id == e_tid_uint) {
         for (i = 0; i < num_elems_min; i++) {
-            buffer[i] = (double)((ulong*) field->elems)[i];
+            buffer[i] = (double)((uint*) field->elems)[i];
         }
-    } else if (field->info->data_type_id == e_tid_long) {
+    } else if (field->info->data_type_id == e_tid_int) {
         for (i = 0; i < num_elems_min; i++) {
-            buffer[i] = (double)((long*) field->elems)[i];
+            buffer[i] = (double)((int*) field->elems)[i];
         }
     } else if (field->info->data_type_id == e_tid_float) {
         for (i = 0; i < num_elems_min; i++) {
@@ -760,13 +760,13 @@ uint epr_copy_field_elems_as_floats(const EPR_SField* field, float* buffer, uint
         for (i = 0; i < num_elems_min; i++) {
             buffer[i] = (float)((short*) field->elems)[i];
         }
-    } else if (field->info->data_type_id == e_tid_ulong) {
+    } else if (field->info->data_type_id == e_tid_uint) {
         for (i = 0; i < num_elems_min; i++) {
-            buffer[i] = (float)((ulong*) field->elems)[i];
+            buffer[i] = (float)((uint*) field->elems)[i];
         }
-    } else if (field->info->data_type_id == e_tid_long) {
+    } else if (field->info->data_type_id == e_tid_int) {
         for (i = 0; i < num_elems_min; i++) {
-            buffer[i] = (float)((long*) field->elems)[i];
+            buffer[i] = (float)((int*) field->elems)[i];
         }
     } else if (field->info->data_type_id == e_tid_float) {
         for (i = 0; i < num_elems_min; i++) {
@@ -782,11 +782,11 @@ uint epr_copy_field_elems_as_floats(const EPR_SField* field, float* buffer, uint
 }
 
 /**
- * Copies the data of the given field into the given buffer of <code>long</code>
+ * Copies the data of the given field into the given buffer of <code>int</code>
  * elements. The actual number of elements copied is the minimum of the given
  * number of elements (the buffer's size) and the actual number of elements contained
  * in the field.
- * <p>If the actual field data type is not <code>long</code> the function automatically
+ * <p>If the actual field data type is not <code>int</code> the function automatically
  * performs the conversion.
  *
  * @param field the field from which to copy the elements
@@ -794,7 +794,7 @@ uint epr_copy_field_elems_as_floats(const EPR_SField* field, float* buffer, uint
  * @param num_elems the number of elements in the given buffer
  * @return the actual number of elements copied
  */
-uint epr_copy_field_elems_as_longs(const EPR_SField* field, long* buffer, uint num_elems)
+uint epr_copy_field_elems_as_longs(const EPR_SField* field, int* buffer, uint num_elems)
 {
     uint num_elems_min = 0;
     uint i;
@@ -814,23 +814,23 @@ uint epr_copy_field_elems_as_longs(const EPR_SField* field, long* buffer, uint n
 
     if (field->info->data_type_id == e_tid_uchar) {
         for (i = 0; i < num_elems_min; i++) {
-            buffer[i] = (long)((uchar*) field->elems)[i];
+            buffer[i] = (int)((uchar*) field->elems)[i];
         }
     } else if (field->info->data_type_id == e_tid_char) {
         for (i = 0; i < num_elems_min; i++) {
-            buffer[i] = (long)((char*) field->elems)[i];
+            buffer[i] = (int)((char*) field->elems)[i];
         }
     } else if (field->info->data_type_id == e_tid_ushort) {
         for (i = 0; i < num_elems_min; i++) {
-            buffer[i] = (long)((ushort*) field->elems)[i];
+            buffer[i] = (int)((ushort*) field->elems)[i];
         }
     } else if (field->info->data_type_id == e_tid_short) {
         for (i = 0; i < num_elems_min; i++) {
-            buffer[i] = (long)((short*) field->elems)[i];
+            buffer[i] = (int)((short*) field->elems)[i];
         }
-    } else if (field->info->data_type_id == e_tid_long) {
+    } else if (field->info->data_type_id == e_tid_int) {
         for (i = 0; i < num_elems_min; i++) {
-            buffer[i] = (long)((long*) field->elems)[i];
+            buffer[i] = (int)((int*) field->elems)[i];
         }
     } else {
         epr_set_err(e_err_invalid_data_format,
@@ -842,11 +842,11 @@ uint epr_copy_field_elems_as_longs(const EPR_SField* field, long* buffer, uint n
 }
 
 /**
- * Copies the data of the given field into the given buffer of <code>ulong</code>
+ * Copies the data of the given field into the given buffer of <code>uint</code>
  * elements. The actual number of elements copied is the minimum of the given
  * number of elements (the buffer's size) and the actual number of elements contained
  * in the field.
- * <p>If the actual field data type is not <code>ulong</code> the function automatically
+ * <p>If the actual field data type is not <code>uint</code> the function automatically
  * performs the conversion.
  *
  * @param field the field from which to copy the elements
@@ -854,7 +854,7 @@ uint epr_copy_field_elems_as_longs(const EPR_SField* field, long* buffer, uint n
  * @param num_elems the number of elements in the given buffer
  * @return the actual number of elements copied
  */
-uint epr_copy_field_elems_as_ulongs(const EPR_SField* field, ulong* buffer, uint num_elems)
+uint epr_copy_field_elems_as_uints(const EPR_SField* field, uint* buffer, uint num_elems)
 {
     uint num_elems_min = 0;
     uint i;
@@ -863,7 +863,7 @@ uint epr_copy_field_elems_as_ulongs(const EPR_SField* field, ulong* buffer, uint
 
     if (field == NULL) {
         epr_set_err(e_err_invalid_field_name,
-                    "epr_copy_field_elems_as_ulongs: invalid field name");
+                    "epr_copy_field_elems_as_uints: invalid field name");
         return num_elems_min;
     }
 
@@ -874,27 +874,27 @@ uint epr_copy_field_elems_as_ulongs(const EPR_SField* field, ulong* buffer, uint
 
     if (field->info->data_type_id == e_tid_uchar) {
         for (i = 0; i < num_elems_min; i++) {
-            buffer[i] = (ulong)((uchar*) field->elems)[i];
+            buffer[i] = (uint)((uchar*) field->elems)[i];
         }
     } else if (field->info->data_type_id == e_tid_char) {
         for (i = 0; i < num_elems_min; i++) {
-            buffer[i] = (ulong)((char*) field->elems)[i];
+            buffer[i] = (uint)((char*) field->elems)[i];
         }
     } else if (field->info->data_type_id == e_tid_ushort) {
         for (i = 0; i < num_elems_min; i++) {
-            buffer[i] = (ulong)((ushort*) field->elems)[i];
+            buffer[i] = (uint)((ushort*) field->elems)[i];
         }
     } else if (field->info->data_type_id == e_tid_short) {
         for (i = 0; i < num_elems_min; i++) {
-            buffer[i] = (ulong)((short*) field->elems)[i];
+            buffer[i] = (uint)((short*) field->elems)[i];
         }
-    } else if (field->info->data_type_id == e_tid_long) {
+    } else if (field->info->data_type_id == e_tid_int) {
         for (i = 0; i < num_elems_min; i++) {
-            buffer[i] = (ulong)((ulong*) field->elems)[i];
+            buffer[i] = (uint)((uint*) field->elems)[i];
         }
     } else {
         epr_set_err(e_err_invalid_data_format,
-                    "epr_copy_field_elems_as_ulongs: invalid type");
+                    "epr_copy_field_elems_as_uints: invalid type");
         return 0;
     }
 

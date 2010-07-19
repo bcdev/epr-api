@@ -173,8 +173,8 @@ int epr_read_bitmask_raster(EPR_SProductId* product_id,
  */
 epr_boolean epr_eval_bm_term(EPR_SBmEvalContext* context, EPR_SBmTerm* term, int x, int y) {
 
-	ulong	temp;
-	ulong	eval;
+	uint	temp;
+	uint	eval;
     if (term == NULL) {
         return FALSE;
     }
@@ -183,7 +183,7 @@ epr_boolean epr_eval_bm_term(EPR_SBmEvalContext* context, EPR_SBmTerm* term, int
     case BMT_REF:
 		{
 			EPR_SRaster* flag_raster = term->op.ref.flag_raster;
-            ulong flag_mask = term->op.ref.flag_mask;
+            uint flag_mask = term->op.ref.flag_mask;
 
             if (flag_raster == NULL) {
                 epr_resolve_bm_ref(context, term);
@@ -196,7 +196,7 @@ epr_boolean epr_eval_bm_term(EPR_SBmEvalContext* context, EPR_SBmTerm* term, int
 
             assert(flag_raster != NULL);
             assert(flag_mask != FLAG_MASK_NOT_COMPUTED);
-			temp = epr_get_pixel_as_ulong(flag_raster, x, y);
+			temp = epr_get_pixel_as_uint(flag_raster, x, y);
 			eval = temp & flag_mask;
 	        return (eval) == flag_mask;
         }
@@ -233,7 +233,7 @@ void epr_resolve_bm_ref(EPR_SBmEvalContext* context, EPR_SBmTerm* term) {
     uint band_index = 0;
     uint num_bands = context->flag_band_ids->length;
     EPR_SRaster* flag_raster = NULL;
-    ulong flag_mask = 0;
+    uint flag_mask = 0;
 	uint flag_computed = 0;
 
     /* Find the corresponding flag_band_id for band_name */
@@ -733,53 +733,53 @@ EPR_SBmTerm* epr_create_bm_AND_term(EPR_SBmTerm* arg1, EPR_SBmTerm* arg2)
 
 
 
-ulong epr_get_pixel_as_ulong(const EPR_SRaster* raster, int x, int y)
+uint epr_get_pixel_as_uint(const EPR_SRaster* raster, int x, int y)
 {
     epr_clear_err();
 
     switch (raster->data_type) {
     case (e_tid_uchar) :
-          return (ulong) ((uchar*)raster->buffer)[y * raster->raster_width + x];
+          return (uint) ((uchar*)raster->buffer)[y * raster->raster_width + x];
     case (e_tid_char)  :
-          return (ulong) ((char*)raster->buffer)[y * raster->raster_width + x];
+          return (uint) ((char*)raster->buffer)[y * raster->raster_width + x];
     case (e_tid_ushort):
-          return (ulong) ((ushort*)raster->buffer)[y * raster->raster_width + x];
+          return (uint) ((ushort*)raster->buffer)[y * raster->raster_width + x];
     case (e_tid_short) :
-          return (ulong) ((short*)raster->buffer)[y * raster->raster_width + x];
-    case (e_tid_ulong):
-          return (ulong) ((ulong*)raster->buffer)[y * raster->raster_width + x];
-    case (e_tid_long) :
-          return (ulong) ((long*)raster->buffer)[y * raster->raster_width + x];
+          return (uint) ((short*)raster->buffer)[y * raster->raster_width + x];
+    case (e_tid_uint):
+          return (uint) ((uint*)raster->buffer)[y * raster->raster_width + x];
+    case (e_tid_int) :
+          return (uint) ((int*)raster->buffer)[y * raster->raster_width + x];
     case (e_tid_float) :
-          return (ulong) ((float*)raster->buffer)[y * raster->raster_width + x];
+          return (uint) ((float*)raster->buffer)[y * raster->raster_width + x];
     case (e_tid_double) :
-          return (ulong) ((double*)raster->buffer)[y * raster->raster_width + x];
+          return (uint) ((double*)raster->buffer)[y * raster->raster_width + x];
     default:
           return 0;
     }
 }
 
-long epr_get_pixel_as_long(const EPR_SRaster* raster, int x, int y)
+int epr_get_pixel_as_int(const EPR_SRaster* raster, int x, int y)
 {
     epr_clear_err();
 
     switch (raster->data_type) {
     case (e_tid_uchar) :
-          return (long) ((uchar*)raster->buffer)[y * raster->raster_width + x];
+          return (int) ((uchar*)raster->buffer)[y * raster->raster_width + x];
     case (e_tid_char)  :
-          return (long) ((char*)raster->buffer)[y * raster->raster_width + x];
+          return (int) ((char*)raster->buffer)[y * raster->raster_width + x];
     case (e_tid_ushort):
-          return (long) ((ushort*)raster->buffer)[y * raster->raster_width + x];
+          return (int) ((ushort*)raster->buffer)[y * raster->raster_width + x];
     case (e_tid_short) :
-          return (long) ((short*)raster->buffer)[y * raster->raster_width + x];
-    case (e_tid_ulong):
-          return (long) ((ulong*)raster->buffer)[y * raster->raster_width + x];
-    case (e_tid_long) :
-          return (long) ((long*)raster->buffer)[y * raster->raster_width + x];
+          return (int) ((short*)raster->buffer)[y * raster->raster_width + x];
+    case (e_tid_uint):
+          return (int) ((uint*)raster->buffer)[y * raster->raster_width + x];
+    case (e_tid_int) :
+          return (int) ((int*)raster->buffer)[y * raster->raster_width + x];
     case (e_tid_float) :
-          return (long) ((float*)raster->buffer)[y * raster->raster_width + x];
+          return (int) ((float*)raster->buffer)[y * raster->raster_width + x];
     case (e_tid_double) :
-          return (long) ((double*)raster->buffer)[y * raster->raster_width + x];
+          return (int) ((double*)raster->buffer)[y * raster->raster_width + x];
     default:
           return 0;
     }
@@ -799,10 +799,10 @@ float epr_get_pixel_as_float(const EPR_SRaster* raster, int x, int y)
           return (float) ((ushort*)raster->buffer)[y * raster->raster_width + x];
     case (e_tid_short) :
           return (float) ((short*)raster->buffer)[y * raster->raster_width + x];
-    case (e_tid_ulong):
-          return (float) ((ulong*)raster->buffer)[y * raster->raster_width + x];
-    case (e_tid_long) :
-          return (float) ((long*)raster->buffer)[y * raster->raster_width + x];
+    case (e_tid_uint):
+          return (float) ((uint*)raster->buffer)[y * raster->raster_width + x];
+    case (e_tid_int) :
+          return (float) ((int*)raster->buffer)[y * raster->raster_width + x];
     case (e_tid_float) :
           return (float) ((float*)raster->buffer)[y * raster->raster_width + x];
     case (e_tid_double) :
@@ -825,10 +825,10 @@ double epr_get_pixel_as_double(const EPR_SRaster* raster, int x, int y)
           return (double) ((ushort*)raster->buffer)[y * raster->raster_width + x];
     case (e_tid_short) :
           return (double) ((short*)raster->buffer)[y * raster->raster_width + x];
-    case (e_tid_ulong):
-          return (double) ((ulong*)raster->buffer)[y * raster->raster_width + x];
-    case (e_tid_long) :
-          return (double) ((long*)raster->buffer)[y * raster->raster_width + x];
+    case (e_tid_uint):
+          return (double) ((uint*)raster->buffer)[y * raster->raster_width + x];
+    case (e_tid_int) :
+          return (double) ((int*)raster->buffer)[y * raster->raster_width + x];
     case (e_tid_float) :
           return (double) ((float*)raster->buffer)[y * raster->raster_width + x];
     case (e_tid_double) :

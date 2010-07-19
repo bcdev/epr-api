@@ -128,7 +128,7 @@ void decode_line_ushort_1_of_1_to_ushort (void* sourceArray, EPR_SBandId* band_i
 void decode_line_uchar_1_of_2_to_float   (void* sourceArray, EPR_SBandId* band_id, int xo, int raster_width, int s_x, void* raster_buffer, int raster_pos);
 void decode_line_uchar_2_of_2_to_float   (void* sourceArray, EPR_SBandId* band_id, int xo, int raster_width, int s_x, void* raster_buffer, int raster_pos);
 void decode_line_uchar_2_to_f_to_float   (void* sourceArray, EPR_SBandId* band_id, int xo, int raster_width, int s_x, void* raster_buffer, int raster_pos);
-void decode_line_uchar_3_to_i_to_ulong   (void* sourceArray, EPR_SBandId* band_id, int xo, int raster_width, int s_x, void* raster_buffer, int raster_pos);
+void decode_line_uchar_3_to_i_to_uint   (void* sourceArray, EPR_SBandId* band_id, int xo, int raster_width, int s_x, void* raster_buffer, int raster_pos);
 /*@}*/
 
 /**
@@ -145,8 +145,8 @@ void decode_line_uchar_3_to_i_to_ulong   (void* sourceArray, EPR_SBandId* band_i
 /*@{*/
 void transform_array_short_to_float (void* sourceArray, EPR_SBandId* band_id, float* raster_buffer, uint nel);
 void transform_array_ushort_to_float(void* sourceArray, EPR_SBandId* band_id, float* raster_buffer, uint nel);
-void transform_array_long_to_float  (void* sourceArray, EPR_SBandId* band_id, float* raster_buffer, uint nel);
-void transform_array_ulong_to_float (void* sourceArray, EPR_SBandId* band_id, float* raster_buffer, uint nel);
+void transform_array_int_to_float  (void* sourceArray, EPR_SBandId* band_id, float* raster_buffer, uint nel);
+void transform_array_uint_to_float (void* sourceArray, EPR_SBandId* band_id, float* raster_buffer, uint nel);
 /*@}*/
 
 /**
@@ -161,7 +161,7 @@ void transform_array_ulong_to_float (void* sourceArray, EPR_SBandId* band_id, fl
 void mirror_float_array  (float*  raster_buffer, uint raster_width, uint raster_height);
 void mirror_uchar_array  (uchar*  raster_buffer, uint raster_width, uint raster_height);
 void mirror_ushort_array (ushort* raster_buffer, uint raster_width, uint raster_height);
-void mirror_ulong_array  (ulong*  raster_buffer, uint raster_width, uint raster_height);
+void mirror_uint_array  (uint*  raster_buffer, uint raster_width, uint raster_height);
 /*@}*/
 
 /**
@@ -196,7 +196,7 @@ float epr_interpolate2D(float wi, float wj, float x00, float x10, float x01, flo
  */
 void decode_tiepoint_band(float* sa_beg,
 						  float* sa_end,
-						  ulong samples_per_tie_pt,
+						  uint samples_per_tie_pt,
 						  uint num_elems,
 						  EPR_SBandId* band_id,
 						  int xo,

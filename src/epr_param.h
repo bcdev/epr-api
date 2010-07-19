@@ -43,7 +43,7 @@ struct EPR_ParamElem
 };
 
 EPR_SPtrArray* epr_create_param_table(void);
-EPR_SParamElem* epr_create_param_elem(const char* param_name, long param_value);
+EPR_SParamElem* epr_create_param_elem(const char* param_name, int param_value);
 int epr_set_dyn_dddb_params(EPR_SProductId* product_id);
 
 void epr_free_param_table(EPR_SPtrArray* param_table);

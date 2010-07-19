@@ -475,8 +475,8 @@ EPR_SPtrArray* epr_read_all_dsds(EPR_SProductId* product_id)
     uint sph_length;
     char* code_block;
     int numread;
-    ulong dsd_number = 0;
-    ulong dsd_begin = 0;
+    uint dsd_number = 0;
+    uint dsd_begin = 0;
     uint dsd_index;
 
     if (product_id == NULL) {
@@ -488,7 +488,7 @@ EPR_SPtrArray* epr_read_all_dsds(EPR_SProductId* product_id)
     dsds_array = epr_create_ptr_array(32);
 
     field = epr_get_field(product_id->mph_record, "NUM_DSD");
-    dsd_number = ((ulong*) field->elems)[0];
+    dsd_number = ((uint*) field->elems)[0];
     /*dsd_begin = epr_api.epr_head_size - dsd_number * EPR_DSD_SIZE;*/
 
     if (fseek(product_id->istream, EPR_MPH_SIZE, SEEK_SET) != 0) {
@@ -500,8 +500,8 @@ EPR_SPtrArray* epr_read_all_dsds(EPR_SProductId* product_id)
         return NULL;
     }
     field = epr_get_field(product_id->mph_record, "SPH_SIZE");
-    sph_length = ((ulong*) field->elems)[0];
-    dsd_begin = EPR_MPH_SIZE + (ulong)epr_find_first_dsd(product_id->istream, sph_length);
+    sph_length = ((uint*) field->elems)[0];
+    dsd_begin = EPR_MPH_SIZE + (uint)epr_find_first_dsd(product_id->istream, sph_length);
     if (dsd_begin == EPR_MPH_SIZE) {
         epr_set_err(e_err_file_access_denied,
             "epr_read_all_dsds: no DS_NAME in SPH");
@@ -569,16 +569,16 @@ EPR_SPtrArray* epr_read_all_dsds(EPR_SProductId* product_id)
             field = epr_get_field(dsd_record, "FILENAME");
             dsd->filename = epr_clone_string((char*)field->elems);
             field = epr_get_field(dsd_record, "DS_OFFSET");
-            dsd->ds_offset = (uint)((ulong*) field->elems)[0];
+            dsd->ds_offset = (uint)((uint*) field->elems)[0];
 
             field = epr_get_field(dsd_record, "DS_SIZE");
-            dsd->ds_size = (uint)((ulong*) field->elems)[0];
+            dsd->ds_size = (uint)((uint*) field->elems)[0];
 
             field = epr_get_field(dsd_record, "NUM_DSR");
-            dsd->num_dsr = (uint)((ulong*) field->elems)[0];
+            dsd->num_dsr = (uint)((uint*) field->elems)[0];
 
             field = epr_get_field(dsd_record, "DSR_SIZE");
-            dsd->dsr_size = (uint)((ulong*) field->elems)[0];
+            dsd->dsr_size = (uint)((uint*) field->elems)[0];
 
             epr_add_ptr_array_elem(dsds_array, dsd);
 

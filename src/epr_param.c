@@ -43,7 +43,7 @@
  * @return the pointer at this element
  *         or <code>NULL</code> if an error occured.
 */
-EPR_SParamElem* epr_create_param_elem(const char* param_name, long param_value)
+EPR_SParamElem* epr_create_param_elem(const char* param_name, int param_value)
 {
     EPR_SParamElem* param_elem = NULL;
 /*
@@ -130,9 +130,9 @@ int epr_set_dyn_dddb_params(EPR_SProductId* product_id)
     char* tmp;
     EPR_SParamElem* param_elem = NULL;
 
-    ulong line_length = 0;
-    ulong num_tie_points_across = 0;
-    ulong ntpa = 0;
+    uint line_length = 0;
+    uint num_tie_points_across = 0;
+    uint ntpa = 0;
 
     product_field = epr_get_field(product_id->mph_record, "PRODUCT");
     tmp = epr_sub_string((char*)product_field->elems, 0, 3);
@@ -148,7 +148,7 @@ int epr_set_dyn_dddb_params(EPR_SProductId* product_id)
         }
 
         field = epr_get_field(product_id->sph_record, "LINE_LENGTH");
-        line_length = ((ulong*) field->elems)[0];
+        line_length = ((uint*) field->elems)[0];
         if (line_length == 0) {
             epr_set_err(e_err_invalid_value,
                 "epr_set_param: wrong SPH: LINE_LENGTH must be > 0");
@@ -156,7 +156,7 @@ int epr_set_dyn_dddb_params(EPR_SProductId* product_id)
             return 0;
         }
         field = epr_get_field(product_id->sph_record, "LINES_PER_TIE_PT");
-        num_tie_points_across = ((ulong*) field->elems)[0];
+        num_tie_points_across = ((uint*) field->elems)[0];
         if (num_tie_points_across == 0) {
             epr_set_err(e_err_invalid_value,
                 "epr_set_param: wrong SPH: LINES_PER_TIE_PT must be > 0");
@@ -180,7 +180,7 @@ int epr_set_dyn_dddb_params(EPR_SProductId* product_id)
     else if (strcmp(EPR_ENVISAT_PRODUCT_ASAR, epr_sub_string((char*)product_field->elems, 0, 3)) == 0) {
 
         field = epr_get_field(product_id->sph_record, "LINE_LENGTH");
-        line_length = ((ulong*) field->elems)[0];
+        line_length = ((uint*) field->elems)[0];
         if (line_length == 0) {
             epr_set_err(e_err_invalid_value,
                 "epr_set_param: wrong SPH: LINE_LENGTH must be > 0");
