@@ -1,9 +1,9 @@
                                  README
 
                      ENVISAT Product Reader API for C
-                              Version 2.1
+                              Version 2.2
 
-                              6. May 2009
+                              31. July 2010
 
 
 Contents
@@ -153,4 +153,4 @@ Thank you for using the EPR API Software.
 The EPR API Software is licensed under the terms of the GNU General Public License
 aggreement (see the accompanying LICENSE.txt file).
 --------------------------------------------------------------------------------
-Brockmann Consult 2009
+Brockmann Consult 2010

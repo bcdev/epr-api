@@ -3,7 +3,7 @@
 
 
 ----------------------------------------------------------------------
-Changes from Version 2.1 to Version 2.2 (of 19. July 2010)
+Changes from Version 2.1 to Version 2.2 (of 31. July 2010)
 ----------------------------------------------------------------------
 Generally replaced usage of data type "long" by "int" since "long" is 
 ambiguous with respect to 32bit and 64bit operating systems.
