@@ -28,7 +28,7 @@ extern "C"
 /*void epr_read_mph(EPR_SProductId* product_id);*/
 EPR_SRecord* epr_parse_header(const char* header_name, const char* ascii_source);
 void epr_set_header_field_values(EPR_SRecord* record, EPR_SPtrArray* header_values);
-ulong epr_compare_param(EPR_SProductId* product_id);
+uint epr_compare_param(EPR_SProductId* product_id);
 
 void epr_parse_double_token(EPR_SPtrArray* header_values, char* token_value, uint* value_number, uint* l, EPR_EDataTypeId* tp);
 void epr_parse_int_token(EPR_SPtrArray* header_values, char* token_value, uint* value_number, uint* l, EPR_EDataTypeId* tp);

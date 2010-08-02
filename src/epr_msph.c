@@ -450,7 +450,7 @@ void epr_parse_int_token(EPR_SPtrArray* header_values, char* token_value, uint* 
                     for (i = 1; i < dlina; i ++) if (token_value_o[i] != '0') break;
                     if (token_value_o[0] == '+') strncpy(tmp_v + 0, token_value_o + i, dlina - i);
                     if (token_value_o[0] == '-') strncpy(tmp_v + 1, token_value_o + i, dlina - i);
-                    sprintf(value_buffer, "%ld", lmp);
+                    sprintf(value_buffer, "%d", lmp);
                     /*if int value too large*/
                     if (strcmp(tmp_v, value_buffer) != 0)
                         epr_log(e_log_warning, "product header: int integer value out of range");
@@ -461,7 +461,7 @@ void epr_parse_int_token(EPR_SPtrArray* header_values, char* token_value, uint* 
                     tmp_v[0] = token_value_o[0];
                     for (i = 1; i < dlina; i ++) if (token_value_o[i] != '0') break;
                     strncpy(tmp_v, token_value_o + i, dlina - i);
-                    sprintf(value_buffer, "%lu", ulmp);
+                    sprintf(value_buffer, "%u", ulmp);
                     /*if uint value too large*/
                     if (strcmp(tmp_v, value_buffer) != 0)
                         epr_log(e_log_warning, "product header: unsigned int integer value out of range");

@@ -167,7 +167,7 @@ int write_raw_image(const char* output_dir, EPR_SProductId* product_id, const ch
     fclose(out_stream);
 
     printf("Raw image data successfully written to '%s'.\n", image_file_path);
-    printf("C data type is '%s', element size %lu byte(s), raster size is %lu x %lu pixels.\n",
+    printf("C data type is '%s', element size %u byte(s), raster size is %u x %u pixels.\n",
         epr_data_type_id_to_str(raster->data_type),
         raster->elem_size,
         raster->raster_width,

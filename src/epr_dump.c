@@ -105,7 +105,7 @@ void epr_print_field(const EPR_SField* field, FILE* ostream)
     else if (field->info->data_type_id == e_tid_time)
     {
         EPR_STime* time = (EPR_STime*) field->elems;
-        fprintf(ostream, "{d=%ld, j=%ld, m=%ld}", time->days, time->seconds, time->microseconds);
+        fprintf(ostream, "{d=%d, j=%d, m=%d}", time->days, time->seconds, time->microseconds);
     }
     else {
 		if (field->info->num_elems > 1) {
@@ -130,10 +130,10 @@ void epr_print_field(const EPR_SField* field, FILE* ostream)
                 fprintf(ostream, "%d", ((short*) field->elems)[i]);
                 break;
             case e_tid_uint:
-                fprintf(ostream, "%lu", ((uint*) field->elems)[i]);
+                fprintf(ostream, "%u", ((uint*) field->elems)[i]);
                 break;
             case e_tid_int:
-                fprintf(ostream, "%ld", ((int*) field->elems)[i]);
+                fprintf(ostream, "%d", ((int*) field->elems)[i]);
                 break;
             case e_tid_float:
                 fprintf(ostream, "%f", ((float*) field->elems)[i]);
@@ -201,7 +201,7 @@ void epr_print_element(const EPR_SRecord* record, uint field_index, uint element
     else if (field->info->data_type_id == e_tid_time)
     {
         EPR_STime* time = (EPR_STime*) field->elems;
-        fprintf(ostream, "{d=%ld, j=%ld, m=%ld}", time->days, time->seconds, time->microseconds);
+        fprintf(ostream, "{d=%d, j=%d, m=%d}", time->days, time->seconds, time->microseconds);
     }
     else {
         fprintf(ostream, "{ ");
@@ -220,10 +220,10 @@ void epr_print_element(const EPR_SRecord* record, uint field_index, uint element
                 fprintf(ostream, "%d", ((short*) field->elems)[element_index]);
                 break;
             case e_tid_uint:
-                fprintf(ostream, "%lu", ((uint*) field->elems)[element_index]);
+                fprintf(ostream, "%u", ((uint*) field->elems)[element_index]);
                 break;
             case e_tid_int:
-                fprintf(ostream, "%ld", ((int*) field->elems)[element_index]);
+                fprintf(ostream, "%d", ((int*) field->elems)[element_index]);
                 break;
             case e_tid_float:
                 fprintf(ostream, "%f", ((float*) field->elems)[element_index]);

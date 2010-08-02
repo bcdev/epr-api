@@ -60,10 +60,10 @@ enum LineTypeID {
 union Value {
     char c;
     short s;
-    long l;
+    int i;
     uchar uc;
     ushort us;
-    ulong ul;
+    uint ui;
     float f;
     double d;
     char* str;
@@ -253,17 +253,17 @@ void evaluate_product_assert(STestLine* test_line) {
     product_id = test_line->product_id;
 
     if (equal_str(value_ref, _pas_band_ids_length)) {
-        if (!evaluate_equal_types(test_line, e_tid_ulong))
+        if (!evaluate_equal_types(test_line, e_tid_uint))
             goto failure;
-        detail->actual.ul = product_id->band_ids->length;
+        detail->actual.ui = product_id->band_ids->length;
     } else if (equal_str(value_ref, _pas_dataset_ids_length)) {
-        if (!evaluate_equal_types(test_line, e_tid_ulong))
+        if (!evaluate_equal_types(test_line, e_tid_uint))
             goto failure;
-        detail->actual.ul = product_id->dataset_ids->length;
+        detail->actual.ui = product_id->dataset_ids->length;
     } else if (equal_str(value_ref, _pas_dsd_array_length)) {
-        if (!evaluate_equal_types(test_line, e_tid_ulong))
+        if (!evaluate_equal_types(test_line, e_tid_uint))
             goto failure;
-        detail->actual.ul = product_id->dsd_array->length;
+        detail->actual.ui = product_id->dsd_array->length;
     } else if (equal_str(value_ref, _pas_file_path)) {
         if (!evaluate_equal_types(test_line, e_tid_string))
             goto failure;
@@ -273,37 +273,37 @@ void evaluate_product_assert(STestLine* test_line) {
             goto failure;
         detail->actual.str = epr_clone_string(product_id->id_string);
     } else if (equal_str(value_ref, _pas_meris_iodd_version)) {
-        if (!evaluate_equal_types(test_line, e_tid_long))
+        if (!evaluate_equal_types(test_line, e_tid_int))
             goto failure;
-        detail->actual.l = product_id->meris_iodd_version;
+        detail->actual.i = product_id->meris_iodd_version;
     } else if (equal_str(value_ref, _pas_mph_record_num_fields)) {
-        if (!evaluate_equal_types(test_line, e_tid_ulong))
+        if (!evaluate_equal_types(test_line, e_tid_uint))
             goto failure;
-        detail->actual.ul = product_id->mph_record->num_fields;
+        detail->actual.ui = product_id->mph_record->num_fields;
     } else if (equal_str(value_ref, _pas_param_table_length)) {
-        if (!evaluate_equal_types(test_line, e_tid_ulong))
+        if (!evaluate_equal_types(test_line, e_tid_uint))
             goto failure;
-        detail->actual.ul = product_id->param_table->length;
+        detail->actual.ui = product_id->param_table->length;
     } else if (equal_str(value_ref, _pas_record_info_cache_length)) {
-        if (!evaluate_equal_types(test_line, e_tid_ulong))
+        if (!evaluate_equal_types(test_line, e_tid_uint))
             goto failure;
-        detail->actual.ul = product_id->record_info_cache->length;
+        detail->actual.ui = product_id->record_info_cache->length;
     } else if (equal_str(value_ref, _pas_scene_height)) {
-        if (!evaluate_equal_types(test_line, e_tid_ulong))
+        if (!evaluate_equal_types(test_line, e_tid_uint))
             goto failure;
-        detail->actual.ul = product_id->scene_height;
+        detail->actual.ui = product_id->scene_height;
     } else if (equal_str(value_ref, _pas_scene_width)) {
-        if (!evaluate_equal_types(test_line, e_tid_ulong))
+        if (!evaluate_equal_types(test_line, e_tid_uint))
             goto failure;
-        detail->actual.ul = product_id->scene_width;
+        detail->actual.ui = product_id->scene_width;
     } else if (equal_str(value_ref, _pas_sph_record_num_fields)) {
-        if (!evaluate_equal_types(test_line, e_tid_ulong))
+        if (!evaluate_equal_types(test_line, e_tid_uint))
             goto failure;
-        detail->actual.ul = product_id->sph_record->num_fields;
+        detail->actual.ui = product_id->sph_record->num_fields;
     } else if (equal_str(value_ref, _pas_tot_size)) {
-        if (!evaluate_equal_types(test_line, e_tid_ulong))
+        if (!evaluate_equal_types(test_line, e_tid_uint))
             goto failure;
-        detail->actual.ul = product_id->tot_size;
+        detail->actual.ui = product_id->tot_size;
     } else {
         test_line->msg = epr_clone_string("value reference not supported");
         print_syntax_error(test_line);
@@ -407,7 +407,7 @@ epr_boolean get_field_value(const EPR_SField* field, const uint index, STestDeta
         return TRUE;
     case e_tid_time:
         time = (EPR_STime*) field->elems;
-        sprintf(buffer, "d=%ld s=%lu ms=%lu", time->days, time->seconds, time->microseconds);
+        sprintf(buffer, "d=%d s=%u ms=%u", time->days, time->seconds, time->microseconds);
         test_detail->actual.str = epr_clone_string(buffer);
         return TRUE;
     case e_tid_spare:
@@ -425,11 +425,11 @@ epr_boolean get_field_value(const EPR_SField* field, const uint index, STestDeta
     case e_tid_short:
         test_detail->actual.s = ((short*) field->elems)[index];
         return TRUE;
-    case e_tid_ulong:
-        test_detail->actual.ul = ((ulong*) field->elems)[index];
+    case e_tid_uint:
+        test_detail->actual.ui = ((uint*) field->elems)[index];
         return TRUE;
-    case e_tid_long:
-        test_detail->actual.l = ((long*) field->elems)[index];
+    case e_tid_int:
+        test_detail->actual.i = ((int*) field->elems)[index];
         return TRUE;
     case e_tid_float:
         test_detail->actual.f = ((float*) field->elems)[index];
@@ -661,13 +661,13 @@ int parse_type(const char* s) {
     } else if (equal_str(s, _type_int16_str)) {
         return e_tid_short;
     } else if (equal_str(s, _type_int32_str)) {
-        return e_tid_long;
+        return e_tid_int;
     } else if (equal_str(s, _type_uint8_str)) {
         return e_tid_uchar;
     } else if (equal_str(s, _type_uint16_str)) {
         return e_tid_ushort;
     } else if (equal_str(s, _type_uint32_str)) {
-        return e_tid_ulong;
+        return e_tid_uint;
     } else if (equal_str(s, _type_float32_str)) {
         return e_tid_float;
     } else if (equal_str(s, _type_float64_str)) {
@@ -689,13 +689,13 @@ const char* get_type_str(const int type) {
         return _type_int8_str;
     case e_tid_short:
         return _type_int16_str;
-    case e_tid_long:
+    case e_tid_int:
         return _type_int32_str;
     case e_tid_uchar:
         return _type_uint8_str;
     case e_tid_ushort:
         return _type_uint16_str;
-    case e_tid_ulong:
+    case e_tid_uint:
         return _type_uint32_str;
     case e_tid_float:
         return _type_float32_str;
@@ -789,9 +789,9 @@ epr_boolean parse_expected(const char* s, STestDetail* test_detail) {
         if (!is_a_long(s, 10)) return FALSE;
         test_detail->expected.s = (short) strtol(s, NULL, 10);
         break;
-    case e_tid_long:
+    case e_tid_int:
         if (!is_a_long(s, 10)) return FALSE;
-        test_detail->expected.l = strtol(s, NULL, 10);
+        test_detail->expected.i = strtol(s, NULL, 10);
         break;
     case e_tid_uchar:
         if (!is_an_ulong(s, 10)) return FALSE;
@@ -801,9 +801,9 @@ epr_boolean parse_expected(const char* s, STestDetail* test_detail) {
         if (!is_an_ulong(s, 10)) return FALSE;
         test_detail->expected.us = (unsigned short) strtoul(s, NULL, 10);
         break;
-    case e_tid_ulong:
+    case e_tid_uint:
         if (!is_an_ulong(s, 10)) return FALSE;
-        test_detail->expected.ul = strtoul(s, NULL, 10);
+        test_detail->expected.ui = strtoul(s, NULL, 10);
         break;
     case e_tid_float:
         if (!is_a_double(s)) return FALSE;
@@ -877,14 +877,14 @@ epr_boolean evaluate_test_detail(const STestDetail* test_detail) {
         return test_detail->expected.c == test_detail->actual.c ? TRUE: FALSE;
     case e_tid_short:
         return test_detail->expected.s == test_detail->actual.s ? TRUE: FALSE;
-    case e_tid_long:
-        return test_detail->expected.l == test_detail->actual.l ? TRUE: FALSE;
+    case e_tid_int:
+        return test_detail->expected.i == test_detail->actual.i ? TRUE: FALSE;
     case e_tid_uchar:
         return test_detail->expected.uc == test_detail->actual.uc ? TRUE: FALSE;
     case e_tid_ushort:
         return test_detail->expected.us == test_detail->actual.us ? TRUE: FALSE;
-    case e_tid_ulong:
-        return test_detail->expected.ul == test_detail->actual.ul ? TRUE: FALSE;
+    case e_tid_uint:
+        return test_detail->expected.ui == test_detail->actual.ui ? TRUE: FALSE;
     case e_tid_float:
         return equal_f(test_detail->expected.f, test_detail->actual.f, test_detail->precision);
     case e_tid_double:
@@ -999,9 +999,9 @@ void print_failure_assert(const STestLine* test_line) {
         sprintf(expected, "%i", test_detail->expected.s);
         sprintf(actual, "%i", test_detail->actual.s);
         break;
-    case e_tid_long:
-        sprintf(expected, "%ld", test_detail->expected.l);
-        sprintf(actual, "%ld", test_detail->actual.l);
+    case e_tid_int:
+        sprintf(expected, "%d", test_detail->expected.i);
+        sprintf(actual, "%d", test_detail->actual.i);
         break;
     case e_tid_uchar:
         sprintf(expected, "%u", test_detail->expected.uc);
@@ -1011,9 +1011,9 @@ void print_failure_assert(const STestLine* test_line) {
         sprintf(expected, "%u", test_detail->expected.us);
         sprintf(actual, "%u", test_detail->actual.us);
         break;
-    case e_tid_ulong:
-        sprintf(expected, "%lu", test_detail->expected.ul);
-        sprintf(actual, "%lu", test_detail->actual.ul);
+    case e_tid_uint:
+        sprintf(expected, "%u", test_detail->expected.ui);
+        sprintf(actual, "%u", test_detail->actual.ui);
         break;
     case e_tid_float:
         sprintf(expected, "%G", test_detail->expected.f);

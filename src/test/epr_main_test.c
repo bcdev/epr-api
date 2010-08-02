@@ -198,8 +198,8 @@ BC_BEGIN_TEST(test_epr_get_data_type_size)
 	BC_ASSERT_SAME(1,epr_get_data_type_size(e_tid_char));
 	BC_ASSERT_SAME(2,epr_get_data_type_size(e_tid_ushort));
 	BC_ASSERT_SAME(2,epr_get_data_type_size(e_tid_short));
-	BC_ASSERT_SAME(4,epr_get_data_type_size(e_tid_ulong));
-	BC_ASSERT_SAME(4,epr_get_data_type_size(e_tid_long));
+	BC_ASSERT_SAME(4,epr_get_data_type_size(e_tid_uint));
+	BC_ASSERT_SAME(4,epr_get_data_type_size(e_tid_int));
 	BC_ASSERT_SAME(4,epr_get_data_type_size(e_tid_float));
 	BC_ASSERT_SAME(8,epr_get_data_type_size(e_tid_double));
 	BC_ASSERT_SAME(12,epr_get_data_type_size(e_tid_time));
@@ -213,8 +213,8 @@ BC_BEGIN_TEST(test_epr_str_to_data_type_id)
     BC_ASSERT_SAME(e_tid_spare, epr_str_to_data_type_id("Spare"));
     BC_ASSERT_SAME(e_tid_ushort, epr_str_to_data_type_id("UShort"));
     BC_ASSERT_SAME(e_tid_short, epr_str_to_data_type_id("SShort"));
-    BC_ASSERT_SAME(e_tid_ulong, epr_str_to_data_type_id("ULong"));
-    BC_ASSERT_SAME(e_tid_long, epr_str_to_data_type_id("SLong"));
+    BC_ASSERT_SAME(e_tid_uint, epr_str_to_data_type_id("ULong"));
+    BC_ASSERT_SAME(e_tid_int, epr_str_to_data_type_id("SLong"));
     BC_ASSERT_SAME(e_tid_float, epr_str_to_data_type_id("Float"));
     BC_ASSERT_SAME(e_tid_double, epr_str_to_data_type_id("Double"));
     BC_ASSERT_SAME(e_tid_time, epr_str_to_data_type_id("@/types/UTC.dd"));
@@ -230,7 +230,7 @@ BC_BEGIN_TEST(test_epr_parse_header)
 	BC_ASSERT_NOT_NULL(record);
 	field = record->fields[0];
 	BC_ASSERT_SAME(0, strcmp("NEGATIVE_VALUE",field->info->name));
-	BC_ASSERT_SAME(-999999, ((long*) field->elems)[0]);
+	BC_ASSERT_SAME(-999999, ((int*) field->elems)[0]);
 
 	record = epr_parse_header("mph", "CLOCK_STEP=+3906250000<ps>\n");
 	BC_ASSERT_NOT_NULL(record);
@@ -249,11 +249,11 @@ BC_BEGIN_TEST(test_epr_parse_header)
 	BC_ASSERT_SAME(1,record->num_fields);
 	field = record->fields[0];
 	BC_ASSERT_SAME(1,field->info->num_elems);
-	BC_ASSERT_SAME(e_tid_ulong,field->info->data_type_id);
+	BC_ASSERT_SAME(e_tid_uint,field->info->data_type_id);
 	BC_ASSERT_SAME(4,record->info->tot_size);
 	BC_ASSERT_SAME(0, strcmp("FOR_VALUES",field->info->name));
 	BC_ASSERT_SAME(0, strcmp("10-3nm",field->info->unit));
-	BC_ASSERT_SAME(189633123, ((ulong*) field->elems)[0]);
+	BC_ASSERT_SAME(189633123, ((uint*) field->elems)[0]);
 
 	record = epr_parse_header("mph", "UINT32_VALUES=+000000000004294967295<bytes>\n");
 	BC_ASSERT_NOT_NULL(record);
@@ -264,9 +264,9 @@ BC_BEGIN_TEST(test_epr_parse_header)
 	record = epr_parse_header("mph", "UINT32_VALUES=-000002147483647<bytes>\n");
 	BC_ASSERT_NOT_NULL(record);
 	field = record->fields[0];
-	BC_ASSERT_SAME(e_tid_long,field->info->data_type_id);
+	BC_ASSERT_SAME(e_tid_int,field->info->data_type_id);
 	BC_ASSERT_SAME(0, strcmp("UINT32_VALUES",field->info->name));
-	BC_ASSERT_SAME(-2147483647L, ((long*) field->elems)[0]);
+	BC_ASSERT_SAME(-2147483647L, ((int*) field->elems)[0]);
 
 	record = epr_parse_header("mph", "Z_Velocity=-7377.4210000<m/s>\n");
 	BC_ASSERT_NOT_NULL(record);
@@ -295,17 +295,17 @@ BC_BEGIN_TEST(test_epr_parse_header)
 	BC_ASSERT_SAME(1,record->num_fields);
 	field = record->fields[0];
 	BC_ASSERT_SAME(15,field->info->num_elems);
-	BC_ASSERT_SAME(e_tid_ulong,field->info->data_type_id);
+	BC_ASSERT_SAME(e_tid_uint,field->info->data_type_id);
 	BC_ASSERT_SAME(60,record->info->tot_size);
 	BC_ASSERT_SAME(0, strcmp("BAND_WAVELEN",field->info->name));
 	BC_ASSERT_SAME(0, strcmp("10-3nm",field->info->unit));
-	BC_ASSERT_SAME(412500, ((ulong*) field->elems)[0]);
-	BC_ASSERT_SAME(442500, ((ulong*) field->elems)[1]);
-	BC_ASSERT_SAME(490000, ((ulong*) field->elems)[2]);
-	BC_ASSERT_SAME(665000, ((ulong*) field->elems)[6]);
-	BC_ASSERT_SAME(760625, ((ulong*) field->elems)[10]);
-	BC_ASSERT_SAME(865000, ((ulong*) field->elems)[12]);
-	BC_ASSERT_SAME(900000, ((ulong*) field->elems)[14]);
+	BC_ASSERT_SAME(412500, ((uint*) field->elems)[0]);
+	BC_ASSERT_SAME(442500, ((uint*) field->elems)[1]);
+	BC_ASSERT_SAME(490000, ((uint*) field->elems)[2]);
+	BC_ASSERT_SAME(665000, ((uint*) field->elems)[6]);
+	BC_ASSERT_SAME(760625, ((uint*) field->elems)[10]);
+	BC_ASSERT_SAME(865000, ((uint*) field->elems)[12]);
+	BC_ASSERT_SAME(900000, ((uint*) field->elems)[14]);
 
   	record = epr_parse_header("mph", "FOR_VALUES=+0049633000-4963300100-0049633002<10-3nm>\n");
 	BC_ASSERT_NOT_NULL(record);
@@ -314,10 +314,10 @@ BC_BEGIN_TEST(test_epr_parse_header)
 	BC_ASSERT_SAME(3,field->info->num_elems);
 	BC_ASSERT_SAME(0, strcmp("FOR_VALUES",field->info->name));
 	BC_ASSERT_SAME(0, strcmp("10-3nm",field->info->unit));
-	BC_ASSERT_SAME(e_tid_long,field->info->data_type_id);
-	BC_ASSERT_SAME(49633000, ((ulong*) field->elems)[0]);
-	BC_ASSERT_NOT_SAME(-4963300100, ((ulong*) field->elems)[1]);
-	BC_ASSERT_SAME(-49633002, ((ulong*) field->elems)[2]);
+	BC_ASSERT_SAME(e_tid_int,field->info->data_type_id);
+	BC_ASSERT_SAME(49633000, ((uint*) field->elems)[0]);
+	BC_ASSERT_NOT_SAME(-4963300100, ((uint*) field->elems)[1]);
+	BC_ASSERT_SAME(-49633002, ((uint*) field->elems)[2]);
 	BC_ASSERT_SAME(12,record->info->tot_size);
 
 	record = epr_parse_header("mph", "DS_TYPE=A\nNUM_DSR=+00000036         \n");
@@ -332,11 +332,11 @@ BC_BEGIN_TEST(test_epr_parse_header)
 	BC_ASSERT_SAME('A', ((uchar*) field->elems)[0]);
 	field = record->fields[1];
 	BC_ASSERT_SAME(1,field->info->num_elems);
-	BC_ASSERT_SAME(e_tid_ulong,field->info->data_type_id);
+	BC_ASSERT_SAME(e_tid_uint,field->info->data_type_id);
 	BC_ASSERT_SAME(4, field->info->tot_size);
 	BC_ASSERT_SAME(0, strcmp("NUM_DSR",field->info->name));
 	BC_ASSERT_SAME(NULL, field->info->unit);
-	BC_ASSERT_SAME(36,((ulong*) field->elems)[0]);
+	BC_ASSERT_SAME(36,((uint*) field->elems)[0]);
 	BC_ASSERT_SAME(5,record->info->tot_size);
 
 	record = epr_parse_header("mph", "=\"20-JUN-2000\"");
@@ -359,7 +359,7 @@ BC_BEGIN_TEST(test_epr_parse_header)
 	BC_ASSERT_SAME(1,record->num_fields);
 	field = record->fields[0];
 	BC_ASSERT_SAME(1,field->info->num_elems);
-	BC_ASSERT_SAME(e_tid_long,field->info->data_type_id);
+	BC_ASSERT_SAME(e_tid_int,field->info->data_type_id);
 	BC_ASSERT_SAME(4,record->info->tot_size);
 	BC_ASSERT_SAME(0, strcmp("X-Achse",field->info->name));
 
@@ -368,27 +368,27 @@ BC_BEGIN_TEST(test_epr_parse_header)
 	BC_ASSERT_SAME(1,record->num_fields);
 	field = record->fields[0];
 	BC_ASSERT_SAME(1,field->info->num_elems);
-	BC_ASSERT_SAME(e_tid_ulong,field->info->data_type_id);
+	BC_ASSERT_SAME(e_tid_uint,field->info->data_type_id);
 	BC_ASSERT_SAME(4,record->info->tot_size);
 	BC_ASSERT_SAME(0, strcmp("Y",field->info->name));
 	BC_ASSERT_SAME(NULL,field->info->unit);
-	BC_ASSERT_SAME(0, ((ulong*) field->elems)[0]);
+	BC_ASSERT_SAME(0, ((uint*) field->elems)[0]);
 
 	record = epr_parse_header("mph", "X-Achse=+23-4XY");
 	BC_ASSERT_NOT_NULL(record);
 	BC_ASSERT_SAME(1,record->num_fields);
 	field = record->fields[0];
 	BC_ASSERT_SAME(2,field->info->num_elems);
-	BC_ASSERT_SAME(e_tid_long,field->info->data_type_id);
+	BC_ASSERT_SAME(e_tid_int,field->info->data_type_id);
 	BC_ASSERT_SAME(8,record->info->tot_size);
-	BC_ASSERT_SAME(23, ((long*) field->elems)[0]);
+	BC_ASSERT_SAME(23, ((int*) field->elems)[0]);
 
 	record = epr_parse_header("mph", "X=+ 23-4");
 	BC_ASSERT_NOT_NULL(record);
 	BC_ASSERT_SAME(1,record->num_fields);
 	field = record->fields[0];
 	BC_ASSERT_SAME(2,field->info->num_elems);
-	BC_ASSERT_SAME(e_tid_long,field->info->data_type_id);
+	BC_ASSERT_SAME(e_tid_int,field->info->data_type_id);
 	BC_ASSERT_SAME(8,record->info->tot_size);
 	BC_ASSERT_SAME(0, strcmp("X",field->info->name));
 
@@ -418,10 +418,10 @@ BC_BEGIN_TEST(test_epr_parse_header)
 	BC_ASSERT_SAME(24,field->info->tot_size);
 	BC_ASSERT_SAME(0, strcmp("BANDWIDTH",field->info->name));
 	BC_ASSERT_SAME(0, strcmp("10-3nm",field->info->unit));
-	BC_ASSERT_SAME(e_tid_ulong,field->info->data_type_id);
-	BC_ASSERT_SAME(10001, ((ulong*) field->elems)[0]);
-	BC_ASSERT_SAME(10002, ((ulong*) field->elems)[1]);
-	BC_ASSERT_SAME(10003, ((ulong*) field->elems)[2]);
+	BC_ASSERT_SAME(e_tid_uint,field->info->data_type_id);
+	BC_ASSERT_SAME(10001, ((uint*) field->elems)[0]);
+	BC_ASSERT_SAME(10002, ((uint*) field->elems)[1]);
+	BC_ASSERT_SAME(10003, ((uint*) field->elems)[2]);
 
 	epr_free_record(record);
 BC_END_TEST()
@@ -457,7 +457,7 @@ BC_BEGIN_TEST(test_tie_points_ADS_4_4)
 
     EPR_SField* field = record->fields[4];
 
-    BC_ASSERT_SAME(182,((ulong*) field->elems)[3]);
+    BC_ASSERT_SAME(182,((uint*) field->elems)[3]);
 
     epr_close_product(product_id);
     epr_close_api();

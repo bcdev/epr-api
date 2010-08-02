@@ -141,11 +141,11 @@ int main(int argc, char** argv)
 
     width = (uint32) epr_get_scene_width(product_id);
 	height = (uint32)epr_get_scene_height(product_id);
-    printf("info: scene raster height: %ld\n", height);
-    printf("info: scene raster width:  %ld\n", width);
+    printf("info: scene raster height: %d\n", height);
+    printf("info: scene raster width:  %d\n", width);
 
     if (subsampl > width){
-        printf("warning: subsampling too large; changed to %ld\n", width);
+        printf("warning: subsampling too large; changed to %d\n", width);
         subsampl = width;
     }
 
@@ -195,7 +195,7 @@ int main(int argc, char** argv)
     /* create RGB image */
 	buf = (unsigned char*)_TIFFmalloc(scanlineLen);
 	if (buf == NULL) {
-        printf("error: failed to allocate memory: req. size: %lu bytes\n", scanlineLen);
+        printf("error: failed to allocate memory: req. size: %u bytes\n", scanlineLen);
         exit(4);
 	}
 
