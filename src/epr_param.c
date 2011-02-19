@@ -177,7 +177,8 @@ int epr_set_dyn_dddb_params(EPR_SProductId* product_id)
     /* AATSR does NOT have any dynamic parameters in DDDB */
 
     /* ASAR */
-    else if (strcmp(EPR_ENVISAT_PRODUCT_ASAR, epr_sub_string((char*)product_field->elems, 0, 3)) == 0) {
+    else if ((strcmp(EPR_ENVISAT_PRODUCT_ASAR, epr_sub_string((char*)product_field->elems, 0, 3)) == 0) ||
+             (strcmp(EPR_ENVISAT_PRODUCT_SAR, epr_sub_string((char*)product_field->elems, 0, 3)) == 0)) {
 
         field = epr_get_field(product_id->sph_record, "LINE_LENGTH");
         line_length = ((uint*) field->elems)[0];
