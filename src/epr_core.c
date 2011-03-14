@@ -334,6 +334,7 @@ int epr_str_to_number(const char* str)
    if (strcmp(str, "*") == 0) return 1;
    if (strcmp(str, "") == 0) return 1;
 
+    errno = 0;
     l = strtol( str, &stopstring, 10 );
 
     if (errno == EDOM)
