@@ -1,6 +1,11 @@
 
-           CHANGELOG for the EPR-API, VERSION 2.2
+           CHANGELOG for the EPR-API, VERSION 2.3
 
+
+----------------------------------------------------------------------
+Changes from Version 2.2 to Version 2.3 (of DD. MMMM YYYY)
+----------------------------------------------------------------------
+Bugfix in epr_core.c: Setting errno to 0 in method epr_str_to_number.
 
 ----------------------------------------------------------------------
 Changes from Version 2.1 to Version 2.2 (of 31. July 2010)
