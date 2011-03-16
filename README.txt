@@ -1,9 +1,9 @@
                                  README
 
                      ENVISAT Product Reader API for C
-                              Version 2.2
+                              Version 2.3
 
-                              31. July 2010
+                              DD. MMMM YYYY
 
 
 Contents
