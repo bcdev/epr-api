@@ -782,6 +782,9 @@ int epr_read_band_measurement_data(EPR_SBandId* band_id,
 
         /*get the next record by the given name*/
         record = epr_read_record(dataset_id, iY, record);
+        if (record == NULL) {
+            return epr_get_last_err_code();
+        }
         /*get the field at its number*/
         field = epr_get_field_at(record, band_id->dataset_ref.field_index - 1);
         /*get the scaled "line" of physical values*/
