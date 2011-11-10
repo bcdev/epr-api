@@ -4187,7 +4187,7 @@ static const struct FlagDescriptor MER_RR__2P_flags_IODD6_data[] = {
     {"LOW_PRESSURE", 1, {0, 0}, "Computed pressure lower than ECMWF one"}
 };
 
-const struct DatasetDescriptorTable dddb_product_tables[33] = {
+const struct DatasetDescriptorTable dddb_product_tables[46] = {
     {"ASA_APG_1P", "ASAR Alternating Polarization Ellipsoid Geocoded Image", 11, ASA_APG_1P_dataset_data},
     {"ASA_APM_1P", "ASAR Alternating Polarization Medium Resolution Image product", 10, ASA_APM_1P_dataset_data},
     {"ASA_APP_1P", "ASAR Alternating Polarization Mode Precision Image", 10, ASA_APP_1P_dataset_data},
@@ -4220,9 +4220,22 @@ const struct DatasetDescriptorTable dddb_product_tables[33] = {
     {"MER_RR__1P", "MERIS Reduced Resolution Geolocated and Calibrated TOA Radiance", 19, MER_RR__1P_dataset_data},
 	{"MER_RR__1P_IODD5", "MERIS Reduced Resolution Geolocated and Calibrated TOA Radiance", 19, MER_RR__1P_IODD5_dataset_data},
     {"MER_RR__2P", "MERIS Reduced Resolution Geophysical Product", 23, MER_RR__2P_dataset_data},
-    {"MER_RR__2P_IODD6", "MERIS Reduced Resolution Geophysical Product", 23, MER_RR__2P_IODD6_dataset_data}
+    {"MER_RR__2P_IODD6", "MERIS Reduced Resolution Geophysical Product", 23, MER_RR__2P_IODD6_dataset_data},
+    {"SAR_APG_1P", "ERS Simulated Alternating Polarization Ellipsoid Geocoded Image", 11, ASA_APG_1P_dataset_data},
+    {"SAR_APM_1P", "ERS Simulated Alternating Polarization Medium Resolution Image product", 10, ASA_APM_1P_dataset_data},
+    {"SAR_APP_1P", "ERS Simulated Alternating Polarization Mode Precision Image", 10, ASA_APP_1P_dataset_data},
+    {"SAR_APS_1P", "ERS Simulated Alternating Polarization Mode Single Look Complex", 8, ASA_APS_1P_dataset_data},
+    {"SAR_AP__BP", "ERS Simulated Alternating Polarization Browse Product", 5, ASA_AP__BP_dataset_data},
+    {"SAR_IMG_1P", "ERS Image Mode Ellipsoid Geocoded Image", 9, ASA_IMG_1P_dataset_data},
+    {"SAR_IMM_1P", "ERS Image Mode Medium Resolution Image", 8, ASA_IMM_1P_dataset_data},
+    {"SAR_IMP_1P", "ERS Image Mode Precision Image", 8, ASA_IMP_1P_dataset_data},
+    {"SAR_IMS_1P", "ERS Image Mode Single Look Complex", 6, ASA_IMS_1P_dataset_data},
+    {"SAR_IM__BP", "ERS Image Mode Browse Product", 3, ASA_IM__BP_dataset_data},
+    {"SAR_WVI_1P", "ERS Wave Mode SLC Imagette and Imagette Cross Spectra", 405, ASA_WVI_1P_dataset_data},
+    {"SAR_WVS_1P", "ERS Wave Mode Imagette Cross Spectra", 4, ASA_WVS_1P_dataset_data},
+    {"SAR_WVW_2P", "ERS Wave Mode Wave Spectra", 4, ASA_WVW_2P_dataset_data},
 };
-const struct BandDescriptorTable dddb_band_tables[27] = {
+const struct BandDescriptorTable dddb_band_tables[37] = {
     {"ASA_APG_1P", "ASAR Alternating Polarization Geocoded Image", 6, ASA_APG_1P_band_data},
     {"ASA_APM_1P", "ASAR Alternating Polarization Medium Resolution Image", 6, ASA_APM_1P_band_data},
     {"ASA_APP_1P", "ASAR Alternating Polarization Precision Image", 6, ASA_APP_1P_band_data},
@@ -4249,7 +4262,17 @@ const struct BandDescriptorTable dddb_band_tables[27] = {
     {"MER_RR__1P", "MERIS Level 1b Reduced Resolution Geophysical Product", 32, MER_RR__1P_band_data},
     {"MER_RR__1P_IODD5", "MERIS Level 1b Reduced Resolution Geophysical Product", 32, MER_RR__1P_IODD5_band_data},
     {"MER_RR__2P", "MERIS Level 2 Reduced Resolution Geophysical Product", 47, MER_RR__2P_band_data},
-    {"MER_RR__2P_IODD6", "MERIS Level 2 Reduced Resolution Geophysical Product", 46, MER_RR__2P_IODD6_band_data}
+    {"MER_RR__2P_IODD6", "MERIS Level 2 Reduced Resolution Geophysical Product", 46, MER_RR__2P_IODD6_band_data},
+    {"SAR_APG_1P", "ERS Simulated Alternating Polarization Geocoded Image", 6, ASA_APG_1P_band_data},
+    {"SAR_APM_1P", "ERS Simulated Alternating Polarization Medium Resolution Image", 6, ASA_APM_1P_band_data},
+    {"SAR_APP_1P", "ERS Simulated Alternating Polarization Precision Image", 6, ASA_APP_1P_band_data},
+    {"SAR_APS_1P", "ERS Simulated Alternating Polarization SLC Image", 6, ASA_APS_1P_band_data},
+    {"SAR_AP__BP", "ERS Simulated Alternatin Polarization Mode Browse Product", 5, ASA_AP__BP_band_data},
+    {"SAR_IMG_1P", "ERS Image Mode Geocoded Image", 5, ASA_IMG_1P_band_data},
+    {"SAR_IMM_1P", "ERS Image Mode Medium Resolution Image", 5, ASA_IMM_1P_band_data},
+    {"SAR_IMP_1P", "ERS Image Mode Precision Image", 5, ASA_IMP_1P_band_data},
+    {"SAR_IMS_1P", "ERS Image Mode SLC Image", 6, ASA_IMS_1P_band_data},
+    {"SAR_IM__BP", "ERS Image Mode Browse Product", 5, ASA_IM__BP_band_data},
 };
 const struct FlagDescriptorTable dddb_flag_coding_tables[6] = {
     {"ATS_NR__2P_flags", "AATSR Level 2 Flags Codings", 14, ATS_NR__2P_flags_data},

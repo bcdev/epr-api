@@ -37,6 +37,7 @@ typedef struct EPR_Parameter EPR_SParameter;
 
 #define EPR_ENVISAT_PRODUCT_MERIS        "MER"
 #define EPR_ENVISAT_PRODUCT_ASAR         "ASA"
+#define EPR_ENVISAT_PRODUCT_SAR          "SAR"
 #define EPR_ENVISAT_PRODUCT_AATSR        "ATS"
 
 #define EPR_LONGI_BAND_NAME               "longitude"
