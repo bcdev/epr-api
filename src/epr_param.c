@@ -148,6 +148,13 @@ int epr_set_dyn_dddb_params(EPR_SProductId* product_id)
         }
 
         field = epr_get_field(product_id->sph_record, "LINE_LENGTH");
+        if (field == NULL) {
+            epr_set_err(e_err_invalid_value,
+                "epr_set_param: wrong SPH: unable to read LINE_LENGTH");
+            epr_free_string(tmp);
+            return 0;
+        }
+
         line_length = ((uint*) field->elems)[0];
         if (line_length == 0) {
             epr_set_err(e_err_invalid_value,
@@ -155,7 +162,15 @@ int epr_set_dyn_dddb_params(EPR_SProductId* product_id)
             epr_free_string(tmp);
             return 0;
         }
+
         field = epr_get_field(product_id->sph_record, "LINES_PER_TIE_PT");
+        if (field == NULL) {
+            epr_set_err(e_err_invalid_value,
+                "epr_set_param: wrong SPH: unable to read LINES_PER_TIE_PT");
+            epr_free_string(tmp);
+            return 0;
+        }
+
         num_tie_points_across = ((uint*) field->elems)[0];
         if (num_tie_points_across == 0) {
             epr_set_err(e_err_invalid_value,
@@ -177,9 +192,17 @@ int epr_set_dyn_dddb_params(EPR_SProductId* product_id)
     /* AATSR does NOT have any dynamic parameters in DDDB */
 
     /* ASAR */
-    else if (strcmp(EPR_ENVISAT_PRODUCT_ASAR, epr_sub_string((char*)product_field->elems, 0, 3)) == 0) {
+    else if ((strcmp(EPR_ENVISAT_PRODUCT_ASAR, epr_sub_string((char*)product_field->elems, 0, 3)) == 0) ||
+             (strcmp(EPR_ENVISAT_PRODUCT_SAR, epr_sub_string((char*)product_field->elems, 0, 3)) == 0)) {
 
         field = epr_get_field(product_id->sph_record, "LINE_LENGTH");
+        if (field == NULL) {
+            epr_set_err(e_err_invalid_value,
+                "epr_set_param: wrong SPH: unable to read LINE_LENGTH");
+            epr_free_string(tmp);
+            return 0;
+        }
+
         line_length = ((uint*) field->elems)[0];
         if (line_length == 0) {
             epr_set_err(e_err_invalid_value,

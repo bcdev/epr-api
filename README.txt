@@ -135,13 +135,11 @@ Zip Archive Contents
 
 Bug Reports and Feedback
 
-    Please submit your bug reports via e-mail to
-    beam-issues@brockmann-consult.de
+    Please submit your bug reports at the issue tracker at
+    http://www.brockmann-consult.de/beam-jira/browse/EPR
+    or via e-mail to beam-issues@brockmann-consult.de
     and tell us which bug fixes matter most to you.
 
-    You can also send comments directly to the software engineering team
-    norman.fomferra@brockmann-consult.de
-    sabine.embacher@brockmann-consult.de
 
 --------------------------------------------------------------------------------
 Thank you for using the EPR API Software.

@@ -191,7 +191,13 @@ EPR_SPtrArray* epr_create_band_ids(EPR_SProductId* product_id) {
                     && strncmp(product_id->id_string, "ASA_APG", 7) != 0) {
                 band_id->lines_mirrored = TRUE;
             } else {
-                band_id->lines_mirrored = FALSE;
+                if (strncmp(product_id->id_string, EPR_ENVISAT_PRODUCT_SAR, 3) == 0
+                        && strncmp(product_id->id_string, "SAR_IMG", 7) != 0
+                        && strncmp(product_id->id_string, "SAR_APG", 7) != 0) {
+                    band_id->lines_mirrored = TRUE;
+                } else {
+                    band_id->lines_mirrored = FALSE;
+                }
             }
         }
 
@@ -719,6 +725,8 @@ int epr_read_band_measurement_data(EPR_SBandId* band_id,
         scan_line_length = EPR_ATS_LINE_LENGTH;
     } else if (strncmp(EPR_ENVISAT_PRODUCT_ASAR, product_id->id_string, 3) == 0) {
         scan_line_length = epr_get_scene_width(product_id);
+    } else if (strncmp(EPR_ENVISAT_PRODUCT_SAR, product_id->id_string, 3) == 0) {
+        scan_line_length = epr_get_scene_width(product_id);
     } else {
         epr_set_err(e_err_illegal_arg,
                     "epr_read_band_measurement_data: scan line length unknown");
@@ -774,6 +782,9 @@ int epr_read_band_measurement_data(EPR_SBandId* band_id,
 
         /*get the next record by the given name*/
         record = epr_read_record(dataset_id, iY, record);
+        if (record == NULL) {
+            return epr_get_last_err_code();
+        }
         /*get the field at its number*/
         field = epr_get_field_at(record, band_id->dataset_ref.field_index - 1);
         /*get the scaled "line" of physical values*/
@@ -890,7 +901,8 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
             epr_free_record(record);
             return epr_get_last_err_code();
         }
-    } else if (strncmp(EPR_ENVISAT_PRODUCT_ASAR, product_id->id_string, 3) == 0) {
+    } else if ((strncmp(EPR_ENVISAT_PRODUCT_ASAR, product_id->id_string, 3) == 0) ||
+               (strncmp(EPR_ENVISAT_PRODUCT_SAR, product_id->id_string, 3) == 0)) {
         EPR_SDatasetId* dataset_id = NULL;
         uint num_rec;
         scan_offset_x = 0.5F; /* @todo CHECK THIS FOR ASAR! */
@@ -1015,6 +1027,12 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
                     && strncmp(product_id->id_string, "ASA_IMG", 7) != 0
                     && strncmp(product_id->id_string, "ASA_APG", 7) != 0) {
                 mirror_float_array((float*)raster->buffer, raster->raster_width, raster->raster_height);
+            } else {
+                if (strncmp(EPR_ENVISAT_PRODUCT_SAR, product_id->id_string, 3) == 0
+                        && strncmp(product_id->id_string, "SAR_IMG", 7) != 0
+                        && strncmp(product_id->id_string, "SAR_APG", 7) != 0) {
+                    mirror_float_array((float*)raster->buffer, raster->raster_width, raster->raster_height);
+                }
             }
         }
     }

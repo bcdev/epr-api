@@ -123,6 +123,7 @@ EPR_SProductId* epr_open_product(const char* product_file_path) {
     /* Product identifier filter*/
     if ((strncmp(EPR_ENVISAT_PRODUCT_MERIS, product_id->id_string, 3) != 0) &&
             (strncmp(EPR_ENVISAT_PRODUCT_ASAR,  product_id->id_string, 3) != 0) &&
+            (strncmp(EPR_ENVISAT_PRODUCT_SAR,  product_id->id_string, 3) != 0) &&
             (strncmp(EPR_ENVISAT_PRODUCT_AATSR, product_id->id_string, 3) != 0)) {
         epr_set_err(e_err_invalid_product_id,
                     "epr_open_product: invalid product identifier");
@@ -432,6 +433,9 @@ uint epr_compute_scene_width(const EPR_SProductId* product_id) {
     } else if (strncmp(EPR_ENVISAT_PRODUCT_AATSR, product_id->id_string, 3) == 0) {
         scan_line_length = EPR_ATS_LINE_LENGTH;
     } else if (strncmp(EPR_ENVISAT_PRODUCT_ASAR, product_id->id_string, 3) == 0) {
+        const EPR_SField* field = field = epr_get_field(sph_record, "LINE_LENGTH");
+        scan_line_length = epr_get_field_elem_as_uint(field, 0);
+    } else if (strncmp(EPR_ENVISAT_PRODUCT_SAR, product_id->id_string, 3) == 0) {
         const EPR_SField* field = field = epr_get_field(sph_record, "LINE_LENGTH");
         scan_line_length = epr_get_field_elem_as_uint(field, 0);
     } else {
