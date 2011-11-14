@@ -3280,7 +3280,7 @@ static const struct DatasetDescriptor ATS_TOA_1P_dataset_data[] = {
 static const struct DatasetDescriptor MER_FR__1P_dataset_data[] = {
     {"Quality_ADS", "Quality ADS", MER_RR__1P_ADSR_sq_meris_rec_data, "Level 1b Summary Quality ADS(SQ ADS)"},
     {"Scaling_Factor_GADS", "Scaling Factor GADS", MER_RR__1P_GADS_sfgi_meris_rec_data, "Level 1b GADS Scaling Factor and General  Info"},
-    {"Tie_points_ADS", "Tie points ADS", MER_RR__1P_ADSR_tie_pt_meris_rec_data, "Level 1b ADS Tie Point Location and Auxilliary Data (LADS)"},
+    {"Tie_points_ADS", "Tie points ADS", MER_RR__1P_ADSR_tie_pt_meris_rec_data, "Level 1b ADS Tie Point Location and Auxiliary Data (LADS)"},
     {"Radiance_1", "Radiance MDS(1)", MER_RR__1P_MDSR_1_15_meris_rec_data, "Level 1b MDS (1) TOA Radiance"},
     {"Radiance_2", "Radiance MDS(2)", MER_RR__1P_MDSR_1_15_meris_rec_data, "Level 1b MDS (2) TOA Radiance"},
     {"Radiance_3", "Radiance MDS(3)", MER_RR__1P_MDSR_1_15_meris_rec_data, "Level 1b MDS (3) TOA Radiance"},
@@ -3302,7 +3302,7 @@ static const struct DatasetDescriptor MER_FR__1P_dataset_data[] = {
 static const struct DatasetDescriptor MER_FR__1P_IODD5_dataset_data[] = {
     {"Quality_ADS", "Quality ADS", MER_RR__1P_ADSR_sq_meris_rec_data, "Level 1b Summary Quality ADS(SQ ADS)"},
     {"Scaling_Factor_GADS", "Scaling Factor GADS", MER_RR__1P_GADS_sfgi_meris_rec_data, "Level 1b GADS Scaling Factor and General  Info"},
-    {"Tie_points_ADS", "Tie points ADS", MER_RR__1P_ADSR_tie_pt_meris_rec_data, "Level 1b ADS Tie Point Location and Auxilliary Data (LADS)"},
+    {"Tie_points_ADS", "Tie points ADS", MER_RR__1P_ADSR_tie_pt_meris_rec_data, "Level 1b ADS Tie Point Location and Auxiliary Data (LADS)"},
     {"Radiance_1", "Radiance MDS(1)", MER_RR__1P_MDSR_1_15_meris_rec_data, "Level 1b MDS (1) TOA Radiance"},
     {"Radiance_2", "Radiance MDS(2)", MER_RR__1P_MDSR_1_15_meris_rec_data, "Level 1b MDS (2) TOA Radiance"},
     {"Radiance_3", "Radiance MDS(3)", MER_RR__1P_MDSR_1_15_meris_rec_data, "Level 1b MDS (3) TOA Radiance"},
@@ -3405,7 +3405,7 @@ static const struct DatasetDescriptor MER_RRV_2P_dataset_data[] = {
 static const struct DatasetDescriptor MER_RR__1P_dataset_data[] = {
     {"Quality_ADS", "Quality ADS", MER_RR__1P_ADSR_sq_meris_rec_data, "Level 1b Summary Quality ADS(SQ ADS)"},
     {"Scaling_Factor_GADS", "Scaling Factor GADS", MER_RR__1P_GADS_sfgi_meris_rec_data, "Level 1b GADS Scaling Factor and General  Info"},
-    {"Tie_points_ADS", "Tie points ADS", MER_RR__1P_ADSR_tie_pt_meris_rec_data, "Level 1b ADS Tie Point Location and Auxilliary Data (LADS)"},
+    {"Tie_points_ADS", "Tie points ADS", MER_RR__1P_ADSR_tie_pt_meris_rec_data, "Level 1b ADS Tie Point Location and Auxiliary Data (LADS)"},
     {"Radiance_1", "Radiance MDS(1)", MER_RR__1P_MDSR_1_15_meris_rec_data, "Level 1b MDS (1) TOA Radiance"},
     {"Radiance_2", "Radiance MDS(2)", MER_RR__1P_MDSR_1_15_meris_rec_data, "Level 1b MDS (2) TOA Radiance"},
     {"Radiance_3", "Radiance MDS(3)", MER_RR__1P_MDSR_1_15_meris_rec_data, "Level 1b MDS (3) TOA Radiance"},
@@ -3427,7 +3427,7 @@ static const struct DatasetDescriptor MER_RR__1P_dataset_data[] = {
 static const struct DatasetDescriptor MER_RR__1P_IODD5_dataset_data[] = {
     {"Quality_ADS", "Quality ADS", MER_RR__1P_ADSR_sq_meris_rec_data, "Level 1b Summary Quality ADS(SQ ADS)"},
     {"Scaling_Factor_GADS", "Scaling Factor GADS", MER_RR__1P_GADS_sfgi_meris_rec_data, "Level 1b GADS Scaling Factor and General  Info"},
-    {"Tie_points_ADS", "Tie points ADS", MER_RR__1P_ADSR_tie_pt_meris_rec_data, "Level 1b ADS Tie Point Location and Auxilliary Data (LADS)"},
+    {"Tie_points_ADS", "Tie points ADS", MER_RR__1P_ADSR_tie_pt_meris_rec_data, "Level 1b ADS Tie Point Location and Auxiliary Data (LADS)"},
     {"Radiance_1", "Radiance MDS(1)", MER_RR__1P_MDSR_1_15_meris_rec_data, "Level 1b MDS (1) TOA Radiance"},
     {"Radiance_2", "Radiance MDS(2)", MER_RR__1P_MDSR_1_15_meris_rec_data, "Level 1b MDS (2) TOA Radiance"},
     {"Radiance_3", "Radiance MDS(3)", MER_RR__1P_MDSR_1_15_meris_rec_data, "Level 1b MDS (3) TOA Radiance"},

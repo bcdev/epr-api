@@ -15,7 +15,7 @@ OUTDIR = ./build/$(CONFIG)
 # TARGET  = $(OUTDIR)/libepr_api.so
 
 # for linux
-COMPILE = gcc -fPIC -ansi -c -I$(SRCDIR) -I$(THISDIR) $(OPTIONS)
+COMPILE = $(CC) $(CFLAGS) -fPIC -ansi -c -I$(SRCDIR) -I$(THISDIR) $(OPTIONS)
 LINK    = ld -shared
 TARGET  = $(OUTDIR)/libepr_api.so
 
@@ -119,7 +119,7 @@ clean:
 
 
 $(TARGET) : $(OBJECTS)
-	$(LINK) -o $@ $(OBJECTS) -lm
+	$(LINK) $(LDFLAGS) -o $@ $(OBJECTS) -lm -lc
 
 SRC_1 = $(SRCDIR)/epr_api.c
 $(OUTDIR)/epr_api.o : $(HEADERS) $(SRC_1)
