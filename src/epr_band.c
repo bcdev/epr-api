@@ -886,15 +886,15 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
         field = epr_get_field(sph_record, "LINE_LENGTH");
         scan_line_length = epr_get_field_elem_as_uint(field, 0);
     } else if (strncmp(EPR_ENVISAT_PRODUCT_AATSR, product_id->id_string, 3) == 0) {
-        scan_offset_y = 0.5F;
+        scan_offset_y = -0.5F;
         scan_line_length = EPR_ATS_LINE_LENGTH;
         lines_per_tie_pt = EPR_AATSR_LINES_PER_TIE_PT;
         num_elems = field_info->num_elems;
         if (num_elems == EPR_ATS_NUM_PER_POINT_ACROSS_LOCAT) {
-            scan_offset_x = -19.0F;
+            scan_offset_x = -19.5F;
             samples_per_tie_pt = 25;
         } else if (num_elems == EPR_ATS_NUM_PER_POINT_ACROSS_SOLAR) {
-            scan_offset_x = 6.0F;
+            scan_offset_x = 5.5F;
             samples_per_tie_pt = 50;
         } else {
             epr_set_err(e_err_invalid_value, "epr_read_band_annotation_data: internal error: illegal value for samples_per_tie_pt");
