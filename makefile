@@ -15,14 +15,14 @@ OUTDIR = ./build/$(CONFIG)
 # TARGET  = $(OUTDIR)/libepr_api.so
 
 # for linux
-# COMPILE = $(CC) $(CFLAGS) -fPIC -ansi -c -I$(SRCDIR) -I$(THISDIR) $(OPTIONS)
-# LINK    = ld -shared
-# TARGET  = $(OUTDIR)/libepr_api.so
+COMPILE = $(CC) $(CFLAGS) -fPIC -ansi -c -I$(SRCDIR) -I$(THISDIR) $(OPTIONS)
+LINK    = ld -shared
+TARGET  = $(OUTDIR)/libepr_api.so
 
 # for Mac OS X
-COMPILE = gcc -fPIC -ansi -c -I$(SRCDIR) -I$(THISDIR) $(OPTIONS)
-LINK    = ld -dylib
-TARGET  = $(OUTDIR)/libepr_api.dylib
+# COMPILE = gcc -fPIC -ansi -c -I$(SRCDIR) -I$(THISDIR) $(OPTIONS)
+# LINK    = ld -dylib
+# TARGET  = $(OUTDIR)/libepr_api.dylib
 
 HEADERS=\
   $(SRCDIR)/epr_api.h\
