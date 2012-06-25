@@ -886,7 +886,7 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
         field = epr_get_field(sph_record, "LINE_LENGTH");
         scan_line_length = epr_get_field_elem_as_uint(field, 0);
     } else if (strncmp(EPR_ENVISAT_PRODUCT_AATSR, product_id->id_string, 3) == 0) {
-        scan_offset_y = 0.5F;
+        scan_offset_y = 0.0F; /*!! EPR-7: was 0.5F !!*/
         scan_line_length = EPR_ATS_LINE_LENGTH;
         lines_per_tie_pt = EPR_AATSR_LINES_PER_TIE_PT;
         num_elems = field_info->num_elems;
