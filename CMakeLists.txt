@@ -11,20 +11,26 @@ set(EPR_API_VERSION_MINOR 3)
 set(EPR_API_VERSION_PATCH 0)
 
 
-# testing
-option(BUILD_TESTS "build test programs" OFF)
-enable_testing()
-
-
-# components selection
+# options
 option(BUILD_STATIC_LIB "build the static version of the library" YES)
+option(BUILD_TESTS "build test programs" OFF)
+option(BUILD_DOCS "build Doxygen documentation" OFF)
+
+
+# testing
+enable_testing()
 
 
 # sub-directories
 add_subdirectory(src)
+
 if(BUILD_TESTS)
     add_subdirectory(bccunit)
 endif(BUILD_TESTS)
+
+if(BUILD_DOCS)
+    add_subdirectory(docs)
+endif(BUILD_DOCS)
 
 
 # uninstall target
