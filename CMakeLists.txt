@@ -55,7 +55,7 @@ set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/README.txt")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY
     "Delft object-oriented radar interferometric software")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.txt")
-set(CPACK_SOURCE_IGNORE_FILES "/build.*;.*~;\\.git.*;\\.user$;\\.DS_Store")
+set(CPACK_SOURCE_IGNORE_FILES "/build.*;.*~;\\\\.git.*;\\\\.user$;\\\\.DS_Store")
 set(CPACK_STRIP_FILES TRUE)
 set(CPACK_SOURCE_STRIP_FILES TRUE)
 
