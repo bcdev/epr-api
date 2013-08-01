@@ -672,7 +672,7 @@ int epr_read_band_raster(EPR_SBandId* band_id,
         }
     } else if (strcmp(rec_type, "A") == 0) {
         if (epr_read_band_annotation_data
-                (band_id, offset_x, offset_y, raster) == 1) {
+                (band_id, offset_x, offset_y, raster)) {
             epr_set_err(e_err_file_read_error,
                         "epr_read_band_raster: unsuccessfully reading band annotation data");
             return epr_get_last_err_code();
@@ -959,11 +959,11 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
     /*select the correspondent function to scaling and transform data type*/
     transform_array_func = select_transform_array_function(band_datatype, datatype_id);
     if (transform_array_func == NULL) {
-        epr_set_err(e_err_illegal_data_type,
-                    "epr_read_band_annotation_data: internal error: illegal data type");
         epr_free_record(record);
         free(line_beg_buffer);
         free(line_end_buffer);
+        epr_set_err(e_err_illegal_data_type,
+                    "epr_read_band_annotation_data: internal error: illegal data type");
         return epr_get_last_err_code();
     }
     y_beg_old = 9999;
