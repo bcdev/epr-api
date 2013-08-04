@@ -147,6 +147,7 @@ void transform_array_short_to_float (void* sourceArray, EPR_SBandId* band_id, fl
 void transform_array_ushort_to_float(void* sourceArray, EPR_SBandId* band_id, float* raster_buffer, uint nel);
 void transform_array_int_to_float  (void* sourceArray, EPR_SBandId* band_id, float* raster_buffer, uint nel);
 void transform_array_uint_to_float (void* sourceArray, EPR_SBandId* band_id, float* raster_buffer, uint nel);
+void transform_array_float_to_float (void* sourceArray, EPR_SBandId* band_id, float* raster_buffer, uint nel);
 /*@}*/
 
 /**
