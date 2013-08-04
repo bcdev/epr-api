@@ -109,12 +109,15 @@ EPR_SPtrArray* epr_create_dataset_ids(EPR_SProductId* product_id)
     const struct DatasetDescriptorTable* p_tables;
     int pt_index;
     int num_descr;
+    int asar_sw_version;
 
     if (product_id == NULL) {
         epr_set_err(e_err_null_pointer,
                     "create_dataset_ids: product_id must not be NULL");
         return NULL;
     }
+
+    asar_sw_version = epr_detect_asar_sw_version(product_id);
 
     /* @DDDB */
 
@@ -131,6 +134,14 @@ EPR_SPtrArray* epr_create_dataset_ids(EPR_SProductId* product_id)
             } else if (product_id->meris_iodd_version == 6) {
                 if (strcmp(id, "MER_RR__2P_IODD6") == 0 ||
                     strcmp(id, "MER_FR__2P_IODD6") == 0) {
+                    pt_index = i;
+                }
+            } else if (asar_sw_version >= 602) {
+                if (strcmp(&(id[10]), "_602") == 0) {
+                    pt_index = i;
+                }
+            } else if (asar_sw_version < 602) {
+                if (strlen(id) == 10) {
                     pt_index = i;
                 }
             } else {
