@@ -294,6 +294,12 @@ EPR_SRecord* epr_read_record(EPR_SDatasetId* dataset_id,
 
     if (record == NULL) {
         record = epr_create_record(dataset_id);
+        if (record == NULL) {
+            epr_set_err(e_err_invalid_record_name,
+                        "epr_read_record: unable to create a new record");
+
+            return NULL;
+        }
     } else if (record->info != dataset_id->record_info) {
         epr_set_err(e_err_invalid_record_name,
                     "epr_read_record: invalid record name");
