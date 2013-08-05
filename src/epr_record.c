@@ -221,8 +221,8 @@ EPR_SRecordInfo* epr_read_record_info(EPR_SProductId* product_id, EPR_SDatasetId
 		r_tables = dddb_aatsr_rec_tables;
 		num_r_tables = EPR_NUM_AATSR_REC_TABLES;
 	} else if (strncmp(product_id->id_string, "ASA", 3) == 0) {
-		r_tables = dddb_asar_rec_tables;
-		num_r_tables = EPR_NUM_ASAR_REC_TABLES;
+            r_tables = dddb_asar_rec_tables;
+            num_r_tables = EPR_NUM_ASAR_REC_TABLES;
 	} else if (strncmp(product_id->id_string, "SAR", 3) == 0) {
 		r_tables = dddb_asar_rec_tables;
 		num_r_tables = EPR_NUM_ASAR_REC_TABLES;
