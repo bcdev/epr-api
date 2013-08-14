@@ -1,16 +1,26 @@
 # Copyright (c) 2013 Antonio Valentino <antonio.valentino@tiscali.it>
 
-set(TARGETS api_unit_tests
-            epr_main_test
-            epr_subset_test
-            epr_test_endian)
+add_executable(epr_subset_test epr_subset_test.c)
+target_link_libraries(epr_subset_test epr_api)
 
-foreach(TEST ${TARGETS})
-    add_executable(${TEST} ${TEST}.c)
-    target_link_libraries(${TEST} epr_api)
-endforeach(TEST)
+add_executable(epr_test_endian epr_test_endian.c)
+target_link_libraries(epr_test_endian epr_api)
 
-target_link_libraries(epr_main_test bccunit)
+# the following test programs use some internal function that is not exported
+# by the shared library
+if(BUILD_STATIC_LIB)
+    add_executable(epr_main_test epr_main_test.c)
+    target_link_libraries(epr_main_test epr_api_static bccunit m)
+
+    add_executable(api_unit_tests api_unit_tests.c)
+    target_link_libraries(api_unit_tests epr_api_static m)
+elseif(BUILD_STATIC_LIB)
+    add_executable(epr_main_test epr_main_test.c ${SOURCES})
+    target_link_libraries(epr_main_test bccunit m)
+
+    add_executable(api_unit_tests api_unit_tests.c ${SOURCES})
+    target_link_libraries(api_unit_tests m)
+endif(BUILD_STATIC_LIB)
 
 
 # endianess
