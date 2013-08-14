@@ -4747,7 +4747,7 @@ const struct RecordDescriptorTable dddb_aatsr_rec_tables[20] = {
     {"ATS_VC1_AX_GADS", "Visible calibration coefficients GADS", 32, ATS_VC1_AX_GADS_aatsr_rec_data}
 };
 
-const struct RecordDescriptorTable dddb_asar_rec_tables[20] = {
+const struct RecordDescriptorTable dddb_asar_rec_tables[22] = {
     {"ASAR_Antenna_ADSR", "Antenna Elevation patterns(s)", 7, ASAR_Antenna_ADSR_asar_rec_data},
     {"ASAR_Chirp_ADSR", "chirp parameters", 140, ASAR_Chirp_ADSR_asar_rec_data},
     {"ASAR_Dop_Cen_ADSR", "Doppler Centroid Parameters", 7, ASAR_Dop_Cen_ADSR_asar_rec_data},
