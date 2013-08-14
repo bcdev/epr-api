@@ -110,11 +110,34 @@ void epr_close_api()
  *
  * @param log_handler the new log handler (function pointer),
  *         can be NULL, if logging shall be disabled
- * @return zero for success, an error code otherwise
  */
 void epr_set_log_handler(EPR_FLogHandler log_handler)
 {
     epr_api.log_handler = log_handler;
+}
+
+
+/**
+ * Sets the log level for the ENVISAT API. All logging
+ * messages with a log level lower than the given one, will
+ * be supressed, thus the log handler will not be called
+ * for such messages.
+ *
+ * @param log_level the new log level. All logging messages with a log level lower
+ *        than the given one, will be supressed
+ * @return zero for success, an error code otherwise
+ */
+int epr_set_log_level(EPR_ELogLevel log_level)
+{
+    if ((log_level < e_log_debug) || (log_level > e_log_error)) {
+        epr_set_err(e_err_invalid_value,
+                    "epr_set_log_level: invalid log level");
+        return epr_get_last_err_code();
+    }
+
+    epr_api.log_level = log_level;
+
+    return e_err_none;
 }
 
 
