@@ -283,6 +283,17 @@ const char* epr_get_last_err_message()
     return epr_api.last_err_message;
 }
 
+/**
+ * Sets the error handler for the ENVISAT API.
+ *
+ * @param err_handler the new error handler (function pointer),
+ *         can be NULL, if errors shall not be reported
+ */
+void epr_set_err_handler(EPR_FErrHandler err_handler)
+{
+    epr_api.err_handler = err_handler;
+}
+
 
 /**
  * Opens a file to read.
