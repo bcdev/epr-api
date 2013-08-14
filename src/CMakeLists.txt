@@ -44,6 +44,8 @@ endif(BUILD_TESTS)
 
 
 # install
-install(TARGETS epr_api epr_api_static
-        LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
 install(FILES epr_api.h epr_ptrarray.h DESTINATION include)
+install(TARGETS epr_api LIBRARY DESTINATION lib)
+if(BUILD_STATIC_LIB)
+    install(TARGETS epr_api_static ARCHIVE DESTINATION lib)
+endif(BUILD_STATIC_LIB)
