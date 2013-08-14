@@ -30,4 +30,3 @@ endif(${BIGENDIAN})
 add_test(TEST_EPR_03 epr_test_endian)
 set_tests_properties(TEST_EPR_03 PROPERTIES PASS_REGULAR_EXPRESSION
     ${ENDIANESS})
-

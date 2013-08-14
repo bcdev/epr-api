@@ -24,10 +24,12 @@ set(SOURCES epr_api.c
 
 # targets
 add_library(epr_api SHARED ${SOURCES})
+target_link_libraries(epr_api m)
+
 
 if(BUILD_STATIC_LIB)
     add_library(epr_api_static STATIC ${SOURCES})
-	set_target_properties(epr_api_static PROPERTIES OUTPUT_NAME epr_api)
+    set_target_properties(epr_api_static PROPERTIES OUTPUT_NAME epr_api)
 endif(BUILD_STATIC_LIB)
 
 
