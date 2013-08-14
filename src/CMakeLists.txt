@@ -24,6 +24,9 @@ set(SOURCES epr_api.c
 
 # targets
 add_library(epr_api SHARED ${SOURCES})
+set_target_properties(epr_api PROPERTIES
+    VERSION ${EPR_API_VERSION_STRING}
+    SOVERSION ${EPR_API_VERSION_MAJOR})
 target_link_libraries(epr_api m)
 
 
