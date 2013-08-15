@@ -22,21 +22,21 @@ set(SOURCES epr_api.c
 )
 
 if(CMAKE_C_COMPILER_ID STREQUAL GNU)
-    set(VERSION_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/epr_api.ver)
+    set(SYMBOL_LIST ${CMAKE_CURRENT_SOURCE_DIR}/epr_api.ver)
     set(CMAKE_SHARED_LINKER_FLAGS
-        "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--version-script=${VERSION_SCRIPT}")
+        "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--version-script=${SYMBOL_LIST}")
 endif(CMAKE_C_COMPILER_ID STREQUAL GNU)
 
 if(APPLE)
-    set(VERSION_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/epr_api.exported)
+    set(SYMBOL_LIST ${CMAKE_CURRENT_SOURCE_DIR}/epr_api.exported)
     set(CMAKE_SHARED_LINKER_FLAGS
-        "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-exported_symbols_list,${VERSION_SCRIPT}")
+        "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-exported_symbols_list,${SYMBOL_LIST}")
 endif(APPLE)
 
 #if(MSVC)
-#    set(VERSION_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/epr_api.def)
+#    set(SYMBOL_LIST ${CMAKE_CURRENT_SOURCE_DIR}/epr_api.def)
 #    set(CMAKE_SHARED_LINKER_FLAGS
-#        ${CMAKE_SHARED_LINKER_FLAGS} /DEF:${VERSION_SCRIPT})
+#        ${CMAKE_SHARED_LINKER_FLAGS} /DEF:${SYMBOL_LIST})
 #endif(MSVC)
 
 
