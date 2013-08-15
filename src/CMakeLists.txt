@@ -21,23 +21,29 @@ set(SOURCES epr_api.c
             epr_typconv.c
 )
 
-if(CMAKE_C_COMPILER_ID STREQUAL GNU)
-    set(SYMBOL_LIST ${CMAKE_CURRENT_SOURCE_DIR}/epr_api.ver)
-    set(CMAKE_SHARED_LINKER_FLAGS
-        "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--version-script=${SYMBOL_LIST}")
-endif(CMAKE_C_COMPILER_ID STREQUAL GNU)
+if(NOT DISABLE_SYMBOL_CONTROL)
+    #if(CMAKE_C_COMPILER_ID STREQUAL GNU)
+    if(NOT APPLE AND NOT MSVC)
+        # Assume to work with the GNU linker
+        # On some GNU/Linux distribution it is possible to use both GCC and
+        # Clang as compilers
+        set(SYMBOL_LIST ${CMAKE_CURRENT_SOURCE_DIR}/epr_api.ver)
+        set(CMAKE_SHARED_LINKER_FLAGS
+            "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--version-script=${SYMBOL_LIST}")
+    endif(NOT APPLE AND NOT MSVC)
 
-if(APPLE)
-    set(SYMBOL_LIST ${CMAKE_CURRENT_SOURCE_DIR}/epr_api.exported)
-    set(CMAKE_SHARED_LINKER_FLAGS
-        "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-exported_symbols_list,${SYMBOL_LIST}")
-endif(APPLE)
+    if(APPLE)
+        set(SYMBOL_LIST ${CMAKE_CURRENT_SOURCE_DIR}/epr_api.exported)
+        set(CMAKE_SHARED_LINKER_FLAGS
+            "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-exported_symbols_list,${SYMBOL_LIST}")
+    endif(APPLE)
 
-#if(MSVC)
-#    set(SYMBOL_LIST ${CMAKE_CURRENT_SOURCE_DIR}/epr_api.def)
-#    set(CMAKE_SHARED_LINKER_FLAGS
-#        ${CMAKE_SHARED_LINKER_FLAGS} /DEF:${SYMBOL_LIST})
-#endif(MSVC)
+    #if(MSVC)
+    #    set(SYMBOL_LIST ${CMAKE_CURRENT_SOURCE_DIR}/epr_api.def)
+    #    set(CMAKE_SHARED_LINKER_FLAGS
+    #        ${CMAKE_SHARED_LINKER_FLAGS} /DEF:${SYMBOL_LIST})
+    #endif(MSVC)
+endif(NOT DISABLE_SYMBOL_CONTROL)
 
 
 # targets
