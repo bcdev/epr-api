@@ -4,11 +4,9 @@ VERS_2.2 {
         epr_init_api;
         epr_log_message;
         epr_set_log_handler;
-        epr_set_log_level;
         epr_clear_err;
         epr_get_last_err_code;
         epr_get_last_err_message;
-        epr_set_err_handler;
         epr_open_product;
         epr_close_product;
         epr_get_scene_width;
@@ -213,6 +211,9 @@ VERS_2.2 {
 };
 
 VERS_2.3 {
+    global:
+        epr_set_err_handler;
+        epr_set_log_level;
     local:
         epr_detect_asar_sw_version;
         *;
