@@ -28,9 +28,9 @@ if(CMAKE_C_COMPILER_ID STREQUAL GNU)
 endif(CMAKE_C_COMPILER_ID STREQUAL GNU)
 
 if(APPLE)
-    set(VERSION_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/epr_api.unexported)
+    set(VERSION_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/epr_api.exported)
     set(CMAKE_SHARED_LINKER_FLAGS
-        "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-unexported_symbols_list,${VERSION_SCRIPT}")
+        "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-exported_symbols_list,${VERSION_SCRIPT}")
 endif(APPLE)
 
 #if(MSVC)
