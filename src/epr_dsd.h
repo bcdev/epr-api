@@ -80,6 +80,7 @@ EPR_SPtrArray* epr_read_all_dsds(EPR_SProductId* product_id);
 uint epr_find_first_dsd(FILE* envisat_source_file, uint sph_length);
 
 int epr_detect_meris_iodd_version(EPR_SProductId* product_id);
+int epr_detect_asar_sw_version(EPR_SProductId* product_id);
 
 #ifdef __cplusplus
 } /* extern "C" */
