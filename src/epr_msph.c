@@ -398,13 +398,11 @@ void epr_parse_int_token(EPR_SPtrArray* header_values, char* token_value, uint* 
     int lmp;
     uint ulmp;
     int flag_int = 0;
-    int flag_negative = 0;
     int cyc = 0;
 
     pos_value = 0;
     *num_elems = 0;
     flag_int = 0;
-    flag_negative = 0;
 
     if (strchr(token_value, '-') != NULL) {
         flag_int = 1;

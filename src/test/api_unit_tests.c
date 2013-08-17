@@ -443,7 +443,7 @@ epr_boolean get_field_value(const EPR_SField* field, const uint index, STestDeta
 }
 
 void parse_test_line(STestLine* test_line) {
-    unsigned int pos_tok = 0;
+    /* unsigned */ int pos_tok = 0;
     int i = 0;
     int len = 0;
     const int num_chars = 4;
@@ -533,13 +533,13 @@ void parse_test_line(STestLine* test_line) {
 
 char* parse_input_product_path(const char* config_file) {
     FILE* stream;
-    int ipp_length;
+    /* int ipp_length; */
     char line[400];
     char buffer[400];
     char* pos_equal_sign;
     stream = fopen(config_file, "r");
     if (stream != NULL ) {
-        ipp_length = strlen(_prefix_in_p_p);
+        /* ipp_length = strlen(_prefix_in_p_p); */
         while (fgets(line, 400, stream) != NULL) {
             if (strstr(line, _prefix_in_p_p) == NULL || strcmp(line, strstr(line, _prefix_in_p_p)) != 0) {
                 continue;
@@ -836,9 +836,9 @@ epr_boolean parse_field_adress(const char* str, SFieldAddress* field_adress) {
             || strstr(field_adress->name_rec, "[") == field_adress->name_rec
             || strstr(field_adress->name_field, "[") == field_adress->name_field)
         goto finaly;
-    if (!parse_index(field_adress->name_rec, &field_adress->index_rec))
+    if (!parse_index(field_adress->name_rec, (int*)&field_adress->index_rec))
         goto finaly;
-    if (!parse_index(field_adress->name_field, &field_adress->index_field))
+    if (!parse_index(field_adress->name_field, (int*)&field_adress->index_field))
         goto finaly;
 
     result = TRUE;

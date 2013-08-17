@@ -52,7 +52,7 @@
 EPR_SFieldInfo* epr_create_field_info(EPR_EDataTypeId data_type_id, char* description, char* field_name, uint num_elems, uint num_bytes, uint more_count, char* unit)
 {
     EPR_SFieldInfo* field_info = NULL;
-    uint data_type_size;
+    /* uint data_type_size; */
 
     field_info = (EPR_SFieldInfo*) calloc(1, sizeof (EPR_SFieldInfo));
     if (field_info == NULL)
@@ -82,7 +82,7 @@ EPR_SFieldInfo* epr_create_field_info(EPR_EDataTypeId data_type_id, char* descri
     } else
         epr_assign_string(&field_info->unit, unit);
 
-    data_type_size = epr_get_data_type_size(data_type_id);
+    /* data_type_size = epr_get_data_type_size(data_type_id); */
 
     field_info->num_elems = num_elems;
 

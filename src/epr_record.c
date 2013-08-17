@@ -317,7 +317,7 @@ EPR_SRecord* epr_create_record_from_info(EPR_SRecordInfo* record_info)
     EPR_SRecord* record = NULL;
     EPR_SFieldInfo* field_info = NULL;
     uint field_infos_index = 0;
-    int field_infos_length;
+    /* int field_infos_length; */
 
     if (record_info == NULL)
     {
@@ -346,7 +346,7 @@ EPR_SRecord* epr_create_record_from_info(EPR_SRecordInfo* record_info)
         return NULL;
     }
 
-    field_infos_length = (int)epr_get_ptr_array_length(record_info->field_infos);
+    /* field_infos_length = (int)epr_get_ptr_array_length(record_info->field_infos); */
 
     for (field_infos_index = 0; field_infos_index < record_info->field_infos->length; field_infos_index++)
     {
