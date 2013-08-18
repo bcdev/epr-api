@@ -87,7 +87,7 @@ int epr_init_api(EPR_ELogLevel   log_level,
  * Closes the ENVISAT product reader API by releasing all
  * resources allocated by the API.
  */
-void epr_close_api()
+void epr_close_api(void)
 {
     epr_clear_err();
 

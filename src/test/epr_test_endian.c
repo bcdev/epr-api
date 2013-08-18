@@ -8,7 +8,7 @@
 #define LE_MAGIC_BYTE_2  'V'
 #define LE_MAGIC_BYTE_3  'I'
 
-int epr_is_little_endian_order()
+int epr_is_little_endian_order(void)
 {
 	ulong le_value = LE_MAGIC_NUMBER;
 	return (((uchar*)(&le_value))[0] == LE_MAGIC_BYTE_0)
@@ -17,7 +17,7 @@ int epr_is_little_endian_order()
 		&& (((uchar*)(&le_value))[3] == LE_MAGIC_BYTE_3);
 }
 
-int epr_is_big_endian_order()
+int epr_is_big_endian_order(void)
 {
 	ulong be_value = BE_MAGIC_NUMBER;
 	return (((uchar*)(&be_value))[0] == LE_MAGIC_BYTE_0)

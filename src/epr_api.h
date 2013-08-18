@@ -809,7 +809,7 @@ int epr_init_api(EPR_ELogLevel   log_level,
  *
  * @author Norman Fomferra
  */
-void epr_close_api();
+void epr_close_api(void);
 /** @} */
 
 
@@ -880,7 +880,7 @@ void epr_set_err_handler(EPR_FErrHandler err_handler);
  *
  * @return the error code, <code>e_err_none</code> or zero if no error occured
  */
-EPR_EErrCode epr_get_last_err_code();
+EPR_EErrCode epr_get_last_err_code(void);
 
 /**
  * Gets the error message of the error that occured during
@@ -888,14 +888,14 @@ EPR_EErrCode epr_get_last_err_code();
  *
  * @return the error message, <code>NULL</code> if no error occured
  */
-const char* epr_get_last_err_message();
+const char* epr_get_last_err_message(void);
 
 /**
  * Clears the last error. After calling this function, calling
  * <code>epr_get_last_err_code</code> returns <code>e_err_none</code> or zero and
  * <code>epr_get_last_err_message</code> returns <code>NULL</code>.
  */
-void epr_clear_err();
+void epr_clear_err(void);
 
 /** @} */
 

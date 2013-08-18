@@ -65,7 +65,7 @@ BC_BEGIN_TEST(test_get_element_value)
 BC_END_TEST()
 
 
-void set_up_open_product_test()
+void set_up_open_product_test(void)
 {
 	epr_init_api(ll, loghandler, NULL);
 }
@@ -79,28 +79,28 @@ void tear_down_open_product_test(EPR_SProductId* product_id)
 	epr_close_api();
 }
 
-EPR_SProductId* test_epr_open_product_with_NULL()
+EPR_SProductId* test_epr_open_product_with_NULL(void)
 {
 	EPR_SProductId* product = NULL;
 	product = epr_open_product(NULL);
 	return product;
 }
 
-EPR_SProductId* test_epr_open_product_with_missing_file()
+EPR_SProductId* test_epr_open_product_with_missing_file(void)
 {
 	EPR_SProductId* product_id = NULL;
 	product_id = epr_open_product("D:/sdkjhg.db");
 	return product_id;
 }
 
-EPR_SProductId* test_epr_open_product_with_bad_api_init_flag() {
+EPR_SProductId* test_epr_open_product_with_bad_api_init_flag(void) {
 	EPR_SProductId* product_id = NULL;
 	epr_close_api();
 	product_id = epr_open_product("testdata\\MER_RR__2PNMAP20080412_084905_000002422067_00365_31982_0001.N1");
 	return product_id;
 }
 
-EPR_SProductId* test_epr_open_product_OK() {
+EPR_SProductId* test_epr_open_product_OK(void) {
 	EPR_SProductId* product_id = NULL;
 	product_id = epr_open_product("testdata\\MER_RR__2PNMAP20080412_084905_000002422067_00365_31982_0001.N1");
 	return product_id;
@@ -131,7 +131,7 @@ BC_BEGIN_TEST(test_epr_open_product)
 BC_END_TEST()
 
 
-EPR_SDatasetId* test_epr_get_ds_id_without_product_id()
+EPR_SDatasetId* test_epr_get_ds_id_without_product_id(void)
 {
 	EPR_SDatasetId* dataset_id = NULL;
 	dataset_id = epr_get_dataset_id(NULL, "Tie_points_ADS");

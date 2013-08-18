@@ -411,7 +411,7 @@ void epr_free_flag_coding(EPR_SPtrArray* flag_coding)
 }
 
 
-EPR_SFlagDef* epr_create_flag_def()
+EPR_SFlagDef* epr_create_flag_def(void)
 {
     EPR_SFlagDef* flag_def = NULL;
 

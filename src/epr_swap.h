@@ -31,8 +31,8 @@ void byte_swap_long(int *buffer, uint number_of_swaps);
 void byte_swap_uint(uint* buffer, uint number_of_swaps);
 void byte_swap_float(float* buffer, uint number_of_swaps);
 void epr_swap_endian_order(const EPR_SField* field);
-int epr_is_big_endian_order();
-int epr_is_little_endian_order();
+int epr_is_big_endian_order(void);
+int epr_is_little_endian_order(void);
 
 
 #ifdef __cplusplus

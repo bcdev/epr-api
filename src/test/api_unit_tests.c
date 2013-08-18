@@ -100,7 +100,7 @@ struct TestLine {
 
 typedef struct TestLine STestLine;
 
-SFieldAddress* create_field_address();
+SFieldAddress* create_field_address(const char*);
 void free_field_adress(SFieldAddress* fa);
 STestDetail* create_test_detail(const int type);
 void free_test_detail(STestDetail* test_detail);

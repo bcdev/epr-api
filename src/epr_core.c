@@ -244,7 +244,7 @@ void epr_set_err(EPR_EErrCode err_code, const char* err_message)
  * <code>epr_get_last_err_code</code> returns <code>e_err_none</code> or zero and
  * <code>epr_get_last_err_message</code> returns <code>NULL</code>.
  */
-void epr_clear_err()
+void epr_clear_err(void)
 {
     epr_api.last_err_code = e_err_none;
     epr_free_string(epr_api.last_err_message);
@@ -262,7 +262,7 @@ void epr_clear_err()
  *
  * @return the error code, <code>e_err_none</code> or zero if no error occured
  */
-EPR_EErrCode epr_get_last_err_code()
+EPR_EErrCode epr_get_last_err_code(void)
 {
     return epr_api.last_err_code;
 }
@@ -278,7 +278,7 @@ EPR_EErrCode epr_get_last_err_code()
  *
  * @return the error message, <code>NULL</code> if no error occured
  */
-const char* epr_get_last_err_message()
+const char* epr_get_last_err_message(void)
 {
     return epr_api.last_err_message;
 }
@@ -483,7 +483,7 @@ void epr_make_os_compatible_path(char* path)
 }
 
 
-epr_boolean epr_check_api_init_flag() {
+epr_boolean epr_check_api_init_flag(void) {
     if (!epr_api.init_flag) {
         epr_set_err(e_err_api_not_initialized,
                     "epr_open_product: API not initialized (forgot to call epr_init_api?)");

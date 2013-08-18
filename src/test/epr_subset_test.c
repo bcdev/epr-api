@@ -33,12 +33,12 @@ typedef struct Extrema
 EPR_SRaster* make_layer(EPR_SProductId* product_id, const char* ds_name, uint source_w, uint source_h, uint subsampl);
 SExtrema get_raster_minmax(EPR_SRaster* raster);
 
-void printVersion()
+void printVersion(void)
 {
     printf("%s, version %s (c) by Brockmann Consult\n", EPR_RAW_NAME, EPR_RAW_VERSION);
 }
 
-void printUsage()
+void printUsage(void)
 {
     printf("usage: %s <product> <band> [<sub-sampl>]\n", EPR_RAW_NAME);
 }
