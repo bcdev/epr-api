@@ -235,11 +235,11 @@ EPR_SRecord* epr_parse_header(const char* header_name, const char* ascii_source)
         /*if STRING value*/
         if (code_block[pos] == '\"') {
             pos ++;
-			/*
-			  Note that strings always are considered as one single element,
-			  so we get the total number of characters from tot_size.
-			  Addidionally we reserve an extra character for the trailing zero (terminator),
-			*/
+            /*
+              Note that strings always are considered as one single element,
+              so we get the total number of characters from tot_size.
+              Addidionally we reserve an extra character for the trailing zero (terminator),
+            */
             token_value = epr_strip_string_r(epr_str_tok(code_block, "\"", &pos));
             token_unit = NULL;
             tp = e_tid_string;

@@ -180,11 +180,11 @@ EPR_SField* epr_create_field(EPR_SFieldInfo* field_info)
         field->elems = calloc(field_info->tot_size, 1 /*byte*/);
     } else {
         if (field_info->data_type_id == e_tid_string) {
-			/*
-			  Note that string always are considered as one single element,
-			  so we get the total number of characters from tot_size.
-			  Addidionally we reserve an extra character for the trailing zero (terminator),
-			*/
+            /*
+              Note that string always are considered as one single element,
+              so we get the total number of characters from tot_size.
+              Addidionally we reserve an extra character for the trailing zero (terminator),
+            */
             field->elems = calloc(field_info->tot_size + 1, sizeof (char));
         } else {
             field->elems = calloc(field_info->num_elems, data_type_size);
@@ -199,9 +199,9 @@ EPR_SField* epr_create_field(EPR_SFieldInfo* field_info)
     }
 
 /*
-	if (field->info->data_type_id == e_tid_string) {
-		printf("string field: name=%s, num_elems=%d, tot_size=%d\n", field->info->name, field->info->num_elems, field->info->tot_size);
-	}
+    if (field->info->data_type_id == e_tid_string) {
+        printf("string field: name=%s, num_elems=%d, tot_size=%d\n", field->info->name, field->info->num_elems, field->info->tot_size);
+    }
 */
     return field;
 }

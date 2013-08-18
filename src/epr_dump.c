@@ -92,7 +92,7 @@ void epr_print_field(const EPR_SField* field, FILE* ostream)
     fprintf(ostream, "%s = ", field->info->name);
     if (field->info->data_type_id == e_tid_string)
     {
-		fprintf(ostream, "\"%s\"", (const char*) field->elems);
+        fprintf(ostream, "\"%s\"", (const char*) field->elems);
 /*
         fprintf(ostream, "\"");
         for (i = 0; i < field->info->num_elems; i++)
@@ -108,9 +108,9 @@ void epr_print_field(const EPR_SField* field, FILE* ostream)
         fprintf(ostream, "{d=%d, j=%d, m=%d}", time->days, time->seconds, time->microseconds);
     }
     else {
-		if (field->info->num_elems > 1) {
-			fprintf(ostream, "{");
-		}
+        if (field->info->num_elems > 1) {
+            fprintf(ostream, "{");
+        }
         for (i = 0; i < field->info->num_elems; i++)
         {
             if (i > 0)
@@ -145,9 +145,9 @@ void epr_print_field(const EPR_SField* field, FILE* ostream)
                 fprintf(ostream, "<<unknown data type>>");
             }
         }
-		if (field->info->num_elems > 1) {
-	        fprintf(ostream, "}");
-		}
+        if (field->info->num_elems > 1) {
+            fprintf(ostream, "}");
+        }
     }
     fprintf(ostream, "\n");
 }

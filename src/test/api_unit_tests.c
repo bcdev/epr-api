@@ -139,19 +139,19 @@ int main(int argc, char** argv) {
     int i;
 
 #if defined(WIN32) && defined(_DEBUG)
-	/* Aktuelles Attribut ermitteln */
-	int tmpFlag = _CrtSetDbgFlag(_CRTDBG_REPORT_FLAG);
+    /* Aktuelles Attribut ermitteln */
+    int tmpFlag = _CrtSetDbgFlag(_CRTDBG_REPORT_FLAG);
 
-	/* Speicherverlust-Pr�fbit aktivieren */
-	tmpFlag |= _CRTDBG_LEAK_CHECK_DF;
+    /* Speicherverlust-Pr�fbit aktivieren */
+    tmpFlag |= _CRTDBG_LEAK_CHECK_DF;
 
-	/* CRT-Block-Pr�fbit deaktivieren */
-	tmpFlag &= ~_CRTDBG_CHECK_CRT_DF;
+    /* CRT-Block-Pr�fbit deaktivieren */
+    tmpFlag &= ~_CRTDBG_CHECK_CRT_DF;
 
-	/* Attribut auf neuen Wert setzen */
-	_CrtSetDbgFlag(tmpFlag);
+    /* Attribut auf neuen Wert setzen */
+    _CrtSetDbgFlag(tmpFlag);
 
-	/*_CrtSetBreakAlloc(4694);*/
+    /*_CrtSetBreakAlloc(4694);*/
 
 #endif /* if defined(WIN32) && defined(_DEBUG) */
 
@@ -168,7 +168,7 @@ int main(int argc, char** argv) {
 
     /* Closes product reader API, release all allocated resources */
     epr_close_api();
-	return 0;
+    return 0;
 }
 
 
@@ -1052,4 +1052,3 @@ void set_expected_and_actual(const STestDetail* test_detail, char* expected, cha
         sprintf(actual, "%s", test_detail->actual.str);
     }
 }
-

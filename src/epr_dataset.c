@@ -158,7 +158,7 @@ EPR_SPtrArray* epr_create_dataset_ids(EPR_SProductId* product_id)
         return NULL;
     }
 
-	dataset_ids = epr_create_ptr_array(16);
+    dataset_ids = epr_create_ptr_array(16);
     num_descr = p_tables[pt_index].num_descriptors;
     for (i = 0; i < num_descr; i++) {
         for (dsd_index = 0; dsd_index < product_id->dsd_array->length; dsd_index++) {
@@ -174,7 +174,7 @@ EPR_SPtrArray* epr_create_dataset_ids(EPR_SProductId* product_id)
                 break;
             }
         }
-	}
+    }
 
     return dataset_ids;
 }

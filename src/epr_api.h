@@ -64,7 +64,7 @@ enum EPR_DataTypeId
     e_tid_double  = 8,
     /** A zero-terminated ASCII string, C type is <code>char*</code> */
     e_tid_string  = 11,
-	/** An array of unsigned character, C type is <code>uchar*</code> */
+    /** An array of unsigned character, C type is <code>uchar*</code> */
     e_tid_spare  = 13,
     /** A time (MJD) structure, C type is <code>EPR_Time</code> */
     e_tid_time    = 21
@@ -86,8 +86,8 @@ enum EPR_ErrCode
     e_err_illegal_state        =    3,
     e_err_out_of_memory        =    4,
     e_err_index_out_of_range   =    5,
-    e_err_illegal_conversion   =	6,
-    e_err_illegal_data_type	   =	7,
+    e_err_illegal_conversion   =    6,
+    e_err_illegal_data_type    =    7,
 
     /* I/O errors */
     e_err_file_not_found       =  101,
@@ -100,21 +100,21 @@ enum EPR_ErrCode
     /* API related errors */
     e_err_api_not_initialized  =  201,
     e_err_invalid_product_id   =  203,
-    e_err_invalid_record	   =  204,
-    e_err_invalid_band		   =  205,
+    e_err_invalid_record       =  204,
+    e_err_invalid_band         =  205,
     e_err_invalid_raster       =  206,
     e_err_invalid_dataset_name =  207,
     e_err_invalid_field_name   =  208,
-	e_err_invalid_record_name  =  209,
-	e_err_invalid_product_name =  210,
+    e_err_invalid_record_name  =  209,
+    e_err_invalid_product_name =  210,
     e_err_invalid_band_name    =  211,
-	e_err_invalid_data_format  =  212,
-	e_err_invalid_value        =  213,
-	e_err_invalid_keyword_name =  214,
-	e_err_unknown_endian_order =  216,
+    e_err_invalid_data_format  =  212,
+    e_err_invalid_value        =  213,
+    e_err_invalid_keyword_name =  214,
+    e_err_unknown_endian_order =  216,
 
     /* Bitmask term errors */
-	e_err_flag_not_found       =  301,
+    e_err_flag_not_found       =  301,
 
 
     /* DDDB errors */
@@ -173,7 +173,7 @@ typedef enum   EPR_SampleModel     EPR_ESampleModel;
 typedef enum   EPR_ScalingMethod   EPR_EScalingMethod;
 typedef struct EPR_ProductId       EPR_SProductId;
 typedef struct EPR_DatasetId       EPR_SDatasetId;
-typedef struct EPR_BandId		   EPR_SBandId;
+typedef struct EPR_BandId          EPR_SBandId;
 typedef struct EPR_Record          EPR_SRecord;
 typedef struct EPR_RecordInfo      EPR_SRecordInfo;
 typedef struct EPR_Field           EPR_SField;
@@ -181,7 +181,7 @@ typedef struct EPR_FieldInfo       EPR_SFieldInfo;
 typedef struct EPR_DSD             EPR_SDSD;
 typedef struct EPR_Raster          EPR_SRaster;
 typedef struct EPR_FlagDef         EPR_SFlagDef;
-typedef struct EPR_ParamElem	   EPR_SParamElem;
+typedef struct EPR_ParamElem       EPR_SParamElem;
 typedef struct EPR_Time            EPR_STime;
 typedef struct EPR_DatasetRef      EPR_SDatasetRef;
 typedef struct EPR_BitmaskTerm     EPR_SBitmaskTerm;
@@ -313,10 +313,10 @@ struct EPR_ProductId
      */
     EPR_SPtrArray* band_ids;
 
-	/**
+    /**
      * For MERIS L1b and RR and FR to provide backward compatibility
      */
-	int meris_iodd_version;
+    int meris_iodd_version;
 };
 
 
@@ -365,7 +365,7 @@ struct EPR_DatasetId
     /**
      * The record descriptor found in the DDDB for this dataset.
      */
-	const struct RecordDescriptor* record_descriptor;
+    const struct RecordDescriptor* record_descriptor;
 
     /**
      * The record info which describes a record of this dataset.

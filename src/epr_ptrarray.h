@@ -31,7 +31,7 @@ extern "C"
  */
 struct EPR_PtrArray
 {
-	/** The current capacity */
+    /** The current capacity */
     unsigned int capacity;
     /** The current length */
     unsigned int length;

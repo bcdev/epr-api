@@ -173,7 +173,7 @@ EPR_SRecordInfo* epr_get_record_info(EPR_SDatasetId* dataset_id)
             return record_info;
     }
 
-	record_info = epr_read_record_info(product_id, dataset_id);
+    record_info = epr_read_record_info(product_id, dataset_id);
     if (record_info == NULL) {
         epr_set_err(e_err_file_access_denied,
                    "epr_get_record_info: invalid DDDB resource path: missing any 'ASAR' files");
@@ -200,11 +200,11 @@ EPR_SRecordInfo* epr_read_record_info(EPR_SProductId* product_id, EPR_SDatasetId
     char* data_type = NULL;
     char* unit = NULL;
     char* description = NULL;
-	int i;
+    int i;
     int rt_index;
     const struct RecordDescriptorTable* r_tables;
     int num_descr;
-	int num_r_tables;
+    int num_r_tables;
 
     if (product_id == NULL) {
         epr_set_err(e_err_null_pointer,
@@ -212,25 +212,25 @@ EPR_SRecordInfo* epr_read_record_info(EPR_SProductId* product_id, EPR_SDatasetId
         return NULL;
     }
 
-	/* @DDDB */
+    /* @DDDB */
 
     if (strncmp(product_id->id_string, "MER", 3) == 0) {
-		r_tables = dddb_meris_rec_tables;
-		num_r_tables = EPR_NUM_MERIS_REC_TABLES;
-	} else if (strncmp(product_id->id_string, "ATS", 3) == 0) {
-		r_tables = dddb_aatsr_rec_tables;
-		num_r_tables = EPR_NUM_AATSR_REC_TABLES;
-	} else if (strncmp(product_id->id_string, "ASA", 3) == 0) {
+        r_tables = dddb_meris_rec_tables;
+        num_r_tables = EPR_NUM_MERIS_REC_TABLES;
+    } else if (strncmp(product_id->id_string, "ATS", 3) == 0) {
+        r_tables = dddb_aatsr_rec_tables;
+        num_r_tables = EPR_NUM_AATSR_REC_TABLES;
+    } else if (strncmp(product_id->id_string, "ASA", 3) == 0) {
             r_tables = dddb_asar_rec_tables;
             num_r_tables = EPR_NUM_ASAR_REC_TABLES;
-	} else if (strncmp(product_id->id_string, "SAR", 3) == 0) {
-		r_tables = dddb_asar_rec_tables;
-		num_r_tables = EPR_NUM_ASAR_REC_TABLES;
-	} else {
+    } else if (strncmp(product_id->id_string, "SAR", 3) == 0) {
+        r_tables = dddb_asar_rec_tables;
+        num_r_tables = EPR_NUM_ASAR_REC_TABLES;
+    } else {
         epr_set_err(e_err_invalid_product_id,
                     "epr_read_record_info: invalid product identifier");
         return NULL;
-	}
+    }
 
     rt_index = -1;
     for (i = 0; i < num_r_tables; i++) {
@@ -249,21 +249,21 @@ EPR_SRecordInfo* epr_read_record_info(EPR_SProductId* product_id, EPR_SDatasetId
     num_descr = r_tables[rt_index].num_descriptors;
     for (i = 0; i < num_descr; i++) {
         /* 1: field_name */
-		field_name = epr_clone_string(r_tables[rt_index].descriptors[i].id);
+        field_name = epr_clone_string(r_tables[rt_index].descriptors[i].id);
         /* 2: data_type_id */
-		data_type_id = r_tables[rt_index].descriptors[i].type;
+        data_type_id = r_tables[rt_index].descriptors[i].type;
         /* 3: unit */
-		unit = epr_clone_string(r_tables[rt_index].descriptors[i].unit);
+        unit = epr_clone_string(r_tables[rt_index].descriptors[i].unit);
         /* 4: num_elems */
-		num_bytes = r_tables[rt_index].descriptors[i].elem_size;
+        num_bytes = r_tables[rt_index].descriptors[i].elem_size;
         /* 5: num_elems and more_count*/
         /* @todo: check return value! and check epr_parse_value_count */
-		num_elems = epr_parse_value_count(product_id, r_tables[rt_index].descriptors[i].num_elem);
-		more_count = 1;
+        num_elems = epr_parse_value_count(product_id, r_tables[rt_index].descriptors[i].num_elem);
+        more_count = 1;
         /* 6: description*/
-		description = epr_clone_string(r_tables[rt_index].descriptors[i].description);
+        description = epr_clone_string(r_tables[rt_index].descriptors[i].description);
 
-		field_info = epr_create_field_info(data_type_id, description, field_name, num_elems, num_bytes, more_count, unit);
+        field_info = epr_create_field_info(data_type_id, description, field_name, num_elems, num_bytes, more_count, unit);
         epr_add_ptr_array_elem(field_infos, field_info);
 
         epr_free_string(field_name);

@@ -306,8 +306,8 @@ void epr_set_err_handler(EPR_FErrHandler err_handler)
 FILE* epr_open_file(char* file_path)
 {
     FILE* db_file;
-	epr_log(e_log_debug, "about to open file: ");
-	epr_log(e_log_debug, file_path);
+    epr_log(e_log_debug, "about to open file: ");
+    epr_log(e_log_debug, file_path);
 
     db_file = fopen(epr_trim_string(file_path), "rb");
     if (db_file == NULL)
@@ -470,9 +470,9 @@ void epr_make_os_compatible_path(char* path)
 
 #elif _M_MPPC
             if (*pc == '/')
-                *pc = ':';	/* UK note: the colon is an old-style path separator of the Mac OS */
-							/* possibly not used any more but supported for Classic compatibility */
-							/* @to do: check whether the forward slash / should be used in Mac OS X */
+                *pc = ':';  /* UK note: the colon is an old-style path separator of the Mac OS */
+                            /* possibly not used any more but supported for Classic compatibility */
+                            /* @to do: check whether the forward slash / should be used in Mac OS X */
 #else
             if (*pc == '\\')
                 *pc = '/';
