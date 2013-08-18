@@ -134,7 +134,7 @@ const char* epr_data_type_id_to_str(EPR_EDataTypeId data_type_id)
 
 /*
    Function:    epr_get_data_type_size
-   Access:      private API implementation helper
+   Access:      public API implementation helper
    Changelog:   2002/01/24  nf initial version
  */
 /**
@@ -236,7 +236,7 @@ void epr_set_err(EPR_EErrCode err_code, const char* err_message)
 
 /*
    Function:    epr_set_error
-   Access:      private API implementation helper
+   Access:      public API implementation helper
    Changelog:   2002/01/05  mp initial version
  */
 /**
@@ -253,7 +253,7 @@ void epr_clear_err(void)
 
 /*
    Function:    epr_get_last_err_code
-   Access:      private API implementation helper
+   Access:      public API implementation helper
    Changelog:   2002/01/05  nf initial version
  */
 /**
@@ -269,7 +269,7 @@ EPR_EErrCode epr_get_last_err_code(void)
 
 /*
    Function:    epr_get_last_err_message
-   Access:      private API implementation helper
+   Access:      public API implementation helper
    Changelog:   2002/01/05  nf initial version
  */
 /**
