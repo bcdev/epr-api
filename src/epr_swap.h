@@ -21,7 +21,7 @@
 #include <stdio.h> /* just to get the ANSI-C type FILE */
 
 #ifdef __cplusplus
-extern "C" 
+extern "C"
 {
 #endif
 

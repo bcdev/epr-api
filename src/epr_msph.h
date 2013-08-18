@@ -19,7 +19,7 @@
 #define EPR_MSPH_H_INCL
 
 #ifdef __cplusplus
-extern "C" 
+extern "C"
 {
 #endif
 

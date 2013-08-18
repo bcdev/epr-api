@@ -4,7 +4,7 @@
  * Generates bit mask from ENVISAT flags information as "raw" image for (e.g.) Photoshop
  *
  * Call: write_bitmask <envisat-product> <bitmask-expression> <output-file>
- *					
+ *
  * Example to call the main function.
  * "./MER_RR__2P_TEST.N1" "l2_flags.LAND and !l2_flags.BRIGHT" "./my_flags.raw"
  *
@@ -13,13 +13,13 @@
 #include <string.h>
 #include <stdio.h>
 
-int main(int argc, char* argv[]) 
+int main(int argc, char* argv[])
 {
     EPR_SProductId* product_id;
 	EPR_SRaster*  bm_raster;
 	uint offset_x;
 	uint offset_y;
-	uint source_width; 
+	uint source_width;
 	uint source_height;
 	uint source_step_x;
 	uint source_step_y;
@@ -38,7 +38,7 @@ int main(int argc, char* argv[])
 		printf("Example: \"./MER_RR__2P_TEST.N1\" \"l2_flags.LAND and !l2_flags.BRIGHT\" \"./my_flags.raw\"\n\n");
         exit(1);
 	}
-	
+
 	product_file_path = argv[1];
 	bm_expr = argv[2];
     image_file_path = argv[3];
@@ -54,15 +54,15 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-	offset_x = 0; 
+	offset_x = 0;
 	offset_y = 0;
 	source_width  = epr_get_scene_width(product_id);
 	source_height = epr_get_scene_height(product_id);
 	source_step_x = 1;
 	source_step_y = 1;
 
-	bm_raster = epr_create_raster(e_tid_uchar, source_width, source_height, source_step_x, source_step_y); 
-	
+	bm_raster = epr_create_raster(e_tid_uchar, source_width, source_height, source_step_x, source_step_y);
+
     status = epr_read_bitmask_raster(product_id, bm_expr, offset_x, offset_y, bm_raster);
     if (status != 0) {
         printf("Error: %s\n", epr_get_last_err_message());
@@ -75,9 +75,9 @@ int main(int argc, char* argv[])
         return 1;
     }
 	for (i = 0; i < (uint)bm_raster->raster_height; i ++) {
-		numwritten = fwrite(((uchar*) bm_raster->buffer) + bm_raster->raster_width * i, 
-			                 sizeof (uchar), 
-                             bm_raster->raster_width, 
+		numwritten = fwrite(((uchar*) bm_raster->buffer) + bm_raster->raster_width * i,
+			                 sizeof (uchar),
+                             bm_raster->raster_width,
                              out_stream);
 
 		if (numwritten != bm_raster->raster_width) {
@@ -85,7 +85,7 @@ int main(int argc, char* argv[])
         	fclose(out_stream);
             return 2;
 		}
-	} 
+	}
 	fclose(out_stream);
 
     printf("Raw image data successfully written to '%s'.\n", image_file_path);

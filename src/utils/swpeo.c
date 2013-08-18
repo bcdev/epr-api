@@ -42,7 +42,7 @@ int main(int argc, char** argv) {
 	}
 
     for (i = 2; i < argc; i++) {
-	
+
         filePath = argv[i];
 
 
@@ -54,13 +54,13 @@ int main(int argc, char** argv) {
 
 	    fileSize = fseek(file, 0, SEEK_END);
 	    fileSize = ftell(file);
-	    
+
 	    modulo = fileSize % elemSize;
 	    if (modulo != 0) {
             sprintf(message, "file '%s': file size (%d) modulo element size (%d) should be zero, but was %d", filePath, fileSize, elemSize, modulo);
             error(FILESIZE_ERROR, message);
 	    }
-	    
+
 	    swapStatus = swapBytes(file, fileSize, elemSize);
         if (swapStatus != 0) {
             sprintf(message, "file '%s': I/O error", filePath);
@@ -125,7 +125,7 @@ int swapBytes(FILE *file, int fileSize, int elemSize) {
 			return WRITE_ERROR;
 		}
 		fflush(file);
-		
+
 		pos += elemSize;
 	}
 	return 0;

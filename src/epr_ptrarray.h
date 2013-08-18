@@ -19,7 +19,7 @@
 #define EPR_PTRARRAY_H_INCL
 
 #ifdef __cplusplus
-extern "C" 
+extern "C"
 {
 #endif
 
@@ -56,7 +56,7 @@ EPR_SPtrArray* epr_create_ptr_array(unsigned int capacity);
  *
  * <p> After calling this function the give record pointer array gets
  * invalid and should not be used anymore.
- * 
+ *
  * @param ptr_array the pointer array to be released, if <code>NULL</code>
  *        the function immediately returns
  */
@@ -67,7 +67,7 @@ void epr_free_ptr_array(EPR_SPtrArray* ptr_array);
  * Special application of the <code>epr_free_ptr_array</code> for
  * arrays that contain dynamically allocated strings (type <code>char*</code>).
  *
- * <p>For each element in the given array the <code>epr_free_string</code> 
+ * <p>For each element in the given array the <code>epr_free_string</code>
  * function is called.
  *
  * @param char_ptr_array an array containing strings
