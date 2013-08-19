@@ -189,7 +189,7 @@ epr_boolean epr_eval_bm_term(EPR_SBmEvalContext* context, EPR_SBmTerm* term, int
                 epr_resolve_bm_ref(context, term);
                 flag_raster = term->op.ref.flag_raster;
                 flag_mask = term->op.ref.flag_mask;
-                if (flag_raster == NULL) {
+                if ((flag_raster == NULL) || (flag_mask == FLAG_MASK_NOT_COMPUTED)) {
                     return FALSE;
                 }
             }
