@@ -21,13 +21,45 @@ set(SOURCES epr_api.c
             epr_typconv.c
 )
 
+if(NOT DISABLE_SYMBOL_CONTROL)
+    #if(CMAKE_C_COMPILER_ID STREQUAL GNU)
+    if(NOT APPLE AND NOT MSVC)
+        # Assume to work with the GNU linker
+        # On some GNU/Linux distribution it is possible to use both GCC and
+        # Clang as compilers
+        set(SYMBOL_LIST ${CMAKE_CURRENT_SOURCE_DIR}/epr_api.ver)
+        set(CMAKE_SHARED_LINKER_FLAGS
+            "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--version-script=${SYMBOL_LIST}")
+    endif(NOT APPLE AND NOT MSVC)
+
+    if(APPLE)
+        set(SYMBOL_LIST ${CMAKE_CURRENT_SOURCE_DIR}/epr_api.exported)
+        set(CMAKE_SHARED_LINKER_FLAGS
+            "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-exported_symbols_list,${SYMBOL_LIST}")
+    endif(APPLE)
+
+    #if(MSVC)
+    #    set(SYMBOL_LIST ${CMAKE_CURRENT_SOURCE_DIR}/epr_api.def)
+    #    set(CMAKE_SHARED_LINKER_FLAGS
+    #        ${CMAKE_SHARED_LINKER_FLAGS} /DEF:${SYMBOL_LIST})
+    #endif(MSVC)
+endif(NOT DISABLE_SYMBOL_CONTROL)
+
+if(CMAKE_C_COMPILER_ID STREQUAL GNU OR CMAKE_C_COMPILER_ID STREQUAL Clang)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -std=c89")
+endif(CMAKE_C_COMPILER_ID STREQUAL GNU OR CMAKE_C_COMPILER_ID STREQUAL Clang)
 
 # targets
 add_library(epr_api SHARED ${SOURCES})
+set_target_properties(epr_api PROPERTIES
+    VERSION ${EPR_API_VERSION_STRING}
+    SOVERSION ${EPR_API_VERSION_MAJOR})
+target_link_libraries(epr_api m)
+
 
 if(BUILD_STATIC_LIB)
     add_library(epr_api_static STATIC ${SOURCES})
-	set_target_properties(epr_api_static PROPERTIES OUTPUT_NAME epr_api)
+    set_target_properties(epr_api_static PROPERTIES OUTPUT_NAME epr_api)
 endif(BUILD_STATIC_LIB)
 
 
@@ -39,6 +71,8 @@ endif(BUILD_TESTS)
 
 
 # install
-install(TARGETS epr_api epr_api_static
-        LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
-install(FILES epr_api.h epr_ptrarray.h DESTINATION include)
+install(FILES epr_api.h epr_ptrarray.h DESTINATION include COMPONENT lib)
+install(TARGETS epr_api LIBRARY DESTINATION lib COMPONENT dev)
+if(BUILD_STATIC_LIB)
+    install(TARGETS epr_api_static ARCHIVE DESTINATION lib COMPONENT dev)
+endif(BUILD_STATIC_LIB)

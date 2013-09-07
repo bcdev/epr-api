@@ -4592,7 +4592,7 @@ const struct DatasetDescriptorTable dddb_product_tables[64] = {
     {"ASA_APS_1P", "ASAR Alternating Polarization Mode Single Look Complex", 8, ASA_APS_1P_dataset_data},
     {"ASA_APS_1P_602", "ASAR Alternating Polarization Mode Single Look Complex", 8, ASA_APS_1P_602_dataset_data},
     {"ASA_AP__BP", "ASAR Alternating Polarization Browse Product", 5, ASA_AP__BP_dataset_data},
-	{"ASA_GM1_1P", "ASAR Global Monitoring Mode Image", 8, ASA_GM1_1P_dataset_data},
+    {"ASA_GM1_1P", "ASAR Global Monitoring Mode Image", 8, ASA_GM1_1P_dataset_data},
     {"ASA_GM1_1P_602", "ASAR Global Monitoring Mode Image", 8, ASA_GM1_1P_602_dataset_data},
     {"ASA_IMG_1P", "ASAR Image Mode Ellipsoid Geocoded Image", 9, ASA_IMG_1P_dataset_data},
     {"ASA_IMG_1P_602", "ASAR Image Mode Ellipsoid Geocoded Image", 9, ASA_IMG_1P_602_dataset_data},
@@ -4602,28 +4602,28 @@ const struct DatasetDescriptorTable dddb_product_tables[64] = {
     {"ASA_IMP_1P_602", "ASAR Image Mode Precision Image", 8, ASA_IMP_1P_602_dataset_data},
     {"ASA_IMS_1P", "ASAR Image Mode Single Look Complex", 6, ASA_IMS_1P_dataset_data},
     {"ASA_IMS_1P_602", "ASAR Image Mode Single Look Complex", 6, ASA_IMS_1P_602_dataset_data},
-	{"ASA_IM__BP", "ASAR Image Mode Browse Product", 3, ASA_IM__BP_dataset_data},
+    {"ASA_IM__BP", "ASAR Image Mode Browse Product", 3, ASA_IM__BP_dataset_data},
     {"ASA_WSM_1P", "ASAR Wide Swath Medium Resolution Image", 8, ASA_WSM_1P_dataset_data},
     {"ASA_WSM_1P_602", "ASAR Wide Swath Medium Resolution Image", 8, ASA_WSM_1P_602_dataset_data},
     {"ASA_WS__BP", "ASAR Wide Swath Mode Browse Image", 5, ASA_WS__BP_dataset_data},
     {"ASA_WVI_1P", "ASAR Wave Mode SLC Imagette and Imagette Cross Spectra", 405, ASA_WVI_1P_dataset_data},
     {"ASA_WVS_1P", "ASAR Wave Mode Imagette Cross Spectra", 4, ASA_WVS_1P_dataset_data},
-	{"ASA_WVW_2P", "ASAR Wave Mode Wave Spectra", 4, ASA_WVW_2P_dataset_data},
+    {"ASA_WVW_2P", "ASAR Wave Mode Wave Spectra", 4, ASA_WVW_2P_dataset_data},
     {"ATS_AR__2P", "AATSR averaged geophysical product", 16, ATS_AR__2P_dataset_data},
     {"ATS_MET_2P", "AATSR Spatially Averaged Sea Surface Temperature for Meteo Users", 1, ATS_MET_2P_dataset_data},
     {"ATS_NR__2P", "AATSR geophysical product (full resolution)", 8, ATS_NR__2P_dataset_data},
     {"ATS_TOA_1P", "AATSR Gridded brightness temperature and reflectance", 26, ATS_TOA_1P_dataset_data},
-	{"MER_FR__1P", "MERIS Full Resolution Geolocated and Calibrated TOA Radiance", 19, MER_FR__1P_dataset_data},
+    {"MER_FR__1P", "MERIS Full Resolution Geolocated and Calibrated TOA Radiance", 19, MER_FR__1P_dataset_data},
     {"MER_FRS_1P", "MERIS Full Resolution Full Swath Geolocated and Calibrated TOA Radiance", 19, MER_FR__1P_dataset_data},
     {"MER_FR__1P_IODD5", "MERIS Full Resolution Geolocated and Calibrated TOA Radiance", 19, MER_FR__1P_IODD5_dataset_data},
     {"MER_FR__2P", "MERIS Full Resolution Geophysical Product", 23, MER_FR__2P_dataset_data},
     {"MER_FRS_2P", "MERIS Full Resolution Full Swath Geophysical Product", 23, MER_FR__2P_dataset_data},
-	{"MER_FR__2P_IODD6", "MERIS Full Resolution Geophysical Product", 23, MER_FR__2P_IODD6_dataset_data},
+    {"MER_FR__2P_IODD6", "MERIS Full Resolution Geophysical Product", 23, MER_FR__2P_IODD6_dataset_data},
     {"MER_LRC_2P", "MERIS Extracted Cloud Thickness and Water Vapour for Meteo Users", 7, MER_LRC_2P_dataset_data},
     {"MER_RRC_2P", "MERIS Extracted Cloud Thickness and Water Vapour", 7, MER_RRC_2P_dataset_data},
     {"MER_RRV_2P", "MERIS Extracted Vegetation Indices", 6, MER_RRV_2P_dataset_data},
     {"MER_RR__1P", "MERIS Reduced Resolution Geolocated and Calibrated TOA Radiance", 19, MER_RR__1P_dataset_data},
-	{"MER_RR__1P_IODD5", "MERIS Reduced Resolution Geolocated and Calibrated TOA Radiance", 19, MER_RR__1P_IODD5_dataset_data},
+    {"MER_RR__1P_IODD5", "MERIS Reduced Resolution Geolocated and Calibrated TOA Radiance", 19, MER_RR__1P_IODD5_dataset_data},
     {"MER_RR__2P", "MERIS Reduced Resolution Geophysical Product", 23, MER_RR__2P_dataset_data},
     {"MER_RR__2P_IODD6", "MERIS Reduced Resolution Geophysical Product", 23, MER_RR__2P_IODD6_dataset_data},
     {"SAR_APG_1P", "ERS Simulated Alternating Polarization Ellipsoid Geocoded Image", 11, ASA_APG_1P_dataset_data},
@@ -4747,7 +4747,7 @@ const struct RecordDescriptorTable dddb_aatsr_rec_tables[20] = {
     {"ATS_VC1_AX_GADS", "Visible calibration coefficients GADS", 32, ATS_VC1_AX_GADS_aatsr_rec_data}
 };
 
-const struct RecordDescriptorTable dddb_asar_rec_tables[20] = {
+const struct RecordDescriptorTable dddb_asar_rec_tables[22] = {
     {"ASAR_Antenna_ADSR", "Antenna Elevation patterns(s)", 7, ASAR_Antenna_ADSR_asar_rec_data},
     {"ASAR_Chirp_ADSR", "chirp parameters", 140, ASAR_Chirp_ADSR_asar_rec_data},
     {"ASAR_Dop_Cen_ADSR", "Doppler Centroid Parameters", 7, ASAR_Dop_Cen_ADSR_asar_rec_data},
@@ -4771,4 +4771,3 @@ const struct RecordDescriptorTable dddb_asar_rec_tables[20] = {
     {"ASA_XCA_AX_GADS", "Contains ASAR external calibration data", 31, ASA_XCA_AX_GADS_asar_rec_data},
     {"ASA_XCH_AX_GADS", "Contains ASAR external characterization data", 5, ASA_XCH_AX_GADS_asar_rec_data}
 };
-

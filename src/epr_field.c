@@ -52,7 +52,7 @@
 EPR_SFieldInfo* epr_create_field_info(EPR_EDataTypeId data_type_id, char* description, char* field_name, uint num_elems, uint num_bytes, uint more_count, char* unit)
 {
     EPR_SFieldInfo* field_info = NULL;
-    uint data_type_size;
+    /* uint data_type_size; */
 
     field_info = (EPR_SFieldInfo*) calloc(1, sizeof (EPR_SFieldInfo));
     if (field_info == NULL)
@@ -82,7 +82,7 @@ EPR_SFieldInfo* epr_create_field_info(EPR_EDataTypeId data_type_id, char* descri
     } else
         epr_assign_string(&field_info->unit, unit);
 
-    data_type_size = epr_get_data_type_size(data_type_id);
+    /* data_type_size = epr_get_data_type_size(data_type_id); */
 
     field_info->num_elems = num_elems;
 
@@ -180,11 +180,11 @@ EPR_SField* epr_create_field(EPR_SFieldInfo* field_info)
         field->elems = calloc(field_info->tot_size, 1 /*byte*/);
     } else {
         if (field_info->data_type_id == e_tid_string) {
-			/*
-			  Note that string always are considered as one single element,
-			  so we get the total number of characters from tot_size.
-			  Addidionally we reserve an extra character for the trailing zero (terminator),
-			*/
+            /*
+              Note that string always are considered as one single element,
+              so we get the total number of characters from tot_size.
+              Addidionally we reserve an extra character for the trailing zero (terminator),
+            */
             field->elems = calloc(field_info->tot_size + 1, sizeof (char));
         } else {
             field->elems = calloc(field_info->num_elems, data_type_size);
@@ -199,9 +199,9 @@ EPR_SField* epr_create_field(EPR_SFieldInfo* field_info)
     }
 
 /*
-	if (field->info->data_type_id == e_tid_string) {
-		printf("string field: name=%s, num_elems=%d, tot_size=%d\n", field->info->name, field->info->num_elems, field->info->tot_size);
-	}
+    if (field->info->data_type_id == e_tid_string) {
+        printf("string field: name=%s, num_elems=%d, tot_size=%d\n", field->info->name, field->info->num_elems, field->info->tot_size);
+    }
 */
     return field;
 }

@@ -35,7 +35,7 @@
 /*********************************** API ***********************************/
 
 /**
- * Initializes the ENVISAT product reader API. 
+ * Initializes the ENVISAT product reader API.
  */
 int epr_init_api(EPR_ELogLevel   log_level,
                  EPR_FLogHandler log_handler,
@@ -53,7 +53,7 @@ int epr_init_api(EPR_ELogLevel   log_level,
     } else if (epr_is_big_endian_order()) {
         epr_api.little_endian_order = FALSE;
     } else {
-        epr_set_err(e_err_unknown_endian_order, 
+        epr_set_err(e_err_unknown_endian_order,
                     "epr_init_api: failed to determine endian order");
         return epr_get_last_err_code();
     }
@@ -87,7 +87,7 @@ int epr_init_api(EPR_ELogLevel   log_level,
  * Closes the ENVISAT product reader API by releasing all
  * resources allocated by the API.
  */
-void epr_close_api()
+void epr_close_api(void)
 {
     epr_clear_err();
 
@@ -110,7 +110,6 @@ void epr_close_api()
  *
  * @param log_handler the new log handler (function pointer),
  *         can be NULL, if logging shall be disabled
- * @return zero for success, an error code otherwise
  */
 void epr_set_log_handler(EPR_FLogHandler log_handler)
 {
@@ -118,16 +117,40 @@ void epr_set_log_handler(EPR_FLogHandler log_handler)
 }
 
 
+/**
+ * Sets the log level for the ENVISAT API. All logging
+ * messages with a log level lower than the given one, will
+ * be supressed, thus the log handler will not be called
+ * for such messages.
+ *
+ * @param log_level the new log level. All logging messages with a log level lower
+ *        than the given one, will be supressed
+ * @return zero for success, an error code otherwise
+ */
+int epr_set_log_level(EPR_ELogLevel log_level)
+{
+    if ((log_level < e_log_debug) || (log_level > e_log_error)) {
+        epr_set_err(e_err_invalid_value,
+                    "epr_set_log_level: invalid log level");
+        return epr_get_last_err_code();
+    }
+
+    epr_api.log_level = log_level;
+
+    return e_err_none;
+}
+
+
 void epr_log_message(EPR_ELogLevel log_level, const char* log_message)
 {
     struct tm* ptm;
     time_t millis;
-    
+
     time(&millis);
     ptm = gmtime(&millis);
 
-    fprintf(stdout, 
-            "%c %04d/%02d/%02d %02d:%02d:%02d - %s\n", 
+    fprintf(stdout,
+            "%c %04d/%02d/%02d %02d:%02d:%02d - %s\n",
             log_level == e_log_debug   ? 'D' :
             log_level == e_log_info    ? 'I' :
             log_level == e_log_warning ? 'W' :

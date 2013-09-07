@@ -80,14 +80,14 @@ extern const struct BandDescriptorTable dddb_band_tables[37];
 extern const struct FlagDescriptorTable dddb_flag_coding_tables[6];
 extern const struct RecordDescriptorTable dddb_meris_rec_tables[23];
 extern const struct RecordDescriptorTable dddb_aatsr_rec_tables[20];
-extern const struct RecordDescriptorTable dddb_asar_rec_tables[20];
+extern const struct RecordDescriptorTable dddb_asar_rec_tables[22];
 
-#define EPR_NUM_PRODUCT_TABLES         66
+#define EPR_NUM_PRODUCT_TABLES         64
 #define EPR_NUM_BAND_TABLES            37
 #define EPR_NUM_FLAG_CODING_TABLES     6
 #define EPR_NUM_MERIS_REC_TABLES       23
 #define EPR_NUM_AATSR_REC_TABLES       20
-#define EPR_NUM_ASAR_REC_TABLES        20
+#define EPR_NUM_ASAR_REC_TABLES        22
 
 
 

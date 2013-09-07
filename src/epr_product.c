@@ -178,6 +178,10 @@ EPR_SProductId* epr_open_product(const char* product_file_path) {
     epr_log(e_log_info, "reading SPH");
     product_id->sph_record = epr_read_sph(product_id);
     s_par = epr_set_dyn_dddb_params(product_id);
+    if(s_par != 1) {
+        epr_close_product(product_id);
+        return NULL;
+    }
 
     epr_log(e_log_info, "reading all DSDs");
     product_id->dsd_array = epr_read_all_dsds(product_id);

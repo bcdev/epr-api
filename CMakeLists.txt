@@ -9,12 +9,18 @@ project(epr-api)
 set(EPR_API_VERSION_MAJOR 2)
 set(EPR_API_VERSION_MINOR 3)
 set(EPR_API_VERSION_PATCH 0)
+set(EPR_API_VERSION_STRING
+    "${EPR_API_VERSION_MAJOR}.${EPR_API_VERSION_MINOR}.${EPR_API_VERSION_PATCH}")
 
 
 # options
-option(BUILD_STATIC_LIB "build the static version of the library" YES)
+option(BUILD_STATIC_LIB "build the static version of the library" ON)
 option(BUILD_TESTS "build test programs" OFF)
 option(BUILD_DOCS "build Doxygen documentation" OFF)
+option(DISABLE_SYMBOL_CONTROL
+    "Do not try to control symbols that are exported by the dynamic library.
+This option can be used to fix some build issue with non standard linkers."
+    OFF)
 
 
 # testing
