@@ -1615,7 +1615,7 @@ static const struct RecordDescriptor ASAR_Wave_Geolocation_ADSR_asar_rec_data[] 
     {"attach_flag", e_tid_uchar, "flag", 1, "1", "Attachment Flag (set to 1 if unable to compute the cross spectra for a given SLC imagette (i.e. no Cross Spectra MDSR corresponding to this ADSR), set to 0 otherwise)"},
     {"center_lat", e_tid_int, "(1e-6) degrees", 4, "1", "Geodetic latitude of center point (positive north) This is the center point of the wave cell. It is calculated after the cross spectra processing, and thus may differ from the center sample latitude of the SLC imagette if slant range to ground range conve"},
     {"center_long", e_tid_int, "(1e-6) degrees", 4, "1", "Geodetic longitude of center point (positive east)This is the center point of the wave cell. It is calculated after the cross spectra processing, and thus may differ from the center sample latitude of the SLC imagette if slant range to ground range conver"},
-    {"spare_1", e_tid_spare, NULL, 4, "1", "Spare"}
+    {"heading", e_tid_float, "deg", 4, "1", "Subsatellite Track Heading. Relative to North of centre point."}
 };
 
 static const struct RecordDescriptor ASAR_Wave_Param_ADSR_asar_rec_data[] = {
@@ -3192,7 +3192,7 @@ static const struct DatasetDescriptor ASA_WVI_1P_dataset_data[] = {
     {"GEOLOCATION_ADS", "GEOLOCATION ADS", ASAR_Wave_Geolocation_ADSR_asar_rec_data, "Wave Mode Geolocation ADS"},
     {"PROCESSING_PARAMS_ADS", "PROCESSING PARAMS ADS", ASAR_Wave_Param_ADSR_asar_rec_data, "Wave Mode processing parameters"},
     {"CROSS_SPECTRA_MDS", "CROSS SPECTRA MDS", ASAR_Spectra_MDSR_asar_rec_data, "Measurement Data Set containing spectra. 1 MDSR per spectra."},
-    {"SLC_IMAGETTE_MDS", "SLC IMAGETTE MDS", ASAR_Image_MDSR_SLC_asar_rec_data, "Measurement Data Set for a single imagette (corresponds to one spectrum MDSR)"},
+    {"SLC_IMAGETTE_MDS_000", "SLC IMAGETTE MDS 000", ASAR_Image_MDSR_SLC_asar_rec_data, "Measurement Data Set for a single imagette (corresponds to one spectrum MDSR)"},
     {"SLC_IMAGETTE_MDS_001", "SLC IMAGETTE MDS 001", ASAR_Image_MDSR_SLC_asar_rec_data, "Measurement Data Set for a single imagette (corresponds to one spectrum MDSR)"},
     {"SLC_IMAGETTE_MDS_002", "SLC IMAGETTE MDS 002", ASAR_Image_MDSR_SLC_asar_rec_data, "Measurement Data Set for a single imagette (corresponds to one spectrum MDSR)"},
     {"SLC_IMAGETTE_MDS_003", "SLC IMAGETTE MDS 003", ASAR_Image_MDSR_SLC_asar_rec_data, "Measurement Data Set for a single imagette (corresponds to one spectrum MDSR)"},
