@@ -208,16 +208,14 @@ EPR_SProductId* epr_open_product(const char* product_file_path) {
 
     epr_log(e_log_info, "creating band identifiers");
     product_id->band_ids = epr_create_band_ids(product_id);
-    if (product_id->band_ids == NULL) {
-        epr_close_product(product_id);
-        return NULL;
-    }
 
     /* Get scene size */
-    product_id->scene_width = epr_compute_scene_width(product_id);
-    product_id->scene_height = epr_compute_scene_height(product_id);
-    sprintf(message_buffer, "product scene raster size: %u x %u", product_id->scene_width, product_id->scene_height);
-    epr_log(e_log_debug, message_buffer);
+    if (product_id->band_ids != NULL) {
+        product_id->scene_width = epr_compute_scene_width(product_id);
+        product_id->scene_height = epr_compute_scene_height(product_id);
+        sprintf(message_buffer, "product scene raster size: %u x %u", product_id->scene_width, product_id->scene_height);
+        epr_log(e_log_debug, message_buffer);
+    }
 
     return product_id;
 }
