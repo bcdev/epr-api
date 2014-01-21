@@ -173,49 +173,49 @@ int epr_read_bitmask_raster(EPR_SProductId* product_id,
  */
 epr_boolean epr_eval_bm_term(EPR_SBmEvalContext* context, EPR_SBmTerm* term, int x, int y) {
 
-	uint	temp;
-	uint	eval;
+    uint    temp;
+    uint    eval;
     if (term == NULL) {
         return FALSE;
     }
 
     switch (term->op_code) {
     case BMT_REF:
-		{
-			EPR_SRaster* flag_raster = term->op.ref.flag_raster;
+        {
+            EPR_SRaster* flag_raster = term->op.ref.flag_raster;
             uint flag_mask = term->op.ref.flag_mask;
 
             if (flag_raster == NULL) {
                 epr_resolve_bm_ref(context, term);
                 flag_raster = term->op.ref.flag_raster;
                 flag_mask = term->op.ref.flag_mask;
-                if (flag_raster == NULL) {
+                if ((flag_raster == NULL) || (flag_mask == FLAG_MASK_NOT_COMPUTED)) {
                     return FALSE;
                 }
             }
 
             assert(flag_raster != NULL);
             assert(flag_mask != FLAG_MASK_NOT_COMPUTED);
-			temp = epr_get_pixel_as_uint(flag_raster, x, y);
-			eval = temp & flag_mask;
-	        return (eval) == flag_mask;
+            temp = epr_get_pixel_as_uint(flag_raster, x, y);
+            eval = temp & flag_mask;
+            return (eval) == flag_mask;
         }
     case BMT_AND:
-		{
-			if (!epr_eval_bm_term(context, term->op.binary.arg1, x, y)) {
+        {
+            if (!epr_eval_bm_term(context, term->op.binary.arg1, x, y)) {
                 return FALSE;
-			}
+            }
             return epr_eval_bm_term(context, term->op.binary.arg2, x, y);
-		}
+        }
     case BMT_OR:
-		{
+        {
             if (epr_eval_bm_term(context, term->op.binary.arg1, x, y)) {
                 return TRUE;
-			}
+            }
             return epr_eval_bm_term(context, term->op.binary.arg2, x, y);
         }
     case BMT_NOT:
-		{
+        {
             return !epr_eval_bm_term(context, term->op.unary.arg, x, y);
         }
     default:
@@ -234,7 +234,7 @@ void epr_resolve_bm_ref(EPR_SBmEvalContext* context, EPR_SBmTerm* term) {
     uint num_bands = context->flag_band_ids->length;
     EPR_SRaster* flag_raster = NULL;
     uint flag_mask = 0;
-	uint flag_computed = 0;
+    uint flag_computed = 0;
 
     /* Find the corresponding flag_band_id for band_name */
     for (band_index = 0; band_index < num_bands; band_index++) {
@@ -281,7 +281,7 @@ void epr_resolve_bm_ref(EPR_SBmEvalContext* context, EPR_SBmTerm* term) {
         for (flag_def_index = 0; flag_def_index < flag_band_id->flag_coding->length; flag_def_index++) {
             flag_def = (EPR_SFlagDef*) flag_band_id->flag_coding->elems[flag_def_index];
             if (epr_equal_names(flag_def->name, flag_name)) {
-				flag_computed = 1;
+                flag_computed = 1;
                 flag_mask |= flag_def->bit_mask;
                 /* TODO!!! */
                 break;
@@ -289,7 +289,7 @@ void epr_resolve_bm_ref(EPR_SBmEvalContext* context, EPR_SBmTerm* term) {
         }
     }
     if (flag_computed == 0) {
-		flag_mask = FLAG_MASK_NOT_COMPUTED;
+        flag_mask = FLAG_MASK_NOT_COMPUTED;
         epr_set_err(e_err_flag_not_found, "flag not found");
     }
     term->op.ref.flag_mask = flag_mask;
@@ -332,13 +332,13 @@ EPR_SBmTerm* epr_parse_bm_expr_str(const char* bm_expr) {
 
 EPR_SPtrArray* epr_create_flag_coding(EPR_SProductId* product_id, const char* flag_coding_name)
 {
-	int num_descr;
+    int num_descr;
     int i, j;
     const struct FlagDescriptorTable* fc_tables;
     int fct_index;
     EPR_SPtrArray* flag_coding = NULL;
 
-	if (product_id == NULL) {
+    if (product_id == NULL) {
         epr_set_err(e_err_null_pointer,
                     "epr_create_flag_coding: product_id must not be NULL");
         return NULL;
@@ -363,13 +363,13 @@ EPR_SPtrArray* epr_create_flag_coding(EPR_SProductId* product_id, const char* fl
 
     flag_coding = epr_create_ptr_array(16);
     num_descr = fc_tables[fct_index].num_descriptors;
-	for (i = 0; i < num_descr; i++) {
-		EPR_SFlagDef* flag_def = (EPR_SFlagDef*) calloc(1, sizeof (EPR_SFlagDef));
-		if (flag_def == NULL) {
-			epr_set_err(e_err_out_of_memory,
-						"epr_create_flag_coding: out of memory");
-			return NULL;
-		}
+    for (i = 0; i < num_descr; i++) {
+        EPR_SFlagDef* flag_def = (EPR_SFlagDef*) calloc(1, sizeof (EPR_SFlagDef));
+        if (flag_def == NULL) {
+            epr_set_err(e_err_out_of_memory,
+                        "epr_create_flag_coding: out of memory");
+            return NULL;
+        }
         /* 1: flag_name */
         epr_assign_string(&flag_def->name, fc_tables[fct_index].descriptors[i].id);
         if (flag_def->name == NULL) {
@@ -379,15 +379,15 @@ EPR_SPtrArray* epr_create_flag_coding(EPR_SProductId* product_id, const char* fl
         }
         /* 2: dataset_name */
         /* flag_def->bit_index = (uint)fc_tables[fct_index].descriptors[i].bit_index; */
-		flag_def->bit_mask = 0;
-		for (j = 0; j < fc_tables[fct_index].descriptors[i].num_indices; j++) {
-			flag_def->bit_mask |= (1 << fc_tables[fct_index].descriptors[i].bit_indices[j]);
-		}
+        flag_def->bit_mask = 0;
+        for (j = 0; j < fc_tables[fct_index].descriptors[i].num_indices; j++) {
+            flag_def->bit_mask |= (1 << fc_tables[fct_index].descriptors[i].bit_indices[j]);
+        }
          /* 3: sample_offset */
         epr_assign_string(&flag_def->description, fc_tables[fct_index].descriptors[i].description);
 
-		epr_add_ptr_array_elem(flag_coding, flag_def);
-	}
+        epr_add_ptr_array_elem(flag_coding, flag_def);
+    }
     return flag_coding;
 }
 
@@ -411,7 +411,7 @@ void epr_free_flag_coding(EPR_SPtrArray* flag_coding)
 }
 
 
-EPR_SFlagDef* epr_create_flag_def()
+EPR_SFlagDef* epr_create_flag_def(void)
 {
     EPR_SFlagDef* flag_def = NULL;
 

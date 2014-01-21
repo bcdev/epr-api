@@ -610,7 +610,7 @@ const EPR_STime* epr_get_field_elem_as_mjd(const EPR_SField* field)
         return NULL;
     }
 
-	return (const EPR_STime*) field->elems;
+    return (const EPR_STime*) field->elems;
 }
 
 /**

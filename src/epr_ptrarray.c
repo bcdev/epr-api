@@ -30,12 +30,12 @@ EPR_SPtrArray* epr_create_ptr_array(unsigned int capacity)
 {
     EPR_SPtrArray* ptr_array = NULL;
     void** elems = NULL;
-    
+
     elems = (void**) calloc(capacity, sizeof (void*));
     if (elems == NULL) {
         return NULL;
     }
-    
+
     ptr_array = (EPR_SPtrArray*) calloc(1, sizeof (EPR_SPtrArray));
     if (ptr_array == NULL) {
         free(elems);
@@ -91,7 +91,7 @@ int epr_add_ptr_array_elem(EPR_SPtrArray* ptr_array, void* elem)
 int epr_grow_ptr_array(EPR_SPtrArray* ptr_array, unsigned int capacity)
 {
     void* elems = NULL;
-    
+
     assert(ptr_array != NULL);
     assert(capacity >= ptr_array->capacity);
 
@@ -102,8 +102,8 @@ int epr_grow_ptr_array(EPR_SPtrArray* ptr_array, unsigned int capacity)
     if (elems == NULL)
         return e_err_out_of_memory;
 
-    memset(((char*)elems) + ptr_array->length * sizeof (void*), 
-           0, 
+    memset(((char*)elems) + ptr_array->length * sizeof (void*),
+           0,
            (capacity - ptr_array->length) * sizeof (void*));
 
     ptr_array->capacity = capacity;

@@ -134,7 +134,7 @@ const char* epr_data_type_id_to_str(EPR_EDataTypeId data_type_id)
 
 /*
    Function:    epr_get_data_type_size
-   Access:      private API implementation helper
+   Access:      public API implementation helper
    Changelog:   2002/01/24  nf initial version
  */
 /**
@@ -236,7 +236,7 @@ void epr_set_err(EPR_EErrCode err_code, const char* err_message)
 
 /*
    Function:    epr_set_error
-   Access:      private API implementation helper
+   Access:      public API implementation helper
    Changelog:   2002/01/05  mp initial version
  */
 /**
@@ -244,7 +244,7 @@ void epr_set_err(EPR_EErrCode err_code, const char* err_message)
  * <code>epr_get_last_err_code</code> returns <code>e_err_none</code> or zero and
  * <code>epr_get_last_err_message</code> returns <code>NULL</code>.
  */
-void epr_clear_err()
+void epr_clear_err(void)
 {
     epr_api.last_err_code = e_err_none;
     epr_free_string(epr_api.last_err_message);
@@ -253,7 +253,7 @@ void epr_clear_err()
 
 /*
    Function:    epr_get_last_err_code
-   Access:      private API implementation helper
+   Access:      public API implementation helper
    Changelog:   2002/01/05  nf initial version
  */
 /**
@@ -262,14 +262,14 @@ void epr_clear_err()
  *
  * @return the error code, <code>e_err_none</code> or zero if no error occured
  */
-EPR_EErrCode epr_get_last_err_code()
+EPR_EErrCode epr_get_last_err_code(void)
 {
     return epr_api.last_err_code;
 }
 
 /*
    Function:    epr_get_last_err_message
-   Access:      private API implementation helper
+   Access:      public API implementation helper
    Changelog:   2002/01/05  nf initial version
  */
 /**
@@ -278,9 +278,20 @@ EPR_EErrCode epr_get_last_err_code()
  *
  * @return the error message, <code>NULL</code> if no error occured
  */
-const char* epr_get_last_err_message()
+const char* epr_get_last_err_message(void)
 {
     return epr_api.last_err_message;
+}
+
+/**
+ * Sets the error handler for the ENVISAT API.
+ *
+ * @param err_handler the new error handler (function pointer),
+ *         can be NULL, if errors shall not be reported
+ */
+void epr_set_err_handler(EPR_FErrHandler err_handler)
+{
+    epr_api.err_handler = err_handler;
 }
 
 
@@ -295,8 +306,8 @@ const char* epr_get_last_err_message()
 FILE* epr_open_file(char* file_path)
 {
     FILE* db_file;
-	epr_log(e_log_debug, "about to open file: ");
-	epr_log(e_log_debug, file_path);
+    epr_log(e_log_debug, "about to open file: ");
+    epr_log(e_log_debug, file_path);
 
     db_file = fopen(epr_trim_string(file_path), "rb");
     if (db_file == NULL)
@@ -459,9 +470,9 @@ void epr_make_os_compatible_path(char* path)
 
 #elif _M_MPPC
             if (*pc == '/')
-                *pc = ':';	/* UK note: the colon is an old-style path separator of the Mac OS */
-							/* possibly not used any more but supported for Classic compatibility */
-							/* @to do: check whether the forward slash / should be used in Mac OS X */
+                *pc = ':';  /* UK note: the colon is an old-style path separator of the Mac OS */
+                            /* possibly not used any more but supported for Classic compatibility */
+                            /* @to do: check whether the forward slash / should be used in Mac OS X */
 #else
             if (*pc == '\\')
                 *pc = '/';
@@ -472,7 +483,7 @@ void epr_make_os_compatible_path(char* path)
 }
 
 
-epr_boolean epr_check_api_init_flag() {
+epr_boolean epr_check_api_init_flag(void) {
     if (!epr_api.init_flag) {
         epr_set_err(e_err_api_not_initialized,
                     "epr_open_product: API not initialized (forgot to call epr_init_api?)");

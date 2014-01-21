@@ -248,7 +248,7 @@ int epr_str_to_number(const char* str);
 uint epr_parse_value_count(EPR_SProductId* product_id, const char* str);
 uint epr_param_to_value(const char* str, EPR_SPtrArray* param_table);
 void epr_make_os_compatible_path(char* path);
-epr_boolean epr_check_api_init_flag();
+epr_boolean epr_check_api_init_flag(void);
 
 /*
 void epr_make_image_header(EPR_SProductId* product_id, EPR_SDatasetId* dataset_id, EPR_SRecord* record);

@@ -472,7 +472,7 @@ EPR_SPtrArray* epr_create_flag_coding(EPR_SProductId* product_id, const char* st
  *
  * @return the the pointer at the coding flag definition information.
  */
-EPR_SFlagDef* epr_create_flag_def();
+EPR_SFlagDef* epr_create_flag_def(void);
 /**
  * Releases the coding flag definition
  */

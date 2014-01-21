@@ -31,35 +31,35 @@ int write_raw_image(const char* output_dir, EPR_SProductId* product_id, const ch
  * It generates as many raster as there are dataset entrance parameters.
  *
  * Call: write_bands <ENVISAT-Product file path>
- *					<Output directory for the raster file>
- *					<Dataset name 1>
- *					[<Dataset name 2> ... <Dataset name N>]
+ *                  <Output directory for the raster file>
+ *                  <Dataset name 1>
+ *                  [<Dataset name 2> ... <Dataset name N>]
  *
  * Example:
  *
- *	  write_bands
- *				"d:/ENVISAT/data/MERIS/L1b/MER_RR__1PNPDK20020415_103725_000002702005_00094_00649_1059.N1"
- *				"./"
- *				"latitude"
- *				["longitude" "dem_alt" "dem_rough" "lat_corr" "lon_corr" "sun_zenith" "sun_azimuth"
- *				 "view_zenith" "view_azimuth" "zonal_wind" "merid_wind" "atm_press" "ozone" "rel_hum"
- *				 "radiance_1" "radiance_2" "radiance_3" "radiance_4" "radiance_5" "radiance_6"
- *				 "radiance_7" "radiance_8" "radiance_9" "radiance_10" "radiance_11" "radiance_12"
- *				 "radiance_13" "radiance_14" "radiance_15"]
- *			OR
- *				"data/MERIS/L2/MER_RR__2PNPDK20020329_092030_000002701003_00036_00405_0054.N1"
+ *    write_bands
+ *              "d:/ENVISAT/data/MERIS/L1b/MER_RR__1PNPDK20020415_103725_000002702005_00094_00649_1059.N1"
+ *              "./"
+ *              "latitude"
+ *              ["longitude" "dem_alt" "dem_rough" "lat_corr" "lon_corr" "sun_zenith" "sun_azimuth"
+ *               "view_zenith" "view_azimuth" "zonal_wind" "merid_wind" "atm_press" "ozone" "rel_hum"
+ *               "radiance_1" "radiance_2" "radiance_3" "radiance_4" "radiance_5" "radiance_6"
+ *               "radiance_7" "radiance_8" "radiance_9" "radiance_10" "radiance_11" "radiance_12"
+ *               "radiance_13" "radiance_14" "radiance_15"]
+ *          OR
+ *              "data/MERIS/L2/MER_RR__2PNPDK20020329_092030_000002701003_00036_00405_0054.N1"
  *
- *			OR
- *				"data/AATSR/L1b/ATS_TOA_1PTRAL19950510_071649_00000000X000_00000_00000_0000.N1"
- *							    ATS_TOA_1PNETB20020411_074000_000049912005_00035_00590_0289.N1
- *				"./"
- *				"latitude"
- *				["longitude" "lat_corr_nadir" "lon_corr_nadir" "lat_corr_fward" "lon_corr_fward" "altitude"
- *				 "sun_elev_nadir" "view_elev_nadir" "sun_azimuth_nadir" "view_azimuth_nadir" "sun_elev_fward"
- *				 "view_elev_fward" "sun_azimuth_fward" "view_azimuth_fward"
- *				 "btemp_nadir_1200" "btemp_nadir_1100" "btemp_nadir_0370" "reflec_nadir_1600" "reflec_nadir_0870" "reflec_nadir_0670" "reflec_nadir_0550"
- *				 "btemp_fward_1200" "btemp_fward_1100" "btemp_fward_0370" "reflec_fward_1600" "reflec_fward_0870" "reflec_fward_0670" "reflec_fward_0550"
- *				 "confid_flags_nadir" "confid_flags_fward" "cloud_flags_nadir" "cloud_flags_fward"]
+ *          OR
+ *              "data/AATSR/L1b/ATS_TOA_1PTRAL19950510_071649_00000000X000_00000_00000_0000.N1"
+ *                              ATS_TOA_1PNETB20020411_074000_000049912005_00035_00590_0289.N1
+ *              "./"
+ *              "latitude"
+ *              ["longitude" "lat_corr_nadir" "lon_corr_nadir" "lat_corr_fward" "lon_corr_fward" "altitude"
+ *               "sun_elev_nadir" "view_elev_nadir" "sun_azimuth_nadir" "view_azimuth_nadir" "sun_elev_fward"
+ *               "view_elev_fward" "sun_azimuth_fward" "view_azimuth_fward"
+ *               "btemp_nadir_1200" "btemp_nadir_1100" "btemp_nadir_0370" "reflec_nadir_1600" "reflec_nadir_0870" "reflec_nadir_0670" "reflec_nadir_0550"
+ *               "btemp_fward_1200" "btemp_fward_1100" "btemp_fward_0370" "reflec_fward_1600" "reflec_fward_0870" "reflec_fward_0670" "reflec_fward_0550"
+ *               "confid_flags_nadir" "confid_flags_fward" "cloud_flags_nadir" "cloud_flags_fward"]
  *
  */
 int main(int argc, char** argv)

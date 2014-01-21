@@ -109,12 +109,15 @@ EPR_SPtrArray* epr_create_dataset_ids(EPR_SProductId* product_id)
     const struct DatasetDescriptorTable* p_tables;
     int pt_index;
     int num_descr;
+    int asar_sw_version;
 
     if (product_id == NULL) {
         epr_set_err(e_err_null_pointer,
                     "create_dataset_ids: product_id must not be NULL");
         return NULL;
     }
+
+    asar_sw_version = epr_detect_asar_sw_version(product_id);
 
     /* @DDDB */
 
@@ -133,6 +136,14 @@ EPR_SPtrArray* epr_create_dataset_ids(EPR_SProductId* product_id)
                     strcmp(id, "MER_FR__2P_IODD6") == 0) {
                     pt_index = i;
                 }
+            } else if (asar_sw_version >= 602) {
+                if (strcmp(&(id[10]), "_602") == 0) {
+                    pt_index = i;
+                }
+            } else if (asar_sw_version < 602) {
+                if (strlen(id) == 10) {
+                    pt_index = i;
+                }
             } else {
                 pt_index = i;
             }
@@ -147,7 +158,7 @@ EPR_SPtrArray* epr_create_dataset_ids(EPR_SProductId* product_id)
         return NULL;
     }
 
-	dataset_ids = epr_create_ptr_array(16);
+    dataset_ids = epr_create_ptr_array(16);
     num_descr = p_tables[pt_index].num_descriptors;
     for (i = 0; i < num_descr; i++) {
         for (dsd_index = 0; dsd_index < product_id->dsd_array->length; dsd_index++) {
@@ -163,7 +174,7 @@ EPR_SPtrArray* epr_create_dataset_ids(EPR_SProductId* product_id)
                 break;
             }
         }
-	}
+    }
 
     return dataset_ids;
 }
@@ -294,6 +305,12 @@ EPR_SRecord* epr_read_record(EPR_SDatasetId* dataset_id,
 
     if (record == NULL) {
         record = epr_create_record(dataset_id);
+        if (record == NULL) {
+            epr_set_err(e_err_invalid_record_name,
+                        "epr_read_record: unable to create a new record");
+
+            return NULL;
+        }
     } else if (record->info != dataset_id->record_info) {
         epr_set_err(e_err_invalid_record_name,
                     "epr_read_record: invalid record name");

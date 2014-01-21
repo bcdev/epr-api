@@ -147,6 +147,7 @@ void transform_array_short_to_float (void* sourceArray, EPR_SBandId* band_id, fl
 void transform_array_ushort_to_float(void* sourceArray, EPR_SBandId* band_id, float* raster_buffer, uint nel);
 void transform_array_int_to_float  (void* sourceArray, EPR_SBandId* band_id, float* raster_buffer, uint nel);
 void transform_array_uint_to_float (void* sourceArray, EPR_SBandId* band_id, float* raster_buffer, uint nel);
+void transform_array_float_to_float (void* sourceArray, EPR_SBandId* band_id, float* raster_buffer, uint nel);
 /*@}*/
 
 /**
@@ -195,17 +196,17 @@ float epr_interpolate2D(float wi, float wj, float x00, float x10, float x01, flo
  *
  */
 void decode_tiepoint_band(float* sa_beg,
-						  float* sa_end,
-						  uint samples_per_tie_pt,
-						  uint num_elems,
-						  EPR_SBandId* band_id,
-						  int xo,
-						  float scan_offset_x,
-						  float y_mod,
-						  int raster_width,
-						  int s_x,
-						  float* raster_buffer,
-						  int raster_pos);
+                          float* sa_end,
+                          uint samples_per_tie_pt,
+                          uint num_elems,
+                          EPR_SBandId* band_id,
+                          int xo,
+                          float scan_offset_x,
+                          float y_mod,
+                          int raster_width,
+                          int s_x,
+                          float* raster_buffer,
+                          int raster_pos);
 typedef void (*EPR_FLineDecoder)(void* sourceArray,
                     EPR_SBandId* band_id,
                     int xo,

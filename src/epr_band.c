@@ -650,7 +650,7 @@ int epr_read_band_raster(EPR_SBandId* band_id,
         }
         if (band_id->bm_expr != NULL) {
             EPR_SRaster* bm_raster;
-            int rd_bm;
+            /* int rd_bm; */
 
             bm_raster = epr_create_raster(e_tid_uchar, /*was char*/
                                           raster->source_width,
@@ -659,7 +659,7 @@ int epr_read_band_raster(EPR_SBandId* band_id,
                                           raster->source_step_y);
 
 
-            rd_bm = epr_read_bitmask_raster(product_id,
+            /* rd_bm = */ epr_read_bitmask_raster(product_id,
                                             band_id->bm_expr,
                                             offset_x,
                                             offset_y,
@@ -672,7 +672,7 @@ int epr_read_band_raster(EPR_SBandId* band_id,
         }
     } else if (strcmp(rec_type, "A") == 0) {
         if (epr_read_band_annotation_data
-                (band_id, offset_x, offset_y, raster) == 1) {
+                (band_id, offset_x, offset_y, raster)) {
             epr_set_err(e_err_file_read_error,
                         "epr_read_band_raster: unsuccessfully reading band annotation data");
             return epr_get_last_err_code();
@@ -707,7 +707,7 @@ int epr_read_band_measurement_data(EPR_SBandId* band_id,
     EPR_SRecord* sph_record = NULL;
     EPR_EDataTypeId band_datatype, datatype_id;
     EPR_ESampleModel band_smod;
-    uint rec_size;
+    /* uint rec_size; */
     uint rec_numb;
     int iY, raster_pos, delta_raster_pos;
     int offset_x_mirrored = 0;
@@ -735,7 +735,7 @@ int epr_read_band_measurement_data(EPR_SBandId* band_id,
 
     dataset_id = band_id->dataset_ref.dataset_id;
     /*the length of measurement record size*/
-    rec_size = dataset_id->dsd->dsr_size;
+    /* rec_size = dataset_id->dsd->dsr_size; */
     /*the number of measurement records*/
     rec_numb = dataset_id->dsd->num_dsr;
     /*data type in the band*/
@@ -841,14 +841,14 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
     EPR_SRecord* record_end = NULL;
     EPR_SRecord* sph_record = NULL;
     EPR_EDataTypeId band_datatype = 0, datatype_id = 0;
-    EPR_ESampleModel band_smod = 0;
-    uint rec_size = 0;
+    /* EPR_ESampleModel band_smod = 0; */
+    /* uint rec_size = 0; */
     uint rec_numb = 0;
     uint lines_per_tie_pt, samples_per_tie_pt, scan_line_length;
     int iY, raster_pos, delta_raster_pos;
     EPR_FArrayTransformer transform_array_func = NULL;
     int y_beg, y_end, y_beg_old, y_end_old;
-    int offset_x_mirrored = 0;
+    /* int offset_x_mirrored = 0; */
     uint num_elems = 0;
     float y_mod = 0;
     float scan_offset_x = 0;
@@ -860,13 +860,13 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
 
     dataset_id = band_id->dataset_ref.dataset_id;
     /*the length of annotation record size*/
-    rec_size = dataset_id->dsd->dsr_size;
+    /* rec_size = dataset_id->dsd->dsr_size; */
     /*the number of annotation records*/
     rec_numb = dataset_id->dsd->num_dsr;
     /*data type in the band*/
     band_datatype = band_id->data_type;
     /*data model in the band*/
-    band_smod = band_id->sample_model;
+    /* band_smod = band_id->sample_model; */
     record = epr_create_record(dataset_id);
     field_info = (EPR_SFieldInfo*)epr_get_ptr_array_elem_at(record->info->field_infos, band_id->dataset_ref.field_index - 1);
     datatype_id = field_info->data_type_id;
@@ -959,21 +959,23 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
     /*select the correspondent function to scaling and transform data type*/
     transform_array_func = select_transform_array_function(band_datatype, datatype_id);
     if (transform_array_func == NULL) {
-        epr_set_err(e_err_illegal_data_type,
-                    "epr_read_band_annotation_data: internal error: illegal data type");
         epr_free_record(record);
         free(line_beg_buffer);
         free(line_end_buffer);
+        epr_set_err(e_err_illegal_data_type,
+                    "epr_read_band_annotation_data: internal error: illegal data type");
         return epr_get_last_err_code();
     }
     y_beg_old = 9999;
     y_end_old = 9999;
 
+    /* TODO: check
     if (band_id->lines_mirrored) {
         offset_x_mirrored = num_elems - (offset_x + raster->source_width - 1) - 1;
     } else {
         offset_x_mirrored = offset_x;
     }
+    */
 
     for (iY = offset_y; (uint)iY < offset_y + raster->source_height; iY += raster->source_step_y ) {
 
@@ -1173,6 +1175,8 @@ EPR_FArrayTransformer select_transform_array_function(EPR_EDataTypeId band_tid,
         transform_array_func = transform_array_int_to_float;
     else if (band_tid == e_tid_float && raw_tid == e_tid_uint)
         transform_array_func = transform_array_uint_to_float;
+    else if (band_tid == e_tid_float && raw_tid == e_tid_float)
+        transform_array_func = transform_array_float_to_float;
     else {
         return NULL;
     }
@@ -1693,6 +1697,18 @@ void transform_array_uint_to_float (void* sourceArray,
                                      uint nel) {
     uint ix;
     uint* sa = (uint*) sourceArray;
+
+    for (ix = 0; ix < nel; ix ++) {
+        raster_buffer[ix] = band_id->scaling_offset + band_id->scaling_factor * sa[ix];
+    }
+}
+
+void transform_array_float_to_float (void* sourceArray,
+                                     EPR_SBandId* band_id,
+                                     float* raster_buffer,
+                                     uint nel) {
+    uint ix;
+    float* sa = (float*) sourceArray;
 
     for (ix = 0; ix < nel; ix ++) {
         raster_buffer[ix] = band_id->scaling_offset + band_id->scaling_factor * sa[ix];

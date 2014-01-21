@@ -149,7 +149,7 @@ void byte_swap_float(float* buffer, uint number_of_swaps)
  * little endian order machine or not.
  * <p><code>1</code> stands for little endian (LE), <code>0/code> otherwise
  */
-int epr_is_little_endian_order()
+int epr_is_little_endian_order(void)
 {
     uint le_value = EPR_LE_MAGIC_NUMBER;
     return (((uchar*)(&le_value))[0] == EPR_LE_MAGIC_BYTE_0)
@@ -168,7 +168,7 @@ int epr_is_little_endian_order()
  * little endian order machine or not.
  * <p><code>1</code> stands for little endian (BE), <code>0/code> otherwise
  */
-int epr_is_big_endian_order()
+int epr_is_big_endian_order(void)
 {
     uint be_value = EPR_BE_MAGIC_NUMBER;
     return (((uchar*)(&be_value))[0] == EPR_LE_MAGIC_BYTE_0)
