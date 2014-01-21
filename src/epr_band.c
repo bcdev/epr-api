@@ -1019,24 +1019,8 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
         raster_pos += delta_raster_pos;
     }
 
-    if (strncmp(EPR_ENVISAT_PRODUCT_MERIS, product_id->id_string, 3) == 0) {
+    if (band_id->lines_mirrored) {
         mirror_float_array((float*)raster->buffer, raster->raster_width, raster->raster_height);
-    } else {
-        if (strncmp(EPR_ENVISAT_PRODUCT_AATSR, product_id->id_string, 3) == 0) {
-            mirror_float_array((float*)raster->buffer, raster->raster_width, raster->raster_height);
-        } else {
-            if (strncmp(EPR_ENVISAT_PRODUCT_ASAR, product_id->id_string, 3) == 0
-                    && strncmp(product_id->id_string, "ASA_IMG", 7) != 0
-                    && strncmp(product_id->id_string, "ASA_APG", 7) != 0) {
-                mirror_float_array((float*)raster->buffer, raster->raster_width, raster->raster_height);
-            } else {
-                if (strncmp(EPR_ENVISAT_PRODUCT_SAR, product_id->id_string, 3) == 0
-                        && strncmp(product_id->id_string, "SAR_IMG", 7) != 0
-                        && strncmp(product_id->id_string, "SAR_APG", 7) != 0) {
-                    mirror_float_array((float*)raster->buffer, raster->raster_width, raster->raster_height);
-                }
-            }
-        }
     }
 
     epr_free_record(record_beg);
