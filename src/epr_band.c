@@ -182,8 +182,7 @@ EPR_SPtrArray* epr_create_band_ids(EPR_SProductId* product_id) {
         epr_assign_string(&band_id->description, b_tables[bt_index].descriptors[i].description);
 
         /* lines_flipped*/
-        if (strncmp(product_id->id_string, EPR_ENVISAT_PRODUCT_MERIS, 3) == 0
-                || strncmp(product_id->id_string, EPR_ENVISAT_PRODUCT_AATSR, 3) == 0) {
+        if (strncmp(product_id->id_string, EPR_ENVISAT_PRODUCT_MERIS, 3) == 0) {
             band_id->lines_mirrored = TRUE;
         } else {
             if (strncmp(product_id->id_string, EPR_ENVISAT_PRODUCT_ASAR, 3) == 0
