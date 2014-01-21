@@ -709,6 +709,7 @@ int epr_read_band_measurement_data(EPR_SBandId* band_id,
     /* uint rec_size; */
     uint rec_numb;
     int iY, raster_pos, delta_raster_pos;
+    int iX, mdsIndex;
     int offset_x_mirrored = 0;
     uint scan_line_length;
     EPR_FLineDecoder decode_func;
@@ -736,7 +737,7 @@ int epr_read_band_measurement_data(EPR_SBandId* band_id,
     /*the length of measurement record size*/
     /* rec_size = dataset_id->dsd->dsr_size; */
     /*the number of measurement records*/
-    rec_numb = dataset_id->dsd->num_dsr;
+    rec_numb = product_id->scene_height;
     /*data type in the band*/
     band_datatype = band_id->data_type;
     /*data model in the band*/
@@ -778,16 +779,41 @@ int epr_read_band_measurement_data(EPR_SBandId* band_id,
     }
 
     for (iY = offset_y; (uint)iY < offset_y + raster->source_height; iY += raster->source_step_y ) {
-
-        /*get the next record by the given name*/
-        record = epr_read_record(dataset_id, iY, record);
-        if (record == NULL) {
-            return epr_get_last_err_code();
+        mdsIndex = product_id->mdsMapIndex[iY];
+        if (mdsIndex >= 0) {
+            /*get the next record by the given name*/
+            record = epr_read_record(dataset_id, mdsIndex, record);
+            if (record == NULL) {
+                return epr_get_last_err_code();
+            }
+            /*get the field at its number*/
+            field = epr_get_field_at(record, band_id->dataset_ref.field_index - 1);
+            /*get the scaled "line" of physical values*/
+            decode_func(field->elems, band_id, offset_x_mirrored, raster->source_width, raster->source_step_x, raster->buffer, raster_pos);
+        } else {
+            /*no mds data available, should flag as missing.*/
+            if (band_datatype == e_tid_float){
+                float *pixels = raster->buffer;
+                for (iX=0; iX<raster->raster_width; iX++) {
+                    pixels[raster_pos+iX] = -0.01;
+                }
+            } else if (band_datatype == e_tid_uchar || band_datatype == e_tid_char){
+                uchar *pixels = raster->buffer;
+                for (iX=0; iX<raster->raster_width; iX++) {
+                    pixels[raster_pos+iX] = 0;
+                }
+            } else if (band_datatype == e_tid_ushort || band_datatype == e_tid_short){
+                ushort *pixels = raster->buffer;
+                for (iX=0; iX<raster->raster_width; iX++) {
+                    pixels[raster_pos+iX] = 0;
+                }
+            } else if (band_datatype == e_tid_uint || band_datatype == e_tid_int){
+                uint *pixels = raster->buffer;
+                for (iX=0; iX<raster->raster_width; iX++) {
+                    pixels[raster_pos+iX] = 0;
+                }
+            }
         }
-        /*get the field at its number*/
-        field = epr_get_field_at(record, band_id->dataset_ref.field_index - 1);
-        /*get the scaled "line" of physical values*/
-        decode_func(field->elems, band_id, offset_x_mirrored, raster->source_width, raster->source_step_x, raster->buffer, raster_pos);
         /*locate "data point" for the next "line"*/
         raster_pos += delta_raster_pos;
     }

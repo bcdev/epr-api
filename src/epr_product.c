@@ -40,6 +40,8 @@
 
 uint epr_compute_scene_width(const EPR_SProductId* product_id);
 uint epr_compute_scene_height(const EPR_SProductId* product_id);
+uint epr_compute_scene_height_geo(const EPR_SProductId* product_id);
+void epr_compute_mdsMapIndex(EPR_SProductId* product_id);
 
 /*********************************** PRODUCT ***********************************/
 
@@ -215,7 +217,8 @@ EPR_SProductId* epr_open_product(const char* product_file_path) {
 
     /* Get scene size */
     product_id->scene_width = epr_compute_scene_width(product_id);
-    product_id->scene_height = epr_compute_scene_height(product_id);
+    product_id->scene_height = epr_compute_scene_height_geo(product_id);
+    epr_compute_mdsMapIndex(product_id);
     sprintf(message_buffer, "product scene raster size: %u x %u", product_id->scene_width, product_id->scene_height);
     epr_log(e_log_debug, message_buffer);
 
@@ -346,6 +349,8 @@ void epr_free_product_id(EPR_SProductId* product_id) {
         product_id->band_ids = NULL;
     }
 
+    free(product_id->mdsMapIndex);
+    product_id->mdsMapIndex = NULL;
     product_id->tot_size = 0;
 
     free(product_id);
@@ -486,5 +491,85 @@ uint epr_compute_scene_height(const EPR_SProductId* product_id) {
     return min_num_mds_recs;
 }
 
+/**
+ * Computes the scene height in pixel of a product. The scene height is
+ * calcualted from the number of geolocation tie-points
+ *
+ * @param product_id the product identifier, must not be <code>NULL</code>
+ * @return height pixel number, or <code>0</code> if an error occured.
+ */
+uint epr_compute_scene_height_geo(const EPR_SProductId* product_id)
+{
+    EPR_SDSD* dsd = NULL;
+    uint min_num_mds_recs = 0;
+    uint dsd_index;
 
+    if (product_id == NULL) {
+        epr_set_err(e_err_null_pointer, 
+                    "epr_compute_scene_height_geo: product ID must not be NULL");
+        return (uint)0;    
+    }
 
+    for (dsd_index = 0; dsd_index < product_id->dsd_array->length; dsd_index++) {
+        dsd = (EPR_SDSD*)epr_get_ptr_array_elem_at(product_id->dsd_array, dsd_index);
+        if (epr_equal_names(dsd->ds_name, "GEOLOCATION_ADS")) {
+            min_num_mds_recs = (dsd->num_dsr - 1) * 32;
+        }
+    }
+
+    if (min_num_mds_recs == 0) {
+        epr_set_err(e_err_invalid_data_format, 
+                    "epr_compute_scene_height_geo: product height was zero");    
+    }
+
+    return min_num_mds_recs;
+}
+
+void epr_compute_mdsMapIndex(EPR_SProductId* product_id)
+{
+    EPR_SDatasetId* dataset;
+    EPR_SRecord*    record;
+    EPR_SField*     field;
+
+    int  mdsIndex, attachFlag, line, i, checkFlag;
+
+    uint n_rec, i_rec, mdsHeight;
+    
+    product_id->mdsMapIndex = calloc(product_id->scene_height, sizeof(int));
+
+    dataset = epr_get_dataset_id(product_id, "GEOLOCATION_ADS");
+    record  = epr_read_record(dataset, 0, NULL);
+    n_rec   = epr_get_num_records(dataset) - 1;
+
+    mdsIndex= 0;
+
+    /*
+     * Do not skip chunks if scene_height == lines of data available
+     */
+    mdsHeight= epr_compute_scene_height(product_id);
+    if (product_id->scene_height == mdsHeight) {
+        checkFlag = 0;
+    } else {
+        checkFlag = 1;
+    }
+
+    for (i_rec = 0; i_rec < n_rec; i_rec++) {
+        record = epr_read_record(dataset, i_rec, record);
+        field  = epr_get_field(record, "attach_flag");
+
+        attachFlag = epr_get_field_elem_as_int(field, 0) * checkFlag;
+        for (line=0; line<32; line++) {
+            i = i_rec * 32 + line;
+            if (attachFlag == 0) {
+                product_id->mdsMapIndex[i] = mdsIndex;
+                mdsIndex++;
+            } else {
+                product_id->mdsMapIndex[i] = -1;
+            }
+        }
+    }
+    if (mdsIndex != mdsHeight) {
+        epr_set_err(e_err_invalid_data_format,
+                    "epr_compute_mdsMapIndex: MDS and ADS heights do not match");
+    }
+}
