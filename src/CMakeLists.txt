@@ -54,7 +54,9 @@ add_library(epr_api SHARED ${SOURCES})
 set_target_properties(epr_api PROPERTIES
     VERSION ${EPR_API_VERSION_STRING}
     SOVERSION ${EPR_API_VERSION_MAJOR})
-target_link_libraries(epr_api m)
+if(NOT MSVC)
+	target_link_libraries(epr_api m)
+endif()
 
 
 if(BUILD_STATIC_LIB)
@@ -72,7 +74,7 @@ endif(BUILD_TESTS)
 
 # install
 install(FILES epr_api.h epr_ptrarray.h DESTINATION include COMPONENT lib)
-install(TARGETS epr_api LIBRARY DESTINATION lib COMPONENT dev)
+install(TARGETS epr_api DESTINATION lib COMPONENT dev)
 if(BUILD_STATIC_LIB)
     install(TARGETS epr_api_static ARCHIVE DESTINATION lib COMPONENT dev)
 endif(BUILD_STATIC_LIB)
