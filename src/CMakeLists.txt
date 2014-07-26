@@ -55,7 +55,7 @@ set_target_properties(epr_api PROPERTIES
     VERSION ${EPR_API_VERSION_STRING}
     SOVERSION ${EPR_API_SOVERSION})
 if(NOT MSVC)
-	target_link_libraries(epr_api m)
+    target_link_libraries(epr_api m)
 endif()
 
 
