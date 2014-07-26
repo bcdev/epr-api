@@ -105,9 +105,9 @@ EPR_SPtrArray* epr_create_band_ids(EPR_SProductId* product_id) {
         /* 2: dataset_name */
         band_id->dataset_ref = epr_get_ref_struct(product_id, b_tables[bt_index].descriptors[i].rec_name);
         if (band_id->dataset_ref.dataset_id == NULL) {
+            epr_free_band_id(band_id);
             epr_set_err(e_err_invalid_dataset_name,
                         "epr_create_band_ids: invalid dataset name in DDDB");
-            epr_free_band_id(band_id);
             return NULL;
         }
         /* 3: sample_offset */
@@ -134,9 +134,9 @@ EPR_SPtrArray* epr_create_band_ids(EPR_SProductId* product_id) {
                 } else {
                     scaling_offset = epr_get_scaling_params(product_id, test_block);
                     if (scaling_offset == -909.909) { /* @todo what an ugly return value. Eeeek!*/
+                        epr_free_band_id(band_id);
                         epr_set_err(e_err_invalid_dataset_name,
                                     "epr_create_band_ids: invalid dataset name in dddb");
-                        epr_free_band_id(band_id);
                         return NULL;
                     }
                     band_id->scaling_offset = scaling_offset;
@@ -153,9 +153,9 @@ EPR_SPtrArray* epr_create_band_ids(EPR_SProductId* product_id) {
                 } else {
                     scaling_factor = epr_get_scaling_params(product_id, test_block);
                     if (scaling_factor == -909.909) { /* @todo what an ugly return value. Eeeek!*/
+                        epr_free_band_id(band_id);
                         epr_set_err(e_err_invalid_dataset_name,
                                     "epr_create_band_ids: invalid dataset name in dddb");
-                        epr_free_band_id(band_id);
                         return NULL;
                     }
                     band_id->scaling_factor = scaling_factor;
@@ -168,9 +168,9 @@ EPR_SPtrArray* epr_create_band_ids(EPR_SProductId* product_id) {
         if (b_tables[bt_index].descriptors[i].flag_coding_name != NULL) {
             band_id->flag_coding = epr_create_flag_coding(product_id, b_tables[bt_index].descriptors[i].flag_coding_name);
             if (band_id->flag_coding == NULL) {
+                epr_free_band_id(band_id);
                 epr_set_err(e_err_out_of_memory,
                             "epr_create_band_ids: out of memory");
-                epr_free_band_id(band_id);
                 return NULL;
             }
         } else {
@@ -747,16 +747,16 @@ int epr_read_band_measurement_data(EPR_SBandId* band_id,
     datatype_id = field_info->data_type_id;
 
     /* if the user raster (or part of) is outside bbox in source coordinates*/
-    if (offset_x + raster->raster_width > (int)scan_line_length) {
+    if (offset_x + raster->source_width > (int)scan_line_length) {
+        epr_free_record(record);
         epr_set_err(e_err_illegal_arg,
                     "epr_read_band_measurement_data: raster x co-ordinates out of bounds");
-        epr_free_record(record);
         return epr_get_last_err_code();
     }
-    if (offset_y + raster->raster_height > (int)(rec_numb)) {
+    if (offset_y + raster->source_height > (int)(rec_numb)) {
+        epr_free_record(record);
         epr_set_err(e_err_illegal_arg,
                     "epr_read_band_measurement_data: raster y co-ordinates out of bounds");
-        epr_free_record(record);
         return epr_get_last_err_code();
     }
     raster_pos = 0;
@@ -765,9 +765,9 @@ int epr_read_band_measurement_data(EPR_SBandId* band_id,
     /*select the correspondent function to scaling and transform data type*/
     decode_func = select_line_decode_function(band_datatype, band_smod, datatype_id);
     if (decode_func == NULL) {
+        epr_free_record(record);
         epr_set_err(e_err_illegal_data_type,
                     "epr_read_band_measurement_data: internal error: unknown data type");
-        epr_free_record(record);
         return epr_get_last_err_code();
     }
 
@@ -803,9 +803,9 @@ int epr_read_band_measurement_data(EPR_SBandId* band_id,
         } else if (band_datatype == e_tid_uint || band_datatype == e_tid_int) {
             mirror_uint_array((uint*)raster->buffer, raster->raster_width, raster->raster_height);
         } else {
+            epr_free_record(record);
             epr_set_err(e_err_illegal_data_type,
                         "epr_read_band_measurement_data: internal error: unknown data type");
-            epr_free_record(record);
             return epr_get_last_err_code();
         }
     }
@@ -897,8 +897,8 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
             scan_offset_x = 6.0F;
             samples_per_tie_pt = 50;
         } else {
-            epr_set_err(e_err_invalid_value, "epr_read_band_annotation_data: internal error: illegal value for samples_per_tie_pt");
             epr_free_record(record);
+            epr_set_err(e_err_invalid_value, "epr_read_band_annotation_data: internal error: illegal value for samples_per_tie_pt");
             return epr_get_last_err_code();
         }
     } else if ((strncmp(EPR_ENVISAT_PRODUCT_ASAR, product_id->id_string, 3) == 0) ||
@@ -914,42 +914,42 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
         lines_per_tie_pt = epr_get_scene_height(product_id) / (num_rec - 1);
         num_elems = field_info->num_elems;
     } else {
+        epr_free_record(record);
         epr_set_err(e_err_illegal_arg,
                     "epr_read_band_annotation_data: unhandled ENVISAT product type");
-        epr_free_record(record);
         return epr_get_last_err_code();
     }
 
     /*memory allocate for the increasingly begin tie point line*/
     line_beg_buffer = calloc(sizeof(float), num_elems);
     if (line_beg_buffer == NULL) {
-        epr_set_err(e_err_out_of_memory, "epr_read_band_annotation_data: out of memory");
         epr_free_record(record);
+        epr_set_err(e_err_out_of_memory, "epr_read_band_annotation_data: out of memory");
         return epr_get_last_err_code();
     }
     /*memory allocate for the increasingly end tie point line*/
     line_end_buffer = calloc(sizeof(float), num_elems);
     if (line_end_buffer == NULL)  {
-        epr_set_err(e_err_out_of_memory, "epr_read_band_annotation_data: out of memory");
         epr_free_record(record);
         free(line_beg_buffer);
+        epr_set_err(e_err_out_of_memory, "epr_read_band_annotation_data: out of memory");
         return epr_get_last_err_code();
     }
     /* if the user raster (or its part) is outside of orbit in source coordinates*/
     if (offset_x + raster->raster_width > (int)scan_line_length) {
-        epr_set_err(e_err_illegal_arg,
-                    "epr_read_band_data: raster x co-ordinates out of bounds");
         epr_free_record(record);
         free(line_beg_buffer);
         free(line_end_buffer);
+        epr_set_err(e_err_illegal_arg,
+                    "epr_read_band_data: raster x co-ordinates out of bounds");
         return epr_get_last_err_code();
     }
     if (offset_y + raster->raster_height > (int)(rec_numb * lines_per_tie_pt)) {
-        epr_set_err(e_err_illegal_arg,
-                    "epr_read_band_data: raster y co-ordinates out of bounds");
         epr_free_record(record);
         free(line_beg_buffer);
         free(line_end_buffer);
+        epr_set_err(e_err_illegal_arg,
+                    "epr_read_band_data: raster y co-ordinates out of bounds");
         return epr_get_last_err_code();
     }
     raster_pos = 0;

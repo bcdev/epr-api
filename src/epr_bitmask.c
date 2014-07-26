@@ -258,10 +258,13 @@ void epr_resolve_bm_ref(EPR_SBmEvalContext* context, EPR_SBmTerm* term) {
                                             context->bitmask_raster->source_height,
                                             context->bitmask_raster->source_step_x,
                                             context->bitmask_raster->source_step_y);
-            epr_read_band_raster(flag_band_id,
-                                 context->offset_x,
-                                 context->offset_y,
-                                 flag_raster);
+            if (epr_read_band_raster(flag_band_id,
+                                     context->offset_x,
+                                     context->offset_y,
+                                     flag_raster) != 0) {
+                return;
+            }
+
             /* register flag_band_id and flag_raster for later use */
             epr_add_ptr_array_elem(context->flag_band_ids, flag_band_id);
             epr_add_ptr_array_elem(context->flag_rasters, flag_raster);
@@ -373,8 +376,8 @@ EPR_SPtrArray* epr_create_flag_coding(EPR_SProductId* product_id, const char* fl
         /* 1: flag_name */
         epr_assign_string(&flag_def->name, fc_tables[fct_index].descriptors[i].id);
         if (flag_def->name == NULL) {
-            epr_set_err(e_err_out_of_memory, "epr_get_flag_coding: out of memory");
             epr_free_flag_def(flag_def);
+            epr_set_err(e_err_out_of_memory, "epr_get_flag_coding: out of memory");
             return NULL;
         }
         /* 2: dataset_name */

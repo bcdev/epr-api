@@ -69,6 +69,7 @@ EPR_SRecord* epr_read_mph(EPR_SProductId* product_id)
         return NULL;
     }
     record = epr_parse_header("mph", code_block);
+    epr_free_string(code_block);
     if (record == NULL)
     {
         epr_set_err(e_err_invalid_record,
@@ -77,7 +78,6 @@ EPR_SRecord* epr_read_mph(EPR_SProductId* product_id)
         epr_add_ptr_array_elem(product_id->record_info_cache, record->info);
     }
 
-    epr_free_string(code_block);
     return record;
 }
 
@@ -143,6 +143,7 @@ EPR_SRecord* epr_read_sph(EPR_SProductId* product_id)
     }
 
     sph_record = epr_parse_header("sph", code_block);
+    epr_free_string(code_block);
     if (sph_record == NULL) {
         epr_set_err(e_err_invalid_record,
             "epr_read_sph: can not recognize the correct SPH from product data file");
@@ -150,7 +151,6 @@ EPR_SRecord* epr_read_sph(EPR_SProductId* product_id)
         epr_add_ptr_array_elem(product_id->record_info_cache, sph_record->info);
     }
 
-    epr_free_string(code_block);
     return sph_record;
 }
 
@@ -213,23 +213,23 @@ EPR_SRecord* epr_parse_header(const char* header_name, const char* ascii_source)
         pos = 0;
         token_name = epr_str_tok(code_block, seps, &pos);
         if (pos == 1) {
-            epr_set_err(e_err_invalid_keyword_name,
-                        "epr_parse_header: invalid ascii header: keyword is empty");
             epr_free_string(token_name);
             if (code_block != NULL) {
                 epr_free_string(code_block);
                 code_block = NULL;
             }
+            epr_set_err(e_err_invalid_keyword_name,
+                        "epr_parse_header: invalid ascii header: keyword is empty");
             continue;
         }
         if (pos == (int)strlen(code_block) + 1) {
-            epr_set_err(e_err_invalid_keyword_name,
-                        "epr_parse_header: invalid ascii header: keyword not found");
             epr_free_string(token_name);
             if (code_block != NULL) {
                 epr_free_string(code_block);
                 code_block = NULL;
             }
+            epr_set_err(e_err_invalid_keyword_name,
+                        "epr_parse_header: invalid ascii header: keyword not found");
             continue;
         }
         /*if STRING value*/

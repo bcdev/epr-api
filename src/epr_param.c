@@ -141,25 +141,25 @@ int epr_set_dyn_dddb_params(EPR_SProductId* product_id)
         if (product_id->sph_record == NULL) {
             product_id->sph_record = epr_read_sph(product_id);
             if (product_id->sph_record == NULL) {
-                epr_set_err(e_err_file_read_error, "epr_set_param: wrong SPH");
                 epr_free_string(tmp);
+                epr_set_err(e_err_file_read_error, "epr_set_param: wrong SPH");
                 return 0;
             }
         }
 
         field = epr_get_field(product_id->sph_record, "LINE_LENGTH");
         if (field == NULL) {
+            epr_free_string(tmp);
             epr_set_err(e_err_invalid_value,
                 "epr_set_param: wrong SPH: unable to read LINE_LENGTH");
-            epr_free_string(tmp);
             return 0;
         }
 
         line_length = ((uint*) field->elems)[0];
         if (line_length == 0) {
+            epr_free_string(tmp);
             epr_set_err(e_err_invalid_value,
                 "epr_set_param: wrong SPH: LINE_LENGTH must be > 0");
-            epr_free_string(tmp);
             return 0;
         }
 
@@ -173,9 +173,9 @@ int epr_set_dyn_dddb_params(EPR_SProductId* product_id)
 
         num_tie_points_across = ((uint*) field->elems)[0];
         if (num_tie_points_across == 0) {
+            epr_free_string(tmp);
             epr_set_err(e_err_invalid_value,
                 "epr_set_param: wrong SPH: LINES_PER_TIE_PT must be > 0");
-            epr_free_string(tmp);
             return 0;
         }
 
@@ -197,17 +197,17 @@ int epr_set_dyn_dddb_params(EPR_SProductId* product_id)
 
         field = epr_get_field(product_id->sph_record, "LINE_LENGTH");
         if (field == NULL) {
+            epr_free_string(tmp);
             epr_set_err(e_err_invalid_value,
                 "epr_set_param: wrong SPH: unable to read LINE_LENGTH");
-            epr_free_string(tmp);
             return 0;
         }
 
         line_length = ((uint*) field->elems)[0];
         if (line_length == 0) {
+            epr_free_string(tmp);
             epr_set_err(e_err_invalid_value,
                 "epr_set_param: wrong SPH: LINE_LENGTH must be > 0");
-            epr_free_string(tmp);
             return 0;
         }
 

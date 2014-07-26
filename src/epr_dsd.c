@@ -290,17 +290,17 @@ EPR_SDSD* epr_read_each_dsd(FILE* envisat_source_file, int* pos)
             /* DS_NAME to be searched for */
             if (((uint)strlen(code_block) != (uint)(EPR_LENGTH_DS_NAME_FIELD)) || ((uint)(strrchr(code_block, ch) - code_block) != (uint)(strlen(code_block) - 2)))
             {
+                epr_free_dsd(dsd);
                 epr_set_err(e_err_invalid_data_format,
                     "epr_read_each_dsd: invalid dataset name format");
-                epr_free_dsd(dsd);
                 return NULL;
             }
             dsd->ds_name = epr_sub_string(code_block, EPR_LENGTH_DS_NAME_IDENTIFIER, strlen(code_block) - EPR_LENGTH_DS_NAME_IDENTIFIER - 2);
             if (dsd->ds_name == NULL)
             {
+                epr_free_dsd(dsd);
                 epr_set_err(e_err_invalid_value,
                     "epr_read_each_dsd: invalid DS_NAME value");
-                epr_free_dsd(dsd);
                 return NULL;
             }
 
@@ -311,9 +311,9 @@ EPR_SDSD* epr_read_each_dsd(FILE* envisat_source_file, int* pos)
                 dsd->ds_type = epr_sub_string(code_block, EPR_LENGTH_DS_TYPE_IDENTIFIER, strlen(code_block) - EPR_LENGTH_DS_TYPE_IDENTIFIER - 1);
                 if (dsd->ds_type == NULL)
                 {
+                    epr_free_dsd(dsd);
                     epr_set_err(e_err_invalid_value,
                         "epr_read_each_dsd: invalid DS_TYPE value");
-                    epr_free_dsd(dsd);
                     return NULL;
                 }
             }
@@ -324,17 +324,17 @@ EPR_SDSD* epr_read_each_dsd(FILE* envisat_source_file, int* pos)
             {
                 if (((uint)strlen(code_block) != (uint)(EPR_LENGTH_DS_FILENAME_FIELD)) || ((uint)(strrchr(code_block, ch) - code_block) != (uint)(strlen(code_block) - 2)))
                 {
+                    epr_free_dsd(dsd);
                     epr_set_err(e_err_invalid_data_format,
                         "epr_read_each_dsd: invalid dataset filename format");
-                    epr_free_dsd(dsd);
                     return NULL;
                 }
                 dsd->filename = epr_sub_string(code_block, EPR_LENGTH_FILENAME_IDENTIFIER, strlen(code_block) - EPR_LENGTH_FILENAME_IDENTIFIER - 1);
                 if (dsd->ds_name == NULL)
                 {
+                    epr_free_dsd(dsd);
                     epr_set_err(e_err_invalid_data_format,
                         "epr_read_each_dsd: invalid file name");
-                    epr_free_dsd(dsd);
                     return NULL;
                 }
             }
@@ -345,9 +345,9 @@ EPR_SDSD* epr_read_each_dsd(FILE* envisat_source_file, int* pos)
             {
                 if (((uint)strlen(code_block) != (uint)(EPR_LENGTH_DS_OFFSEN_FIELD)) || (strncmp(code_block + strlen(code_block) - strlen("<bytes>") - 1, "<bytes>", strlen("<bytes>")) != 0))
                 {
+                    epr_free_dsd(dsd);
                     epr_set_err(e_err_invalid_data_format,
                         "epr_read_each_dsd: invalid dataset filename format");
-                    epr_free_dsd(dsd);
                     return NULL;
                 }
 
@@ -356,9 +356,9 @@ EPR_SDSD* epr_read_each_dsd(FILE* envisat_source_file, int* pos)
                 epr_free_string(tmp);
                 if (dsd->ds_offset == -1)
                 {
+                    epr_free_dsd(dsd);
                     epr_set_err(e_err_invalid_data_format,
                         "epr_read_each_dsd: invalid OFFSET value");
-                    epr_free_dsd(dsd);
                     return NULL;
                 }
             }
@@ -369,9 +369,9 @@ EPR_SDSD* epr_read_each_dsd(FILE* envisat_source_file, int* pos)
             {
                 if (((uint)strlen(code_block) != (uint)(EPR_LENGTH_DS_SIZE_FIELD)) || (strncmp(code_block + strlen(code_block) - strlen("<bytes>") - 1, "<bytes>", strlen("<bytes>")) != 0))
                 {
+                    epr_free_dsd(dsd);
                     epr_set_err(e_err_invalid_data_format,
                         "epr_read_each_dsd: invalid dataset filename format");
-                    epr_free_dsd(dsd);
                     return NULL;
                 }
                 tmp = epr_sub_string(code_block, EPR_LENGTH_DS_SIZE_IDENTIFIER, strlen(code_block) - strlen("<bytes>") - EPR_LENGTH_DS_SIZE_IDENTIFIER - 1);
@@ -379,9 +379,9 @@ EPR_SDSD* epr_read_each_dsd(FILE* envisat_source_file, int* pos)
                 epr_free_string(tmp);
                 if (dsd->ds_size == -1)
                 {
+                    epr_free_dsd(dsd);
                     epr_set_err(e_err_invalid_data_format,
                         "epr_read_each_dsd: invalid OFFSET value");
-                    epr_free_dsd(dsd);
                     return NULL;
                 }
             }
@@ -392,9 +392,9 @@ EPR_SDSD* epr_read_each_dsd(FILE* envisat_source_file, int* pos)
             {
                 if ((uint)strlen(code_block) != (uint)(EPR_LENGTH_NUM_DSR_FIELD))
                 {
+                    epr_free_dsd(dsd);
                     epr_set_err(e_err_invalid_data_format,
                         "epr_read_each_dsd: invalid dataset record number format");
-                    epr_free_dsd(dsd);
                     return NULL;
                 }
                 tmp = epr_sub_string(code_block, EPR_LENGTH_NUM_DSR_IDENTIFIER, strlen(code_block) - EPR_LENGTH_NUM_DSR_IDENTIFIER - 1);
@@ -402,9 +402,9 @@ EPR_SDSD* epr_read_each_dsd(FILE* envisat_source_file, int* pos)
                 epr_free_string(tmp);
                 if (dsd->num_dsr == -1)
                 {
+                    epr_free_dsd(dsd);
                     epr_set_err(e_err_invalid_data_format,
                         "epr_read_each_dsd: invalid dsr number value");
-                    epr_free_dsd(dsd);
                     return NULL;
                 }
             }
@@ -415,9 +415,9 @@ EPR_SDSD* epr_read_each_dsd(FILE* envisat_source_file, int* pos)
             {
                 if (((uint)strlen(code_block) != (uint)(EPR_LENGTH_DSR_SIZE_FIELD)) || (strncmp(code_block + strlen(code_block) - strlen("<bytes>") - 1, "<bytes>", strlen("<bytes>")) != 0))
                 {
+                    epr_free_dsd(dsd);
                     epr_set_err(e_err_invalid_data_format,
                         "epr_read_each_dsd: invalid dataset record size format");
-                    epr_free_dsd(dsd);
                     return NULL;
                 }
                 tmp = epr_sub_string(code_block, EPR_LENGTH_DSR_SIZE_IDENTIFIER, strlen(code_block) - strlen("<bytes>") - EPR_LENGTH_DSR_SIZE_IDENTIFIER - 1);
@@ -425,9 +425,9 @@ EPR_SDSD* epr_read_each_dsd(FILE* envisat_source_file, int* pos)
                 epr_free_string(tmp);
                 if (dsd->dsr_size == -1)
                 {
+                    epr_free_dsd(dsd);
                     epr_set_err(e_err_invalid_data_format,
                         "epr_read_each_dsd: invalid record size value");
-                    epr_free_dsd(dsd);
                     return NULL;
                 }
             }
@@ -436,9 +436,9 @@ EPR_SDSD* epr_read_each_dsd(FILE* envisat_source_file, int* pos)
             fgets(code_block, EPR_LINE_MAX_LENGTH, envisat_source_file);
             if ((strlen(code_block) > 0) && (code_block[0] != ' '))
             {
+                epr_free_dsd(dsd);
                 epr_set_err(e_err_invalid_data_format,
                     "epr_read_each_dsd: invalid code_block, must be empty");
-                epr_free_dsd(dsd);
                 return NULL;
             }
             *pos = *pos + 1;
@@ -521,38 +521,36 @@ EPR_SPtrArray* epr_read_all_dsds(EPR_SProductId* product_id)
     /*dsd_begin = epr_api.epr_head_size - dsd_number * EPR_DSD_SIZE;*/
 
     if (fseek(product_id->istream, EPR_MPH_SIZE, SEEK_SET) != 0) {
-        epr_set_err(e_err_file_access_denied,
-            "epr_read_all_dsds: file seek failed");
         if (dsds_array != NULL) {
             epr_free_ptr_array(dsds_array);
         }
+        epr_set_err(e_err_file_access_denied,
+            "epr_read_all_dsds: file seek failed");
         return NULL;
     }
     field = epr_get_field(product_id->mph_record, "SPH_SIZE");
     sph_length = ((uint*) field->elems)[0];
     dsd_begin = EPR_MPH_SIZE + (uint)epr_find_first_dsd(product_id->istream, sph_length);
     if (dsd_begin == EPR_MPH_SIZE) {
-        epr_set_err(e_err_file_access_denied,
-            "epr_read_all_dsds: no DS_NAME in SPH");
         if (dsds_array != NULL) {
             epr_free_ptr_array(dsds_array);
         }
+        epr_set_err(e_err_file_access_denied,
+            "epr_read_all_dsds: no DS_NAME in SPH");
         return NULL;
     }
     for(dsd_index = 0; dsd_index < dsd_number; dsd_index ++) {
         if (fseek(product_id->istream, dsd_begin + dsd_index * EPR_DSD_SIZE, SEEK_SET) != 0) {
-            epr_set_err(e_err_file_access_denied,
-                "epr_read_all_dsds: file seek failed");
             if (dsds_array != NULL) {
                 epr_free_ptr_array(dsds_array);
             }
+            epr_set_err(e_err_file_access_denied,
+                "epr_read_all_dsds: file seek failed");
             return NULL;
         }
         code_block = epr_create_string(EPR_DSD_SIZE);
         numread = fread(code_block, 1, EPR_DSD_SIZE, product_id->istream);
         if ((uint)numread != EPR_DSD_SIZE) {
-            epr_set_err(e_err_file_read_error,
-                "epr_read_all_dsds: error in reading SPH from product data file");
             if (code_block != NULL) {
                 epr_free_string(code_block);
                 code_block = NULL;
@@ -560,6 +558,8 @@ EPR_SPtrArray* epr_read_all_dsds(EPR_SProductId* product_id)
             if (dsds_array != NULL) {
                 epr_free_ptr_array(dsds_array);
             }
+            epr_set_err(e_err_file_read_error,
+                "epr_read_all_dsds: error in reading SPH from product data file");
             return NULL;
         }
 
@@ -573,8 +573,6 @@ EPR_SPtrArray* epr_read_all_dsds(EPR_SProductId* product_id)
             dsd = epr_create_dsd(dsd_index);
 
             if (dsd == NULL) {
-                epr_set_err(e_err_out_of_memory,
-                    "epr_read_all_dsds: out of memory");
                 if (code_block != NULL) {
                     epr_free_string(code_block);
                     code_block = NULL;
@@ -588,6 +586,8 @@ EPR_SPtrArray* epr_read_all_dsds(EPR_SProductId* product_id)
                 if (dsds_array != NULL) {
                     epr_free_ptr_array(dsds_array);
                 }
+                epr_set_err(e_err_out_of_memory,
+                    "epr_read_all_dsds: out of memory");
                 return NULL;
             }
 
