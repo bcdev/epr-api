@@ -53,7 +53,7 @@ endif(CMAKE_C_COMPILER_ID STREQUAL GNU OR CMAKE_C_COMPILER_ID STREQUAL Clang)
 add_library(epr_api SHARED ${SOURCES})
 set_target_properties(epr_api PROPERTIES
     VERSION ${EPR_API_VERSION_STRING}
-    SOVERSION ${EPR_API_VERSION_MAJOR})
+    SOVERSION ${EPR_API_SOVERSION})
 if(NOT MSVC)
 	target_link_libraries(epr_api m)
 endif()

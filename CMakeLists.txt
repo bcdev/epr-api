@@ -13,6 +13,10 @@ set(EPR_API_VERSION_STRING
     "${EPR_API_VERSION_MAJOR}.${EPR_API_VERSION_MINOR}.${EPR_API_VERSION_PATCH}")
 
 
+# NOTE: only change this when an ABI change happens
+set(EPR_API_SOVERSION 1)
+
+
 # options
 option(BUILD_STATIC_LIB "build the static version of the library" ON)
 option(BUILD_TESTS "build test programs" OFF)
