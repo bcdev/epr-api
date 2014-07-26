@@ -644,8 +644,10 @@ int epr_read_band_raster(EPR_SBandId* band_id,
                                            offset_x,
                                            offset_y,
                                            raster) != 0) {
+            /* Do not shadow the original error message that appears to be more informative
             epr_set_err(e_err_file_read_error,
                         "epr_read_band_raster: unsuccessfully reading band measurement data");
+            */
             return epr_get_last_err_code();
         }
         if (band_id->bm_expr != NULL) {
@@ -657,7 +659,6 @@ int epr_read_band_raster(EPR_SBandId* band_id,
                                           raster->source_height,
                                           raster->source_step_x,
                                           raster->source_step_y);
-
 
             /* rd_bm = */ epr_read_bitmask_raster(product_id,
                                             band_id->bm_expr,
