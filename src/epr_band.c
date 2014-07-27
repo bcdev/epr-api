@@ -849,13 +849,14 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
     int iY, raster_pos, delta_raster_pos;
     EPR_FArrayTransformer transform_array_func = NULL;
     int y_beg, y_end, y_beg_old, y_end_old;
-    /* int offset_x_mirrored = 0; */
+    int offset_x_mirrored = 0;
     uint num_elems = 0;
     float y_mod = 0;
     float scan_offset_x = 0;
     float scan_offset_y = 0;
     void* line_beg_buffer = NULL;
     void* line_end_buffer = NULL;
+    uint scene_width = 0;
 
     product_id = band_id->product_id;
 
@@ -970,13 +971,12 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
     y_beg_old = 9999;
     y_end_old = 9999;
 
-    /* TODO: check
+    scene_width = band_id->product_id->scene_width;
     if (band_id->lines_mirrored) {
-        offset_x_mirrored = num_elems - (offset_x + raster->source_width - 1) - 1;
+        offset_x_mirrored = (scene_width - 1) - (offset_x + raster->source_width - 1);
     } else {
         offset_x_mirrored = offset_x;
     }
-    */
 
     for (iY = offset_y; (uint)iY < offset_y + raster->source_height; iY += raster->source_step_y ) {
 
@@ -1014,7 +1014,7 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
 
         /*get the "line" of interpolated physical values from tie point data*/
         decode_tiepoint_band(line_beg_buffer, line_end_buffer,
-                             samples_per_tie_pt, num_elems, band_id, offset_x, scan_offset_x, y_mod,
+                             samples_per_tie_pt, num_elems, band_id, offset_x_mirrored, scan_offset_x, y_mod,
                              raster->source_width, raster->source_step_x, raster->buffer, raster_pos);
         /*locate "data point" for the next "line"*/
         raster_pos += delta_raster_pos;
