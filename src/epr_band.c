@@ -775,6 +775,12 @@ int epr_read_band_measurement_data(EPR_SBandId* band_id,
     scene_width = band_id->product_id->scene_width;
     if (band_id->lines_mirrored) {
         offset_x_mirrored = (scene_width - 1) - (offset_x + raster->source_width - 1);
+        /* the extra offset is used to accomodate the the effect of sampling step
+         * greather than one in case of mirrored lines */
+        {
+            int extra_offset = raster->source_width - ((raster->raster_width - 1) * raster->source_step_x + 1);
+            offset_x_mirrored += extra_offset;
+        }
     } else {
         offset_x_mirrored = offset_x;
     }
@@ -974,6 +980,12 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
     scene_width = band_id->product_id->scene_width;
     if (band_id->lines_mirrored) {
         offset_x_mirrored = (scene_width - 1) - (offset_x + raster->source_width - 1);
+        /* the extra offset is used to accomodate the the effect of sampling step
+         * greather than one in case of mirrored lines */
+        {
+            int extra_offset = raster->source_width - ((raster->raster_width - 1) * raster->source_step_x + 1);
+            offset_x_mirrored += extra_offset;
+        }
     } else {
         offset_x_mirrored = offset_x;
     }
