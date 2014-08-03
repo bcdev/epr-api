@@ -1,4 +1,4 @@
-VERS_2.2 {
+EPR_API_2.2 {
     global:
         epr_close_api;
         epr_init_api;
@@ -210,12 +210,12 @@ VERS_2.2 {
         *;
 };
 
-VERS_2.3 {
+EPR_API_2.3 {
     global:
         epr_set_err_handler;
         epr_set_log_level;
     local:
         epr_detect_asar_sw_version;
         *;
-} VERS_2.2;
+} EPR_API_2.2;
 

@@ -104,9 +104,9 @@ EPR_SProductId* epr_open_product(const char* product_file_path) {
 
     /* Set file pointer to start of product identifier */
     if (fseek(product_id->istream, EPR_PRODUCT_ID_OFFSET, SEEK_SET) != 0) {
+        epr_close_product(product_id);
         epr_set_err(e_err_file_access_denied,
                     "epr_open_product: file seek failed");
-        epr_close_product(product_id);
         return NULL;
     }
 
@@ -114,9 +114,9 @@ EPR_SProductId* epr_open_product(const char* product_file_path) {
               1,
               EPR_PRODUCT_ID_STRLEN,
               product_id->istream) != (uint) EPR_PRODUCT_ID_STRLEN) {
+        epr_close_product(product_id);
         epr_set_err(e_err_file_access_denied,
                     "epr_open_product: file read failed");
-        epr_close_product(product_id);
         return NULL;
     }
 
@@ -125,9 +125,9 @@ EPR_SProductId* epr_open_product(const char* product_file_path) {
             (strncmp(EPR_ENVISAT_PRODUCT_ASAR,  product_id->id_string, 3) != 0) &&
             (strncmp(EPR_ENVISAT_PRODUCT_SAR,  product_id->id_string, 3) != 0) &&
             (strncmp(EPR_ENVISAT_PRODUCT_AATSR, product_id->id_string, 3) != 0)) {
+        epr_close_product(product_id);
         epr_set_err(e_err_invalid_product_id,
                     "epr_open_product: invalid product identifier");
-        epr_close_product(product_id);
         return NULL;
     }
 
@@ -144,18 +144,18 @@ EPR_SProductId* epr_open_product(const char* product_file_path) {
 
     /* Set file to end of file in order to determine file size */
     if (fseek(product_id->istream, 0, SEEK_END) != 0) {
+        epr_close_product(product_id);
         epr_set_err(e_err_file_access_denied,
                     "epr_open_product: file seek failed");
-        epr_close_product(product_id);
         return NULL;
     }
 
     /* Get file size */
     product_id->tot_size = (uint) ftell(product_id->istream);
     if (product_id->tot_size == (uint) -1) {
+        epr_close_product(product_id);
         epr_set_err(e_err_file_access_denied,
                     "epr_open_product: failed to determine file size");
-        epr_close_product(product_id);
         return NULL;
     }
     sprintf(message_buffer, "product size: %u", product_id->tot_size);
@@ -163,9 +163,9 @@ EPR_SProductId* epr_open_product(const char* product_file_path) {
 
     /* Set file pointer back to start */
     if (fseek(product_id->istream, 0, SEEK_SET) != 0) {
+        epr_close_product(product_id);
         epr_set_err(e_err_file_access_denied,
                     "epr_open_product: file seek failed");
-        epr_close_product(product_id);
         return NULL;
     }
 
@@ -187,9 +187,9 @@ EPR_SProductId* epr_open_product(const char* product_file_path) {
     product_id->dsd_array = epr_read_all_dsds(product_id);
     compare_ok = epr_compare_param(product_id);
     if (compare_ok == 0) {
+        epr_close_product(product_id);
         epr_set_err(e_err_invalid_value,
                     "epr_open_product: MPH_SIZE+SPH_SIZE must be equal to DSD[0].DS_OFFSET");
-        epr_close_product(product_id);
         return NULL;
     }
 

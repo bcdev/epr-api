@@ -235,7 +235,7 @@ void epr_set_err(EPR_EErrCode err_code, const char* err_message)
 }
 
 /*
-   Function:    epr_set_error
+   Function:    epr_clear_err
    Access:      public API implementation helper
    Changelog:   2002/01/05  mp initial version
  */
