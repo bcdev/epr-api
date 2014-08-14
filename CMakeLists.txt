@@ -1,4 +1,4 @@
-# Copyright (c) 2013 Antonio Valentino <antonio.valentino@tiscali.it>
+# Copyright (c) 2013-2014 Antonio Valentino <antonio.valentino@tiscali.it>
 
 
 cmake_minimum_required(VERSION 2.8)
@@ -14,7 +14,7 @@ set(EPR_API_VERSION_STRING
 
 
 # NOTE: only change this when an ABI change happens
-set(EPR_API_SOVERSION 1)
+set(EPR_API_SOVERSION 2)
 
 
 # options
