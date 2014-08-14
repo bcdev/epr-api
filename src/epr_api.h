@@ -31,7 +31,7 @@ extern "C"
 #include "epr_ptrarray.h"
 
 #define EPR_PRODUCT_API_NAME_STR         "ENVISAT Product Reader API"
-#define EPR_PRODUCT_API_VERSION_STR      "2.3dev_pyepr082"
+#define EPR_PRODUCT_API_VERSION_STR      "2.3"
 
 /* needed by Doxygen */
 /** \mainpage
