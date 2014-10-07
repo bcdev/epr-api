@@ -75,17 +75,17 @@ struct RecordDescriptorTable {
     const struct RecordDescriptor* descriptors;
 };
 
-extern const struct DatasetDescriptorTable dddb_product_tables[68];
-extern const struct BandDescriptorTable dddb_band_tables[39];
-extern const struct FlagDescriptorTable dddb_flag_coding_tables[9];
+extern const struct DatasetDescriptorTable dddb_product_tables[70];
+extern const struct BandDescriptorTable dddb_band_tables[41];
+extern const struct FlagDescriptorTable dddb_flag_coding_tables[10];
 extern const struct RecordDescriptorTable dddb_meris_rec_tables[23];
 extern const struct RecordDescriptorTable dddb_aatsr_rec_tables[20];
 extern const struct RecordDescriptorTable dddb_atsr2_rec_tables[20];
 extern const struct RecordDescriptorTable dddb_asar_rec_tables[22];
 
-#define EPR_NUM_PRODUCT_TABLES         68
-#define EPR_NUM_BAND_TABLES            39
-#define EPR_NUM_FLAG_CODING_TABLES     9
+#define EPR_NUM_PRODUCT_TABLES         70
+#define EPR_NUM_BAND_TABLES            41
+#define EPR_NUM_FLAG_CODING_TABLES     10
 #define EPR_NUM_MERIS_REC_TABLES       23
 #define EPR_NUM_AATSR_REC_TABLES       20
 #define EPR_NUM_ATSR2_REC_TABLES       20
