@@ -182,8 +182,7 @@ EPR_SPtrArray* epr_create_band_ids(EPR_SProductId* product_id) {
         epr_assign_string(&band_id->description, b_tables[bt_index].descriptors[i].description);
 
         /* lines_flipped*/
-        if (strncmp(product_id->id_string, EPR_ENVISAT_PRODUCT_MERIS, 3) == 0
-                || strncmp(product_id->id_string, EPR_ENVISAT_PRODUCT_AATSR, 3) == 0) {
+        if (strncmp(product_id->id_string, EPR_ENVISAT_PRODUCT_MERIS, 3) == 0) {
             band_id->lines_mirrored = TRUE;
         } else {
             if (strncmp(product_id->id_string, EPR_ENVISAT_PRODUCT_ASAR, 3) == 0
@@ -894,15 +893,15 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
         field = epr_get_field(sph_record, "LINE_LENGTH");
         scan_line_length = epr_get_field_elem_as_uint(field, 0);
     } else if (strncmp(EPR_ENVISAT_PRODUCT_AATSR, product_id->id_string, 3) == 0) {
-        scan_offset_y = 0.0F; /*!! EPR-7: was 0.5F !!*/
+        scan_offset_y = -0.5F;
         scan_line_length = EPR_ATS_LINE_LENGTH;
         lines_per_tie_pt = EPR_AATSR_LINES_PER_TIE_PT;
         num_elems = field_info->num_elems;
         if (num_elems == EPR_ATS_NUM_PER_POINT_ACROSS_LOCAT) {
-            scan_offset_x = -19.0F;
+            scan_offset_x = -19.5F;
             samples_per_tie_pt = 25;
         } else if (num_elems == EPR_ATS_NUM_PER_POINT_ACROSS_SOLAR) {
-            scan_offset_x = 6.0F;
+            scan_offset_x = 5.5F;
             samples_per_tie_pt = 50;
         } else {
             epr_free_record(record);
@@ -1032,24 +1031,8 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
         raster_pos += delta_raster_pos;
     }
 
-    if (strncmp(EPR_ENVISAT_PRODUCT_MERIS, product_id->id_string, 3) == 0) {
+    if (band_id->lines_mirrored) {
         mirror_float_array((float*)raster->buffer, raster->raster_width, raster->raster_height);
-    } else {
-        if (strncmp(EPR_ENVISAT_PRODUCT_AATSR, product_id->id_string, 3) == 0) {
-            mirror_float_array((float*)raster->buffer, raster->raster_width, raster->raster_height);
-        } else {
-            if (strncmp(EPR_ENVISAT_PRODUCT_ASAR, product_id->id_string, 3) == 0
-                    && strncmp(product_id->id_string, "ASA_IMG", 7) != 0
-                    && strncmp(product_id->id_string, "ASA_APG", 7) != 0) {
-                mirror_float_array((float*)raster->buffer, raster->raster_width, raster->raster_height);
-            } else {
-                if (strncmp(EPR_ENVISAT_PRODUCT_SAR, product_id->id_string, 3) == 0
-                        && strncmp(product_id->id_string, "SAR_IMG", 7) != 0
-                        && strncmp(product_id->id_string, "SAR_APG", 7) != 0) {
-                    mirror_float_array((float*)raster->buffer, raster->raster_width, raster->raster_height);
-                }
-            }
-        }
     }
 
     epr_free_record(record_beg);
