@@ -10,7 +10,7 @@
 
 int epr_is_little_endian_order(void)
 {
-    ulong le_value = LE_MAGIC_NUMBER;
+    uint le_value = LE_MAGIC_NUMBER;
     return (((uchar*)(&le_value))[0] == LE_MAGIC_BYTE_0)
         && (((uchar*)(&le_value))[1] == LE_MAGIC_BYTE_1)
         && (((uchar*)(&le_value))[2] == LE_MAGIC_BYTE_2)
@@ -19,7 +19,7 @@ int epr_is_little_endian_order(void)
 
 int epr_is_big_endian_order(void)
 {
-    ulong be_value = BE_MAGIC_NUMBER;
+    uint be_value = BE_MAGIC_NUMBER;
     return (((uchar*)(&be_value))[0] == LE_MAGIC_BYTE_0)
         && (((uchar*)(&be_value))[1] == LE_MAGIC_BYTE_1)
         && (((uchar*)(&be_value))[2] == LE_MAGIC_BYTE_2)
