@@ -474,7 +474,7 @@ static const struct RecordDescriptor ATS_AR__2P_MDSR_sr_large_aatsr_rec_data[] =
     {"sd_67toa_cl_for", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
     {"sa_55toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.55 micron TOA reflectance of all cloudy pixels (forward view)"},
     {"sd_55toa_cl_for", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
-    {"fail_flag_for", e_tid_ushort, NULL, 2, "1", "Pixel threshold failure flags for averages, foward view"},
+    {"fail_flag_for", e_tid_ushort, NULL, 2, "1", "Pixel threshold failure flags for averages, forward view"},
     {"pix_nsig_nad", e_tid_short, NULL, 2, "1", "Number of filled pixels (N-Sigma), nadir view"},
     {"pix_ss", e_tid_short, "%/100", 2, "1", "Percentage filled pixels over sea surface"},
     {"low_11bt_cl_nad", e_tid_short, "K/100", 2, "1", "Lowest 11 micron BT of all cloudy pixels, nadir view"},
@@ -535,7 +535,7 @@ static const struct RecordDescriptor ATS_AR__2P_MDSR_sr_small_aatsr_rec_data[] =
     {"sa_87toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.87 micron TOA reflectance of all cloudy pixels (forward view)"},
     {"sa_67toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.67 micron TOA reflectance of all cloudy pixels (forward view)"},
     {"sa_55toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.55 micron TOA reflectance of all cloudy pixels (forward view)"},
-    {"fail_flag_for", e_tid_ushort, NULL, 2, "1", "Pixel threshold failure flags for averages, foward view"}
+    {"fail_flag_for", e_tid_ushort, NULL, 2, "1", "Pixel threshold failure flags for averages, forward view"}
 };
 
 static const struct RecordDescriptor ATS_AR__2P_MDSR_sst_large_aatsr_rec_data[] = {
