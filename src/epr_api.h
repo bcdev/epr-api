@@ -317,6 +317,11 @@ struct EPR_ProductId
      * For MERIS L1b and RR and FR to provide backward compatibility
      */
     int meris_iodd_version;
+
+    /**
+     * For reading products using the attachment flag
+     */
+    int *mdsMapIndex;
 };
 
 
