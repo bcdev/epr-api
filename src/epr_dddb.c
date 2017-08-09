@@ -4547,7 +4547,7 @@ static const struct FlagDescriptor MER_RR__2P_flags_data[] = {
     {"TOAVI_INVAL_REC", 2, {2, 23}, "Invalid rectification (land)"},
     {"LOW_SUN", 1, {1, 0}, "Sun low above horizon (or conversely high sun zenith angle)"},
     {"LOW_PRESSURE", 1, {0, 0}, "Computed pressure is lower than ECMWF one (land, cloud)"},
-    {"WHITE_SCATTERER", 2, {0, 21}, "Presense of white scatterer in water"}
+    {"WHITE_SCATTERER", 2, {0, 21}, "Presence of white scatterer in water"}
 };
 
 static const struct FlagDescriptor MER_RR__2P_flags_IODD6_data[] = {
