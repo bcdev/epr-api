@@ -12,7 +12,7 @@
 				<Option object_output="obj\Debug\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="MER_RR__2PNMAP20080412_084905_000002422067_00365_31982_0001.N1 output reflec_1 reflec_4 reflec_12" />
+				<Option parameters="MER_RR__2PNRAL20100429_160201_000003102089_00040_42679_0001.N1 output reflec_1 reflec_4 reflec_12" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -26,7 +26,7 @@
 				<Option object_output="obj\Release\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="MER_RR__2PNMAP20080412_084905_000002422067_00365_31982_0001.N1 output reflec_1 reflec_4 reflec_12" />
+				<Option parameters="MER_RR__2PNRAL20100429_160201_000003102089_00040_42679_0001.N1 output reflec_1 reflec_4 reflec_12" />
 				<Compiler>
 					<Add option="-O2" />
 				</Compiler>

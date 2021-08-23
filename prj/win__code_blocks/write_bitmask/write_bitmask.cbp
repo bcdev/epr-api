@@ -12,7 +12,7 @@
 				<Option object_output="obj\Debug\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters='MER_RR__2PNMAP20080412_084905_000002422067_00365_31982_0001.N1 &quot;l2_flags.LAND and !l2_flags.TOAVI_BRIGHT&quot; output/bitmask.raw' />
+				<Option parameters='MER_RR__2PNRAL20100429_160201_000003102089_00040_42679_0001.N1 &quot;l2_flags.LAND and !l2_flags.TOAVI_BRIGHT&quot; output/bitmask.raw' />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -26,7 +26,7 @@
 				<Option object_output="obj\Release\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters='MER_RR__2PNMAP20080412_084905_000002422067_00365_31982_0001.N1 &quot;l2_flags.LAND and !l2_flags.TOAVI_BRIGHT&quot; output/bitmask.raw' />
+				<Option parameters='MER_RR__2PNRAL20100429_160201_000003102089_00040_42679_0001.N1 &quot;l2_flags.LAND and !l2_flags.TOAVI_BRIGHT&quot; output/bitmask.raw' />
 				<Compiler>
 					<Add option="-O2" />
 				</Compiler>
