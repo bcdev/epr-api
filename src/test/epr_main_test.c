@@ -40,7 +40,7 @@ BC_BEGIN_TEST(test_get_element_value)
 
     epr_init_api(ll, loghandler, NULL);
 
-    product_id = epr_open_product("testdata\\MER_RR__2PNMAP20080412_084905_000002422067_00365_31982_0001.N1");
+    product_id = epr_open_product("testdata/MER_RR__2PNRAL20100429_160201_000003102089_00040_42679_0001.N1");
     if (product_id == NULL)
        BC_ERROR("cannot open product");
 
@@ -56,7 +56,7 @@ BC_BEGIN_TEST(test_get_element_value)
 
     field = record->fields[4];
 
-    BC_ASSERT_SAME(182, ((uint*) field->elems)[3]);
+    BC_ASSERT_SAME(93, ((uint*) field->elems)[3]);
 
     epr_free_record(record);
     epr_close_product(product_id);
@@ -96,13 +96,13 @@ EPR_SProductId* test_epr_open_product_with_missing_file(void)
 EPR_SProductId* test_epr_open_product_with_bad_api_init_flag(void) {
     EPR_SProductId* product_id = NULL;
     epr_close_api();
-    product_id = epr_open_product("testdata\\MER_RR__2PNMAP20080412_084905_000002422067_00365_31982_0001.N1");
+    product_id = epr_open_product("testdata/MER_RR__2PNRAL20100429_160201_000003102089_00040_42679_0001.N1");
     return product_id;
 }
 
 EPR_SProductId* test_epr_open_product_OK(void) {
     EPR_SProductId* product_id = NULL;
-    product_id = epr_open_product("testdata\\MER_RR__2PNMAP20080412_084905_000002422067_00365_31982_0001.N1");
+    product_id = epr_open_product("testdata/MER_RR__2PNRAL20100429_160201_000003102089_00040_42679_0001.N1");
     return product_id;
 }
 
@@ -153,7 +153,7 @@ BC_BEGIN_TEST(test_epr_get_dataset_id)
     BC_ASSERT_NULL(dataset_id);
 
     epr_init_api(ll, loghandler, NULL);
-    product_id = epr_open_product("testdata\\MER_RR__2PNMAP20080412_084905_000002422067_00365_31982_0001.N1");
+    product_id = epr_open_product("testdata/MER_RR__2PNRAL20100429_160201_000003102089_00040_42679_0001.N1");
     if (product_id == NULL)
         BC_ERROR("cannot open product");
 
@@ -170,7 +170,7 @@ BC_BEGIN_TEST(test_epr_read_record)
     EPR_SRecord* record = NULL;
 
     epr_init_api(ll, loghandler, NULL);
-    product_id = epr_open_product("testdata\\MER_RR__2PNMAP20080412_084905_000002422067_00365_31982_0001.N1");
+    product_id = epr_open_product("testdata/MER_RR__2PNRAL20100429_160201_000003102089_00040_42679_0001.N1");
     if (product_id == NULL) {
         BC_FAIL("cannot open product");
     }
@@ -431,7 +431,7 @@ BC_BEGIN_TEST(test_epr_parse_band)
     EPR_SBandId* band_id = NULL;
 
     epr_init_api(ll, epr_log_message, NULL);
-    product_id = epr_open_product("testdata/MER_RR__2PNMAP20080412_084905_000002422067_00365_31982_0001.N1");
+    product_id = epr_open_product("testdata/MER_RR__2PNRAL20100429_160201_000003102089_00040_42679_0001.N1");
     band_id = epr_get_band_id(product_id, "kapusta");
     BC_ASSERT_NULL(band_id);
 
@@ -450,14 +450,14 @@ BC_BEGIN_TEST(test_tie_points_ADS_4_4)
 
     epr_init_api(ll, loghandler, NULL);
 
-    EPR_SProductId* product_id = epr_open_product("testdata/MER_RR__2PNMAP20080412_084905_000002422067_00365_31982_0001.N1");
+    EPR_SProductId* product_id = epr_open_product("testdata/MER_RR__2PNRAL20100429_160201_000003102089_00040_42679_0001.N1");
     EPR_SDatasetId* dataset_id = epr_get_dataset_id(product_id, "Tie_points_ADS");
     EPR_SRecord* record = epr_create_record(dataset_id);
     record = epr_read_record(dataset_id, 2, record);
 
     EPR_SField* field = record->fields[4];
 
-    BC_ASSERT_SAME(182,((uint*) field->elems)[3]);
+    BC_ASSERT_SAME(93,((uint*) field->elems)[3]);
 
     epr_close_product(product_id);
     epr_close_api();
