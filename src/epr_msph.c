@@ -322,6 +322,10 @@ EPR_SRecord* epr_parse_header(const char* header_name, const char* ascii_source)
 
     epr_free_string(h_name);
 
+    if (record == NULL) {
+        epr_free_char_ptr_array(field_infos);
+    }
+
     return record;
 }
 
@@ -418,6 +422,7 @@ void epr_parse_int_token(EPR_SPtrArray* header_values, char* token_value, uint* 
             epr_set_err(e_err_invalid_value,
                         "epr_parse_header: invalid ascii header: illegal value");
             cyc ++;
+            epr_free_string(tmp);
             tmp = epr_clone_string("-999999");
             *num_bytes = sizeof(int);
             *tp = e_tid_int;
