@@ -8,6 +8,7 @@ Changes from Version 2.2 to Version 2.3 (of DD. MMMM YYYY)
 1) Bugfix in epr_band.c: [EPR-7] Interpolation of geolocation ADS
 2) Bugfix in epr_core.c: Setting errno to 0 in method epr_str_to_number.
 3) Switched to a new test file.
+4) Fixed some memory leaks.
 
 ----------------------------------------------------------------------
 Changes from Version 2.1 to Version 2.2 (of 31. July 2010)

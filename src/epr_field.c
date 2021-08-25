@@ -162,6 +162,7 @@ EPR_SField* epr_create_field(EPR_SFieldInfo* field_info)
     data_type_size = epr_get_data_type_size(field_info->data_type_id);
     if (data_type_size == 0)
     {
+        free(field);
         epr_set_err(e_err_illegal_data_type,
                     "epr_create_field: illegal field_info data type identifier");
         return NULL;

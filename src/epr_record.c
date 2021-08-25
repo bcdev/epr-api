@@ -341,6 +341,7 @@ EPR_SRecord* epr_create_record_from_info(EPR_SRecordInfo* record_info)
     record->fields = (EPR_SField**) calloc(record->num_fields, sizeof(EPR_SField*));
     if (record->fields == NULL)
     {
+        free(record);
         epr_set_err(e_err_out_of_memory,
                     "epr_create_record: out of memory");
         return NULL;

@@ -79,6 +79,7 @@ EPR_SProductId* epr_open_product(const char* product_file_path) {
     epr_assign_string(&product_id->file_path, product_file_path);
 
     if (product_id->file_path == NULL) {
+        free(product_id);
         epr_set_err(e_err_out_of_memory,
                     "epr_open_product: out of memory");
         return NULL;
@@ -96,6 +97,7 @@ EPR_SProductId* epr_open_product(const char* product_file_path) {
             epr_set_err(e_err_file_access_denied,
                         "epr_open_product: file open failed");
         }
+        epr_free_product_id(product_id);
         return NULL;
     }
 
