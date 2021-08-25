@@ -201,6 +201,7 @@ int main(int argc, char** argv)
         }
     }
 
+    free(buf);
     fclose(out_stream);
 
     epr_close_product(product_id);
