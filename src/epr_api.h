@@ -233,15 +233,19 @@ struct EPR_ProductId
     EPR_Magic magic;
 
     /**
-     * The file's path including the file name.
+     * For MERIS L1b and RR and FR to provide backward compatibility
      */
-    char* file_path;
+    int meris_iodd_version;
 
     /**
-     * The input stream as returned by the ANSI C <code>fopen</code>
-     * function for the given file path.
+     * The product identifier string obtained from the MPH
+     * parameter 'PRODUCT'.
+     * <p>The first 10 characters of this string identify the
+     * the product type, e.g. "MER_1P__FR" for a MERIS Level 1b
+     * full resolution product. The rest of the string decodes
+     * product instance properties.
      */
-    FILE* istream;
+    char id_string[EPR_PRODUCT_ID_STRLEN + 1];
 
     /**
      * The total size in bytes of the product file.
@@ -259,14 +263,15 @@ struct EPR_ProductId
     uint  scene_height;
 
     /**
-     * The product identifier string obtained from the MPH
-     * parameter 'PRODUCT'.
-     * <p>The first 10 characters of this string identify the
-     * the product type, e.g. "MER_1P__FR" for a MERIS Level 1b
-     * full resolution product. The rest of the string decodes
-     * product instance properties.
+     * The file's path including the file name.
      */
-    char id_string[EPR_PRODUCT_ID_STRLEN + 1];
+    char* file_path;
+
+    /**
+     * The input stream as returned by the ANSI C <code>fopen</code>
+     * function for the given file path.
+     */
+    FILE* istream;
 
     /**
      * The record representing the main product header (MPH).
@@ -312,11 +317,6 @@ struct EPR_ProductId
      * Contains and array of all band IDs for the product (type EPR_SBandId*)
      */
     EPR_SPtrArray* band_ids;
-
-    /**
-     * For MERIS L1b and RR and FR to provide backward compatibility
-     */
-    int meris_iodd_version;
 };
 
 
@@ -453,16 +453,16 @@ struct EPR_Record
     EPR_Magic magic;
 
     /**
-     * The corresponding record info for this record (a 'soft' pointer).
-     */
-    EPR_SRecordInfo* info;
-
-    /**
      * The number of fields contained in this record.
      * The value is always equal <code>info->field_infos->length</code> and is
      * provided here for convenience only.
      */
     uint num_fields;
+
+    /**
+     * The corresponding record info for this record (a 'soft' pointer).
+     */
+    EPR_SRecordInfo* info;
 
     /**
      * The record fields. An array of <code>EPR_Field*</code>
@@ -612,15 +612,15 @@ struct EPR_FlagDef
      */
     EPR_Magic magic;
 
-    /**
-     * The flag name.
-     */
-    char* name;
-
      /**
      * The bit mask describing this flag
      */
     uint bit_mask;
+
+    /**
+     * The flag name.
+     */
+    char* name;
 
      /**
      * The flag description.
@@ -649,6 +649,11 @@ struct EPR_BandId
     EPR_Magic magic;
 
     /**
+     * The (zero-based) spectral band index. -1 if this is not a spectral band.
+     */
+    int spectr_band_index;
+
+    /**
      * The ID of the product to which this band belongs to.
      */
     EPR_SProductId* product_id;
@@ -658,11 +663,6 @@ struct EPR_BandId
      * (also known as spectral subset)
      */
     char* band_name;
-
-    /**
-     * The (zero-based) spectral band index. -1 if this is not a spectral band.
-     */
-    int spectr_band_index;
 
     /**
      * The reference of the source dataset containing the raw data used to
@@ -726,6 +726,13 @@ struct EPR_BandId
      float scaling_factor;
 
     /**
+     * If true (=1) lines will be mirrored (flipped) after read into a raster
+     * in order to ensure a pixel ordering in raster X direction from
+     * WEST to EAST.
+     */
+    epr_boolean lines_mirrored;
+
+    /**
      * A bit-mask expression used to filter valid pixels. All others are set to zero.
      */
      char* bm_expr;
@@ -746,13 +753,6 @@ struct EPR_BandId
      * A short description of the band's contents
      */
     char* description;
-
-    /**
-     * If true (=1) lines will be mirrored (flipped) after read into a raster
-     * in order to ensure a pixel ordering in raster X direction from
-     * WEST to EAST.
-     */
-    epr_boolean lines_mirrored;
 };
 
 /**
