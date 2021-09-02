@@ -14,7 +14,7 @@ set(EPR_API_VERSION_STRING
 
 
 # NOTE: only change this when an ABI change happens
-set(EPR_API_SOVERSION 2)
+set(EPR_API_SOVERSION 3)
 
 
 # options
