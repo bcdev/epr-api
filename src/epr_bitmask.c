@@ -105,7 +105,6 @@ int epr_read_bitmask_raster(EPR_SProductId* product_id,
     EPR_SBmEvalContext* context;
     EPR_SBmTerm* term;
     uint x, y;
-    uint pos;
     uchar* bm_buffer = NULL;
     EPR_EErrCode errcode;
 
@@ -139,15 +138,12 @@ int epr_read_bitmask_raster(EPR_SProductId* product_id,
         return e_err_illegal_arg;
     }
 
-    pos = 0;
-
     epr_clear_err();
 
     errcode = epr_get_last_err_code();
     for (y = 0; y < bm_raster->raster_height; y++) {
         for (x = 0; x < bm_raster->raster_width; x++) {
-            bm_buffer[pos] = (uchar) epr_eval_bm_term(context, term, x, y);
-            pos++;
+            *bm_buffer++ = (uchar) epr_eval_bm_term(context, term, x, y);
             errcode = epr_get_last_err_code();
             if (errcode != 0) {
                 break;
