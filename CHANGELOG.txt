@@ -10,6 +10,7 @@ Changes from Version 2.2 to Version 2.3 (of DD. MMMM YYYY)
 3) Switched to a new test file.
 4) Fixed some memory leaks.
 5) Packed data structures to reduce memory usage.
+6) Minor low-level performance improvements.
 
 ----------------------------------------------------------------------
 Changes from Version 2.1 to Version 2.2 (of 31. July 2010)
