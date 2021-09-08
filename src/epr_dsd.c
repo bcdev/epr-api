@@ -127,7 +127,7 @@ int epr_detect_meris_iodd_version(EPR_SProductId* product_id)
     EPR_SDSD** elems;
     int size = 0;
     int rec_size = 0;
-    int i, ioddFormat = 7;
+    int i, ioddFormat = 8;
     char* name;
 
     /* reflect L1b product format change from IODD5 to IODD6 */
@@ -147,7 +147,7 @@ int epr_detect_meris_iodd_version(EPR_SProductId* product_id)
             }
         }
     }
-    /* reflect L2 product format change from IODD6 to IODD7 */
+    /* reflect L2 product format change from IODD6 to IODD7, and from IODD7 to IODD8 */
     else if (strncmp("MER_RR__2P", product_id->id_string, 10) == 0
         || strncmp("MER_FR__2P", product_id->id_string, 10) == 0) {
 
@@ -160,6 +160,8 @@ int epr_detect_meris_iodd_version(EPR_SProductId* product_id)
                 break;
             }
         }
+
+        /* TODO Add logic to detect IODD7 */
     }
     return ioddFormat;
 }

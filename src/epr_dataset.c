@@ -136,6 +136,11 @@ EPR_SPtrArray* epr_create_dataset_ids(EPR_SProductId* product_id)
                     strcmp(id, "MER_FR__2P_IODD6") == 0) {
                     pt_index = i;
                 }
+            } else if (product_id->meris_iodd_version == 7) {
+                if (strcmp(id, "MER_RR__2P_IODD7") == 0 ||
+                    strcmp(id, "MER_FR__2P_IODD7") == 0) {
+                    pt_index = i;
+                }
             } else if (asar_sw_version >= 602) {
                 if (strcmp(&(id[10]), "_602") == 0) {
                     pt_index = i;
