@@ -246,9 +246,12 @@ void epr_set_err(EPR_EErrCode err_code, const char* err_message)
  */
 void epr_clear_err(void)
 {
-    epr_api.last_err_code = e_err_none;
-    epr_free_string(epr_api.last_err_message);
-    epr_api.last_err_message = NULL;
+    if (epr_api.last_err_code != e_err_none)
+    {
+        epr_api.last_err_code = e_err_none;
+        epr_free_string(epr_api.last_err_message);
+        epr_api.last_err_message = NULL;
+    }
 }
 
 /*

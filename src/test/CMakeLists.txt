@@ -3,6 +3,9 @@
 add_executable(epr_subset_test epr_subset_test.c)
 target_link_libraries(epr_subset_test epr_api)
 
+add_executable(epr_performance_test epr_performance_test.c)
+target_link_libraries(epr_performance_test epr_api)
+
 add_executable(epr_test_endian epr_test_endian.c)
 target_link_libraries(epr_test_endian epr_api)
 

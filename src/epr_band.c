@@ -1599,7 +1599,7 @@ void decode_tiepoint_band(float* sa_beg,
     for (ix = offset_x; ix < offset_x + raster_width; ix += s_x) {
         x_mod = (ix - scan_offset_x) / samples_per_tie_pt;
         if (x_mod >= 0.0F) {
-            x_knot = (uint)floor(x_mod);
+            x_knot = (uint)x_mod;
             if (x_knot >= num_elems - 1) {
                 x_knot = num_elems - 2;
             }
@@ -1712,61 +1712,69 @@ void transform_array_float_to_float (void* sourceArray,
 }
 
 void mirror_float_array(float* raster_buffer, uint raster_width, uint raster_height) {
-    uint w, h, pol_w, offset;
+    uint h, offset;
     float tmp;
-    pol_w = raster_width / 2;
 
     for (h = 0; h < raster_height; h ++) {
-        for (w = 0; w < pol_w; w ++) {
-            offset = h * raster_width;
-            tmp = raster_buffer[w + offset];
-            raster_buffer[w + offset] = raster_buffer[raster_width - 1 - w + offset];
-            raster_buffer[raster_width - 1 - w + offset] = tmp;
+        offset = h * raster_width;
+
+        float *start = raster_buffer + offset;
+        float *end = raster_buffer + offset + raster_width - 1;
+        while (start < end) {
+            tmp = *start;
+            *start++ = *end;
+            *end-- = tmp;
         }
     }
 }
 
 void mirror_uchar_array(uchar* raster_buffer, uint raster_width, uint raster_height) {
-    uint w, h, pol_w, offset;
+    uint h, offset;
     uchar tmp;
-    pol_w = raster_width / 2;
 
-    for (h = 0; h < raster_height; h ++) {
-        for (w = 0; w < pol_w; w ++) {
-            offset = h * raster_width;
-            tmp = raster_buffer[w + offset];
-            raster_buffer[w + offset] = raster_buffer[raster_width - 1 - w + offset];
-            raster_buffer[raster_width - 1 - w + offset] = tmp;
+    for (h = 0; h < raster_height; h++) {
+        offset = h * raster_width;
+
+        uchar *start = raster_buffer + offset;
+        uchar *end = raster_buffer + offset + raster_width - 1;
+        while (start < end) {
+            tmp = *start;
+            *start++ = *end;
+            *end-- = tmp;
         }
     }
 }
 
 void mirror_ushort_array(ushort* raster_buffer, uint raster_width, uint raster_height) {
-    uint w, h, pol_w, offset;
+    uint h, offset;
     ushort tmp;
-    pol_w = raster_width / 2;
 
-    for (h = 0; h < raster_height; h ++) {
-        for (w = 0; w < pol_w; w ++) {
-            offset = h * raster_width;
-            tmp = raster_buffer[w + offset];
-            raster_buffer[w + offset] = raster_buffer[raster_width - 1 - w + offset];
-            raster_buffer[raster_width - 1 - w + offset] = tmp;
+    for (h = 0; h < raster_height; h++) {
+        offset = h * raster_width;
+
+        ushort *start = raster_buffer + offset;
+        ushort *end = raster_buffer + offset + raster_width - 1;
+        while (start < end) {
+            tmp = *start;
+            *start++ = *end;
+            *end-- = tmp;
         }
     }
 }
 
 void mirror_uint_array(uint* raster_buffer, uint raster_width, uint raster_height) {
-    uint w, h, pol_w, offset;
+    uint h, offset;
     uint tmp;
-    pol_w = raster_width / 2;
 
-    for (h = 0; h < raster_height; h ++) {
-        for (w = 0; w < pol_w; w ++) {
-            offset = h * raster_width;
-            tmp = raster_buffer[w + offset];
-            raster_buffer[w + offset] = raster_buffer[raster_width - 1 - w + offset];
-            raster_buffer[raster_width - 1 - w + offset] = tmp;
+    for (h = 0; h < raster_height; h++) {
+        offset = h * raster_width;
+
+        uint *start = raster_buffer + offset;
+        uint *end = raster_buffer + offset + raster_width - 1;
+        while (start < end) {
+            tmp = *start;
+            *start++ = *end;
+            *end-- = tmp;
         }
     }
 }
