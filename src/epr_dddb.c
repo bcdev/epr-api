@@ -763,6 +763,541 @@ static const struct RecordDescriptor ATS_VC1_AX_GADS_aatsr_rec_data[] = {
     {"spare_2", e_tid_spare, NULL, 20, "1", "Spare"}
 };
 
+static const struct RecordDescriptor AT2_AR__2P_MDSR_lr_large_atsr2_rec_data[] = {
+    {"dsr_time", e_tid_time, "MJD", 12, "1", "Nadir UTC time in MJD format"},
+    {"quality_flag", e_tid_uchar, "flag", 1, "1", "Quality Indicator (-1 for blank MDSR, 0 otherwise)"},
+    {"spare_1", e_tid_spare, NULL, 3, "1", "Spare"},
+    {"lat", e_tid_int, "(1e-6) degrees", 4, "1", "Latitude of  cell"},
+    {"lon", e_tid_int, "(1e-6) degrees", 4, "1", "Longitude of  cell"},
+    {"m_actrk_pix_num", e_tid_short, NULL, 2, "1", "Mean across-track pixel number"},
+    {"pix_nad", e_tid_short, NULL, 2, "1", "Number of filled pixels in cell, nadir view"},
+    {"pix_ls_nad", e_tid_short, NULL, 2, "1", "Number of filled pixels in cell over land surface, nadir view"},
+    {"perc_cl_pix_ls_nad", e_tid_short, NULL, 2, "1", "Percentage of cloudy pixels in cell over land surface, nadir view"},
+    {"lat_corr_nad", e_tid_int, "(1e-6) degrees", 4, "1", "Topographic latitude correction, nadir view"},
+    {"long_corr_nad", e_tid_int, "(1e-6) degrees", 4, "1", "Topographic longitude correction, nadir view"},
+    {"sa_12bt_clr_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 12 micron BT of all clear pixels (nadir view)"},
+    {"sd_12bt_clr_nad", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_11bt_clr_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 11 micron BT of all clear pixels (nadir view)"},
+    {"sd_11bt_clr_nad", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_37bt_clr_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 3.7 micron BT of all clear pixels (nadir view)"},
+    {"sd_37bt_clr_nad", e_tid_int, "%/1000", 4, "1", "Standard deviation of above"},
+    {"sa_16toa_clr_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 1.6 micron TOA reflectance of all clear pixels (nadir view)"},
+    {"sd_16toa_clr_nad", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_87toa_clr_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.87 micron TOA reflectance of all clear pixels (nadir view)"},
+    {"sd_87toa_clr_nad", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_67toa_clr_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.67 micron TOA reflectance of all clear pixels (nadir view)"},
+    {"sd_67toa_clr_nad", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_55toa_clr_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.55 micron TOA reflectance of all clear pixels (nadir view)"},
+    {"sd_55toa_clr_nad", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_12bt_cl_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 12 micron BT of all cloudy pixels (nadir view)"},
+    {"sd_12bt_cl_nad", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_11bt_cl_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 11 micron BT of all cloudy pixels (nadir view)"},
+    {"sd_11bt_cl_nad", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_37bt_cl_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 3.7 micron BT of all cloudy pixels (nadir view)"},
+    {"sd_37bt_cl_nad", e_tid_int, "%/1000", 4, "1", "Standard deviation of above"},
+    {"sa_16toa_cl_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 1.6 micron TOA reflectance of all cloudy pixels (nadir view)"},
+    {"sd_16toa_cl_nad", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_87toa_cl_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.87 micron TOA reflectance of all cloudy pixels (nadir view)"},
+    {"sd_87toa_cl_nad", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_67toa_cl_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.67 micron TOA reflectance of all cloudy pixels (nadir view)"},
+    {"sd_67toa_cl_nad", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_55toa_cl_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.55 micron TOA reflectance of all cloudy pixels (nadir view)"},
+    {"sd_55toa_cl_nad", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"fail_flag_nad", e_tid_ushort, NULL, 2, "1", "Pixel threshold failure flags for averages, nadir view"},
+    {"pix_for", e_tid_short, NULL, 2, "1", "Number of filled pixels in cell, forward view"},
+    {"pix_ls_for", e_tid_short, NULL, 2, "1", "Number of filled pixels in cell over land surface, forward view"},
+    {"perc_cl_pix_ls_for", e_tid_short, NULL, 2, "1", "Percentage of cloudy pixels in cell over land surface, forward view"},
+    {"lat_corr_for", e_tid_int, "(1e-6) degrees", 4, "1", "Topographic latitude correction, forward view"},
+    {"long_corr_for", e_tid_int, "(1e-6) degrees", 4, "1", "Topographic longitude correction, forward view"},
+    {"sa_12bt_clr_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 12 micron BT of all clear pixels (forward view)"},
+    {"sd_12bt_clr_for", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_11bt_clr_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 11 micron BT of all clear pixels (forward view)"},
+    {"sd_11bt_clr_for", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_37bt_clr_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 3.7 micron BT of all clear pixels (forward view)"},
+    {"sd_37bt_clr_for", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_16toa_clr_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 1.6 micron TOA reflectance of all clear pixels (forward view)"},
+    {"sd_16toa_clr_for", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_87toa_clr_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.87 micron TOA reflectance of all clear pixels (forward view)"},
+    {"sd_87toa_clr_for", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_67toa_clr_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.67 micron TOA reflectance of all clear pixels (forward view)"},
+    {"sd_67toa_clr_for", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_55toa_clr_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.55 micron TOA reflectance of all clear pixels (forward view)"},
+    {"sd_55toa_clr_for", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_12bt_cl_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 12 micron BT of all cloudy pixels (forward view)"},
+    {"sd_12bt_cl_for", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_11bt_cl_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 11 micron BT of all cloudy pixels (forward view)"},
+    {"sd_11bt_cl_for", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_37bt_cl_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 3.7 micron BT of all cloudy pixels (forward view)"},
+    {"sd_37bt_cl_for", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_16toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 1.6 micron TOA reflectance of all cloudy pixels (forward view)"},
+    {"sd_16toa_cl_for", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_87toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.87 micron TOA reflectance of all cloudy pixels (forward view)"},
+    {"sd_87toa_cl_for", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_67toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.67 micron TOA reflectance of all cloudy pixels (forward view)"},
+    {"sd_67toa_cl_for", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_55toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.55 micron TOA reflectance of all cloudy pixels (forward view)"},
+    {"sd_55toa_cl_for", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"fail_flag_for", e_tid_ushort, NULL, 2, "1", "Pixel threshold failure flags for averages, forward view"},
+    {"pix_nsig_nad", e_tid_short, NULL, 2, "1", "Number of filled pixels (N-Sigma), nadir view"},
+    {"pix_ss", e_tid_short, "%/100", 2, "1", "Percentage filled pixels over land surface"},
+    {"low_11bt_cl_nad", e_tid_short, "K/100", 2, "1", "Lowest 11 micron BT of all cloudy pixels, nadir view"},
+    {"corr_12bt_nad", e_tid_short, "K/100", 2, "1", "Corresponding 12 micron BT, nadir view"},
+    {"corr_37bt_nad", e_tid_short, "K/100", 2, "1", "Corresponding 3.7 micron BT, nadir view"},
+    {"corr_16ref_nad", e_tid_short, "%/100", 2, "1", "Corresponding 1.6 micron reflectance, nadir view"},
+    {"corr_87ref_nad", e_tid_short, "%/100", 2, "1", "Corresponding 0.87 micron reflectance, nadir view"},
+    {"corr_67ref_nad", e_tid_short, "%/100", 2, "1", "Corresponding 0.67 micron reflectance, nadir view"},
+    {"corr_55ref_nad", e_tid_short, "%/100", 2, "1", "Corresponding 0.55 micron reflectance, nadir view"},
+    {"low_11bt_cl_for", e_tid_short, "K/100", 2, "1", "Lowest 11 micron BT of all cloudy pixels, forward view"},
+    {"corr_12bt_for", e_tid_short, "K/100", 2, "1", "Corresponding 12 micron BT, forward view"},
+    {"corr_37bt_for", e_tid_short, "K/100", 2, "1", "Corresponding 3.7 micron BT, forward view"},
+    {"corr_16ref_for", e_tid_short, "%/100", 2, "1", "Corresponding 1.6 micron reflectance, forward view"},
+    {"corr_87ref_for", e_tid_short, "%/100", 2, "1", "Corresponding 0.87 micron reflectance, forward view"},
+    {"corr_67ref_for", e_tid_short, "%/100", 2, "1", "Corresponding 0.67 micron reflectance, forward view"},
+    {"corr_55ref_for", e_tid_short, "%/100", 2, "1", "Corresponding 0.55 micron reflectance, forward view"}
+};
+
+static const struct RecordDescriptor AT2_AR__2P_MDSR_lr_small_atsr2_rec_data[] = {
+    {"dsr_time", e_tid_time, "MJD", 12, "1", "Nadir UTC time in MJD format"},
+    {"quality_flag", e_tid_uchar, "flag", 1, "1", "Quality Indicator (-1 for blank MDSR, 0 otherwise)"},
+    {"spare_1", e_tid_spare, NULL, 3, "1", "Spare"},
+    {"lat", e_tid_int, "(1e-6) degrees", 4, "1", "Latitude of cell"},
+    {"lon", e_tid_int, "(1e-6) degrees", 4, "1", "Longitude of cell"},
+    {"m_actrk_pix_num", e_tid_short, NULL, 2, "1", "Mean across-track pixel number"},
+    {"pix_nad", e_tid_short, NULL, 2, "1", "Number of filled pixels in cell, nadir view"},
+    {"pix_ls_nad", e_tid_short, NULL, 2, "1", "Number of filled pixels in cell over land surface, nadir view"},
+    {"perc_cl_pix_ls_nad", e_tid_short, NULL, 2, "1", "Percentage of cloudy pixels in cell over land surface, nadir view"},
+    {"lat_corr_nad", e_tid_int, "(1e-6) degrees", 4, "1", "Topographic latitude correction,  nadir view"},
+    {"long_corr_nad", e_tid_int, "(1e-6) degrees", 4, "1", "Topographic longitude correction,  nadir view"},
+    {"sa_12bt_clr_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 12 micron BT of all clear pixels  (nadir view)"},
+    {"sa_11bt_clr_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 11 micron BT of all clear pixels  (nadir view)"},
+    {"sa_37bt_clr_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 3.7 micron BT of all clear pixels  (nadir view)"},
+    {"sa_16toa_clr_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 1.6 micron TOA reflectance of all clear pixels  (nadir view)"},
+    {"sa_87toa_clr_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.87 micron TOA reflectance of all clear pixels  (nadir view)"},
+    {"sa_67toa_clr_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.67 micron TOA reflectance of all clear pixels  (nadir view)"},
+    {"sa_55toa_clr_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.55 micron TOA reflectance of all clear pixels  (nadir view)"},
+    {"sa_12bt_cl_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 12 micron BT of all cloudy pixels  (nadir view)"},
+    {"sa_11bt_cl_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 11 micron BT of all cloudy pixels  (nadir view)"},
+    {"sa_37bt_cl_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 3.7 micron BT of all cloudy pixels  (nadir view)"},
+    {"sa_16toa_cl_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 1.6 micron TOA reflectance of all cloudy pixels  (nadir view)"},
+    {"sa_87toa_cl_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.87 micron TOA reflectance of all cloudy pixels  (nadir view)"},
+    {"sa_67toa_cl_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.67 micron TOA reflectance of all cloudy pixels  (nadir view)"},
+    {"sa_55toa_cl_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.55 micron TOA reflectance of all cloudy pixels  (nadir view)"},
+    {"fail_flag_nad", e_tid_ushort, NULL, 2, "1", "Pixel threshold failure flags for averages, nadir view"},
+    {"pix_for", e_tid_short, NULL, 2, "1", "Number of filled pixels in cell, forward view"},
+    {"pix_ss_for", e_tid_short, NULL, 2, "1", "Number of filled pixels in cell over land surface, forward view"},
+    {"perc_cl_pix_ss_for", e_tid_short, NULL, 2, "1", "Percentage of cloudy pixels in cell over land surface, forward view"},
+    {"lat_corr_for", e_tid_int, "(1e-6) degrees", 4, "1", "Topographic latitude correction,  forward view"},
+    {"long_corr_for", e_tid_int, "(1e-6) degrees", 4, "1", "Topographic longitude correction,  forward view"},
+    {"sa_12bt_clr_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 12 micron BT of all clear pixels  (forward view)"},
+    {"sa_11bt_clr_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 11 micron BT of all clear pixels  (forward view)"},
+    {"sa_37bt_clr_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 3.7 micron BT of all clear pixels  (forward view)"},
+    {"sa_16toa_clr_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 1.6 micron TOA reflectance of all clear pixels  (forward view)"},
+    {"sa_87toa_clr_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.87 micron TOA reflectance of all clear pixels  (forward view)"},
+    {"sa_67toa_clr_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.67 micron TOA reflectance of all clear pixels  (forward view)"},
+    {"sa_55toa_clr_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.55 micron TOA reflectance of all clear pixels  (forward view)"},
+    {"sa_12bt_cl_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 12 micron BT of all cloudy pixels  (forward view)"},
+    {"sa_11bt_cl_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 11 micron BT of all cloudy pixels  (forward view)"},
+    {"sa_37bt_cl_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 3.7 micron BT of all cloudy pixels  (forward view)"},
+    {"sa_16toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 1.6 micron TOA reflectance of all cloudy pixels  (forward view)"},
+    {"sa_87toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.87 micron TOA reflectance of all cloudy pixels  (forward view)"},
+    {"sa_67toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.67 micron TOA reflectance of all cloudy pixels  (forward view)"},
+    {"sa_55toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.55 micron TOA reflectance of all cloudy pixels  (forward view)"},
+    {"fail_flag_for", e_tid_ushort, NULL, 2, "1", "Pixel threshold failure flags for averages, forward view"}
+};
+
+static const struct RecordDescriptor AT2_AR__2P_MDSR_lst_large_atsr2_rec_data[] = {
+    {"dsr_time", e_tid_time, "MJD", 12, "1", "Nadir UTC time in MJD format"},
+    {"quality_flag", e_tid_uchar, "flag", 1, "1", "Quality Indicator (-1 for blank MDSR, 0 otherwise)"},
+    {"spare_1", e_tid_spare, NULL, 3, "1", "Spare"},
+    {"lat", e_tid_int, "(1e-6) degrees", 4, "1", "Latitude of cell"},
+    {"lon", e_tid_int, "(1e-6) degrees", 4, "1", "Longitude of cell"},
+    {"m_actrk_pix_num", e_tid_short, NULL, 2, "1", "Mean across-track pixel number"},
+    {"m_lst", e_tid_short, "K/100", 2, "1", "mean land surface temperature (ST)"},
+    {"sd_lst", e_tid_short, "K/100", 2, "1", "standard deviation of land ST"},
+    {"pix_lst", e_tid_ushort, NULL, 2, "1", "Number of pixels in land surface temperature average"},
+    {"m_ndvi", e_tid_short, NULL, 2, "1", "mean NDVI"},
+    {"sd_ndvi", e_tid_short, NULL, 2, "1", "standard deviation of NDVI"},
+    {"pix_ndvi", e_tid_ushort, NULL, 2, "1", "Number of pixels in NDVI average"},
+    {"ast_conf_flags", e_tid_ushort, "flags", 2, "2", "AST confidence word"},
+    {"cl_top_temp_nad", e_tid_short, "K/100", 2, "1", "Cloud-top temperature, nadir view"},
+    {"perc_cl_cov_nad", e_tid_short, "%/100", 2, "1", "Percentage cloud-cover, nadir view"},
+    {"cl_top_temp_for", e_tid_short, "K/100", 2, "1", "Cloud-top temperature, forward view"},
+    {"perc_cl_cov_for", e_tid_short, "%/100", 2, "1", "Percentage cloud-cover, forward view"}
+};
+
+static const struct RecordDescriptor AT2_AR__2P_MDSR_lst_small_atsr2_rec_data[] = {
+    {"dsr_time", e_tid_time, "MJD", 12, "1", "Nadir UTC time in MJD format"},
+    {"quality_flag", e_tid_uchar, "flag", 1, "1", "Quality Indicator (-1 for blank MDSR, 0 otherwise)"},
+    {"spare_1", e_tid_spare, NULL, 3, "1", "Spare"},
+    {"lat", e_tid_int, "(1e-6) degrees", 4, "1", "Latitude of cell"},
+    {"lon", e_tid_int, "(1e-6) degrees", 4, "1", "Longitude of cell"},
+    {"m_actrk_pix_num", e_tid_short, NULL, 2, "1", "Mean across-track pixel number"},
+    {"m_lst", e_tid_short, "K/100", 2, "1", "mean land ST in cells"},
+    {"pix_lst", e_tid_ushort, NULL, 2, "1", "Number of pixels in land surface temperature average"},
+    {"m_ndvi", e_tid_short, NULL, 2, "1", "mean NDVI"},
+    {"pix_ndvi", e_tid_ushort, NULL, 2, "1", "Number of pixels in NDVI average"},
+    {"ast_conf_flags", e_tid_ushort, "flags", 2, "2", "AST confidence word"}
+};
+
+static const struct RecordDescriptor AT2_AR__2P_MDSR_sr_large_atsr2_rec_data[] = {
+    {"dsr_time", e_tid_time, "MJD", 12, "1", "Nadir UTC time in MJD format"},
+    {"quality_flag", e_tid_uchar, "flag", 1, "1", "Quality Indicator (-1 for blank MDSR, 0 otherwise)"},
+    {"spare_1", e_tid_spare, NULL, 3, "1", "Spare"},
+    {"lat", e_tid_int, "(1e-6) degrees", 4, "1", "Latitude of cell"},
+    {"lon", e_tid_int, "(1e-6) degrees", 4, "1", "Longitude of cell"},
+    {"m_actrk_pix_num", e_tid_short, NULL, 2, "1", "Mean across-track pixel number"},
+    {"pix_nad", e_tid_short, NULL, 2, "1", "Number of filled pixels in cell, nadir view"},
+    {"pix_ss_nad", e_tid_short, NULL, 2, "1", "Number of filled pixels in cell over sea surface, nadir view"},
+    {"clpix_ss_nad", e_tid_short, NULL, 2, "1", "Percentage of cloudy pixels in cell over sea surface, nadir view"},
+    {"sa_12bt_clr_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 12 micron BT of all clear pixels (nadir view)"},
+    {"sd_12bt_clr_nad", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_11bt_clr_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 11 micron BT of all clear pixels (nadir view)"},
+    {"sd_11bt_clr_nad", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_37bt_clr_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 3.7 micron BT of all clear pixels (nadir view)"},
+    {"sd_37bt_clr_nad", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_16toa_clr_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 1.6 micron TOA reflectance of all clear pixels (nadir view)"},
+    {"sd_16toa_clr_nad", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_87toa_clr_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.87 micron TOA reflectance of all clear pixels (nadir view)"},
+    {"sd_87toa_clr_nad", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_67toa_clr_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.67 micron TOA reflectance of all clear pixels (nadir view)"},
+    {"sd_67toa_clr_nad", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_55toa_clr_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.55 micron TOA reflectance of all clear pixels (nadir view)"},
+    {"sd_55toa_clr_nad", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_12bt_cl_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 12 micron BT of all cloudy pixels (nadir view)"},
+    {"sd_12bt_cl_nad", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_11bt_cl_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 11 micron BT of all cloudy pixels (nadir view)"},
+    {"sd_11bt_cl_nad", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_37bt_cl_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 3.7 micron BT of all cloudy pixels (nadir view)"},
+    {"sd_37bt_cl_nad", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_16toa_cl_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 1.6 micron TOA reflectance of all cloudy pixels (nadir view)"},
+    {"sd_16toa_cl_nad", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_87toa_cl_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.87 micron TOA reflectance of all cloudy pixels (nadir view)"},
+    {"sd_87toa_cl_nad", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_67toa_cl_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.67 micron TOA reflectance of all cloudy pixels (nadir view)"},
+    {"sd_67toa_cl_nad", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_55toa_cl_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.55 micron TOA reflectance of all cloudy pixels (nadir view)"},
+    {"sd_55toa_cl_nad", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"fail_flag_nad", e_tid_ushort, NULL, 2, "1", "Pixel threshold failure flags for averages, nadir view"},
+    {"pix_for", e_tid_short, NULL, 2, "1", "Number of filled pixels in cell, forward view"},
+    {"pix_ss_for", e_tid_short, NULL, 2, "1", "Number of filled pixels in cell over sea surface, forward view"},
+    {"perc_cl_pix_ss_for", e_tid_short, NULL, 2, "1", "Percentage of cloudy pixels in cell over sea surface, forward view"},
+    {"sa_12bt_clr_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 12 micron BT of all clear pixels (forward view)"},
+    {"sd_12bt_clr_for", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_11bt_clr_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 11 micron BT of all clear pixels (forward view)"},
+    {"sd_11bt_clr_for", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_37bt_clr_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 3.7 micron BT of all clear pixels (forward view)"},
+    {"sd_37bt_clr_for", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_16toa_clr_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 1.6 micron TOA reflectance of all clear pixels (forward view)"},
+    {"sd_16toa_clr_for", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_87toa_clr_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.87 micron TOA reflectance of all clear pixels (forward view)"},
+    {"sd_87toa_clr_for", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_67toa_clr_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.67 micron TOA reflectance of all clear pixels (forward view)"},
+    {"sd_67toa_clr_for", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_55toa_clr_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.55 micron TOA reflectance of all clear pixels (forward view)"},
+    {"sd_55toa_clr_for", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_12bt_cl_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 12 micron BT of all cloudy pixels (forward view)"},
+    {"sd_12bt_cl_for", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_11bt_cl_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 11 micron BT of all cloudy pixels (forward view)"},
+    {"sd_11bt_cl_for", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_37bt_cl_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 3.7 micron BT of all cloudy pixels (forward view)"},
+    {"sd_37bt_cl_for", e_tid_int, "K/1000", 4, "1", "Standard deviation of above"},
+    {"sa_16toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 1.6 micron TOA reflectance of all cloudy pixels (forward view)"},
+    {"sd_16toa_cl_for", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_87toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.87 micron TOA reflectance of all cloudy pixels (forward view)"},
+    {"sd_87toa_cl_for", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_67toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.67 micron TOA reflectance of all cloudy pixels (forward view)"},
+    {"sd_67toa_cl_for", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"sa_55toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.55 micron TOA reflectance of all cloudy pixels (forward view)"},
+    {"sd_55toa_cl_for", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
+    {"fail_flag_for", e_tid_ushort, NULL, 2, "1", "Pixel threshold failure flags for averages, foward view"},
+    {"pix_nsig_nad", e_tid_short, NULL, 2, "1", "Number of filled pixels (N-Sigma), nadir view"},
+    {"pix_ss", e_tid_short, "%/100", 2, "1", "Percentage filled pixels over sea surface"},
+    {"low_11bt_cl_nad", e_tid_short, "K/100", 2, "1", "Lowest 11 micron BT of all cloudy pixels, nadir view"},
+    {"corr_12bt_nad", e_tid_short, "K/100", 2, "1", "Corresponding 12 micron BT, nadir view"},
+    {"corr_37bt_nad", e_tid_short, "K/100", 2, "1", "Corresponding 3.7 micron BT, nadir view"},
+    {"corr_16ref_nad", e_tid_short, "%/100", 2, "1", "Corresponding 1.6 micron reflectance, nadir view"},
+    {"corr_87ref_nad", e_tid_short, "%/100", 2, "1", "Corresponding 0.87 micron reflectance, nadir view"},
+    {"corr_67ref_nad", e_tid_short, "%/100", 2, "1", "Corresponding 0.67 micron reflectance, nadir view"},
+    {"corr_55ref_nad", e_tid_short, "%/100", 2, "1", "Corresponding 0.55 micron reflectance, nadir view"},
+    {"low_11bt_cl_for", e_tid_short, "K/100", 2, "1", "Lowest 11 micron BT of all cloudy pixels, forward view"},
+    {"corr_12bt_for", e_tid_short, "K/100", 2, "1", "Corresponding 12 micron BT, forward view"},
+    {"corr_37bt_for", e_tid_short, "K/100", 2, "1", "Corresponding 3.7 micron BT, forward view"},
+    {"corr_16ref_for", e_tid_short, "%/100", 2, "1", "Corresponding 1.6 micron reflectance, forward view"},
+    {"corr_87ref_for", e_tid_short, "%/100", 2, "1", "Corresponding 0.87 micron reflectance, forward view"},
+    {"corr_67ref_for", e_tid_short, "%/100", 2, "1", "Corresponding 0.67 micron reflectance, forward view"},
+    {"corr_55ref_for", e_tid_short, "%/100", 2, "1", "Corresponding 0.55 micron reflectance, forward view"}
+};
+
+static const struct RecordDescriptor AT2_AR__2P_MDSR_sr_small_atsr2_rec_data[] = {
+    {"dsr_time", e_tid_time, "MJD", 12, "1", "Nadir UTC time in MJD format"},
+    {"quality_flag", e_tid_uchar, "flag", 1, "1", "Quality Indicator (-1 for blank MDSR, 0 otherwise)"},
+    {"spare_1", e_tid_spare, NULL, 3, "1", "Spare"},
+    {"lat", e_tid_int, "(1e-6) degrees", 4, "1", "Latitude of cell"},
+    {"lon", e_tid_int, "(1e-6) degrees", 4, "1", "Longitude of cell"},
+    {"m_actrk_pix_num", e_tid_short, NULL, 2, "1", "Mean across-track pixel number"},
+    {"pix_nad", e_tid_short, NULL, 2, "1", "Number of filled pixels in cell, nadir view"},
+    {"pix_ss_nad", e_tid_short, NULL, 2, "1", "Number of filled pixels in cell over sea surface, nadir view"},
+    {"clpix_ss_nad", e_tid_short, NULL, 2, "1", "Percentage of cloudy pixels in cell over sea surface, nadir view"},
+    {"sa_12bt_clr_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 12 micron BT of all clear pixels (nadir view)"},
+    {"sa_11bt_clr_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 11 micron BT of all clear pixels (nadir view)"},
+    {"sa_37bt_clr_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 3.7 micron BT of all clear pixels (nadir view)"},
+    {"sa_16toa_clr_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 1.6 micron TOA reflectance of all clear pixels (nadir view)"},
+    {"sa_87toa_clr_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.87 micron TOA reflectance of all clear pixels (nadir view)"},
+    {"sa_67toa_clr_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.67 micron TOA reflectance of all clear pixels (nadir view)"},
+    {"sa_55toa_clr_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.55 micron TOA reflectance of all clear pixels (nadir view)"},
+    {"sa_12bt_cl_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 12 micron BT of all cloudy pixels (nadir view)"},
+    {"sa_11bt_cl_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 11 micron BT of all cloudy pixels (nadir view)"},
+    {"sa_37bt_cl_nad", e_tid_int, "K/1000", 4, "1", "Spatially averaged 3.7 micron BT of all cloudy pixels (nadir view)"},
+    {"sa_16toa_cl_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 1.6 micron TOA reflectance of all cloudy pixels (nadir view)"},
+    {"sa_87toa_cl_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.87 micron TOA reflectance of all cloudy pixels (nadir view)"},
+    {"sa_67toa_cl_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.67 micron TOA reflectance of all cloudy pixels (nadir view)"},
+    {"sa_55toa_cl_nad", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.55 micron TOA reflectance of all cloudy pixels (nadir view)"},
+    {"fail_flag_nad", e_tid_ushort, NULL, 2, "1", "Pixel threshold failure flags for averages, nadir view"},
+    {"pix_for", e_tid_short, NULL, 2, "1", "Number of filled pixels in cell, forward view"},
+    {"pix_ss_for", e_tid_short, NULL, 2, "1", "Number of filled pixels in cell over sea surface, forward view"},
+    {"perc_cl_pix_ss_for", e_tid_short, NULL, 2, "1", "Percentage of cloudy pixels in cell over sea surface, forward view"},
+    {"sa_12bt_clr_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 12 micron BT of all clear pixels (forward view)"},
+    {"sa_11bt_clr_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 11 micron BT of all clear pixels (forward view)"},
+    {"sa_37bt_clr_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 3.7 micron BT of all clear pixels (forward view)"},
+    {"sa_16toa_clr_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 1.6 micron TOA reflectance of all clear pixels (forward view)"},
+    {"sa_87toa_clr_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.87 micron TOA reflectance of all clear pixels (forward view)"},
+    {"sa_67toa_clr_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.67 micron TOA reflectance of all clear pixels (forward view)"},
+    {"sa_55toa_clr_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.55 micron TOA reflectance of all clear pixels (forward view)"},
+    {"sa_12bt_cl_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 12 micron BT of all cloudy pixels (forward view)"},
+    {"sa_11bt_cl_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 11 micron BT of all cloudy pixels (forward view)"},
+    {"sa_37bt_cl_for", e_tid_int, "K/1000", 4, "1", "Spatially averaged 3.7 micron BT of all cloudy pixels (forward view)"},
+    {"sa_16toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 1.6 micron TOA reflectance of all cloudy pixels (forward view)"},
+    {"sa_87toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.87 micron TOA reflectance of all cloudy pixels (forward view)"},
+    {"sa_67toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.67 micron TOA reflectance of all cloudy pixels (forward view)"},
+    {"sa_55toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.55 micron TOA reflectance of all cloudy pixels (forward view)"},
+    {"fail_flag_for", e_tid_ushort, NULL, 2, "1", "Pixel threshold failure flags for averages, foward view"}
+};
+
+static const struct RecordDescriptor AT2_AR__2P_MDSR_sst_large_atsr2_rec_data[] = {
+    {"dsr_time", e_tid_time, "MJD", 12, "1", "Nadir UTC time in MJD format"},
+    {"quality_flag", e_tid_uchar, "flag", 1, "1", "Quality Indicator (-1 for blank MDSR, 0 otherwise)"},
+    {"spare_1", e_tid_spare, NULL, 3, "1", "Spare"},
+    {"lat", e_tid_int, "(1e-6) degrees", 4, "1", "Latitude of cell"},
+    {"lon", e_tid_int, "(1e-6) degrees", 4, "1", "Longitude of cell"},
+    {"m_actrk_pix_num", e_tid_short, NULL, 2, "1", "Mean across-track pixel number"},
+    {"m_nad", e_tid_short, "K/100", 2, "1", "mean nadir-only SST"},
+    {"sd_nad", e_tid_short, "K/100", 2, "1", "standard deviation of nadir-only SST"},
+    {"pix_nad", e_tid_ushort, NULL, 2, "1", "Number of pixels in nadir-only average"},
+    {"m_dual_vw", e_tid_short, "K/100", 2, "1", "mean dual-view SST"},
+    {"sd_dual_vw", e_tid_short, "K/100", 2, "1", "standard deviation of dual-view SST"},
+    {"pix_dual_vw", e_tid_ushort, NULL, 2, "1", "Number of pixels in dual view average"},
+    {"ast_conf_flags", e_tid_ushort, "flags", 2, "2", "AST confidence word"},
+    {"cl_top_temp_nad", e_tid_short, "K/100", 2, "1", "Cloud-top temperature, nadir view"},
+    {"perc_cl_cov_nad", e_tid_short, "%/100", 2, "1", "Percentage cloud-cover, nadir view"},
+    {"cl_top_temp_for", e_tid_short, "K/100", 2, "1", "Cloud-top temperature, forward view"},
+    {"perc_cl_cov_for", e_tid_short, "%/100", 2, "1", "Percentage cloud-cover, forward view"}
+};
+
+static const struct RecordDescriptor AT2_AR__2P_MDSR_sst_small_atsr2_rec_data[] = {
+    {"dsr_time", e_tid_time, "MJD", 12, "1", "Nadir UTC time in MJD format"},
+    {"quality_flag", e_tid_uchar, "flag", 1, "1", "Quality Indicator (-1 for blank MDSR, 0 otherwise)"},
+    {"spare_1", e_tid_spare, NULL, 3, "1", "Spare"},
+    {"lat", e_tid_int, "(1e-6) degrees", 4, "1", "Latitude of cell"},
+    {"lon", e_tid_int, "(1e-6) degrees", 4, "1", "Longitude of cell"},
+    {"m_actrk_pix_num", e_tid_short, NULL, 2, "1", "Mean across-track pixel number"},
+    {"m_nad", e_tid_short, "K/100", 2, "1", "mean nadir-only SST"},
+    {"pix_nad", e_tid_ushort, NULL, 2, "1", "Number of pixels in nadir-only average"},
+    {"m_dual_vw", e_tid_short, "K/100", 2, "1", "mean dual-view SST"},
+    {"pix_dual_vw", e_tid_ushort, NULL, 2, "1", "Number of pixels in dual-view average"},
+    {"ast_conf_flags", e_tid_ushort, "flags", 2, "2", "AST confidence word"}
+};
+
+static const struct RecordDescriptor AT2_MET_2P_meteo_user_prod_atsr2_rec_data[] = {
+    {"dsr_time", e_tid_time, "MJD", 12, "1", "Nadir UTC time in MJD format"},
+    {"rec_qua_ind", e_tid_char, NULL, 1, "1", "Record Quality indicator"},
+    {"spare_1", e_tid_spare, NULL, 3, "1", "Spare"},
+    {"lat", e_tid_int, "(1e-6) degrees", 4, "1", "Latitude of 10 arcmin cell"},
+    {"lon", e_tid_int, "(1e-6) degrees", 4, "1", "Longitude of 10 arcmin cell"},
+    {"sa_12bt_clr_nad", e_tid_int, "K/1000", 4, "1", "Nadir spatially averaged 12 micron BT of all clear pixels 10 arcmin cells"},
+    {"sa_11bt_clr_nad", e_tid_int, "K/1000", 4, "1", "Nadir spatially averaged 11 micron BT of all clear pixels in 10 arcmin cells"},
+    {"sa_37bt_clr_nad", e_tid_int, "K/1000", 4, "1", "Nadir spatially averaged 3.7 micron BT of all clear pixels in 10 arcmin cells"},
+    {"sa_12bt_clr_for", e_tid_int, "K/1000", 4, "1", "Forward spatially averaged 12 micron BT of all clear pixels in 10 arcmin cells"},
+    {"sa_11bt_clr_for", e_tid_int, "K/1000", 4, "1", "Forward spatially averaged 11 micron BT of all clear pixels in 10 arcmin cells"},
+    {"sa_37bt_clr_for", e_tid_int, "K/1000", 4, "1", "Forward spatially averaged 3.7 micron BT of all clear pixels in 10 arcmin cells"},
+    {"m_actrk_pix_num", e_tid_short, "none", 2, "1", "Mean across-track pixel number"},
+    {"m_nad", e_tid_short, "K/100", 2, "1", "Mean nadir-only SST 10 arcmin cells"},
+    {"pix_nad", e_tid_ushort, "none", 2, "1", "Number of pixels in nadir-only average, 10 arcmin cells"},
+    {"m_dual_vw", e_tid_short, "K/100", 2, "1", "Mean dual-view SST in 10 arcmin cells"},
+    {"pix_dual_vw", e_tid_ushort, "none", 2, "1", "Number of pixels in dual-view average, 10 arcmin cells"},
+    {"ast_conf_flags", e_tid_ushort, "flags", 2, "2", "AST confidence word"}
+};
+
+static const struct RecordDescriptor AT2_NR__2P_ADSR_sq_atsr2_rec_data[] = {
+    {"dsr_time", e_tid_time, "MJD", 12, "1", "Nadir UTC time in MJD format"},
+    {"attach_flag", e_tid_uchar, "flag", 1, "1", "Attachment flag(set to 1 if all MDSRs corresponding to this ADSR are blank, set to 0 otherwise)"},
+    {"spare_1", e_tid_spare, NULL, 3, "1", "Spare"},
+    {"scan_num", e_tid_ushort, NULL, 2, "1", "image scan number"},
+    {"pv_nad_null_pac", e_tid_short, NULL, 2, "1", "Packet Validation during nadir view number of scans null packet"},
+    {"pv_nad_fail_val", e_tid_short, NULL, 2, "1", "Packet Validation during nadir view number of scans failing basic validation"},
+    {"pv_nad_fail_crc_chk", e_tid_short, NULL, 2, "1", "Packet Validation during nadir view number of scans failing CRC check"},
+    {"pv_nad_show_buf_full", e_tid_short, NULL, 2, "1", "Packet Validation during nadir view number of scans showing buffers full"},
+    {"pv_nad_scan_jitt", e_tid_short, NULL, 2, "1", "Packet Validation during nadir view number of scans showing scan jitter"},
+    {"per_cloud_pix", e_tid_short, "0.01 %", 2, "1", "percentage of cloudy pixels"},
+    {"per_ndvi_inv", e_tid_short, "0.01 %", 2, "1", "percentage of NDVI invalid"},
+    {"per_sst_for_inv", e_tid_short, "0.01 %", 2, "1", "percentage of SST (nadir view) invalid"},
+    {"per_sst_dual_inv", e_tid_short, "0.01 %", 2, "1", "percentage of SST (dual view) invalid"},
+    {"pv_nad_scan_error", e_tid_short, NULL, 2, "1", "Packet Validation during nadir view number of scans - all other errors"},
+    {"pv_for_null_pac", e_tid_short, NULL, 2, "1", "Packet Validation during forward view number of scans null packet"},
+    {"pv_for_fail_val", e_tid_short, NULL, 2, "1", "Packet Validation during forward view number of scans failing basic validation"},
+    {"pv_for_fail_crc_chk", e_tid_short, NULL, 2, "1", "Packet Validation during forward view number of scans failing CRC check"},
+    {"pv_for_show_buf_full", e_tid_short, NULL, 2, "1", "Packet Validation during forward view number of scans showing buffers full"},
+    {"pv_for_scan_jitt", e_tid_short, NULL, 2, "1", "Packet Validation during forward view number of scans showing scan jitter"},
+    {"resv_char_5", e_tid_short, NULL, 2, "1", "reserved for future use"},
+    {"resv_char_6", e_tid_short, NULL, 2, "1", "reserved for future use"},
+    {"resv_char_7", e_tid_short, NULL, 2, "1", "reserved for future use"},
+    {"resv_char_8", e_tid_short, NULL, 2, "1", "reserved for future use"},
+    {"pv_for_scan_error", e_tid_short, NULL, 2, "1", "Packet Validation during forward view number of scans - all other errors"},
+    {"spare_2", e_tid_spare, NULL, 28, "1", "Spare"}
+};
+
+static const struct RecordDescriptor AT2_NR__2P_MDSR_dp_atsr2_rec_data[] = {
+    {"dsr_time", e_tid_time, "MJD", 12, "1", "Nadir UTC time in MJD format"},
+    {"quality_flag", e_tid_uchar, "flag", 1, "1", "Quality Indicator (-1 for blank MDSR, 0 otherwise)"},
+    {"spare_1", e_tid_spare, NULL, 3, "1", "Spare"},
+    {"img_scan_y", e_tid_int, "m", 4, "1", "image scan y coordinate"},
+    {"conf_wd_flags", e_tid_ushort, "flags", 2, "512", "confidence words (Defined in Table 7.5.1.7.8 3)"},
+    {"nad_field", e_tid_short, "K/100", 2, "512", "nadir field (Note 1)"},
+    {"comb_field", e_tid_short, "See Note 1", 2, "512", "combined field (Note 1)"}
+};
+
+static const struct RecordDescriptor AT2_TOA_1P_ADSR_loc_atsr2_rec_data[] = {
+    {"dsr_time", e_tid_time, "MJD", 12, "1", "Nadir UTC time in MJD format"},
+    {"attach_flag", e_tid_uchar, "flag", 1, "1", "Attachment Flag (set to 1 if all MDSRs corresponding to this ADSR are blank, set to 0 otherwise)"},
+    {"spare_1", e_tid_spare, NULL, 3, "1", "Spare"},
+    {"img_scan_y", e_tid_int, "m", 4, "1", "image scan y coordinate"},
+    {"tie_pt_lat", e_tid_int, "(1e-6) degrees", 4, "23", "tie point latitudes"},
+    {"tie_pt_long", e_tid_int, "(1e-6) degrees", 4, "23", "tie point longitudes"},
+    {"lat_corr_nadv", e_tid_int, "(1e-6) degrees", 4, "23", "latitude corrections, nadir view"},
+    {"long_corr_nadv", e_tid_int, "(1e-6) degrees", 4, "23", "longitude corrections, nadir view"},
+    {"lat_corr_forv", e_tid_int, "(1e-6) degrees", 4, "23", "latitude corrections, forward view"},
+    {"long_corr_forv", e_tid_int, "(1e-6) degrees", 4, "23", "longitude corrections, forward view"},
+    {"topo_alt", e_tid_short, "metres", 2, "23", "Topographic Altitude"},
+    {"spare_2", e_tid_spare, NULL, 8, "1", "Spare"}
+};
+
+static const struct RecordDescriptor AT2_TOA_1P_ADSR_pix_atsr2_rec_data[] = {
+    {"dsr_time", e_tid_time, "MJD", 12, "1", "Nadir UTC time in MJD format"},
+    {"attach_flag", e_tid_uchar, "flag", 1, "1", "Attachment flag (always set to zero for this ADS)"},
+    {"spare_1", e_tid_spare, NULL, 3, "1", "Spare"},
+    {"img_scan_y", e_tid_int, "m", 4, "1", "image scan y coordinate"},
+    {"instr_scan_num", e_tid_ushort, NULL, 2, "512", "instrument scan number"},
+    {"pix_num", e_tid_ushort, NULL, 2, "512", "pixel number"}
+};
+
+static const struct RecordDescriptor AT2_TOA_1P_ADSR_sa_atsr2_rec_data[] = {
+    {"dsr_time", e_tid_time, "MJD", 12, "1", "Nadir UTC time in MJD format"},
+    {"attach_flag", e_tid_uchar, "flag", 1, "1", "Attachment Flag (always set to zero for this ADS)"},
+    {"spare_1", e_tid_spare, NULL, 3, "1", "Spare"},
+    {"img_scan_y", e_tid_int, "m", 4, "1", "image scan y coordinate"},
+    {"tie_pt_sol_elev", e_tid_int, "mdeg", 4, "11", "tie point solar elevation"},
+    {"tie_pt_sat_elev_nad", e_tid_int, "mdeg", 4, "11", "tie point satellite elevation nadir"},
+    {"tie_pt_sol_az", e_tid_int, "mdeg", 4, "11", "tie point solar azimuth"},
+    {"tie_pt_sat_azi", e_tid_int, "mdeg", 4, "11", "tie point satellite azimuth"},
+    {"spare_2", e_tid_spare, NULL, 20, "1", "Spare"}
+};
+
+static const struct RecordDescriptor AT2_TOA_1P_ADSR_scan_atsr2_rec_data[] = {
+    {"dsr_time", e_tid_time, "MJD", 12, "1", "Scan UTC time in MJD format"},
+    {"attach_flag", e_tid_uchar, "flag", 1, "1", "Attachment Flag (always set to zero for this ADS)"},
+    {"spare_1", e_tid_spare, NULL, 3, "1", "Spare"},
+    {"instr_scan_num", e_tid_ushort, NULL, 2, "1", "instrument scan number"},
+    {"tie_pix_x", e_tid_int, "m", 4, "99", "tie pixel x coordinate"},
+    {"tie_pix_y", e_tid_int, "m", 4, "99", "tie pixel y coordinate"},
+    {"spare_2", e_tid_spare, NULL, 20, "1", "spare"}
+};
+
+static const struct RecordDescriptor AT2_TOA_1P_ADSR_sq_atsr2_rec_data[] = {
+    {"dsr_time", e_tid_time, "MJD", 12, "1", "Nadir UTC time in MJD format"},
+    {"attach_flag", e_tid_uchar, "flag", 1, "1", "Attachment flag(set to 1 if all MDSRs corresponding to this ADSR are blank, set to 0 otherwise)"},
+    {"spare_1", e_tid_spare, NULL, 3, "1", "Spare"},
+    {"scan_num", e_tid_ushort, NULL, 2, "1", "scan number"},
+    {"pv_nad_null_pac", e_tid_short, NULL, 2, "1", "Packet Validation during nadir view number of scans null packet"},
+    {"pv_nad_fail_val", e_tid_short, NULL, 2, "1", "Packet Validation during nadir view number of scans failing basic validation"},
+    {"pv_nad_fail_crc_chk", e_tid_short, NULL, 2, "1", "Packet Validation during nadir view number of scans failing CRC check"},
+    {"pv_nad_show_buf_full", e_tid_short, NULL, 2, "1", "Packet Validation during nadir view number of scans showing buffers full"},
+    {"pv_nad_scan_jitt", e_tid_short, NULL, 2, "1", "Packet Validation during nadir view number of scans showing scan jitter"},
+    {"resv_char_1", e_tid_short, NULL, 2, "1", "reserved for future use"},
+    {"resv_char_2", e_tid_short, NULL, 2, "1", "reserved for future use"},
+    {"resv_char_3", e_tid_short, NULL, 2, "1", "reserved for future use"},
+    {"resv_char_4", e_tid_short, NULL, 2, "1", "reserved for future use"},
+    {"pv_nad_scan_error", e_tid_short, NULL, 2, "1", "Packet Validation during nadir view number of scans - all other errors"},
+    {"pv_for_null_pac", e_tid_short, NULL, 2, "1", "Packet Validation during forward view number of scans null packet"},
+    {"pv_for_fail_val", e_tid_short, NULL, 2, "1", "Packet Validation during forward view number of scans failing basic validation"},
+    {"pv_for_fail_crc_chk", e_tid_short, NULL, 2, "1", "Packet Validation during forward view number of scans failing CRC check"},
+    {"pv_for_show_buf_full", e_tid_short, NULL, 2, "1", "Packet Validation during forward view number of scans showing buffers full"},
+    {"pv_for_scan_jitt", e_tid_short, NULL, 2, "1", "Packet Validation during forward view number of scans showing scan jitter"},
+    {"resv_char_5", e_tid_short, NULL, 2, "1", "reserved for future use"},
+    {"resv_char_6", e_tid_short, NULL, 2, "1", "reserved for future use"},
+    {"resv_char_7", e_tid_short, NULL, 2, "1", "reserved for future use"},
+    {"resv_char_8", e_tid_short, NULL, 2, "1", "reserved for future use"},
+    {"pv_for_scan_error", e_tid_short, NULL, 2, "1", "Packet Validation during forward view number of scans - all other errors"},
+    {"spare_2", e_tid_spare, NULL, 28, "1", "Spare"}
+};
+
+static const struct RecordDescriptor AT2_TOA_1P_MDSR_brgt_atsr2_rec_data[] = {
+    {"dsr_time", e_tid_time, "MJD", 12, "1", "Nadir UTC time in MJD format"},
+    {"quality_flag", e_tid_uchar, "flag", 1, "1", "Quality Indicator (-1 for blank MDSR, 0 otherwise)"},
+    {"spare_1", e_tid_spare, NULL, 3, "1", "Spare"},
+    {"img_scan_y", e_tid_int, "m", 4, "1", "image scan y coordinate"},
+    {"bt_rad_pix", e_tid_short, "K/100%/100", 2, "512", "BT or refectance for pixel 0 - 511(Units are K/100 for BT, %/100 for reflectance. Small negative values may be used to represent channel-specific exceptional values)."}
+};
+
+static const struct RecordDescriptor AT2_TOA_1P_MDSR_cl_atsr2_rec_data[] = {
+    {"dsr_time", e_tid_time, "MJD", 12, "1", "Nadir UTC time in MJD format"},
+    {"quality_flag", e_tid_uchar, "flag", 1, "1", "Quality Indicator (-1 for blank MDSR, 0 otherwise)"},
+    {"spare_1", e_tid_spare, NULL, 3, "1", "Spare"},
+    {"img_scan_y", e_tid_int, "m", 4, "1", "image scan y coordinate"},
+    {"cl_land_flags", e_tid_ushort, "flags", 2, "512", "cloud/land flags"}
+};
+
+static const struct RecordDescriptor AT2_TOA_1P_MDSR_conf_atsr2_rec_data[] = {
+    {"dsr_time", e_tid_time, "MJD", 12, "1", "Nadir UTC time in MJD format"},
+    {"quality_flag", e_tid_uchar, "flag", 1, "1", "Quality Indicator (-1 for blank MDSR, 0 otherwise)"},
+    {"spare_1", e_tid_spare, NULL, 3, "1", "Spare"},
+    {"img_scan_y", e_tid_int, "m", 4, "1", "image scan y coordinate"},
+    {"conf_wd_flags", e_tid_ushort, "flags", 2, "512", "Confidence words"}
+};
+
+static const struct RecordDescriptor AT2_VC1_AX_GADS_atsr2_rec_data[] = {
+    {"dsr_time", e_tid_time, "MJD", 12, "1", "Time of cal in MJD format"},
+    {"attach_flag", e_tid_uchar, "flag", 1, "1", "Attachment flag (always set to zero for this flag)"},
+    {"spare_1", e_tid_spare, NULL, 3, "1", "Spare"},
+    {"slp_16_mic", e_tid_float, NULL, 4, "1", "1.6 micron slope"},
+    {"slp_087_mic", e_tid_float, NULL, 4, "1", "0.870 micron slope"},
+    {"slp_067_mic", e_tid_float, NULL, 4, "1", "0.670 micron slope"},
+    {"slp_055_mic", e_tid_float, NULL, 4, "1", "0.555 micron slope"},
+    {"asc_time", e_tid_time, "MJD", 12, "1", "UTC at ascending node crossing, in MJD format"},
+    {"ave_mon_cnt", e_tid_float, NULL, 4, "1", "Average Monitor count"},
+    {"sd_mon_cnt", e_tid_float, NULL, 4, "1", "Standard deviation of Monitor count"},
+    {"sol_irr_16", e_tid_float, NULL, 4, "1", "Solar irradiance (1.6 micron)"},
+    {"sol_irr_087", e_tid_float, NULL, 4, "1", "Solar irradiance (0.870 micron)"},
+    {"sol_irr_067", e_tid_float, NULL, 4, "1", "Solar irradiance (0.670 micron)"},
+    {"sol_irr_055", e_tid_float, NULL, 4, "1", "Solar irradiance (0.555 micron)"},
+    {"ave_vispix_16", e_tid_float, NULL, 4, "1", "Average VISCAL Pixel Counts (1.6 (m)"},
+    {"ave_vispix_087", e_tid_float, NULL, 4, "1", "Average VISCAL Pixel Counts (0.87 (m)"},
+    {"ave_vispix_067", e_tid_float, NULL, 4, "1", "Average VISCAL Pixel Counts (0.67 (m)"},
+    {"ave_vispix_055", e_tid_float, NULL, 4, "1", "Average VISCAL Pixel Counts (0.55 (m)"},
+    {"vis_pixnois_16", e_tid_float, NULL, 4, "1", "VISCAL Pixel Noise (1.6 micron)"},
+    {"vis_pixnois_087", e_tid_float, NULL, 4, "1", "VISCAL Pixel Noise (0.87 micron)"},
+    {"vis_pixnois_067", e_tid_float, NULL, 4, "1", "VISCAL Pixel Noise (0.67 micron)"},
+    {"vis_pixnois_055", e_tid_float, NULL, 4, "1", "VISCAL Pixel Noise (0.55 micron)"},
+    {"ave_xbb_16", e_tid_float, NULL, 4, "1", "Average -X BB Pixel Counts (1.6 (m)"},
+    {"ave_xbb_cnt_087", e_tid_float, NULL, 4, "1", "Average -X BB Pixel Counts (0.87 (m)"},
+    {"ave_xbb_cnt_067", e_tid_float, NULL, 4, "1", "Average -X BB Pixel Counts (0.67 (m)"},
+    {"ave_xbb_cnt_055", e_tid_float, NULL, 4, "1", "Average -X BB Pixel Counts (0.55 (m)"},
+    {"xbb_nois_16", e_tid_float, NULL, 4, "1", "-X BB Pixel Noise (1.6 micron)"},
+    {"xbb_nois_087", e_tid_float, NULL, 4, "1", "-X BB Pixel Noise (0.87 micron)"},
+    {"xbb_nois_067", e_tid_float, NULL, 4, "1", "-X BB Pixel Noise (0.67 micron)"},
+    {"xbb_nois_055", e_tid_float, NULL, 4, "1", "-X BB Pixel Noise (0.55 micron)"},
+    {"parity_char", e_tid_short, NULL, 2, "1", "(Reserved for parity indicator)"},
+    {"spare_2", e_tid_spare, NULL, 20, "1", "Spare"}
+};
+
 static const struct RecordDescriptor ASAR_Antenna_ADSR_asar_rec_data[] = {
     {"zero_doppler_time", e_tid_time, "MJD", 12, "1", "Zero Doppler azimuth time at which pattern applies"},
     {"attach_flag", e_tid_uchar, "flag", 1, "1", "Attachment Flag (always set to zero for this ADSR)"},
@@ -3628,6 +4163,26 @@ static const struct DatasetDescriptor ATS_AR__2P_dataset_data[] = {
     {"BT_TOA_SEA_30_MIN_CELL_MDS", "BT_TOA_SEA_30_MIN_CELL_MDS", ATS_AR__2P_MDSR_sr_large_aatsr_rec_data, "BT/TOA Sea record 30 arc minute cell MDS"}
 };
 
+static const struct DatasetDescriptor AT2_AR__2P_dataset_data[] = {
+    {"SEA_ST_50_KM_CELL_MDS", "SEA_ST_50_KM_CELL_MDS", AT2_AR__2P_MDSR_sst_large_atsr2_rec_data, "SST record 50 km cell MDS"},
+    {"SEA_ST_17_KM_CELL_MDS", "SEA_ST_17_KM_CELL_MDS", AT2_AR__2P_MDSR_sst_small_atsr2_rec_data, "SST record 17 km cell MDS"},
+    {"SEA_ST_10_MIN_CELL_MDS", "SEA_ST_10_MIN_CELL_MDS", AT2_AR__2P_MDSR_sst_small_atsr2_rec_data, "SST record 10 arc minute cell MDS"},
+    {"SEA_ST_30_MIN_CELL_MDS", "SEA_ST_30_MIN_CELL_MDS", AT2_AR__2P_MDSR_sst_large_atsr2_rec_data, "SST record 30 arc minute cell MDS"},
+    {"LAND_ST_50_KM_CELL_MDS", "LAND_ST_50_KM_CELL_MDS", AT2_AR__2P_MDSR_lst_large_atsr2_rec_data, "LST record 50 km cell MDS"},
+    {"LAND_ST_17_KM_CELL_MDS", "LAND_ST_17_KM_CELL_MDS", AT2_AR__2P_MDSR_lst_small_atsr2_rec_data, "LST record 17 km cell MDS"},
+    {"LAND_ST_10_MIN_CELL_MDS", "LAND_ST_10_MIN_CELL_MDS", AT2_AR__2P_MDSR_lst_small_atsr2_rec_data, "LST record 10 arc minute cell MDS"},
+    {"LAND_ST_30_MIN_CELL_MDS", "LAND_ST_30_MIN_CELL_MDS", AT2_AR__2P_MDSR_lst_large_atsr2_rec_data, "LST record 30 arc minute cell MDS"},
+    {"BT_TOA_LAND_50_KM_CELL_MDS", "BT_TOA_LAND_50_KM_CELL_MDS", AT2_AR__2P_MDSR_lr_large_atsr2_rec_data, "BT/TOA Land record 50 km cell MDS"},
+    {"BT_TOA_LAND_17_KM_CELL_MDS", "BT_TOA_LAND_17_KM_CELL_MDS", AT2_AR__2P_MDSR_lr_small_atsr2_rec_data, "BT/TOA Land record 17 km cell MDS"},
+    {"BT_TOA_LAND_10_MIN_CELL_MDS", "BT_TOA_LAND_10_MIN_CELL_MDS", AT2_AR__2P_MDSR_lr_small_atsr2_rec_data, "BT/TOA Land record 10 arc minute cell MDS"},
+    {"BT_TOA_LAND_30_MIN_CELL_MDS", "BT_TOA_LAND_30_MIN_CELL_MDS", AT2_AR__2P_MDSR_lr_large_atsr2_rec_data, "BT/TOA Land record 30 arc minute cell MDS"},
+    {"BT_TOA_SEA_50_KM_CELL_MDS", "BT_TOA_SEA_50_KM_CELL_MDS", AT2_AR__2P_MDSR_sr_large_atsr2_rec_data, "BT/TOA Sea record 50 km cell MDS"},
+    {"BT_TOA_SEA_17_KM_CELL_MDS", "BT_TOA_SEA_17_KM_CELL_MDS", AT2_AR__2P_MDSR_sr_small_atsr2_rec_data, "BT/TOA Sea record 17 km cell MDS"},
+    {"BT_TOA_SEA_10_MIN_CELL_MDS", "BT_TOA_SEA_10_MIN_CELL_MDS", AT2_AR__2P_MDSR_sr_small_atsr2_rec_data, "BT/TOA Sea record 10 arc minute cell MDS"},
+    {"BT_TOA_SEA_30_MIN_CELL_MDS", "BT_TOA_SEA_30_MIN_CELL_MDS", AT2_AR__2P_MDSR_sr_large_atsr2_rec_data, "BT/TOA Sea record 30 arc minute cell MDS"}
+};
+
+
 static const struct DatasetDescriptor ATS_MET_2P_dataset_data[] = {
     {"SEA_ST_10_MIN_CELL_MDS", "SEA_ST_10_MIN_CELL_MDS", ATS_MET_2P_meteo_user_prod_aatsr_rec_data, "10-arcminute mds"}
 };
@@ -3641,6 +4196,21 @@ static const struct DatasetDescriptor ATS_NR__2P_dataset_data[] = {
     {"NADIR_VIEW_SCAN_PIX_NUM_ADS", "NADIR_VIEW_SCAN_PIX_NUM_ADS", ATS_TOA_1P_ADSR_pix_aatsr_rec_data, "Scan and pixel number nadir view ADS"},
     {"FWARD_VIEW_SCAN_PIX_NUM_ADS", "FWARD_VIEW_SCAN_PIX_NUM_ADS", ATS_TOA_1P_ADSR_pix_aatsr_rec_data, "Scan and pixel number forward view ADS"},
     {"DISTRIB_SST_CLOUD_LAND_MDS", "DISTRIB_SST_CLOUD_LAND_MDS", ATS_NR__2P_MDSR_dp_aatsr_rec_data, "Distributed product MDS"}
+};
+
+static const struct DatasetDescriptor AT2_MET_2P_dataset_data[] = {
+    {"SEA_ST_10_MIN_CELL_MDS", "SEA_ST_10_MIN_CELL_MDS", AT2_MET_2P_meteo_user_prod_atsr2_rec_data, "10-arcminute mds"}
+};
+
+static const struct DatasetDescriptor AT2_NR__2P_dataset_data[] = {
+    {"SUMMARY_QUALITY_ADS", "SUMMARY_QUALITY_ADS", AT2_NR__2P_ADSR_sq_atsr2_rec_data, "Summary Quality ADS"},
+    {"GEOLOCATION_ADS", "GEOLOCATION_ADS", AT2_TOA_1P_ADSR_loc_atsr2_rec_data, "Grid pixel latitude and longtitude  topographic corrections ADS"},
+    {"SCAN_PIXEL_X_AND_Y_ADS", "SCAN_PIXEL_X_AND_Y_ADS", AT2_TOA_1P_ADSR_scan_atsr2_rec_data, "Scan pixel x and y ADS"},
+    {"NADIR_VIEW_SOLAR_ANGLES_ADS", "NADIR_VIEW_SOLAR_ANGLES_ADS", AT2_TOA_1P_ADSR_sa_atsr2_rec_data, "Nadir view solar angles ADS"},
+    {"FWARD_VIEW_SOLAR_ANGLES_ADS", "FWARD_VIEW_SOLAR_ANGLES_ADS", AT2_TOA_1P_ADSR_sa_atsr2_rec_data, "Forward view solar angles ADS"},
+    {"NADIR_VIEW_SCAN_PIX_NUM_ADS", "NADIR_VIEW_SCAN_PIX_NUM_ADS", AT2_TOA_1P_ADSR_pix_atsr2_rec_data, "Scan and pixel number nadir view ADS"},
+    {"FWARD_VIEW_SCAN_PIX_NUM_ADS", "FWARD_VIEW_SCAN_PIX_NUM_ADS", AT2_TOA_1P_ADSR_pix_atsr2_rec_data, "Scan and pixel number forward view ADS"},
+    {"DISTRIB_SST_CLOUD_LAND_MDS", "DISTRIB_SST_CLOUD_LAND_MDS", AT2_NR__2P_MDSR_dp_atsr2_rec_data, "Distributed product MDS"}
 };
 
 static const struct DatasetDescriptor ATS_TOA_1P_dataset_data[] = {
@@ -3670,6 +4240,35 @@ static const struct DatasetDescriptor ATS_TOA_1P_dataset_data[] = {
     {"FWARD_VIEW_CONFIDENCE_MDS", "FWARD_VIEW_CONFIDENCE_MDS", ATS_TOA_1P_MDSR_conf_aatsr_rec_data, "Confidence words forward view MDS"},
     {"NADIR_VIEW_CLOUD_MDS", "NADIR_VIEW_CLOUD_MDS", ATS_TOA_1P_MDSR_cl_aatsr_rec_data, "Cloud flag nadir view MDS"},
     {"FWARD_VIEW_CLOUD_MDS", "FWARD_VIEW_CLOUD_MDS", ATS_TOA_1P_MDSR_cl_aatsr_rec_data, "Cloud flag forward view MDS"}
+};
+
+static const struct DatasetDescriptor AT2_TOA_1P_dataset_data[] = {
+    {"SUMMARY_QUALITY_ADS", "SUMMARY_QUALITY_ADS", AT2_TOA_1P_ADSR_sq_atsr2_rec_data, "Summary Quality ADS"},
+    {"GEOLOCATION_ADS", "GEOLOCATION_ADS", AT2_TOA_1P_ADSR_loc_atsr2_rec_data, "Grid pixel latitude and longtitude  topographic corrections ADS"},
+    {"SCAN_PIXEL_X_AND_Y_ADS", "SCAN_PIXEL_X_AND_Y_ADS", AT2_TOA_1P_ADSR_scan_atsr2_rec_data, "Scan pixel x and y ADS"},
+    {"NADIR_VIEW_SOLAR_ANGLES_ADS", "NADIR_VIEW_SOLAR_ANGLES_ADS", AT2_TOA_1P_ADSR_sa_atsr2_rec_data, "Nadir view solar angles ADS"},
+    {"FWARD_VIEW_SOLAR_ANGLES_ADS", "FWARD_VIEW_SOLAR_ANGLES_ADS", AT2_TOA_1P_ADSR_sa_atsr2_rec_data, "Forward view solar angles ADS"},
+    {"VISIBLE_CALIB_COEFS_GADS", "VISIBLE_CALIB_COEFS_GADS", AT2_VC1_AX_GADS_atsr2_rec_data, "Visible calibration coefficients GADS"},
+    {"NADIR_VIEW_SCAN_PIX_NUM_ADS", "NADIR_VIEW_SCAN_PIX_NUM_ADS", AT2_TOA_1P_ADSR_pix_atsr2_rec_data, "Scan and pixel number  nadir view ADS"},
+    {"FWARD_VIEW_SCAN_PIX_NUM_ADS", "FWARD_VIEW_SCAN_PIX_NUM_ADS", AT2_TOA_1P_ADSR_pix_atsr2_rec_data, "Scan and pixel number forward view ADS"},
+    {"11500_12500_NM_NADIR_TOA_MDS", "11500_12500_NM_NADIR_TOA_MDS", AT2_TOA_1P_MDSR_brgt_atsr2_rec_data, "12 micron nadir view MDS"},
+    {"10400_11300_NM_NADIR_TOA_MDS", "10400_11300_NM_NADIR_TOA_MDS", AT2_TOA_1P_MDSR_brgt_atsr2_rec_data, "11 micron nadir view MDS"},
+    {"03505_03895_NM_NADIR_TOA_MDS", "03505_03895_NM_NADIR_TOA_MDS", AT2_TOA_1P_MDSR_brgt_atsr2_rec_data, "3.7 micron nadir view MDS"},
+    {"01580_01640_NM_NADIR_TOA_MDS", "01580_01640_NM_NADIR_TOA_MDS", AT2_TOA_1P_MDSR_brgt_atsr2_rec_data, "1.6 micron nadir view MDS"},
+    {"00855_00875_NM_NADIR_TOA_MDS", "00855_00875_NM_NADIR_TOA_MDS", AT2_TOA_1P_MDSR_brgt_atsr2_rec_data, "0.87 micron nadir view MDS"},
+    {"00649_00669_NM_NADIR_TOA_MDS", "00649_00669_NM_NADIR_TOA_MDS", AT2_TOA_1P_MDSR_brgt_atsr2_rec_data, "0.67 micron nadir view MDS"},
+    {"00545_00565_NM_NADIR_TOA_MDS", "00545_00565_NM_NADIR_TOA_MDS", AT2_TOA_1P_MDSR_brgt_atsr2_rec_data, "0.55 micron nadir view MDS"},
+    {"11500_12500_NM_FWARD_TOA_MDS", "11500_12500_NM_FWARD_TOA_MDS", AT2_TOA_1P_MDSR_brgt_atsr2_rec_data, "12 micron forward view MDS"},
+    {"10400_11300_NM_FWARD_TOA_MDS", "10400_11300_NM_FWARD_TOA_MDS", AT2_TOA_1P_MDSR_brgt_atsr2_rec_data, "11 micron forward view MDS"},
+    {"03505_03895_NM_FWARD_TOA_MDS", "03505_03895_NM_FWARD_TOA_MDS", AT2_TOA_1P_MDSR_brgt_atsr2_rec_data, "3.7 micron forward view MDS"},
+    {"01580_01640_NM_FWARD_TOA_MDS", "01580_01640_NM_FWARD_TOA_MDS", AT2_TOA_1P_MDSR_brgt_atsr2_rec_data, "1.6 micron forward view MDS"},
+    {"00855_00875_NM_FWARD_TOA_MDS", "00855_00875_NM_FWARD_TOA_MDS", AT2_TOA_1P_MDSR_brgt_atsr2_rec_data, "0.87 micron forward view MDS"},
+    {"00649_00669_NM_FWARD_TOA_MDS", "00649_00669_NM_FWARD_TOA_MDS", AT2_TOA_1P_MDSR_brgt_atsr2_rec_data, "0.67 micron forward view MDS"},
+    {"00545_00565_NM_FWARD_TOA_MDS", "00545_00565_NM_FWARD_TOA_MDS", AT2_TOA_1P_MDSR_brgt_atsr2_rec_data, "0.55 micron forward view MDS"},
+    {"NADIR_VIEW_CONFIDENCE_MDS", "NADIR_VIEW_CONFIDENCE_MDS", AT2_TOA_1P_MDSR_conf_atsr2_rec_data, "Confidence words nadir view MDS"},
+    {"FWARD_VIEW_CONFIDENCE_MDS", "FWARD_VIEW_CONFIDENCE_MDS", AT2_TOA_1P_MDSR_conf_atsr2_rec_data, "Confidence words forward view MDS"},
+    {"NADIR_VIEW_CLOUD_MDS", "NADIR_VIEW_CLOUD_MDS", AT2_TOA_1P_MDSR_cl_atsr2_rec_data, "Cloud flag nadir view MDS"},
+    {"FWARD_VIEW_CLOUD_MDS", "FWARD_VIEW_CLOUD_MDS", AT2_TOA_1P_MDSR_cl_atsr2_rec_data, "Cloud flag forward view MDS"}
 };
 
 static const struct DatasetDescriptor MER_FR__1P_dataset_data[] = {
@@ -4053,6 +4652,67 @@ static const struct BandDescriptor ATS_TOA_1P_band_data[] = {
     {"confid_flags_fward", "FWARD_VIEW_CONFIDENCE_MDS.5", e_smod_1OF1, e_tid_ushort, -1, e_smid_non, NULL, NULL, NULL, "ATS_TOA_1P_confid_flags", NULL, "Confidence flags, forward view"},
     {"cloud_flags_nadir", "NADIR_VIEW_CLOUD_MDS.5", e_smod_1OF1, e_tid_ushort, -1, e_smid_non, NULL, NULL, NULL, "ATS_TOA_1P_cloud_flags", NULL, "Cloud flags, nadir view"},
     {"cloud_flags_fward", "FWARD_VIEW_CLOUD_MDS.5", e_smod_1OF1, e_tid_ushort, -1, e_smid_non, NULL, NULL, NULL, "ATS_TOA_1P_cloud_flags", NULL, "Cloud flags, forward view"}
+};
+
+static const struct BandDescriptor AT2_NR__2P_band_data[] = {
+    {"latitude", "GEOLOCATION_ADS.5", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Latitudes"},
+    {"longitude", "GEOLOCATION_ADS.6", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Longitudes"},
+    {"lat_corr_nadir", "GEOLOCATION_ADS.7", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Latitude corrections, nadir view"},
+    {"lon_corr_nadir", "GEOLOCATION_ADS.8", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Longitude corrections, nadir view"},
+    {"lat_corr_fward", "GEOLOCATION_ADS.9", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Latitude corrections, forward view"},
+    {"lon_corr_fward", "GEOLOCATION_ADS.10", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Longitude corrections, forward view"},
+    {"altitude", "GEOLOCATION_ADS.11", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0", NULL, NULL, "m", "Topographic altitude"},
+    {"sun_elev_nadir", "NADIR_VIEW_SOLAR_ANGLES_ADS.5", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-03", NULL, NULL, "deg", "Solar elevation nadir view"},
+    {"view_elev_nadir", "NADIR_VIEW_SOLAR_ANGLES_ADS.6", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-03", NULL, NULL, "deg", "Satellite elevation nadir view"},
+    {"sun_azimuth_nadir", "NADIR_VIEW_SOLAR_ANGLES_ADS.7", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-03", NULL, NULL, "deg", "Solar azimuth nadir view"},
+    {"view_azimuth_nadir", "NADIR_VIEW_SOLAR_ANGLES_ADS.8", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-03", NULL, NULL, "deg", "Satellite azimuth nadir view"},
+    {"sun_elev_fward", "FWARD_VIEW_SOLAR_ANGLES_ADS.5", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-03", NULL, NULL, "deg", "Solar elevation forward view"},
+    {"view_elev_fward", "FWARD_VIEW_SOLAR_ANGLES_ADS.6", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-03", NULL, NULL, "deg", "Satellite elevation forward view"},
+    {"sun_azimuth_fward", "FWARD_VIEW_SOLAR_ANGLES_ADS.7", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-03", NULL, NULL, "deg", "Solar azimuth forward view"},
+    {"view_azimuth_fward", "FWARD_VIEW_SOLAR_ANGLES_ADS.8", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-03", NULL, NULL, "deg", "Satellite azimuth forward view"},
+    {"sst_nadir", "DISTRIB_SST_CLOUD_LAND_MDS.6", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "0.01", "!flags.NADIR_CLOUD and !flags.LAND", NULL, "K", "Sea surface temperature nadir view"},
+    {"sst_comb", "DISTRIB_SST_CLOUD_LAND_MDS.7", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "0.01", "!flags.NADIR_CLOUD and !flags.LAND", NULL, "K", "Sea surface temperature combined views"},
+    {"cloud_top_temp", "DISTRIB_SST_CLOUD_LAND_MDS.6", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "0.01", "flags.NADIR_CLOUD", NULL, "K", "Cloud top temperature"},
+    {"cloud_top_height", "DISTRIB_SST_CLOUD_LAND_MDS.7", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "0.01", "flags.NADIR_CLOUD", NULL, "m", "Cloud top height"},
+    {"lst", "DISTRIB_SST_CLOUD_LAND_MDS.6", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "0.01", "!flags.NADIR_CLOUD and flags.LAND", NULL, "K", "Land surface temperature"},
+    {"ndvi", "DISTRIB_SST_CLOUD_LAND_MDS.7", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "0.0001", "!flags.NADIR_CLOUD and flags.LAND", NULL, NULL, "Normalized difference vegetation index"},
+    {"flags", "DISTRIB_SST_CLOUD_LAND_MDS.5", e_smod_1OF1, e_tid_ushort, -1, e_smid_non, NULL, NULL, NULL, "AT2_NR__2P_flags", NULL, "Classification and quality flags"}
+};
+
+static const struct BandDescriptor AT2_TOA_1P_band_data[] = {
+    {"latitude", "GEOLOCATION_ADS.5", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Latitudes"},
+    {"longitude", "GEOLOCATION_ADS.6", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Longitudes"},
+    {"lat_corr_nadir", "GEOLOCATION_ADS.7", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Latitude corrections, nadir view"},
+    {"lon_corr_nadir", "GEOLOCATION_ADS.8", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Longitude corrections, nadir view"},
+    {"lat_corr_fward", "GEOLOCATION_ADS.9", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Latitude corrections, forward view"},
+    {"lon_corr_fward", "GEOLOCATION_ADS.10", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Longitude corrections, forward view"},
+    {"altitude", "GEOLOCATION_ADS.11", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0", NULL, NULL, "m", "Topographic altitude"},
+    {"sun_elev_nadir", "NADIR_VIEW_SOLAR_ANGLES_ADS.5", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-03", NULL, NULL, "deg", "Solar elevation, nadir view"},
+    {"view_elev_nadir", "NADIR_VIEW_SOLAR_ANGLES_ADS.6", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-03", NULL, NULL, "deg", "Satellite elevation, nadir view"},
+    {"sun_azimuth_nadir", "NADIR_VIEW_SOLAR_ANGLES_ADS.7", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-03", NULL, NULL, "deg", "Solar azimuth, nadir view"},
+    {"view_azimuth_nadir", "NADIR_VIEW_SOLAR_ANGLES_ADS.8", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-03", NULL, NULL, "deg", "Satellite azimuth, nadir view"},
+    {"sun_elev_fward", "FWARD_VIEW_SOLAR_ANGLES_ADS.5", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-03", NULL, NULL, "deg", "Solar elevation, forward view"},
+    {"view_elev_fward", "FWARD_VIEW_SOLAR_ANGLES_ADS.6", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-03", NULL, NULL, "deg", "Satellite elevation, forward view"},
+    {"sun_azimuth_fward", "FWARD_VIEW_SOLAR_ANGLES_ADS.7", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-03", NULL, NULL, "deg", "Solar azimuth, forward view"},
+    {"view_azimuth_fward", "FWARD_VIEW_SOLAR_ANGLES_ADS.8", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-03", NULL, NULL, "deg", "Satellite azimuth, forward view"},
+    {"btemp_nadir_1200", "11500_12500_NM_NADIR_TOA_MDS.5", e_smod_1OF1, e_tid_float, 7, e_smid_lin, "0.0", "0.01", NULL, NULL, "K", "Brightness temperature, nadir view (11500-12500 nm)"},
+    {"btemp_nadir_1100", "10400_11300_NM_NADIR_TOA_MDS.5", e_smod_1OF1, e_tid_float, 6, e_smid_lin, "0.0", "0.01", NULL, NULL, "K", "Brightness temperature, nadir view (10400-11300 nm)"},
+    {"btemp_nadir_0370", "03505_03895_NM_NADIR_TOA_MDS.5", e_smod_1OF1, e_tid_float, 5, e_smid_lin, "0.0", "0.01", NULL, NULL, "K", "Brightness temperature, nadir view (3505-3895 nm)"},
+    {"reflec_nadir_1600", "01580_01640_NM_NADIR_TOA_MDS.5", e_smod_1OF1, e_tid_float, 4, e_smid_lin, "0.0", "0.01", NULL, NULL, "%", "Refectance, nadir view (1580-1640 nm)"},
+    {"reflec_nadir_0870", "00855_00875_NM_NADIR_TOA_MDS.5", e_smod_1OF1, e_tid_float, 3, e_smid_lin, "0.0", "0.01", NULL, NULL, "%", "Refectance, nadir view (855-875 nm)"},
+    {"reflec_nadir_0670", "00649_00669_NM_NADIR_TOA_MDS.5", e_smod_1OF1, e_tid_float, 2, e_smid_lin, "0.0", "0.01", NULL, NULL, "%", "Refectance, nadir view (649-669 nm)"},
+    {"reflec_nadir_0550", "00545_00565_NM_NADIR_TOA_MDS.5", e_smod_1OF1, e_tid_float, 1, e_smid_lin, "0.0", "0.01", NULL, NULL, "%", "Refectance, nadir view (545-565 nm)"},
+    {"btemp_fward_1200", "11500_12500_NM_FWARD_TOA_MDS.5", e_smod_1OF1, e_tid_float, 7, e_smid_lin, "0.0", "0.01", NULL, NULL, "K", "Brightness temperature, forward view (11500-12500 nm)"},
+    {"btemp_fward_1100", "10400_11300_NM_FWARD_TOA_MDS.5", e_smod_1OF1, e_tid_float, 6, e_smid_lin, "0.0", "0.01", NULL, NULL, "K", "Brightness temperature, forward view (10400-11300 nm)"},
+    {"btemp_fward_0370", "03505_03895_NM_FWARD_TOA_MDS.5", e_smod_1OF1, e_tid_float, 5, e_smid_lin, "0.0", "0.01", NULL, NULL, "K", "Brightness temperature, forward view (3505-3895 nm)"},
+    {"reflec_fward_1600", "01580_01640_NM_FWARD_TOA_MDS.5", e_smod_1OF1, e_tid_float, 4, e_smid_lin, "0.0", "0.01", NULL, NULL, "%", "Refectance, forward view (1580-1640 nm)"},
+    {"reflec_fward_0870", "00855_00875_NM_FWARD_TOA_MDS.5", e_smod_1OF1, e_tid_float, 3, e_smid_lin, "0.0", "0.01", NULL, NULL, "%", "Refectance, forward view (855-875 nm)"},
+    {"reflec_fward_0670", "00649_00669_NM_FWARD_TOA_MDS.5", e_smod_1OF1, e_tid_float, 2, e_smid_lin, "0.0", "0.01", NULL, NULL, "%", "Refectance, forward view (649-669 nm)"},
+    {"reflec_fward_0550", "00545_00565_NM_FWARD_TOA_MDS.5", e_smod_1OF1, e_tid_float, 1, e_smid_lin, "0.0", "0.01", NULL, NULL, "%", "Refectance, forward view (545-565 nm)"},
+    {"confid_flags_nadir", "NADIR_VIEW_CONFIDENCE_MDS.5", e_smod_1OF1, e_tid_ushort, -1, e_smid_non, NULL, NULL, NULL, "AT2_TOA_1P_confid_flags", NULL, "Confidence flags, nadir view"},
+    {"confid_flags_fward", "FWARD_VIEW_CONFIDENCE_MDS.5", e_smod_1OF1, e_tid_ushort, -1, e_smid_non, NULL, NULL, NULL, "AT2_TOA_1P_confid_flags", NULL, "Confidence flags, forward view"},
+    {"cloud_flags_nadir", "NADIR_VIEW_CLOUD_MDS.5", e_smod_1OF1, e_tid_ushort, -1, e_smid_non, NULL, NULL, NULL, "AT2_TOA_1P_cloud_flags", NULL, "Cloud flags, nadir view"},
+    {"cloud_flags_fward", "FWARD_VIEW_CLOUD_MDS.5", e_smod_1OF1, e_tid_ushort, -1, e_smid_non, NULL, NULL, NULL, "AT2_TOA_1P_cloud_flags", NULL, "Cloud flags, forward view"}
 };
 
 static const struct BandDescriptor MER_FR__1P_band_data[] = {
@@ -4505,6 +5165,52 @@ static const struct FlagDescriptor ATS_TOA_1P_confid_flags_data[] = {
     {"UNFILLED", 1, {9, 0}, "Pixel unfilled (cosmetic fill algorithm unable to find nearest neighbour pixel)"}
 };
 
+static const struct FlagDescriptor AT2_NR__2P_flags_data[] = {
+    {"NADIR_SST_ONLY_VALID", 1, {0, 0}, "Nadir-only SST is valid"},
+    {"NADIR_SST_ONLY_37_MY_VALID", 1, {1, 0}, "Nadir-only SST retrieval includes 3.7 micron channel"},
+    {"DUAL_SST_VALID", 1, {2, 0}, "Dual-view SST is valid"},
+    {"DUAL_SST_VALID_37_MY", 1, {3, 0}, "Dual-view SST retrieval includes 3.7 micron channel"},
+    {"LAND", 1, {4, 0}, "Pixel is over land"},
+    {"NADIR_CLOUD", 1, {5, 0}, "Nadir-view pixel is cloudy"},
+    {"NADIR_BLANKING", 1, {6, 0}, "Nadir-view pixel has blanking pulse"},
+    {"NADIR_COSMETIC", 1, {7, 0}, "Nadir-view pixel is cosmetic fill"},
+    {"FWARD_CLOUD", 1, {8, 0}, "Forward-view pixel is cloudy"},
+    {"FWARD_BLANKING", 1, {9, 0}, "Forward-view pixel has blanking pulse"},
+    {"FWARD_COSMETIC", 1, {10, 0}, "Forward-view pixel is cosmetic fill"},
+    {"CLOUDY_16_MY", 1, {11, 0}, "One or both views flagged cloudy by 1.6 micron test (daytime only)"},
+    {"CLOUDY_11_12_MY", 1, {12, 0}, "Cloud flagged by 11 micron/12 micron nadir-forward test"},
+    {"CLOUDY_HISTO", 1, {13, 0}, "One or both views flagged cloudy by infra-red histogram test"}
+};
+
+static const struct FlagDescriptor AT2_TOA_1P_cloud_flags_data[] = {
+    {"LAND", 1, {0, 0}, "Pixel is over land"},
+    {"CLOUDY", 1, {1, 0}, "Pixel is cloudy (result of all cloud tests)"},
+    {"SUN_GLINT", 1, {2, 0}, "Sunglint detected in pixel"},
+    {"CLOUDY_REFL_HIST", 1, {3, 0}, "1.6 micron reflectance histogram test shows pixel cloudy (day-time only)"},
+    {"CLOUDY_SPAT_COHER_16", 1, {4, 0}, "1.6 micron spatial coherence test shows pixel cloudy (day-time only)"},
+    {"CLOUDY_SPAT_COHER_11", 1, {5, 0}, "11 micron spatial coherence test shows pixel cloudy"},
+    {"CLOUDY_GROSS_12", 1, {6, 0}, "12 micron gross cloud test shows pixel cloudy"},
+    {"CLOUDY_CIRRUS_11_12", 1, {7, 0}, "11/12 micron thin cirrus test shows pixel cloudy"},
+    {"CLOUDY_MED_HI_LEVEL_37_12", 1, {8, 0}, "3.7/12 micron medium/high level test shows pixel cloudy (night-time only)"},
+    {"CLOUDY_FOG_LOW_STRATUS_11_37", 1, {9, 0}, "11/3.7 micron fog/low stratus test shows pixel cloudy (night-time only)"},
+    {"CLOUDY_VW_DIFF_11_12", 1, {10, 0}, "11/12 micron view-difference test shows pixel cloudy"},
+    {"CLOUDY_VW_DIFF_37_11", 1, {11, 0}, "3.7/11 micron view-difference test shows pixel cloudy (night-time only)"},
+    {"CLOUDY_THERM_HIST_11_12", 1, {12, 0}, "11/12 micron thermal histogram test shows pixel cloudy"}
+};
+
+static const struct FlagDescriptor AT2_TOA_1P_confid_flags_data[] = {
+    {"BLANKING", 1, {0, 0}, "Blanking Pulse"},
+    {"COSMETIC", 1, {1, 0}, "Cosmetic Fill Pixel"},
+    {"SCAN_ABSENT", 1, {2, 0}, "Entire scan absent from telemetry"},
+    {"ABSENT", 1, {3, 0}, "Pixel absent from telemetry"},
+    {"NOT_DECOMPR", 1, {4, 0}, "Pixel not decompressed owing to error in packet validation"},
+    {"NO_SIGNAL", 1, {5, 0}, "No signal in some channel (zero count)"},
+    {"SATURATION", 1, {6, 0}, "Saturation in some channel (maximum count)"},
+    {"OUT_OF_RANGE", 1, {7, 0}, "Derived radiance of some channel outside range of calibration"},
+    {"NO_CALIB_PARAM", 1, {8, 0}, "Calibration Parameters unavailable for pixel"},
+    {"UNFILLED", 1, {9, 0}, "Pixel unfilled (cosmetic fill algorithm unable to find nearest neighbour pixel)"}
+};
+
 static const struct FlagDescriptor MER_RR__1P_flags_data[] = {
     {"COSMETIC", 1, {0, 0}, "Pixel is cosmetic"},
     {"DUPLICATED", 1, {1, 0}, "Pixel has been duplicated (filled in)"},
@@ -4582,7 +5288,7 @@ static const struct FlagDescriptor MER_RR__2P_flags_IODD6_data[] = {
     {"LOW_PRESSURE", 1, {0, 0}, "Computed pressure lower than ECMWF one"}
 };
 
-const struct DatasetDescriptorTable dddb_product_tables[64] = {
+const struct DatasetDescriptorTable dddb_product_tables[68] = {
     {"ASA_APG_1P", "ASAR Alternating Polarization Ellipsoid Geocoded Image", 11, ASA_APG_1P_dataset_data},
     {"ASA_APG_1P_602", "ASAR Alternating Polarization Ellipsoid Geocoded Image", 11, ASA_APG_1P_602_dataset_data},
     {"ASA_APM_1P", "ASAR Alternating Polarization Medium Resolution Image product", 10, ASA_APM_1P_dataset_data},
@@ -4613,6 +5319,10 @@ const struct DatasetDescriptorTable dddb_product_tables[64] = {
     {"ATS_MET_2P", "AATSR Spatially Averaged Sea Surface Temperature for Meteo Users", 1, ATS_MET_2P_dataset_data},
     {"ATS_NR__2P", "AATSR geophysical product (full resolution)", 8, ATS_NR__2P_dataset_data},
     {"ATS_TOA_1P", "AATSR Gridded brightness temperature and reflectance", 26, ATS_TOA_1P_dataset_data},
+    {"AT2_AR__2P", "ATSR2 averaged geophysical product", 16, AT2_AR__2P_dataset_data},
+    {"AT2_MET_2P", "ATSR2 Spatially Averaged Sea Surface Temperature for Meteo Users", 1, AT2_MET_2P_dataset_data},
+    {"AT2_NR__2P", "ATSR2 geophysical product (full resolution)", 8, AT2_NR__2P_dataset_data},
+    {"AT2_TOA_1P", "ATSR2 Gridded brightness temperature and reflectance", 26, AT2_TOA_1P_dataset_data},
     {"MER_FR__1P", "MERIS Full Resolution Geolocated and Calibrated TOA Radiance", 19, MER_FR__1P_dataset_data},
     {"MER_FRS_1P", "MERIS Full Resolution Full Swath Geolocated and Calibrated TOA Radiance", 19, MER_FR__1P_dataset_data},
     {"MER_FR__1P_IODD5", "MERIS Full Resolution Geolocated and Calibrated TOA Radiance", 19, MER_FR__1P_IODD5_dataset_data},
@@ -4649,7 +5359,7 @@ const struct DatasetDescriptorTable dddb_product_tables[64] = {
     {"SAR_WVW_2P", "ERS Wave Mode Wave Spectra", 4, ASA_WVW_2P_dataset_data},
 };
 
-const struct BandDescriptorTable dddb_band_tables[37] = {
+const struct BandDescriptorTable dddb_band_tables[39] = {
     {"ASA_APG_1P", "ASAR Alternating Polarization Geocoded Image", 6, ASA_APG_1P_band_data},
     {"ASA_APM_1P", "ASAR Alternating Polarization Medium Resolution Image", 6, ASA_APM_1P_band_data},
     {"ASA_APP_1P", "ASAR Alternating Polarization Precision Image", 6, ASA_APP_1P_band_data},
@@ -4664,6 +5374,8 @@ const struct BandDescriptorTable dddb_band_tables[37] = {
     {"ASA_WS__BP", "ASAR Wide Swap Mode Browse Image", 5, ASA_WS__BP_band_data},
     {"ATS_NR__2P", "AATSR Geophysical Level 2 Product", 22, ATS_NR__2P_band_data},
     {"ATS_TOA_1P", "AATSR Gridded brightness temperature and reflectance", 33, ATS_TOA_1P_band_data},
+    {"AT2_NR__2P", "ATSR2 Geophysical Level 2 Product", 22, AT2_NR__2P_band_data},
+    {"AT2_TOA_1P", "ATSR2 Gridded brightness temperature and reflectance", 33, AT2_TOA_1P_band_data},
     {"MER_FR__1P", "MERIS Level 1b Full Resolution Geophysical Product", 32, MER_FR__1P_band_data},
     {"MER_FRS_1P", "MERIS Level 1b Full Resolution Full Swath Geophysical Product", 32, MER_FR__1P_band_data},
     {"MER_FR__1P_IODD5", "MERIS Level 1b Full Resolution Geophysical Product", 32, MER_FR__1P_IODD5_band_data},
@@ -4689,10 +5401,13 @@ const struct BandDescriptorTable dddb_band_tables[37] = {
     {"SAR_IM__BP", "ERS Image Mode Browse Product", 5, ASA_IM__BP_band_data},
 };
 
-const struct FlagDescriptorTable dddb_flag_coding_tables[6] = {
+const struct FlagDescriptorTable dddb_flag_coding_tables[9] = {
     {"ATS_NR__2P_flags", "AATSR Level 2 Flags Codings", 14, ATS_NR__2P_flags_data},
     {"ATS_TOA_1P_cloud_flags", "AATSR TOA Level 1b Cloud Flags Codings", 13, ATS_TOA_1P_cloud_flags_data},
     {"ATS_TOA_1P_confid_flags", "AATSR TOA Level 1b Confidence Flag Codings", 10, ATS_TOA_1P_confid_flags_data},
+    {"AT2_NR__2P_flags", "ATSR Level 2 Flags Codings", 14, AT2_NR__2P_flags_data},
+    {"AT2_TOA_1P_cloud_flags", "ATSR TOA Level 1b Cloud Flags Codings", 13, AT2_TOA_1P_cloud_flags_data},
+    {"AT2_TOA_1P_confid_flags", "ATSR TOA Level 1b Confidence Flag Codings", 10, AT2_TOA_1P_confid_flags_data},
     {"MER_RR__1P_flags", "MERIS RR Level 1b Flag Codings", 8, MER_RR__1P_flags_data},
     {"MER_RR__2P_flags", "MERIS Level 2 Flag Codings", 31, MER_RR__2P_flags_data},
     {"MER_RR__2P_flags_IODD6", "MERIS Level 2 Flag Codings", 29, MER_RR__2P_flags_IODD6_data},
@@ -4745,6 +5460,29 @@ const struct RecordDescriptorTable dddb_aatsr_rec_tables[20] = {
     {"ATS_TOA_1P_MDSR_cl", "Cloud flag nadir view MDS", 5, ATS_TOA_1P_MDSR_cl_aatsr_rec_data},
     {"ATS_TOA_1P_MDSR_conf", "Confidence words nadir view MDS", 5, ATS_TOA_1P_MDSR_conf_aatsr_rec_data},
     {"ATS_VC1_AX_GADS", "Visible calibration coefficients GADS", 32, ATS_VC1_AX_GADS_aatsr_rec_data}
+};
+
+const struct RecordDescriptorTable dddb_atsr2_rec_tables[20] = {
+    {"AT2_AR__2P_MDSR_lr_large", "BT/TOA Land record 50 km cell MDS", 90, AT2_AR__2P_MDSR_lr_large_atsr2_rec_data},
+    {"AT2_AR__2P_MDSR_lr_small", "BT/TOA Land record 17 km cell MDS", 46, AT2_AR__2P_MDSR_lr_small_atsr2_rec_data},
+    {"AT2_AR__2P_MDSR_lst_large", "LST record 50 km cell MDS", 17, AT2_AR__2P_MDSR_lst_large_atsr2_rec_data},
+    {"AT2_AR__2P_MDSR_lst_small", "LST record 17 km cell MDS", 11, AT2_AR__2P_MDSR_lst_small_atsr2_rec_data},
+    {"AT2_AR__2P_MDSR_sr_large", "BT/TOA Sea record 50 km cell MDS", 86, AT2_AR__2P_MDSR_sr_large_atsr2_rec_data},
+    {"AT2_AR__2P_MDSR_sr_small", "BT/TOA Sea record 17 km cell MDS", 42, AT2_AR__2P_MDSR_sr_small_atsr2_rec_data},
+    {"AT2_AR__2P_MDSR_sst_large", "SST record 50 km cell MDS", 17, AT2_AR__2P_MDSR_sst_large_atsr2_rec_data},
+    {"AT2_AR__2P_MDSR_sst_small", "SST record 17 km cell MDS", 11, AT2_AR__2P_MDSR_sst_small_atsr2_rec_data},
+    {"AT2_MET_2P_meteo_user_prod", "10-arcminute mds", 17, AT2_MET_2P_meteo_user_prod_atsr2_rec_data},
+    {"AT2_NR__2P_ADSR_sq", "Summary Quality ADS", 25, AT2_NR__2P_ADSR_sq_atsr2_rec_data},
+    {"AT2_NR__2P_MDSR_dp", "Distributed product MDS", 7, AT2_NR__2P_MDSR_dp_atsr2_rec_data},
+    {"AT2_TOA_1P_ADSR_loc", "Grid pixel latitude and longtitude  topographic corrections ADS", 12, AT2_TOA_1P_ADSR_loc_atsr2_rec_data},
+    {"AT2_TOA_1P_ADSR_pix", "Scan and pixel number nadir view ADS", 6, AT2_TOA_1P_ADSR_pix_atsr2_rec_data},
+    {"AT2_TOA_1P_ADSR_sa", "Nadir view solar angles ADS", 9, AT2_TOA_1P_ADSR_sa_atsr2_rec_data},
+    {"AT2_TOA_1P_ADSR_scan", "Scan pixel x and y ADS", 7, AT2_TOA_1P_ADSR_scan_atsr2_rec_data},
+    {"AT2_TOA_1P_ADSR_sq", "Summary quality ADS", 25, AT2_TOA_1P_ADSR_sq_atsr2_rec_data},
+    {"AT2_TOA_1P_MDSR_brgt", "12 micron nadir view MDS", 5, AT2_TOA_1P_MDSR_brgt_atsr2_rec_data},
+    {"AT2_TOA_1P_MDSR_cl", "Cloud flag nadir view MDS", 5, AT2_TOA_1P_MDSR_cl_atsr2_rec_data},
+    {"AT2_TOA_1P_MDSR_conf", "Confidence words nadir view MDS", 5, AT2_TOA_1P_MDSR_conf_atsr2_rec_data},
+    {"AT2_VC1_AX_GADS", "Visible calibration coefficients GADS", 32, AT2_VC1_AX_GADS_atsr2_rec_data}
 };
 
 const struct RecordDescriptorTable dddb_asar_rec_tables[22] = {

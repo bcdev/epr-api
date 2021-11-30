@@ -39,10 +39,12 @@ typedef struct EPR_Parameter EPR_SParameter;
 #define EPR_ENVISAT_PRODUCT_ASAR         "ASA"
 #define EPR_ENVISAT_PRODUCT_SAR          "SAR"
 #define EPR_ENVISAT_PRODUCT_AATSR        "ATS"
+#define EPR_ERS2_PRODUCT_ATSR2           "AT2"
 
 #define EPR_LONGI_BAND_NAME               "longitude"
 
 #define EPR_AATSR_LINES_PER_TIE_PT        32
+#define EPR_ATSR2_LINES_PER_TIE_PT        32
 
 #define EPR_MPH_SIZE                      1247
 #define EPR_SPH_SIZE                      11622
@@ -75,6 +77,11 @@ typedef struct EPR_Parameter EPR_SParameter;
 #define EPR_ATS_NUM_PER_POINT_ACROSS_LOCAT      23
 #define EPR_ATS_NUM_PER_POINT_ACROSS_SOLAR      11
 #define EPR_ATS_LINE_LENGTH                     512
+
+
+#define EPR_AT2_NUM_PER_POINT_ACROSS_LOCAT      23
+#define EPR_AT2_NUM_PER_POINT_ACROSS_SOLAR      11
+#define EPR_AT2_LINE_LENGTH                     512
 
 #define EPR_ASAR_NUM_PER_POINT_ACROSS_LOCAT     11
 
