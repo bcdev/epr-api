@@ -83,9 +83,9 @@ extern const struct RecordDescriptorTable dddb_aatsr_rec_tables[20];
 extern const struct RecordDescriptorTable dddb_atsr2_rec_tables[20];
 extern const struct RecordDescriptorTable dddb_asar_rec_tables[22];
 
-#define EPR_NUM_PRODUCT_TABLES         64
-#define EPR_NUM_BAND_TABLES            37
-#define EPR_NUM_FLAG_CODING_TABLES     6
+#define EPR_NUM_PRODUCT_TABLES         68
+#define EPR_NUM_BAND_TABLES            39
+#define EPR_NUM_FLAG_CODING_TABLES     9
 #define EPR_NUM_MERIS_REC_TABLES       23
 #define EPR_NUM_AATSR_REC_TABLES       20
 #define EPR_NUM_ATSR2_REC_TABLES       20
