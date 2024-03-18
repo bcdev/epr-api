@@ -534,8 +534,8 @@ void epr_set_header_field_values(EPR_SRecord* record, EPR_SPtrArray* header_valu
 
 uint epr_compare_param(EPR_SProductId* product_id)
 {
-    EPR_SDSD* dsd;
-    uint of;
+    EPR_SDSD* dsd = NULL;
+    uint dsd_index = 0;
 
     epr_clear_err();
 
@@ -544,10 +544,14 @@ uint epr_compare_param(EPR_SProductId* product_id)
         return 0UL;
     }
 
-    of = epr_api.epr_head_size;
-    dsd = (EPR_SDSD*)epr_get_ptr_array_elem_at(product_id->dsd_array, 0);
+    for (dsd_index = 0; dsd_index < product_id->dsd_array->length; dsd_index++) {
+      dsd = (EPR_SDSD*)epr_get_ptr_array_elem_at(product_id->dsd_array, dsd_index);
+      if (dsd->ds_offset > 0)
+          break;
+    }
+
     if (dsd->ds_offset == epr_api.epr_head_size)
-        return of;
+        return epr_api.epr_head_size;
 
     return 0UL;
 }
