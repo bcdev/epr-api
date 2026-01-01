@@ -4341,6 +4341,32 @@ static const struct DatasetDescriptor MER_FR__2P_dataset_data[] = {
     {"Flags", "Flags          - MDS(20)", MER_RR__2P_MDSR_20_meris_rec_data, "Level 2 MDS(20) flags"}
 };
 
+static const struct DatasetDescriptor MER_FR__2P_IODD7_dataset_data[] = {
+    {"Quality_ADS", "Quality ADS", MER_RR__2P_ADSR_sq_meris_rec_data, "Level 2 ADS Summary Quality (SQ ADS)"},
+    {"Scaling_Factor_GADS", "Scaling Factor GADS", MER_RR__2P_GADS_sfgi_meris_rec_data, "Level 2 GADS Scaling Factors and Offsets"},
+    {"Tie_points_ADS", "Tie points ADS", MER_RR__1P_ADSR_tie_pt_meris_rec_data, "Level 2 ADS Tie Points Location & Aux. Data(L ADS)"},
+    {"Norm_rho_surf_1", "Norm. rho_surf - MDS(1)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(1) normalised surface reflectance"},
+    {"Norm_rho_surf_2", "Norm. rho_surf - MDS(2)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(2) normalised surface reflectance"},
+    {"Norm_rho_surf_3", "Norm. rho_surf - MDS(3)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(3) normalised surface reflectance"},
+    {"Norm_rho_surf_4", "Norm. rho_surf - MDS(4)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(4) normalised surface reflectance"},
+    {"Norm_rho_surf_5", "Norm. rho_surf - MDS(5)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(5) normalised surface reflectance"},
+    {"Norm_rho_surf_6", "Norm. rho_surf - MDS(6)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(6) normalised surface reflectance"},
+    {"Norm_rho_surf_7", "Norm. rho_surf - MDS(7)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(7) normalised surface reflectance"},
+    {"Norm_rho_surf_8", "Norm. rho_surf - MDS(8)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(8) normalised surface reflectance"},
+    {"Norm_rho_surf_9", "Norm. rho_surf - MDS(9)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(9) normalised surface reflectance"},
+    {"Norm_rho_surf_10", "Norm. rho_surf - MDS(10)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(10) normalised surface reflectance"},
+    {"Norm_rho_surf_11", "Norm. rho_surf - MDS(11)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(11) normalised surface reflectance"},
+    {"Norm_rho_surf_12", "Norm. rho_surf - MDS(12)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(12) normalised surface reflectance"},
+    {"Norm_rho_surf_13", "Norm. rho_surf - MDS(13)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(13) normalised surface reflectance"},
+    {"Vapour_Content", "Vapour Content - MDS(14)", MER_RR__2P_MDSR_14_meris_rec_data, "Level 2 MDS(14) water vapour content"},
+    {"Chl_1_TOAVI_CTP", "Chl_1, TOAVI   - MDS(15)", MER_RR__2P_MDSR_15_meris_rec_data, "Level 2 MDS(15) algal index I or TOAVI"},
+    {"YS_SPM_Rect_rho", "YS, SPM, Rect. Rho- MDS(16)", MER_RR__2P_MDSR_16_meris_rec_data, "Level 2 MDS(16) yellow substance total suspended matter"},
+    {"Chl_2_BOAVI", "Chl_2, BOAVI   - MDS(17)", MER_RR__2P_MDSR_17_meris_rec_data, "Level 2 MDS(17) algal index II  BOAVI"},
+    {"Press_PAR_Alb", "Press PAR Alb  - MDS(18)", MER_RR__2P_MDSR_18_meris_rec_data, "Level 2 MDS(18) surface pressure  PAR  cloud albedo"},
+    {"Alpha_OPT", "Alpha, OPT     - MDS(19)", MER_RR__2P_MDSR_19_meris_rec_data, "Level 2 MDS(19) aerosol Angstrom exponent or cloud type and optical thickness"},
+    {"Flags", "Flags          - MDS(20)", MER_RR__2P_MDSR_20_meris_rec_data, "Level 2 MDS(20) flags"}
+};
+
 static const struct DatasetDescriptor MER_FR__2P_IODD6_dataset_data[] = {
     {"Quality_ADS", "Quality ADS", MER_RR__2P_ADSR_sq_meris_rec_data, "Level 2 ADS Summary Quality (SQ ADS)"},
     {"Scaling_Factor_GADS", "Scaling Factor GADS", MER_RR__2P_GADS_sfgi_meris_rec_data, "Level 2 GADS Scaling Factors and Offsets"},
@@ -4441,6 +4467,32 @@ static const struct DatasetDescriptor MER_RR__1P_IODD5_dataset_data[] = {
 };
 
 static const struct DatasetDescriptor MER_RR__2P_dataset_data[] = {
+    {"Quality_ADS", "Quality ADS", MER_RR__2P_ADSR_sq_meris_rec_data, "Level 2 ADS Summary Quality (SQ ADS)"},
+    {"Scaling_Factor_GADS", "Scaling Factor GADS", MER_RR__2P_GADS_sfgi_meris_rec_data, "Level 2 GADS Scaling Factors and Offsets"},
+    {"Tie_points_ADS", "Tie points ADS", MER_RR__1P_ADSR_tie_pt_meris_rec_data, "Level 2 ADS Tie Points Location & Aux. Data(L ADS)"},
+    {"Norm_rho_surf_1", "Norm. rho_surf - MDS(1)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(1) normalised surface reflectance"},
+    {"Norm_rho_surf_2", "Norm. rho_surf - MDS(2)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(2) normalised surface reflectance"},
+    {"Norm_rho_surf_3", "Norm. rho_surf - MDS(3)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(3) normalised surface reflectance"},
+    {"Norm_rho_surf_4", "Norm. rho_surf - MDS(4)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(4) normalised surface reflectance"},
+    {"Norm_rho_surf_5", "Norm. rho_surf - MDS(5)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(5) normalised surface reflectance"},
+    {"Norm_rho_surf_6", "Norm. rho_surf - MDS(6)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(6) normalised surface reflectance"},
+    {"Norm_rho_surf_7", "Norm. rho_surf - MDS(7)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(7) normalised surface reflectance"},
+    {"Norm_rho_surf_8", "Norm. rho_surf - MDS(8)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(8) normalised surface reflectance"},
+    {"Norm_rho_surf_9", "Norm. rho_surf - MDS(9)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(9) normalised surface reflectance"},
+    {"Norm_rho_surf_10", "Norm. rho_surf - MDS(10)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(10) normalised surface reflectance"},
+    {"Norm_rho_surf_11", "Norm. rho_surf - MDS(11)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(11) normalised surface reflectance"},
+    {"Norm_rho_surf_12", "Norm. rho_surf - MDS(12)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(12) normalised surface reflectance"},
+    {"Norm_rho_surf_13", "Norm. rho_surf - MDS(13)", MER_RR__2P_MDSR_1_13_meris_rec_data, "Level 2 MDS(13) normalised surface reflectance"},
+    {"Vapour_Content", "Vapour Content - MDS(14)", MER_RR__2P_MDSR_14_meris_rec_data, "Level 2 MDS(14) water vapour content"},
+    {"Chl_1_TOAVI_CTP", "Chl_1, TOAVI   - MDS(15)", MER_RR__2P_MDSR_15_meris_rec_data, "Level 2 MDS(15) algal index I or TOAVI"},
+    {"YS_SPM_Rect_rho", "YS, SPM, Rect. Rho- MDS(16)", MER_RR__2P_MDSR_16_meris_rec_data, "Level 2 MDS(16) yellow substance total suspended matter"},
+    {"Chl_2_BOAVI", "Chl_2, BOAVI   - MDS(17)", MER_RR__2P_MDSR_17_meris_rec_data, "Level 2 MDS(17) algal index II  BOAVI"},
+    {"Press_PAR_Alb", "Press PAR Alb  - MDS(18)", MER_RR__2P_MDSR_18_meris_rec_data, "Level 2 MDS(18) surface pressure  PAR  cloud albedo"},
+    {"Alpha_OPT", "Alpha, OPT     - MDS(19)", MER_RR__2P_MDSR_19_meris_rec_data, "Level 2 MDS(19) aerosol Angstrom exponent or cloud type and optical thickness"},
+    {"Flags", "Flags          - MDS(20)", MER_RR__2P_MDSR_20_meris_rec_data, "Level 2 MDS(20) flags"}
+};
+
+static const struct DatasetDescriptor MER_RR__2P_IODD7_dataset_data[] = {
     {"Quality_ADS", "Quality ADS", MER_RR__2P_ADSR_sq_meris_rec_data, "Level 2 ADS Summary Quality (SQ ADS)"},
     {"Scaling_Factor_GADS", "Scaling Factor GADS", MER_RR__2P_GADS_sfgi_meris_rec_data, "Level 2 GADS Scaling Factors and Offsets"},
     {"Tie_points_ADS", "Tie points ADS", MER_RR__1P_ADSR_tie_pt_meris_rec_data, "Level 2 ADS Tie Points Location & Aux. Data(L ADS)"},
@@ -4838,6 +4890,56 @@ static const struct BandDescriptor MER_FR__2P_band_data[] = {
     {"l2_flags", "Flags.3", e_smod_3TOI, e_tid_uint, -1, e_smid_non, NULL, NULL, NULL, "MER_RR__2P_flags", NULL, "Level 2 classification and quality flags"}
 };
 
+static const struct BandDescriptor MER_FR__2P_IODD7_band_data[] = {
+    {"latitude", "Tie_points_ADS.3", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Latitude of the tie points (WGS-84), positive N"},
+    {"longitude", "Tie_points_ADS.4", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Longitude of the tie points (WGS-84), Greenwich origin, positive E"},
+    {"dem_alt", "Tie_points_ADS.5", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "Scaling_Factor_GADS.1.1", NULL, NULL, "m", "Digital elevation model altitude"},
+    {"dem_rough", "Tie_points_ADS.6", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "Scaling_Factor_GADS.2.1", NULL, NULL, "m", "Digital elevation model roughness"},
+    {"lat_corr", "Tie_points_ADS.7", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Digital elevation model latitude corrections"},
+    {"lon_corr", "Tie_points_ADS.8", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Digital elevation model longitude corrections"},
+    {"sun_zenith", "Tie_points_ADS.9", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Sun zenith angle"},
+    {"sun_azimuth", "Tie_points_ADS.10", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Sun azimuth angles"},
+    {"view_zenith", "Tie_points_ADS.11", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Viewing zenith angles"},
+    {"view_azimuth", "Tie_points_ADS.12", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Viewing azimuth angles"},
+    {"zonal_wind", "Tie_points_ADS.13", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "Scaling_Factor_GADS.3.1", NULL, NULL, "m/s", "Zonal wind"},
+    {"merid_wind", "Tie_points_ADS.14", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "Scaling_Factor_GADS.4.1", NULL, NULL, "m/s", "Meridional wind"},
+    {"atm_press", "Tie_points_ADS.15", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "Scaling_Factor_GADS.5.1", NULL, NULL, "hPa", "Mean sea level pressure"},
+    {"ozone", "Tie_points_ADS.16", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "Scaling_Factor_GADS.6.1", NULL, NULL, "DU", "Total ozone"},
+    {"rel_hum", "Tie_points_ADS.17", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "Scaling_Factor_GADS.7.1", NULL, NULL, "%", "Relative humidity"},
+    {"reflec_1", "Norm_rho_surf_1.3", e_smod_1OF1, e_tid_float, 1, e_smid_lin, "Scaling_Factor_GADS.22.1", "Scaling_Factor_GADS.8.1", NULL, NULL, "dl", "Normalized surface reflectance, band 1"},
+    {"reflec_2", "Norm_rho_surf_2.3", e_smod_1OF1, e_tid_float, 2, e_smid_lin, "Scaling_Factor_GADS.22.2", "Scaling_Factor_GADS.8.2", NULL, NULL, "dl", "Normalized surface reflectance, band 2"},
+    {"reflec_3", "Norm_rho_surf_3.3", e_smod_1OF1, e_tid_float, 3, e_smid_lin, "Scaling_Factor_GADS.22.3", "Scaling_Factor_GADS.8.3", NULL, NULL, "dl", "Normalized surface reflectance, band 3"},
+    {"reflec_4", "Norm_rho_surf_4.3", e_smod_1OF1, e_tid_float, 4, e_smid_lin, "Scaling_Factor_GADS.22.4", "Scaling_Factor_GADS.8.4", NULL, NULL, "dl", "Normalized surface reflectance, band 4"},
+    {"reflec_5", "Norm_rho_surf_5.3", e_smod_1OF1, e_tid_float, 5, e_smid_lin, "Scaling_Factor_GADS.22.5", "Scaling_Factor_GADS.8.5", NULL, NULL, "dl", "Normalized surface reflectance, band 5"},
+    {"reflec_6", "Norm_rho_surf_6.3", e_smod_1OF1, e_tid_float, 6, e_smid_lin, "Scaling_Factor_GADS.22.6", "Scaling_Factor_GADS.8.6", NULL, NULL, "dl", "Normalized surface reflectance, band 6"},
+    {"reflec_7", "Norm_rho_surf_7.3", e_smod_1OF1, e_tid_float, 7, e_smid_lin, "Scaling_Factor_GADS.22.7", "Scaling_Factor_GADS.8.7", NULL, NULL, "dl", "Normalized surface reflectance, band 7"},
+    {"reflec_8", "Norm_rho_surf_8.3", e_smod_1OF1, e_tid_float, 8, e_smid_lin, "Scaling_Factor_GADS.22.8", "Scaling_Factor_GADS.8.8", NULL, NULL, "dl", "Normalized surface reflectance, band 8"},
+    {"reflec_9", "Norm_rho_surf_9.3", e_smod_1OF1, e_tid_float, 9, e_smid_lin, "Scaling_Factor_GADS.22.9", "Scaling_Factor_GADS.8.9", NULL, NULL, "dl", "Normalized surface reflectance, band 9"},
+    {"reflec_10", "Norm_rho_surf_10.3", e_smod_1OF1, e_tid_float, 10, e_smid_lin, "Scaling_Factor_GADS.22.10", "Scaling_Factor_GADS.8.10", NULL, NULL, "dl", "Normalized surface reflectance, band 10"},
+    {"reflec_12", "Norm_rho_surf_11.3", e_smod_1OF1, e_tid_float, 12, e_smid_lin, "Scaling_Factor_GADS.22.11", "Scaling_Factor_GADS.8.11", NULL, NULL, "dl", "Normalized surface reflectance, band 12"},
+    {"reflec_13", "Norm_rho_surf_12.3", e_smod_1OF1, e_tid_float, 13, e_smid_lin, "Scaling_Factor_GADS.22.12", "Scaling_Factor_GADS.8.12", NULL, NULL, "dl", "Normalized surface reflectance, band 13"},
+    {"reflec_14", "Norm_rho_surf_13.3", e_smod_1OF1, e_tid_float, 14, e_smid_lin, "Scaling_Factor_GADS.22.13", "Scaling_Factor_GADS.8.13", NULL, NULL, "dl", "Normalized surface reflectance, band 14"},
+    {"water_vapour", "Vapour_Content.3", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.30.1", "Scaling_Factor_GADS.16.1", NULL, NULL, "g/cm^2", "Water vapour content"},
+    {"algal_1", "Chl_1_TOAVI_CTP.3", e_smod_1OF1, e_tid_float, -1, e_smid_log, "Scaling_Factor_GADS.23.1", "Scaling_Factor_GADS.9.1", "l2_flags.WATER", NULL, "mg/m^3", "Chlorophyll 1 content"},
+    {"algal_2", "Chl_2_BOAVI.3", e_smod_1OF1, e_tid_float, -1, e_smid_log, "Scaling_Factor_GADS.23.1", "Scaling_Factor_GADS.9.1", "l2_flags.WATER", NULL, "mg/m^3", "Chlorophyll 2 content"},
+    {"yellow_subs", "YS_SPM_Rect_rho.3", e_smod_1OF2, e_tid_float, -1, e_smid_log, "Scaling_Factor_GADS.24.1", "Scaling_Factor_GADS.10.1", "l2_flags.WATER", NULL, "1/m", "Yellow substance"},
+    {"total_susp", "YS_SPM_Rect_rho.3", e_smod_2OF2, e_tid_float, -1, e_smid_log, "Scaling_Factor_GADS.25.1", "Scaling_Factor_GADS.11.1", "l2_flags.WATER", NULL, "g/m^3", "Total suspended matter"},
+    {"photosyn_rad", "Press_PAR_Alb.3", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.31.1", "Scaling_Factor_GADS.17.1", "l2_flags.WATER", NULL, "myEinstein/(m^2*s)", "Photosynthetically active radiation"},
+    {"toa_veg", "Chl_1_TOAVI_CTP.3", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.32.1", "Scaling_Factor_GADS.18.1", "l2_flags.LAND", NULL, "1", "MGVI - MERIS global vegetation index"},
+    {"boa_veg", "Chl_2_BOAVI.3", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.33.1", "Scaling_Factor_GADS.19.1", "l2_flags.LAND", NULL, "1", "MTCI - MERIS terrestrial chlorophyll index"},
+    {"rect_refl_red", "YS_SPM_Rect_rho.3", e_smod_1OF2, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.40.1", "Scaling_Factor_GADS.39.1", "l2_flags.LAND", NULL, "dl", "Rectified reflectance in a red band"},
+    {"rect_refl_nir", "YS_SPM_Rect_rho.3", e_smod_2OF2, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.42.1", "Scaling_Factor_GADS.41.1", "l2_flags.LAND", NULL, "dl", "Rectified reflectances in a near infrared band"},
+    {"surf_press", "Press_PAR_Alb.3", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.29.1", "Scaling_Factor_GADS.15.1", "l2_flags.LAND", NULL, "hPa", "Surface pressure"},
+    {"aero_alpha", "Alpha_OPT.3", e_smod_1OF2, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.26.1", "Scaling_Factor_GADS.12.1", "!l2_flags.CLOUD", NULL, "dl", "Aerosol Angstrom exponent"},
+    {"aero_opt_thick_443", "Alpha_OPT.3", e_smod_2OF2, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.27.1", "Scaling_Factor_GADS.13.1", "!l2_flags.LAND", NULL, "dl", "Aerosol optical thickness at 443 nm"},
+    {"aero_opt_thick_865", "Alpha_OPT.3", e_smod_2OF2, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.27.1", "Scaling_Factor_GADS.13.1", "!l2_flags.WATER", NULL, "dl", "Aerosol optical thickness at 865 nm"},
+    {"cloud_albedo", "Press_PAR_Alb.3", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.34.1", "Scaling_Factor_GADS.20.1", "l2_flags.CLOUD", NULL, "dl", "Cloud albedo"},
+    {"cloud_opt_thick", "Alpha_OPT.3", e_smod_2OF2, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.28.1", "Scaling_Factor_GADS.14.1", "l2_flags.CLOUD", NULL, "dl", "Cloud optical thickness"},
+    {"cloud_top_press", "Chl_1_TOAVI_CTP.3", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.35.1", "Scaling_Factor_GADS.21.1", "l2_flags.CLOUD", NULL, "hPa", "Cloud top pressure"},
+    {"cloud_type", "Alpha_OPT.3", e_smod_1OF2, e_tid_uchar, -1, e_smid_non, NULL, NULL, "l2_flags.CLOUD", NULL, NULL, "Cloud type"},
+    {"l2_flags", "Flags.3", e_smod_3TOI, e_tid_uint, -1, e_smid_non, NULL, NULL, NULL, "MER_RR__2P_flags_IODD7", NULL, "Level 2 classification and quality flags"}
+};
+
 static const struct BandDescriptor MER_FR__2P_IODD6_band_data[] = {
     {"latitude", "Tie_points_ADS.3", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Latitude of the tie points (WGS-84), positive N"},
     {"longitude", "Tie_points_ADS.4", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Longitude of the tie points (WGS-84), Greenwich origin, positive E"},
@@ -5073,6 +5175,56 @@ static const struct BandDescriptor MER_RR__2P_band_data[] = {
     {"l2_flags", "Flags.3", e_smod_3TOI, e_tid_uint, -1, e_smid_non, NULL, NULL, NULL, "MER_RR__2P_flags", NULL, "Level 2 classification and quality flags"}
 };
 
+static const struct BandDescriptor MER_RR__2P_IODD7_band_data[] = {
+    {"latitude", "Tie_points_ADS.3", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Latitude of the tie points (WGS-84), positive N"},
+    {"longitude", "Tie_points_ADS.4", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Longitude of the tie points (WGS-84), Greenwich origin, positive E"},
+    {"dem_alt", "Tie_points_ADS.5", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "Scaling_Factor_GADS.1.1", NULL, NULL, "m", "Digital elevation model altitude"},
+    {"dem_rough", "Tie_points_ADS.6", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "Scaling_Factor_GADS.2.1", NULL, NULL, "m", "Digital elevation model roughness"},
+    {"lat_corr", "Tie_points_ADS.7", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Digital elevation model latitude corrections"},
+    {"lon_corr", "Tie_points_ADS.8", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Digital elevation model longitude corrections"},
+    {"sun_zenith", "Tie_points_ADS.9", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Sun zenith angle"},
+    {"sun_azimuth", "Tie_points_ADS.10", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Sun azimuth angles"},
+    {"view_zenith", "Tie_points_ADS.11", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Viewing zenith angles"},
+    {"view_azimuth", "Tie_points_ADS.12", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Viewing azimuth angles"},
+    {"zonal_wind", "Tie_points_ADS.13", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "Scaling_Factor_GADS.3.1", NULL, NULL, "m/s", "Zonal wind"},
+    {"merid_wind", "Tie_points_ADS.14", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "Scaling_Factor_GADS.4.1", NULL, NULL, "m/s", "Meridional wind"},
+    {"atm_press", "Tie_points_ADS.15", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "Scaling_Factor_GADS.5.1", NULL, NULL, "hPa", "Mean sea level pressure"},
+    {"ozone", "Tie_points_ADS.16", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "Scaling_Factor_GADS.6.1", NULL, NULL, "DU", "Total ozone"},
+    {"rel_hum", "Tie_points_ADS.17", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "Scaling_Factor_GADS.7.1", NULL, NULL, "%", "Relative humidity"},
+    {"reflec_1", "Norm_rho_surf_1.3", e_smod_1OF1, e_tid_float, 1, e_smid_lin, "Scaling_Factor_GADS.22.1", "Scaling_Factor_GADS.8.1", NULL, NULL, "dl", "Normalized surface reflectance, band 1"},
+    {"reflec_2", "Norm_rho_surf_2.3", e_smod_1OF1, e_tid_float, 2, e_smid_lin, "Scaling_Factor_GADS.22.2", "Scaling_Factor_GADS.8.2", NULL, NULL, "dl", "Normalized surface reflectance, band 2"},
+    {"reflec_3", "Norm_rho_surf_3.3", e_smod_1OF1, e_tid_float, 3, e_smid_lin, "Scaling_Factor_GADS.22.3", "Scaling_Factor_GADS.8.3", NULL, NULL, "dl", "Normalized surface reflectance, band 3"},
+    {"reflec_4", "Norm_rho_surf_4.3", e_smod_1OF1, e_tid_float, 4, e_smid_lin, "Scaling_Factor_GADS.22.4", "Scaling_Factor_GADS.8.4", NULL, NULL, "dl", "Normalized surface reflectance, band 4"},
+    {"reflec_5", "Norm_rho_surf_5.3", e_smod_1OF1, e_tid_float, 5, e_smid_lin, "Scaling_Factor_GADS.22.5", "Scaling_Factor_GADS.8.5", NULL, NULL, "dl", "Normalized surface reflectance, band 5"},
+    {"reflec_6", "Norm_rho_surf_6.3", e_smod_1OF1, e_tid_float, 6, e_smid_lin, "Scaling_Factor_GADS.22.6", "Scaling_Factor_GADS.8.6", NULL, NULL, "dl", "Normalized surface reflectance, band 6"},
+    {"reflec_7", "Norm_rho_surf_7.3", e_smod_1OF1, e_tid_float, 7, e_smid_lin, "Scaling_Factor_GADS.22.7", "Scaling_Factor_GADS.8.7", NULL, NULL, "dl", "Normalized surface reflectance, band 7"},
+    {"reflec_8", "Norm_rho_surf_8.3", e_smod_1OF1, e_tid_float, 8, e_smid_lin, "Scaling_Factor_GADS.22.8", "Scaling_Factor_GADS.8.8", NULL, NULL, "dl", "Normalized surface reflectance, band 8"},
+    {"reflec_9", "Norm_rho_surf_9.3", e_smod_1OF1, e_tid_float, 9, e_smid_lin, "Scaling_Factor_GADS.22.9", "Scaling_Factor_GADS.8.9", NULL, NULL, "dl", "Normalized surface reflectance, band 9"},
+    {"reflec_10", "Norm_rho_surf_10.3", e_smod_1OF1, e_tid_float, 10, e_smid_lin, "Scaling_Factor_GADS.22.10", "Scaling_Factor_GADS.8.10", NULL, NULL, "dl", "Normalized surface reflectance, band 10"},
+    {"reflec_12", "Norm_rho_surf_11.3", e_smod_1OF1, e_tid_float, 12, e_smid_lin, "Scaling_Factor_GADS.22.11", "Scaling_Factor_GADS.8.11", NULL, NULL, "dl", "Normalized surface reflectance, band 12"},
+    {"reflec_13", "Norm_rho_surf_12.3", e_smod_1OF1, e_tid_float, 13, e_smid_lin, "Scaling_Factor_GADS.22.12", "Scaling_Factor_GADS.8.12", NULL, NULL, "dl", "Normalized surface reflectance, band 13"},
+    {"reflec_14", "Norm_rho_surf_13.3", e_smod_1OF1, e_tid_float, 14, e_smid_lin, "Scaling_Factor_GADS.22.13", "Scaling_Factor_GADS.8.13", NULL, NULL, "dl", "Normalized surface reflectance, band 14"},
+    {"water_vapour", "Vapour_Content.3", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.30.1", "Scaling_Factor_GADS.16.1", NULL, NULL, "g/cm^2", "Water vapour content"},
+    {"algal_1", "Chl_1_TOAVI_CTP.3", e_smod_1OF1, e_tid_float, -1, e_smid_log, "Scaling_Factor_GADS.23.1", "Scaling_Factor_GADS.9.1", "l2_flags.WATER", NULL, "mg/m^3", "Chlorophyll 1 content"},
+    {"algal_2", "Chl_2_BOAVI.3", e_smod_1OF1, e_tid_float, -1, e_smid_log, "Scaling_Factor_GADS.23.1", "Scaling_Factor_GADS.9.1", "l2_flags.WATER", NULL, "mg/m^3", "Chlorophyll 2 content"},
+    {"yellow_subs", "YS_SPM_Rect_rho.3", e_smod_1OF2, e_tid_float, -1, e_smid_log, "Scaling_Factor_GADS.24.1", "Scaling_Factor_GADS.10.1", "l2_flags.WATER", NULL, "1/m", "Yellow substance"},
+    {"total_susp", "YS_SPM_Rect_rho.3", e_smod_2OF2, e_tid_float, -1, e_smid_log, "Scaling_Factor_GADS.25.1", "Scaling_Factor_GADS.11.1", "l2_flags.WATER", NULL, "g/m^3", "Total suspended matter"},
+    {"photosyn_rad", "Press_PAR_Alb.3", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.31.1", "Scaling_Factor_GADS.17.1", "l2_flags.WATER", NULL, "myEinstein/(m^2*s)", "Photosynthetically active radiation"},
+    {"toa_veg", "Chl_1_TOAVI_CTP.3", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.32.1", "Scaling_Factor_GADS.18.1", "l2_flags.LAND", NULL, "1", "MGVI - MERIS global vegetation index"},
+    {"boa_veg", "Chl_2_BOAVI.3", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.33.1", "Scaling_Factor_GADS.19.1", "l2_flags.LAND", NULL, "1", "MTCI - MERIS terrestrial chlorophyll index"},
+    {"rect_refl_red", "YS_SPM_Rect_rho.3", e_smod_1OF2, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.40.1", "Scaling_Factor_GADS.39.1", "l2_flags.LAND", NULL, "dl", "Rectified reflectance in a red band"},
+    {"rect_refl_nir", "YS_SPM_Rect_rho.3", e_smod_2OF2, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.42.1", "Scaling_Factor_GADS.41.1", "l2_flags.LAND", NULL, "dl", "Rectified reflectances in a near infrared band"},
+    {"surf_press", "Press_PAR_Alb.3", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.29.1", "Scaling_Factor_GADS.15.1", "l2_flags.LAND", NULL, "hPa", "Surface pressure"},
+    {"aero_alpha", "Alpha_OPT.3", e_smod_1OF2, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.26.1", "Scaling_Factor_GADS.12.1", "!l2_flags.CLOUD", NULL, "dl", "Aerosol Angstrom exponent"},
+    {"aero_opt_thick_443", "Alpha_OPT.3", e_smod_2OF2, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.27.1", "Scaling_Factor_GADS.13.1", "!l2_flags.LAND", NULL, "dl", "Aerosol optical thickness at 443 nm"},
+    {"aero_opt_thick_865", "Alpha_OPT.3", e_smod_2OF2, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.27.1", "Scaling_Factor_GADS.13.1", "!l2_flags.WATER", NULL, "dl", "Aerosol optical thickness at 865 nm"},
+    {"cloud_albedo", "Press_PAR_Alb.3", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.34.1", "Scaling_Factor_GADS.20.1", "l2_flags.CLOUD", NULL, "dl", "Cloud albedo"},
+    {"cloud_opt_thick", "Alpha_OPT.3", e_smod_2OF2, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.28.1", "Scaling_Factor_GADS.14.1", "l2_flags.CLOUD", NULL, "dl", "Cloud optical thickness"},
+    {"cloud_top_press", "Chl_1_TOAVI_CTP.3", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "Scaling_Factor_GADS.35.1", "Scaling_Factor_GADS.21.1", "l2_flags.CLOUD", NULL, "hPa", "Cloud top pressure"},
+    {"cloud_type", "Alpha_OPT.3", e_smod_1OF2, e_tid_uchar, -1, e_smid_non, NULL, NULL, "l2_flags.CLOUD", NULL, NULL, "Cloud type"},
+    {"l2_flags", "Flags.3", e_smod_3TOI, e_tid_uint, -1, e_smid_non, NULL, NULL, NULL, "MER_RR__2P_flags_IODD7", NULL, "Level 2 classification and quality flags"}
+};
+
 static const struct BandDescriptor MER_RR__2P_IODD6_band_data[] = {
     {"latitude", "Tie_points_ADS.3", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Latitude of the tie points (WGS-84), positive N"},
     {"longitude", "Tie_points_ADS.4", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Longitude of the tie points (WGS-84), Greenwich origin, positive E"},
@@ -5225,7 +5377,42 @@ static const struct FlagDescriptor MER_RR__1P_flags_data[] = {
     {"INVALID", 1, {7, 0}, "Pixel is invalid"}
 };
 
+
 static const struct FlagDescriptor MER_RR__2P_flags_data[] = {
+    {"LAND", 1, {23, 0}, "Land product available"},
+    {"CLOUD", 1, {22, 0}, "Cloud product available"},
+    {"WATER", 1, {21, 0}, "Water product available"},
+    {"PCD_1_13", 1, {20, 0}, "Uncertain normalized surface reflectance"},
+    {"PCD_14", 1, {19, 0}, "Uncertain total water vapour content"},
+    {"PCD_15", 1, {18, 0}, "Uncertain algal pigment index 1 or cloud top pressure or top of atmosphere vegetation index"},
+    {"PCD_16", 1, {17, 0}, "Uncertain yellow substance and total suspended matter or rectified reflectances"},
+    {"PCD_17", 1, {16, 0}, "Uncertain algal pigment index 2 or bottom of atmosphere vegetation index"},
+    {"PCD_18", 1, {15, 0}, "Uncertain PAR or cloud albedo or land surface pressure"},
+    {"PCD_19", 1, {14, 0}, "Uncertain aerosol type and optical thickness or cloud optical thickness"},
+    {"COASTLINE", 1, {13, 0}, "Coastline pixel"},
+    {"COSMETIC", 1, {12, 0}, "Cosmetic pixel (from level-1b)"},
+    {"SUSPECT", 1, {11, 0}, "Suspect pixel (from level-1b)"},
+    {"OOADB", 1, {10, 0}, "Aerosol model is out of aerosol model database"},
+    {"ABSOA_DUST", 1, {9, 0}, "Dust-like absorbing aerosol selected for atmosphere correction"},
+    {"CASE2_S", 2, {8, 21}, "Turbid (sediment dominated Case 2) water"},
+    {"SNOW_ICE", 2, {8, 23}, "Snow/Ice covered land"},
+    {"CASE2_ANOM", 2, {7, 21}, "Anomalous scattering water"},
+    {"TOAVI_BRIGHT", 2, {7, 23}, "Bright pixel flagged by MGVI processing"},
+    {"CASE2_Y", 2, {6, 21}, "Yellow substance loaded water"},
+    {"TOAVI_BAD", 2, {6, 23}, "Bad pixel flagged by MGVI processing"},
+    {"ICE_HAZE", 2, {5, 21}, "Ice or high aerosol load pixel"},
+    {"TOAVI_CSI", 2, {5, 23}, "Cloud, snow or ice over land pixel acc. to MGVI processing"},
+    {"MEDIUM_GLINT", 2, {4, 21}, "Corrected for glint (water)"},
+    {"TOAVI_WS", 2, {4, 23}, "Water/shadow pixel acc. to MGVI processing (land)"},
+    {"DDV", 2, {3, 23}, "Dense Dark Vegetation (land)"},
+    {"BPAC_ON", 2, {3, 21}, "Bright pixels atmospheric correction activated (water)"},
+    {"HIGH_GLINT", 2, {2, 21}, "High (uncorrected) glint (water)"},
+    {"TOAVI_INVAL_REC", 2, {2, 23}, "Invalid rectification (land)"},
+    {"LOW_SUN", 1, {1, 0}, "Sun low above horizon (or conversely high sun zenith angle)"},
+    {"WHITE_SCATTERER", 2, {0, 21}, "Presence of white scatterer in water"}
+};
+
+static const struct FlagDescriptor MER_RR__2P_flags_IODD7_data[] = {
     {"LAND", 1, {23, 0}, "Land product available"},
     {"CLOUD", 1, {22, 0}, "Cloud product available"},
     {"WATER", 1, {21, 0}, "Water product available"},
@@ -5291,7 +5478,7 @@ static const struct FlagDescriptor MER_RR__2P_flags_IODD6_data[] = {
     {"LOW_PRESSURE", 1, {0, 0}, "Computed pressure lower than ECMWF one"}
 };
 
-const struct DatasetDescriptorTable dddb_product_tables[68] = {
+const struct DatasetDescriptorTable dddb_product_tables[70] = {
     {"ASA_APG_1P", "ASAR Alternating Polarization Ellipsoid Geocoded Image", 11, ASA_APG_1P_dataset_data},
     {"ASA_APG_1P_602", "ASAR Alternating Polarization Ellipsoid Geocoded Image", 11, ASA_APG_1P_602_dataset_data},
     {"ASA_APM_1P", "ASAR Alternating Polarization Medium Resolution Image product", 10, ASA_APM_1P_dataset_data},
@@ -5331,6 +5518,7 @@ const struct DatasetDescriptorTable dddb_product_tables[68] = {
     {"MER_FR__1P_IODD5", "MERIS Full Resolution Geolocated and Calibrated TOA Radiance", 19, MER_FR__1P_IODD5_dataset_data},
     {"MER_FR__2P", "MERIS Full Resolution Geophysical Product", 23, MER_FR__2P_dataset_data},
     {"MER_FRS_2P", "MERIS Full Resolution Full Swath Geophysical Product", 23, MER_FR__2P_dataset_data},
+    {"MER_FR__2P_IODD7", "MERIS Full Resolution Geophysical Product", 23, MER_FR__2P_IODD7_dataset_data},
     {"MER_FR__2P_IODD6", "MERIS Full Resolution Geophysical Product", 23, MER_FR__2P_IODD6_dataset_data},
     {"MER_LRC_2P", "MERIS Extracted Cloud Thickness and Water Vapour for Meteo Users", 7, MER_LRC_2P_dataset_data},
     {"MER_RRC_2P", "MERIS Extracted Cloud Thickness and Water Vapour", 7, MER_RRC_2P_dataset_data},
@@ -5338,6 +5526,7 @@ const struct DatasetDescriptorTable dddb_product_tables[68] = {
     {"MER_RR__1P", "MERIS Reduced Resolution Geolocated and Calibrated TOA Radiance", 19, MER_RR__1P_dataset_data},
     {"MER_RR__1P_IODD5", "MERIS Reduced Resolution Geolocated and Calibrated TOA Radiance", 19, MER_RR__1P_IODD5_dataset_data},
     {"MER_RR__2P", "MERIS Reduced Resolution Geophysical Product", 23, MER_RR__2P_dataset_data},
+    {"MER_RR__2P_IODD7", "MERIS Reduced Resolution Geophysical Product", 23, MER_RR__2P_IODD7_dataset_data},
     {"MER_RR__2P_IODD6", "MERIS Reduced Resolution Geophysical Product", 23, MER_RR__2P_IODD6_dataset_data},
     {"SAR_APG_1P", "ERS Simulated Alternating Polarization Ellipsoid Geocoded Image", 11, ASA_APG_1P_dataset_data},
     {"SAR_APG_1P_602", "ERS Simulated Alternating Polarization Ellipsoid Geocoded Image", 11, ASA_APG_1P_602_dataset_data},
@@ -5362,7 +5551,7 @@ const struct DatasetDescriptorTable dddb_product_tables[68] = {
     {"SAR_WVW_2P", "ERS Wave Mode Wave Spectra", 4, ASA_WVW_2P_dataset_data},
 };
 
-const struct BandDescriptorTable dddb_band_tables[39] = {
+const struct BandDescriptorTable dddb_band_tables[41] = {
     {"ASA_APG_1P", "ASAR Alternating Polarization Geocoded Image", 6, ASA_APG_1P_band_data},
     {"ASA_APM_1P", "ASAR Alternating Polarization Medium Resolution Image", 6, ASA_APM_1P_band_data},
     {"ASA_APP_1P", "ASAR Alternating Polarization Precision Image", 6, ASA_APP_1P_band_data},
@@ -5384,6 +5573,7 @@ const struct BandDescriptorTable dddb_band_tables[39] = {
     {"MER_FR__1P_IODD5", "MERIS Level 1b Full Resolution Geophysical Product", 32, MER_FR__1P_IODD5_band_data},
     {"MER_FR__2P", "MERIS Level 2 Full Resolution Geophysical Product", 47, MER_FR__2P_band_data},
     {"MER_FRS_2P", "MERIS Level 2 Full Resolution Full Swath Geophysical Product", 47, MER_FR__2P_band_data},
+    {"MER_FR__2P_IODD7", "MERIS Level 2 Full Resolution Geophysical Product", 47, MER_FR__2P_IODD7_band_data},
     {"MER_FR__2P_IODD6", "MERIS Level 2 Full Resolution Geophysical Product", 46, MER_FR__2P_IODD6_band_data},
     {"MER_LRC_2P", "MERIS Level 2 Extracted Cloud Thickness and Water Vapour for Meteo Users", 19, MER_LRC_2P_band_data},
     {"MER_RRC_2P", "MERIS Level 2 Extracted Cloud Thickness and Water Vapour", 20, MER_RRC_2P_band_data},
@@ -5391,6 +5581,7 @@ const struct BandDescriptorTable dddb_band_tables[39] = {
     {"MER_RR__1P", "MERIS Level 1b Reduced Resolution Geophysical Product", 32, MER_RR__1P_band_data},
     {"MER_RR__1P_IODD5", "MERIS Level 1b Reduced Resolution Geophysical Product", 32, MER_RR__1P_IODD5_band_data},
     {"MER_RR__2P", "MERIS Level 2 Reduced Resolution Geophysical Product", 47, MER_RR__2P_band_data},
+    {"MER_RR__2P_IODD7", "MERIS Level 2 Reduced Resolution Geophysical Product", 47, MER_RR__2P_IODD7_band_data},
     {"MER_RR__2P_IODD6", "MERIS Level 2 Reduced Resolution Geophysical Product", 46, MER_RR__2P_IODD6_band_data},
     {"SAR_APG_1P", "ERS Simulated Alternating Polarization Geocoded Image", 6, ASA_APG_1P_band_data},
     {"SAR_APM_1P", "ERS Simulated Alternating Polarization Medium Resolution Image", 6, ASA_APM_1P_band_data},
@@ -5404,7 +5595,7 @@ const struct BandDescriptorTable dddb_band_tables[39] = {
     {"SAR_IM__BP", "ERS Image Mode Browse Product", 5, ASA_IM__BP_band_data},
 };
 
-const struct FlagDescriptorTable dddb_flag_coding_tables[9] = {
+const struct FlagDescriptorTable dddb_flag_coding_tables[10] = {
     {"ATS_NR__2P_flags", "AATSR Level 2 Flags Codings", 14, ATS_NR__2P_flags_data},
     {"ATS_TOA_1P_cloud_flags", "AATSR TOA Level 1b Cloud Flags Codings", 13, ATS_TOA_1P_cloud_flags_data},
     {"ATS_TOA_1P_confid_flags", "AATSR TOA Level 1b Confidence Flag Codings", 10, ATS_TOA_1P_confid_flags_data},
@@ -5413,6 +5604,7 @@ const struct FlagDescriptorTable dddb_flag_coding_tables[9] = {
     {"AT2_TOA_1P_confid_flags", "ATSR TOA Level 1b Confidence Flag Codings", 10, AT2_TOA_1P_confid_flags_data},
     {"MER_RR__1P_flags", "MERIS RR Level 1b Flag Codings", 8, MER_RR__1P_flags_data},
     {"MER_RR__2P_flags", "MERIS Level 2 Flag Codings", 31, MER_RR__2P_flags_data},
+    {"MER_RR__2P_flags_IODD7", "MERIS Level 2 Flag Codings", 31, MER_RR__2P_flags_IODD7_data},
     {"MER_RR__2P_flags_IODD6", "MERIS Level 2 Flag Codings", 29, MER_RR__2P_flags_IODD6_data},
 };
 
