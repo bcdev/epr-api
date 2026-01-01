@@ -4524,8 +4524,11 @@ static const struct BandDescriptor ASA_APS_1P_band_data[] = {
     {"incident_angle", "GEOLOCATION_GRID_ADS.8", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0", NULL, NULL, "deg", "Incident angle"},
     {"latitude", "GEOLOCATION_GRID_ADS.9", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Latitude of the tie points (WGS-84), positive N"},
     {"longitude", "GEOLOCATION_GRID_ADS.10", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0E-06", NULL, NULL, "deg", "Longitude of the tie points (WGS-84), Greenwich origin, positive E"},
-    {"i", "MDS1.4", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0", NULL, NULL, NULL, "Alternating Polarization SLC Image (i)"},
-    {"q", "MDS2.4", e_smod_1OF1, e_tid_float, -1, e_smid_lin, "0.0", "1.0", NULL, NULL, NULL, "Alternating Polarization SLC Image (q)"}
+    {"i1", "MDS1.4", e_smod_1OF2, e_tid_float, -1, e_smid_lin, "0.0", "1.0", NULL, NULL, NULL, "Alternating Polarization SLC Image (i)"},
+    {"q1", "MDS1.4", e_smod_2OF2, e_tid_float, -1, e_smid_lin, "0.0", "1.0", NULL, NULL, NULL, "Alternating Polarization SLC Image (q)"},
+    {"i2", "MDS2.4", e_smod_1OF2, e_tid_float, -1, e_smid_lin, "0.0", "1.0", NULL, NULL, NULL, "Alternating Polarization SLC Image (i)"},
+    {"q2", "MDS2.4", e_smod_2OF2, e_tid_float, -1, e_smid_lin, "0.0", "1.0", NULL, NULL, NULL, "Alternating Polarization SLC Image (q)"}
+
 };
 
 static const struct BandDescriptor ASA_AP__BP_band_data[] = {
@@ -5363,7 +5366,7 @@ const struct BandDescriptorTable dddb_band_tables[39] = {
     {"ASA_APG_1P", "ASAR Alternating Polarization Geocoded Image", 6, ASA_APG_1P_band_data},
     {"ASA_APM_1P", "ASAR Alternating Polarization Medium Resolution Image", 6, ASA_APM_1P_band_data},
     {"ASA_APP_1P", "ASAR Alternating Polarization Precision Image", 6, ASA_APP_1P_band_data},
-    {"ASA_APS_1P", "ASAR Alternating Polarization SLC Image", 6, ASA_APS_1P_band_data},
+    {"ASA_APS_1P", "ASAR Alternating Polarization SLC Image", 8, ASA_APS_1P_band_data},
     {"ASA_AP__BP", "ASAR Alternatin Polarization Mode Browse Product", 5, ASA_AP__BP_band_data},
     {"ASA_IMG_1P", "ASAR Image Mode Geocoded Image", 5, ASA_IMG_1P_band_data},
     {"ASA_IMM_1P", "ASAR Image Mode Medium Resolution Image", 5, ASA_IMM_1P_band_data},
