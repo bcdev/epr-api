@@ -218,6 +218,8 @@ uint epr_get_num_bands(EPR_SProductId* product_id) {
                     "epr_get_num_bands: product_id must not be NULL");
         return (uint) -1;
     }
+    if (product_id->band_ids == NULL)
+        return 0;
     return product_id->band_ids->length;
 }
 
@@ -231,7 +233,7 @@ EPR_SBandId* epr_get_band_id_at(EPR_SProductId* product_id, uint index) {
                     "epr_get_band_id_at: product_id must not be NULL");
         return NULL;
     }
-    if (index >= product_id->band_ids->length) {
+    if (index >= epr_get_num_bands(product_id)) {
         epr_set_err(e_err_index_out_of_range,
                     "epr_get_band_id_at: band index out of range");
         return NULL;
