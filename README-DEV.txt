@@ -3,7 +3,8 @@ Configuration management after an ESA release
 
 1) Increment version number in
    epr_api.h (EPR_PRODUCT_API_VERSION_STR), build.xml,
-   VERSION.txt, README.txt, CHANGELOG.txt, doxyfile.txt
+   VERSION.txt, README.txt, CHANGELOG.txt, doxyfile.txt,
+   CMakeLists.txt
 2) Provide new entry in CHANGELOG.txt
 3) Adapt / give a hint in README.txt
 4) Optional: Generate API documentation with "doxygen"

@@ -3,7 +3,7 @@
                      ENVISAT Product Reader API for C
                               Version 2.3
 
-                              DD. MMMM YYYY
+                              02. January 2026
 
 
 Contents
@@ -45,8 +45,8 @@ The EPR-API for C (epr-c-api)
 
     The epr-c-api is written in pure ANSI C and should compile with every
     ANSI conformant C-compiler. Just copy all '*.h' and '*.c' files contained in
-	the 'src' folder of the distribution to your own source folder of your project
-    and include them in your development environment.
+	  the 'src' folder of the distribution to your own source folder of your
+    project and include them in your development environment.
 
     Examples:
 	
@@ -136,7 +136,7 @@ Zip Archive Contents
 Bug Reports and Feedback
 
     Please submit your bug reports at the issue tracker at
-    http://www.brockmann-consult.de/beam-jira/browse/EPR
+    https://github.com/bcdev/epr-api/issues
     or via e-mail to beam-issues@brockmann-consult.de
     and tell us which bug fixes matter most to you.
 
