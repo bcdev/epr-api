@@ -1259,7 +1259,7 @@ EPR_EDataTypeId epr_get_field_type(const EPR_SField* field);
  *
  * @return the typed value from given field
  */
-/*@{*/
+/** @{ */
 char epr_get_field_elem_as_char(const EPR_SField* field, uint elem_index);
 uchar epr_get_field_elem_as_uchar(const EPR_SField* field, uint elem_index);
 short epr_get_field_elem_as_short(const EPR_SField* field, uint elem_index);
@@ -1270,7 +1270,7 @@ float epr_get_field_elem_as_float(const EPR_SField* field, uint elem_index);
 double epr_get_field_elem_as_double(const EPR_SField* field, uint elem_index);
 const EPR_STime* epr_get_field_elem_as_mjd(const EPR_SField* field);
 const char* epr_get_field_elem_as_str(const EPR_SField* field);
-/*@}*/
+/** @} */
 
 /*
  * =========================== (5.5) Array Element Access =============================
@@ -1287,7 +1287,7 @@ const char* epr_get_field_elem_as_str(const EPR_SField* field);
  * @return the data array of the expected type or  <code>NULL</code>
  *         if the field is of a different type
  */
-/*@{*/
+/** @{ */
 const char* epr_get_field_elems_char(const EPR_SField* field);
 const uchar* epr_get_field_elems_uchar(const EPR_SField* field);
 const short* epr_get_field_elems_short(const EPR_SField* field);
@@ -1296,7 +1296,7 @@ const int* epr_get_field_elems_int(const EPR_SField* field);
 const uint* epr_get_field_elems_uint(const EPR_SField* field);
 const float* epr_get_field_elems_float(const EPR_SField* field);
 const double* epr_get_field_elems_double(const EPR_SField* field);
-/*@}*/
+/** @} */
 
 /**
  * @ingroup DA
@@ -1313,12 +1313,12 @@ const double* epr_get_field_elems_double(const EPR_SField* field);
  * @param num_elems the number of elements in the given buffer
  * @return the actual number of elements copied
  */
-/*@{*/
+/** @{ */
 uint epr_copy_field_elems_as_ints(const EPR_SField* field, int* buffer, uint num_elems);
 uint epr_copy_field_elems_as_uints(const EPR_SField* field, uint* buffer, uint num_elems);
 uint epr_copy_field_elems_as_floats(const EPR_SField* field, float* buffer, uint num_elems);
 uint epr_copy_field_elems_as_doubles(const EPR_SField* field, double* buffer, uint num_elems);
-/*@}*/
+/** @} */
 
 
 
@@ -1549,7 +1549,7 @@ uint epr_get_pixel_as_uint(const EPR_SRaster* raster, int x, int y);
 int epr_get_pixel_as_int(const EPR_SRaster* raster, int x, int y);
 float epr_get_pixel_as_float(const EPR_SRaster* raster, int x, int y);
 double epr_get_pixel_as_double(const EPR_SRaster* raster, int x, int y);
-/*@}*/
+/** @} */
 
 /*
  * ================================= (7) Bitmasks ==========================
