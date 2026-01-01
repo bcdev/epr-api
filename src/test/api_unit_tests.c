@@ -255,7 +255,7 @@ void evaluate_product_assert(STestLine* test_line) {
     if (equal_str(value_ref, _pas_band_ids_length)) {
         if (!evaluate_equal_types(test_line, e_tid_uint))
             goto failure;
-        detail->actual.ui = product_id->band_ids->length;
+        detail->actual.ui = product_id->band_ids == NULL ? 0 : product_id->band_ids->length;
     } else if (equal_str(value_ref, _pas_dataset_ids_length)) {
         if (!evaluate_equal_types(test_line, e_tid_uint))
             goto failure;
