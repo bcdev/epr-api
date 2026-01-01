@@ -9,20 +9,24 @@ target_link_libraries(epr_performance_test epr_api)
 add_executable(epr_test_endian epr_test_endian.c)
 target_link_libraries(epr_test_endian epr_api)
 
+if(NOT MSVC)
+    set(EXTRALIBS "m")
+endif(NOT MSVC)
+
 # the following test programs use some internal function that is not exported
 # by the shared library
 if(BUILD_STATIC_LIB)
     add_executable(epr_main_test epr_main_test.c)
-    target_link_libraries(epr_main_test epr_api_static bccunit m)
+    target_link_libraries(epr_main_test epr_api_static bccunit ${EXTRALIBS})
 
     add_executable(api_unit_tests api_unit_tests.c)
-    target_link_libraries(api_unit_tests epr_api_static m)
+    target_link_libraries(api_unit_tests epr_api_static ${EXTRALIBS})
 elseif(BUILD_STATIC_LIB)
     add_executable(epr_main_test epr_main_test.c ${SOURCES})
-    target_link_libraries(epr_main_test bccunit m)
+    target_link_libraries(epr_main_test bccunit ${EXTRALIBS})
 
     add_executable(api_unit_tests api_unit_tests.c ${SOURCES})
-    target_link_libraries(api_unit_tests m)
+    target_link_libraries(api_unit_tests ${EXTRALIBS})
 endif(BUILD_STATIC_LIB)
 
 
