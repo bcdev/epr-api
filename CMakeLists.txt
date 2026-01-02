@@ -1,7 +1,7 @@
-# Copyright (c) 2013-2014 Antonio Valentino <antonio.valentino@tiscali.it>
+# Copyright (c) 2013-2026 Antonio Valentino <antonio.valentino@tiscali.it>
 
 
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.10)
 project(epr-api)
 
 

@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2014 Antonio Valentino <antonio.valentino@tiscali.it>
+# Copyright (c) 2013-2026 Antonio Valentino <antonio.valentino@tiscali.it>
 
 
 # sources

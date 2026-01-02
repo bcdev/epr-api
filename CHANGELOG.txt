@@ -6,7 +6,8 @@
 Changes from Version 2.3 to Version 2.3.1 (of DD. MMMM YYYY)
 ----------------------------------------------------------------------
 
-1) TBW
+1) Set the minimum required CMake version to 3.10 for compatibility
+   with CMake 4.x
 
 ----------------------------------------------------------------------
 Changes from Version 2.2 to Version 2.3 (of 02. January 2026)

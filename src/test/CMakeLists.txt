@@ -1,4 +1,4 @@
-# Copyright (c) 2013 Antonio Valentino <antonio.valentino@tiscali.it>
+# Copyright (c) 2013-2026 Antonio Valentino <antonio.valentino@tiscali.it>
 
 add_executable(epr_subset_test epr_subset_test.c)
 target_link_libraries(epr_subset_test epr_api)
