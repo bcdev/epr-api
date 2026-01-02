@@ -1,7 +1,7 @@
                                  README
 
                      ENVISAT Product Reader API for C
-                              Version 2.3
+                              Version 2.3.1
 
                               02. January 2026
 

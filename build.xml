@@ -3,7 +3,7 @@
     <!-- ==================================== -->
     <!-- set global properties for this build -->
     <!-- ==================================== -->
-    <property name="version" value="2.3"/>
+    <property name="version" value="2.3.1dev"/>
     <property name="home" value="."/>
     <property name="build" value="./build_for_zip"/>
     <property name="src" value="./src"/>

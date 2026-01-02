@@ -1,6 +1,12 @@
 
-           CHANGELOG for the EPR-API, VERSION 2.3
+           CHANGELOG for the EPR-API, VERSION 2.3.x
 
+
+----------------------------------------------------------------------
+Changes from Version 2.3 to Version 2.3.1 (of DD. MMMM YYYY)
+----------------------------------------------------------------------
+
+1) TBW
 
 ----------------------------------------------------------------------
 Changes from Version 2.2 to Version 2.3 (of 02. January 2026)
