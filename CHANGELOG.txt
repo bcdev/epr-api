@@ -39,7 +39,7 @@ ambiguous with respect to 32bit and 64bit operating systems.
 ----------------------------------------------------------------------
 Changes from Version 2.0.5 to Version 2.1 (of 6. May 2009)
 ----------------------------------------------------------------------
-Support of MER_FRS (full resulution full swath) products
+Support of MER_FRS (full resolution full swath) products
 Support of IODD7
 
 ----------------------------------------------------------------------
@@ -69,16 +69,16 @@ The new product changes are:
 Changes from Version 2.0.2 to Version 2.0.3 (of 5. Nov 2003)
 ----------------------------------------------------------------------
 Bugfix in file epr_band.c:
-In function epr_read_band_raster() an error occured if the percentage
+In function epr_read_band_raster() an error occurred if the percentage
 of raster->source_step_x is bigger than raster->raster_width.
 This restriction was removed.
 
 ----------------------------------------------------------------------
 Changes from Version 2.0.1 to Version 2.0.2 (of 21. June 2003)
 ----------------------------------------------------------------------
-1) Bugfix: MERIS L1b flags now correcly read (read_measurement_...
+1) Bugfix: MERIS L1b flags now correctly read (read_measurement_...
    "unknown data type")
-2) Bugfix: MERIS L2 flags now correcly read (wrong byte order)
+2) Bugfix: MERIS L2 flags now correctly read (wrong byte order)
 3) Bugfix: MER_RRC_1P products now correctly handled
 4) Support for MERIS, AATSR and ASAR child products added
 5) Support for new MERIS L2 TOAVI flags included ...
@@ -95,7 +95,7 @@ Changes from Version 2.0.1 to Version 2.0.2 (of 21. June 2003)
 ----------------------------------------------------------------------
 Changes from Version 2.0 to Version 2.0.1 (of 21.03.2003)
 ----------------------------------------------------------------------
-Bugfix: The build-in support for older MERIS L1b/L2 products (IODD 5)
+Bugfix: The built-in support for older MERIS L1b/L2 products (IODD 5)
 caused that no other product types than MERIS L1b/L2 data products could
 be opened. The error message was "epr_create_band_ids: band not found".
 Now also the other MERIS, AATSR and ASAR products can be opened again.
@@ -132,7 +132,7 @@ Changes from Version 1.2 to Version 1.3
 ----------------------------------------------------------------------
 Changes from Version 1.1 to Version 1.2
 ----------------------------------------------------------------------
-1) All functions defined in "epr_api.h" now properly return exeptional
+1) All functions defined in "epr_api.h" now properly return exceptional
    values in case of an error.
 2) Some of the API function did not clear the internal API error state.
    All public API functions now clear the global error state before
@@ -158,7 +158,7 @@ Changes from Version 1.0 to Version 1.1
    /* Gets the dataset_id at the specified position within the product. */
    EPR_SDatasetId* epr_get_dataset_id_at(EPR_SProductId* product_id, uint index);
 
-   /* Gets the dataset_id coresponding to the specified dataset name. */
+   /* Gets the dataset_id corresponding to the specified dataset name. */
    EPR_SDatasetId* epr_get_dataset_id(EPR_SProductId* product_id, const char* dataset_name);
 
    /* Gets the name of the dataset for the given dataset ID. */
@@ -184,7 +184,7 @@ Changes from Version 1.0 to Version 1.1
 
    'epr_free_dataset_id' is no longer part of the public API.
    The dataset IDs retrieved with the 'epr_get_dataset_id' function
-   do not require an explicite destruction.
+   do not require an explicit destruction.
 
 
    'epr_band_dataset_id' is no longer part of the public API.
@@ -192,5 +192,5 @@ Changes from Version 1.0 to Version 1.1
 
    'epr_free_band_id' is no longer part of the public API.
    The dataset IDs retrieved with the 'epr_get_band_id' function
-   do not require an explicite destruction.
+   do not require an explicit destruction.
 

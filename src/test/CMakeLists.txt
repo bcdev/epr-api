@@ -30,14 +30,14 @@ elseif(BUILD_STATIC_LIB)
 endif(BUILD_STATIC_LIB)
 
 
-# endianess
+# endianness
 include(TestBigEndian)
 
 TEST_BIG_ENDIAN(BIGENDIAN)
 if(${BIGENDIAN})
-    set(ENDIANESS BE)
+    set(ENDIANNESS BE)
 else(${BIGENDIAN})
-    set(ENDIANESS LE)
+    set(ENDIANNESS LE)
 endif(${BIGENDIAN})
 
 
@@ -46,4 +46,4 @@ endif(${BIGENDIAN})
 #add_test(TEST_EPR_02 epr_subset_test)
 add_test(TEST_EPR_03 epr_test_endian)
 set_tests_properties(TEST_EPR_03 PROPERTIES PASS_REGULAR_EXPRESSION
-    ${ENDIANESS})
+    ${ENDIANNESS})

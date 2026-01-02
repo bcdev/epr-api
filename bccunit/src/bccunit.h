@@ -50,7 +50,7 @@ extern "C" {
         struct BcUnitTest* test_first; /* valid for test suites only */
         struct BcUnitTest* test_last;  /* valid for test suites only */
         struct BcUnitTest* test_next;  /* valid for test cases only */
-        int                num_tests;  /* valid for test suites only, for cases aways 1 */
+        int                num_tests;  /* valid for test suites only, for cases always 1 */
     };
 
 

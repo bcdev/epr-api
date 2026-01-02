@@ -139,16 +139,16 @@ int main(int argc, char** argv) {
     int i;
 
 #if defined(WIN32) && defined(_DEBUG)
-    /* Aktuelles Attribut ermitteln */
+    /* Determine current attribute */
     int tmpFlag = _CrtSetDbgFlag(_CRTDBG_REPORT_FLAG);
 
-    /* Speicherverlust-Pr�fbit aktivieren */
+    /* Enable memory leakage check bit */
     tmpFlag |= _CRTDBG_LEAK_CHECK_DF;
 
-    /* CRT-Block-Pr�fbit deaktivieren */
+    /* Disable CRT block check bit */
     tmpFlag &= ~_CRTDBG_CHECK_CRT_DF;
 
-    /* Attribut auf neuen Wert setzen */
+    /* Set attribute to new value */
     _CrtSetDbgFlag(tmpFlag);
 
     /*_CrtSetBreakAlloc(4694);*/
@@ -835,15 +835,15 @@ epr_boolean parse_field_adress(const char* str, SFieldAddress* field_adress) {
             || field_adress->name_field == NULL
             || strstr(field_adress->name_rec, "[") == field_adress->name_rec
             || strstr(field_adress->name_field, "[") == field_adress->name_field)
-        goto finaly;
+        goto finally;
     if (!parse_index(field_adress->name_rec, (int*)&field_adress->index_rec))
-        goto finaly;
+        goto finally;
     if (!parse_index(field_adress->name_field, (int*)&field_adress->index_field))
-        goto finaly;
+        goto finally;
 
     result = TRUE;
 
-    finaly:
+    finally:
     epr_free_string(temp);
 
     return result;

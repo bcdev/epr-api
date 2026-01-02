@@ -110,14 +110,14 @@ void epr_free_string(char* str)
    Changelog:   2002/01/10  mp initial version
  */
 /**
- * Findes substrings between separators.
+ * Finds substrings between separators.
  *
  * @param str the string to search
- * @param seps the separator simbols string
+ * @param seps the separator symbols string
  * @param pos position with a search begin
  *
  * @return the next substring (or own string) of the found name or
- *         <code>(uint)NULL</code> if an error occured.
+ *         <code>(uint)NULL</code> if an error occurred.
  */
 char* epr_str_tok(const char* str, const char* seps, int* pos)
 {
@@ -168,11 +168,11 @@ char* epr_str_tok(const char* str, const char* seps, int* pos)
  * Findes substrings between double separators.
  *
  * @param str the string to search
- * @param seps the separator simbols string
+ * @param seps the separator symbols string
  * @param pos position with a search begin
  *
  * @return the next substring (or own string) of the found name or
- *         <code>(uint)NULL</code> if an error occured.
+ *         <code>(uint)NULL</code> if an error occurred.
  */
 char* epr_str_tok_tok(const char* str, const char* seps, const char* exceptions, uint* pos)
 {

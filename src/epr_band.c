@@ -481,7 +481,7 @@ EPR_ESampleModel epr_str_to_sample_offset(const char* str) {
  * @param source_step_x the subsampling step across track of the source when reading into the raster. See description of epr_create_compatible_raster.
  * @param source_step_y the subsampling step along track of the source when reading into the raster. See description of epr_create_compatible_raster.
  * @return the new raster instance
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 EPR_SRaster* epr_create_bitmask_raster(uint source_width,
                                        uint source_height,
@@ -504,7 +504,7 @@ EPR_SRaster* epr_create_bitmask_raster(uint source_width,
  * @param source_step_x the sub-sampling in X
  * @param source_step_y the sub-sampling in Y
  * @return the new raster instance
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 EPR_SRaster* epr_create_raster(EPR_EDataTypeId data_type,
                                uint source_width,
@@ -558,7 +558,7 @@ EPR_SRaster* epr_create_raster(EPR_EDataTypeId data_type,
  *
  * @param band_id the band identifier, must not be <code>NULL</code>
  * @return the new raster instance
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 EPR_SRaster* epr_create_compatible_raster(EPR_SBandId* band_id,
         uint source_width,
@@ -696,8 +696,8 @@ int epr_read_band_raster(EPR_SBandId* band_id,
  * Reads the measurement data and converts its into physical values.
  *
  * @param band_id the information about properties and quantities of ENVISAT data.
- * @param offset_x X-coordinate in pixel co-ordinates (zero-based) of the upper right corner raster to search
- * @param offset_y Y-coordinate in pixel co-ordinates (zero-based) of the upper right corner raster to search
+ * @param offset_x X-coordinate in pixel coordinates (zero-based) of the upper right corner raster to search
+ * @param offset_y Y-coordinate in pixel coordinates (zero-based) of the upper right corner raster to search
  * @param raster the instance to the buffer information was used
  *
  * @return zero for success, an error code otherwise
@@ -759,13 +759,13 @@ int epr_read_band_measurement_data(EPR_SBandId* band_id,
     if (offset_x + raster->source_width > (int)scan_line_length) {
         epr_free_record(record);
         epr_set_err(e_err_illegal_arg,
-                    "epr_read_band_measurement_data: raster x co-ordinates out of bounds");
+                    "epr_read_band_measurement_data: raster x coordinates out of bounds");
         return epr_get_last_err_code();
     }
     if (offset_y + raster->source_height > (int)(rec_numb)) {
         epr_free_record(record);
         epr_set_err(e_err_illegal_arg,
-                    "epr_read_band_measurement_data: raster y co-ordinates out of bounds");
+                    "epr_read_band_measurement_data: raster y coordinates out of bounds");
         return epr_get_last_err_code();
     }
     raster_pos = 0;
@@ -783,8 +783,8 @@ int epr_read_band_measurement_data(EPR_SBandId* band_id,
     scene_width = band_id->product_id->scene_width;
     if (band_id->lines_mirrored) {
         offset_x_mirrored = (scene_width - 1) - (offset_x + raster->source_width - 1);
-        /* the extra offset is used to accomodate the the effect of sampling step
-         * greather than one in case of mirrored lines */
+        /* the extra offset is used to accommodate the the effect of sampling step
+         * greater than one in case of mirrored lines */
         {
             int extra_offset = raster->source_width - ((raster->raster_width - 1) * raster->source_step_x + 1);
             offset_x_mirrored += extra_offset;
@@ -835,8 +835,8 @@ int epr_read_band_measurement_data(EPR_SBandId* band_id,
  * Reads the annotation data and converts its into physical values.
  *
  * @param band_id the information about properties and quantities of ENVISAT data.
- * @param offset_x X-coordinate in pixel co-ordinates (zero-based) of the upper right corner raster to search
- * @param offset_y Y-coordinate in pixel co-ordinates (zero-based) of the upper right corner raster to search
+ * @param offset_x X-coordinate in pixel coordinates (zero-based) of the upper right corner raster to search
+ * @param offset_y Y-coordinate in pixel coordinates (zero-based) of the upper right corner raster to search
  * @param raster the instance to the buffer information was used
  *
  * @return zero for success, an error code otherwise
@@ -973,7 +973,7 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
         free(line_beg_buffer);
         free(line_end_buffer);
         epr_set_err(e_err_illegal_arg,
-                    "epr_read_band_data: raster x co-ordinates out of bounds");
+                    "epr_read_band_data: raster x coordinates out of bounds");
         return epr_get_last_err_code();
     }
     if (offset_y + raster->raster_height > (int)(rec_numb * lines_per_tie_pt)) {
@@ -981,7 +981,7 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
         free(line_beg_buffer);
         free(line_end_buffer);
         epr_set_err(e_err_illegal_arg,
-                    "epr_read_band_data: raster y co-ordinates out of bounds");
+                    "epr_read_band_data: raster y coordinates out of bounds");
         return epr_get_last_err_code();
     }
     raster_pos = 0;
@@ -1004,8 +1004,8 @@ int epr_read_band_annotation_data(EPR_SBandId* band_id,
     scene_width = band_id->product_id->scene_width;
     if (band_id->lines_mirrored) {
         offset_x_mirrored = (scene_width - 1) - (offset_x + raster->source_width - 1);
-        /* the extra offset is used to accomodate the the effect of sampling step
-         * greather than one in case of mirrored lines */
+        /* the extra offset is used to accommodate the the effect of sampling step
+         * greater than one in case of mirrored lines */
         {
             int extra_offset = raster->source_width - ((raster->raster_width - 1) * raster->source_step_x + 1);
             offset_x_mirrored += extra_offset;

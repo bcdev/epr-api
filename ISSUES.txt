@@ -16,7 +16,7 @@ I+2.0 mp/uk make UNIX shared libraries for IDL API
 I+1.2 nf/uk in epr_init_api: check if dddb path is valid, if not log
             the problem so that users can solve it by themselves
 I+1.2 nf/uk provide a hint in the example source code and README.txt, 
-            that users have to explicitely pass the DDDB path to epr_init_api 
+            that users have to explicitly pass the DDDB path to epr_init_api 
 			or set the environment variable EPR_DDDB_HOME. 
 			The DDDB path is normally "$EPR_C_API_INSTALL_DIR$/dddb" and
 			is NOT automatically set.

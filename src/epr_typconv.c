@@ -29,14 +29,14 @@
 
 
 /**
- * Interpretes a memory as a <code>char</code> value
+ * Interprets a memory as a <code>char</code> value
  *
  * @param field the pointer at the array to convert
  * @param elem_index the index of the element
  * in the given array to convert
  *
  * @return the <code>char</code> typed element
- *         or <code>error_code</code> if an error occured.
+ *         or <code>error_code</code> if an error occurred.
  */
 char epr_get_field_elem_as_char(const EPR_SField* field, uint elem_index)
 {
@@ -61,12 +61,12 @@ char epr_get_field_elem_as_char(const EPR_SField* field, uint elem_index)
 }
 
 /**
- * Interpretes a memory data as a <code>char</code> data
+ * Interprets a memory data as a <code>char</code> data
  *
  * @param field the pointer at the array to convert
  *
  * @return the <code>char</code> typed element
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 const char* epr_get_field_elems_char(const EPR_SField* field)
 {
@@ -86,14 +86,14 @@ const char* epr_get_field_elems_char(const EPR_SField* field)
 }
 
 /**
- * Interpretes a memory as a <code>uchar</code> value
+ * Interprets a memory as a <code>uchar</code> value
  *
  * @param field the pointer at the array to convert
  * @param elem_index the index of the element
  * in the given array to convert
  *
  * @return the <code>uchar</code> typed element
- *         or <code>error_code</code> if an error occured.
+ *         or <code>error_code</code> if an error occurred.
  */
 uchar epr_get_field_elem_as_uchar(const EPR_SField* field, uint elem_index)
 {
@@ -118,12 +118,12 @@ uchar epr_get_field_elem_as_uchar(const EPR_SField* field, uint elem_index)
 }
 
 /**
- * Interpretes a memory data as a <code>uchar</code> data
+ * Interprets a memory data as a <code>uchar</code> data
  *
  * @param field the pointer at the array to convert
  *
  * @return the <code>uchar</code> typed element
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 const uchar* epr_get_field_elems_uchar(const EPR_SField* field)
 {
@@ -143,14 +143,14 @@ const uchar* epr_get_field_elems_uchar(const EPR_SField* field)
 }
 
 /**
- * Interpretes a memory as a <code>short</code> value
+ * Interprets a memory as a <code>short</code> value
  *
  * @param field the pointer at the array to convert
  * @param elem_index the index of the element
  * in the given array to convert
  *
  * @return the <code>short</code> typed element
- *         or <code>error_code</code> if an error occured.
+ *         or <code>error_code</code> if an error occurred.
  */
 short epr_get_field_elem_as_short(const EPR_SField* field, uint elem_index)
 {
@@ -185,12 +185,12 @@ short epr_get_field_elem_as_short(const EPR_SField* field, uint elem_index)
 }
 
 /**
- * Interpretes a memory data as a <code>short</code> data
+ * Interprets a memory data as a <code>short</code> data
  *
  * @param field the pointer at the array to convert
  *
  * @return the <code>short</code> typed element
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 const short* epr_get_field_elems_short(const EPR_SField* field)
 {
@@ -210,14 +210,14 @@ const short* epr_get_field_elems_short(const EPR_SField* field)
 }
 
 /**
- * Interpretes a memory as a <code>ushort</code> value
+ * Interprets a memory as a <code>ushort</code> value
  *
  * @param field the pointer at the array to convert
  * @param elem_index the index of the element
  * in the given array to convert
  *
  * @return the <code>ushort</code> typed element
- *         or <code>error_code</code> if an error occured.
+ *         or <code>error_code</code> if an error occurred.
  */
 ushort epr_get_field_elem_as_ushort(const EPR_SField* field, uint elem_index)
 {
@@ -251,12 +251,12 @@ ushort epr_get_field_elem_as_ushort(const EPR_SField* field, uint elem_index)
 }
 
 /**
- * Interpretes a memory data as a <code>ushort</code> data
+ * Interprets a memory data as a <code>ushort</code> data
  *
  * @param field the pointer at the array to convert
  *
  * @return the <code>ushort</code> typed element
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 const ushort* epr_get_field_elems_ushort(const EPR_SField* field)
 {
@@ -276,10 +276,10 @@ const ushort* epr_get_field_elems_ushort(const EPR_SField* field)
 }
 
 /**
- * Interpretes a memory as a <code>int</code> value.
+ * Interprets a memory as a <code>int</code> value.
  *
  * <p> If an error occurs the method returns <code>0</code> (zero).
- * Whether an error really occured when zero is returned can by determined by
+ * Whether an error really occurred when zero is returned can by determined by
  * using the <code>epr_get_last_err_code</code> function.
  *
  * @param field the pointer at the array to convert
@@ -326,12 +326,12 @@ int epr_get_field_elem_as_int(const EPR_SField* field, uint elem_index)
 }
 
 /**
- * Interpretes a memory data as a <code>int</code> data
+ * Interprets a memory data as a <code>int</code> data
  *
  * @param field the pointer at the array to convert
  *
  * @return the <code>int</code> typed element
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 const int* epr_get_field_elems_int(const EPR_SField* field)
 {
@@ -351,14 +351,14 @@ const int* epr_get_field_elems_int(const EPR_SField* field)
 }
 
 /**
- * Interpretes a memory as a <code>uint</code> value
+ * Interprets a memory as a <code>uint</code> value
  *
  * @param field the pointer at the array to convert
  * @param elem_index the index of the element
  * in the given array to convert
  *
  * @return the <code>uint</code> typed element
- *         or <code>error_code</code> if an error occured.
+ *         or <code>error_code</code> if an error occurred.
  */
 uint epr_get_field_elem_as_uint(const EPR_SField* field, uint elem_index)
 {
@@ -398,12 +398,12 @@ uint epr_get_field_elem_as_uint(const EPR_SField* field, uint elem_index)
 }
 
 /**
- * Interpretes a memory data as a <code>uint</code> data
+ * Interprets a memory data as a <code>uint</code> data
  *
  * @param field the pointer at the array to convert
  *
  * @return the <code>uint</code> typed element
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 const uint* epr_get_field_elems_uint(const EPR_SField* field)
 {
@@ -423,14 +423,14 @@ const uint* epr_get_field_elems_uint(const EPR_SField* field)
 }
 
 /**
- * Interpretes a memory as a <code>float</code> value
+ * Interprets a memory as a <code>float</code> value
  *
  * @param field the pointer at the array to convert
  * @param elem_index the index of the element
  * in the given array to convert
  *
  * @return the <code>float</code> typed element
- *         or <code>error_code</code> if an error occured.
+ *         or <code>error_code</code> if an error occurred.
  */
 float epr_get_field_elem_as_float(const EPR_SField* field, uint elem_index)
 {
@@ -477,12 +477,12 @@ float epr_get_field_elem_as_float(const EPR_SField* field, uint elem_index)
 }
 
 /**
- * Interpretes a memory data as a <code>float</code> data
+ * Interprets a memory data as a <code>float</code> data
  *
  * @param field the pointer at the array to convert
  *
  * @return the <code>float</code> typed element
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 const float* epr_get_field_elems_float(const EPR_SField* field)
 {
@@ -502,14 +502,14 @@ const float* epr_get_field_elems_float(const EPR_SField* field)
 }
 
 /**
- * Interpretes a memory as a <code>double</code> value
+ * Interprets a memory as a <code>double</code> value
  *
  * @param field the pointer at the array to convert
  * @param elem_index the index of the element
  * in the given array to convert
  *
  * @return the <code>double</code> typed element
- *         or <code>error_code</code> if an error occured.
+ *         or <code>error_code</code> if an error occurred.
  */
 double epr_get_field_elem_as_double(const EPR_SField* field, uint elem_index)
 {
@@ -559,12 +559,12 @@ double epr_get_field_elem_as_double(const EPR_SField* field, uint elem_index)
 }
 
 /**
- * Interpretes a memory data as a <code>double</code> data
+ * Interprets a memory data as a <code>double</code> data
  *
  * @param field the pointer at the array to convert
  *
  * @return the <code>double</code> typed element
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 const double* epr_get_field_elems_double(const EPR_SField* field)
 {
@@ -585,13 +585,13 @@ const double* epr_get_field_elems_double(const EPR_SField* field)
 }
 
 /**
- * Interpretes a memory data as a <code>short</code> data
+ * Interprets a memory data as a <code>short</code> data
  *
  * @param field the pointer at the array to convert
  * @param time the pointer at the time structure to get
  *
  * @return the time [days, seconds, microseconds]
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 const EPR_STime* epr_get_field_elem_as_mjd(const EPR_SField* field)
 {
@@ -614,12 +614,12 @@ const EPR_STime* epr_get_field_elem_as_mjd(const EPR_SField* field)
 }
 
 /**
- * Interpretes a memory data as a string.
+ * Interprets a memory data as a string.
  *
  * @param field the pointer at the array to convert
  *
  * @return the <code>char</code> typed element
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 const char* epr_get_field_elem_as_str(const EPR_SField* field)
 {

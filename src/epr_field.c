@@ -36,7 +36,7 @@
 
 
 /**
- * Creates the field information of the given record and returns the poiter at it.
+ * Creates the field information of the given record and returns the pointer at it.
  *
  * @param data_type_id the data type identifier
  * @param description the field description
@@ -142,7 +142,7 @@ void epr_free_field_info(EPR_SFieldInfo* field_info)
  * @param the pointer at the field information.
  *        must not be <code>NULL</code>
  * @return the new field instance
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 EPR_SField* epr_create_field(EPR_SFieldInfo* field_info)
 {
@@ -243,7 +243,7 @@ void epr_free_field(EPR_SField* field)
  * @param record the record identifier, must not be <code>NULL</code>
  * @param field_name the the name of required field, must not be <code>NULL</code>.
  *
- * @return the field or <code>NULL</code> if an error occured.
+ * @return the field or <code>NULL</code> if an error occurred.
  */
 const EPR_SField* epr_get_field(const EPR_SRecord* record, const char* field_name)
 {

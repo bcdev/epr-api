@@ -1009,7 +1009,7 @@ static const struct RecordDescriptor AT2_AR__2P_MDSR_sr_large_atsr2_rec_data[] =
     {"sd_67toa_cl_for", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
     {"sa_55toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.55 micron TOA reflectance of all cloudy pixels (forward view)"},
     {"sd_55toa_cl_for", e_tid_short, "%/100", 2, "1", "Standard deviation of above"},
-    {"fail_flag_for", e_tid_ushort, NULL, 2, "1", "Pixel threshold failure flags for averages, foward view"},
+    {"fail_flag_for", e_tid_ushort, NULL, 2, "1", "Pixel threshold failure flags for averages, forward view"},
     {"pix_nsig_nad", e_tid_short, NULL, 2, "1", "Number of filled pixels (N-Sigma), nadir view"},
     {"pix_ss", e_tid_short, "%/100", 2, "1", "Percentage filled pixels over sea surface"},
     {"low_11bt_cl_nad", e_tid_short, "K/100", 2, "1", "Lowest 11 micron BT of all cloudy pixels, nadir view"},
@@ -1070,7 +1070,7 @@ static const struct RecordDescriptor AT2_AR__2P_MDSR_sr_small_atsr2_rec_data[] =
     {"sa_87toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.87 micron TOA reflectance of all cloudy pixels (forward view)"},
     {"sa_67toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.67 micron TOA reflectance of all cloudy pixels (forward view)"},
     {"sa_55toa_cl_for", e_tid_short, "%/100", 2, "1", "Spatially averaged 0.55 micron TOA reflectance of all cloudy pixels (forward view)"},
-    {"fail_flag_for", e_tid_ushort, NULL, 2, "1", "Pixel threshold failure flags for averages, foward view"}
+    {"fail_flag_for", e_tid_ushort, NULL, 2, "1", "Pixel threshold failure flags for averages, forward view"}
 };
 
 static const struct RecordDescriptor AT2_AR__2P_MDSR_sst_large_atsr2_rec_data[] = {
@@ -2049,8 +2049,8 @@ static const struct RecordDescriptor ASAR_Ocean_Spectra_MDSR_asar_rec_data[] = {
     {"min_spectrum", e_tid_float, "m^4", 4, "1", "Min value of ocean wave spectrum"},
     {"max_spectrum", e_tid_float, "m^4", 4, "1", "Max value of ocean wave spectrum"},
     {"spare_3", e_tid_spare, NULL, 8, "1", "Spare"},
-    {"wind_speed", e_tid_float, "m/s", 4, "1", "Forcast Wind speed (if provided)"},
-    {"wind_direction", e_tid_float, "deg", 4, "1", "Forcast Wind direction (if provided)"},
+    {"wind_speed", e_tid_float, "m/s", 4, "1", "Forecast Wind speed (if provided)"},
+    {"wind_direction", e_tid_float, "deg", 4, "1", "Forecast Wind direction (if provided)"},
     {"SAR_wave_height", e_tid_float, "m", 4, "1", "SAR swell wave height"},
     {"SAR_az_shift_var", e_tid_float, "m^2", 4, "1", "Variance of the azimuth shift computed from the SAR swell wave spectra"},
     {"backscatter", e_tid_float, "dB", 4, "1", "Backscattering coefficient"},
@@ -2090,7 +2090,7 @@ static const struct RecordDescriptor ASAR_Spectra_MDSR_asar_rec_data[] = {
     {"min_real", e_tid_float, NULL, 4, "1", "Min value of Real part of cross spectrum"},
     {"max_real", e_tid_float, NULL, 4, "1", "Max value of Real part of cross spectrum"},
     {"spare_1", e_tid_spare, NULL, 64, "1", "Spare"},
-    {"real_spectra", e_tid_uchar, NULL, 1, ".SPH.num_wl_bins,.SPH.num_dir_bins", "Real part of cross spectra polar gridNumber of bins in wavelength and direction defined in SPH (nominally 24 by 36). However, only 0 to 180 degree of the spectrum need be supplied (24 by 18). Arranged as: 24 wavelength values for 0-10 deg. sector, 24 valu"},
+    {"real_spectra", e_tid_uchar, NULL, 1, ".SPH.num_wl_bins,.SPH.num_dir_bins", "Real part of cross spectra polar gridNumber of bins in wavelength and direction defined in SPH (nominally 24 by 36). However, only 0 to 180 degree of the spectrum need be supplied (24 by 18). Arranged as: 24 wavelength values for 0-10 deg. sector, 24 value"},
     {"imag_spectra", e_tid_uchar, NULL, 1, ".SPH.num_wl_bins,.SPH.num_dir_bins", "Complex part of cross spectra polar gridNumber of bins in wavelength and direction defined in SPH (nominally 24 by 36). However, only 0 to 180 degree of the spectrum need be supplied (24 by 18). Arranged as: 24 wavelength values for 0-10 deg. sector, 24 v"}
 };
 
@@ -2148,8 +2148,8 @@ static const struct RecordDescriptor ASAR_SRGR_ADSR_asar_rec_data[] = {
 static const struct RecordDescriptor ASAR_Wave_Geolocation_ADSR_asar_rec_data[] = {
     {"zero_doppler_time", e_tid_time, "MJD", 12, "1", "Zero Doppler Time of first line of the first line of the imagette"},
     {"attach_flag", e_tid_uchar, "flag", 1, "1", "Attachment Flag (set to 1 if unable to compute the cross spectra for a given SLC imagette (i.e. no Cross Spectra MDSR corresponding to this ADSR), set to 0 otherwise)"},
-    {"center_lat", e_tid_int, "(1e-6) degrees", 4, "1", "Geodetic latitude of center point (positive north) This is the center point of the wave cell. It is calculated after the cross spectra processing, and thus may differ from the center sample latitude of the SLC imagette if slant range to ground range conve"},
-    {"center_long", e_tid_int, "(1e-6) degrees", 4, "1", "Geodetic longitude of center point (positive east)This is the center point of the wave cell. It is calculated after the cross spectra processing, and thus may differ from the center sample latitude of the SLC imagette if slant range to ground range conver"},
+    {"center_lat", e_tid_int, "(1e-6) degrees", 4, "1", "Geodetic latitude of center point (positive north) This is the center point of the wave cell. It is calculated after the cross spectra processing, and thus may differ from the center sample latitude of the SLC imagette if slant range to ground range conversion"},
+    {"center_long", e_tid_int, "(1e-6) degrees", 4, "1", "Geodetic longitude of center point (positive east)This is the center point of the wave cell. It is calculated after the cross spectra processing, and thus may differ from the center sample latitude of the SLC imagette if slant range to ground range conversion"},
     {"heading", e_tid_float, "deg", 4, "1", "Subsatellite Track Heading. Relative to North of centre point."}
 };
 
@@ -3409,18 +3409,18 @@ static const struct RecordDescriptor ASA_INS_AX_GADS_asar_rec_data[] = {
     {"spare_3", e_tid_spare, NULL, 64, "1", "Spare"},
     {"cal_loop_ref_is1", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Swath Reference Elevation Angle for IS1(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, follow"},
     {"cal_loop_ref_is2", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Swath Reference Elevation Angle for IS2(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, follow"},
-    {"cal_loop_ref_is3_ss2", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Swath Reference Elevation Angle for IS3/SS2(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, fo"},
-    {"cal_loop_ref_is4_ss3", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Swath Reference Elevation Angle for IS4/SS3(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, fo"},
-    {"cal_loop_ref_is5_ss4", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Swath Reference Elevation Angle for IS5/SS4(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, fo"},
-    {"cal_loop_ref_is6_ss5", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Swath Reference Elevation Angle for IS6/SS5(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, fo"},
+    {"cal_loop_ref_is3_ss2", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Swath Reference Elevation Angle for IS3/SS2(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, follow"},
+    {"cal_loop_ref_is4_ss3", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Swath Reference Elevation Angle for IS4/SS3(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, follow"},
+    {"cal_loop_ref_is5_ss4", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Swath Reference Elevation Angle for IS5/SS4(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, follow"},
+    {"cal_loop_ref_is6_ss5", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Swath Reference Elevation Angle for IS6/SS5(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, follow"},
     {"cal_loop_ref_is7", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Swath Reference Elevation Angle for IS7(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, follow"},
     {"cal_loop_ref_iss1", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Swath Reference Elevation Angle for SS1(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, follow"},
     {"cal_loop_cen_is1", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Center of Swath Elevation Angle for IS1(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, follow"},
     {"cal_loop_cen_is2", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Center of Swath Elevation Angle for IS2(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, follow"},
-    {"cal_loop_cen_is3_ss2", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Center of Swath Elevation Angle for IS3/SS2(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, fo"},
-    {"cal_loop_cen_is4_ss3", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Center of Swath Elevation Angle for IS4/SS3(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, fo"},
-    {"cal_loop_cen_is5_ss4", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Center of Swath Elevation Angle for IS5/SS4(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, fo"},
-    {"cal_loop_cen_is6_ss5", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Center of Swath Elevation Angle for IS6/SS5(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, fo"},
+    {"cal_loop_cen_is3_ss2", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Center of Swath Elevation Angle for IS3/SS2(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, follow"},
+    {"cal_loop_cen_is4_ss3", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Center of Swath Elevation Angle for IS4/SS3(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, follow"},
+    {"cal_loop_cen_is5_ss4", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Center of Swath Elevation Angle for IS5/SS4(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, follow"},
+    {"cal_loop_cen_is6_ss5", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Center of Swath Elevation Angle for IS6/SS5(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, follow"},
     {"cal_loop_cen_is7", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Center of Swath Elevation Angle for IS7(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, follow"},
     {"cal_loop_cen_iss1", e_tid_float, NULL, 4, "128", "Calibration Loop Characterization Factors at the Center of Swath Elevation Angle for SS1(complex factor characterizing the path through the calibration loop and from the calibration coupler to the antenna face) 32 complex values for H polarization, follow"},
     {"spare_4", e_tid_spare, NULL, 1024, "1", "Spare"}
@@ -5556,7 +5556,7 @@ const struct BandDescriptorTable dddb_band_tables[41] = {
     {"ASA_APM_1P", "ASAR Alternating Polarization Medium Resolution Image", 6, ASA_APM_1P_band_data},
     {"ASA_APP_1P", "ASAR Alternating Polarization Precision Image", 6, ASA_APP_1P_band_data},
     {"ASA_APS_1P", "ASAR Alternating Polarization SLC Image", 8, ASA_APS_1P_band_data},
-    {"ASA_AP__BP", "ASAR Alternatin Polarization Mode Browse Product", 5, ASA_AP__BP_band_data},
+    {"ASA_AP__BP", "ASAR Alternating Polarization Mode Browse Product", 5, ASA_AP__BP_band_data},
     {"ASA_IMG_1P", "ASAR Image Mode Geocoded Image", 5, ASA_IMG_1P_band_data},
     {"ASA_IMM_1P", "ASAR Image Mode Medium Resolution Image", 5, ASA_IMM_1P_band_data},
     {"ASA_IMP_1P", "ASAR Image Mode Precision Image", 5, ASA_IMP_1P_band_data},
@@ -5587,7 +5587,7 @@ const struct BandDescriptorTable dddb_band_tables[41] = {
     {"SAR_APM_1P", "ERS Simulated Alternating Polarization Medium Resolution Image", 6, ASA_APM_1P_band_data},
     {"SAR_APP_1P", "ERS Simulated Alternating Polarization Precision Image", 6, ASA_APP_1P_band_data},
     {"SAR_APS_1P", "ERS Simulated Alternating Polarization SLC Image", 6, ASA_APS_1P_band_data},
-    {"SAR_AP__BP", "ERS Simulated Alternatin Polarization Mode Browse Product", 5, ASA_AP__BP_band_data},
+    {"SAR_AP__BP", "ERS Simulated Alternating Polarization Mode Browse Product", 5, ASA_AP__BP_band_data},
     {"SAR_IMG_1P", "ERS Image Mode Geocoded Image", 5, ASA_IMG_1P_band_data},
     {"SAR_IMM_1P", "ERS Image Mode Medium Resolution Image", 5, ASA_IMM_1P_band_data},
     {"SAR_IMP_1P", "ERS Image Mode Precision Image", 5, ASA_IMP_1P_band_data},

@@ -278,7 +278,7 @@ typedef	enum {
 #define	TIFFTAG_PREDICTOR		317	/* prediction scheme w/ LZW */
 #define	TIFFTAG_WHITEPOINT		318	/* image white point */
 #define	TIFFTAG_PRIMARYCHROMATICITIES	319	/* !primary chromaticities */
-#define	TIFFTAG_COLORMAP		320	/* RGB map for pallette image */
+#define	TIFFTAG_COLORMAP		320	/* RGB map for palette image */
 #define	TIFFTAG_HALFTONEHINTS		321	/* !highlight+shadow info */
 #define	TIFFTAG_TILEWIDTH		322	/* !rows/data tile */
 #define	TIFFTAG_TILELENGTH		323	/* !cols/data tile */
@@ -390,7 +390,7 @@ typedef	enum {
 /* tag 34750 is a private tag registered to Pixel Magic */
 #define	TIFFTAG_JBIGOPTIONS		34750	/* JBIG options */
 /* tags 34908-34914 are private tags registered to SGI */
-#define	TIFFTAG_FAXRECVPARAMS		34908	/* encoded Class 2 ses. parms */
+#define	TIFFTAG_FAXRECVPARAMS		34908	/* encoded Class 2 ses. params */
 #define	TIFFTAG_FAXSUBADDRESS		34909	/* received SubAddr string */
 #define	TIFFTAG_FAXRECVTIME		34910	/* receive time (secs) */
 /* tags 37439-37443 are registered to SGI <gregl@sgi.com> */

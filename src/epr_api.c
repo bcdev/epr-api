@@ -120,11 +120,11 @@ void epr_set_log_handler(EPR_FLogHandler log_handler)
 /**
  * Sets the log level for the ENVISAT API. All logging
  * messages with a log level lower than the given one, will
- * be supressed, thus the log handler will not be called
+ * be suppressed, thus the log handler will not be called
  * for such messages.
  *
  * @param log_level the new log level. All logging messages with a log level lower
- *        than the given one, will be supressed
+ *        than the given one, will be suppressed
  * @return zero for success, an error code otherwise
  */
 int epr_set_log_level(EPR_ELogLevel log_level)

@@ -47,7 +47,7 @@
 <p>Given here are some of the basic concepts of the API.
 <ul>
     <li>The API works exclusively with pointers to dynamically allocated structures.
-        For every structure type in the API a constructor/desctructor function pair always exists:
+        For every structure type in the API a constructor/destructor function pair always exists:
         <code>X epr_create_X(...)</code> and <code>void epr_free_X(X)</code>. Example: For the type
         <code>EPR_SRecord*</code> these functions are <code>EPR_SRecord* epr_create_record(...)</code>
         and <code>void epr_free_record(EPR_SRecord*)</code>.

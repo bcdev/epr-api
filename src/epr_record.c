@@ -52,11 +52,11 @@
  *
  * @param dataset_name the name of the dataset, to which the record
  *        belongs to, must not be <code>NULL</code>
- * @param field_infos the pointer at the strucrure with information
- *        of all fields wich belong to record,
+ * @param field_infos the pointer at the structure with information
+ *        of all fields which belong to record,
  *          must not be <code>NULL</code>
  * @return the new record instance
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 EPR_SRecordInfo* epr_create_record_info(const char* dataset_name, EPR_SPtrArray* field_infos)
 {
@@ -287,7 +287,7 @@ EPR_SRecordInfo* epr_read_record_info(EPR_SProductId* product_id, EPR_SDatasetId
  */
 /**
  * Reads the record information with the given file path and
- * returns the poiter at it.
+ * returns the pointer at it.
  *
  * @param product_id the the product file identifier
  * @param dataset_name the name of the dataset
@@ -313,7 +313,7 @@ EPR_SRecordInfo* epr_read_record_info(EPR_SProductId* product_id, EPR_SDatasetId
  * @param the pointer at the record information.
  *        must not be <code>NULL</code>
  * @return the new record instance
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 EPR_SRecord* epr_create_record_from_info(EPR_SRecordInfo* record_info)
 {

@@ -15,7 +15,7 @@ int write_raw_image(const char* output_dir, EPR_SProductId* product_id, const ch
 #endif /* if defined(WIN32) && defined(_DEBUG) */
 
 /**
- * A program wich tests the epr-c-api by converting producing ENVI raster
+ * A program which tests the epr-c-api by converting producing ENVI raster
  * information from dataset.
  *
  * It generates a *.raw data file for all rasters included in the

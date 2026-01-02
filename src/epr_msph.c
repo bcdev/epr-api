@@ -41,7 +41,7 @@
  *
  * @param product_id the product identifier, must not be <code>NULL</code>
  * @return a record representing the MPH of the specified product file
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 
 EPR_SRecord* epr_read_mph(EPR_SProductId* product_id)
@@ -87,7 +87,7 @@ EPR_SRecord* epr_read_mph(EPR_SProductId* product_id)
  *
  * @param product_id the product identifier, must not be <code>NULL</code>
  * @return a record representing the MPH of the specified product file
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 EPR_SRecord* epr_read_sph(EPR_SProductId* product_id)
 {

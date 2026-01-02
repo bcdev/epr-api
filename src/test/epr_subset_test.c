@@ -215,7 +215,7 @@ int main(int argc, char** argv)
 /**
  * Builds the raster for the given dataset name and given product
  *
- * @return the instance of the scaned data
+ * @return the instance of the scanned data
  */
 EPR_SRaster* make_layer(EPR_SProductId* product_id,
                         const char* ds_name,

@@ -38,7 +38,7 @@
     </target>
 
     <!-- ========================================= -->
-    <!-- copy the recources to the build directory -->
+    <!-- copy the resources to the build directory -->
     <!-- ========================================= -->
     <target name="copy_generate_resources" depends="init">
         <copy todir="${build}/${epr_api}/${prj}/codeblocks">

@@ -193,8 +193,8 @@ uint epr_get_data_type_size(EPR_EDataTypeId data_type_id)
  * it is not <code>NULL</code> and if the given log
  * level is greater than or equal to the global log level.
  *
- * @param log_level the log level (or message type) for the mesage
- * @param log_message the mesage
+ * @param log_level the log level (or message type) for the message
+ * @param log_message the message
  */
 void epr_log(EPR_ELogLevel log_level, const char* log_message)
 {
@@ -216,7 +216,7 @@ void epr_log(EPR_ELogLevel log_level, const char* log_message)
  * calls this API's error handler if it is not <code>NULL</code>.
  *
  * @param err_code the error code
- * @param err_message the error mesage
+ * @param err_message the error message
  */
 void epr_set_err(EPR_EErrCode err_code, const char* err_message)
 {
@@ -260,10 +260,10 @@ void epr_clear_err(void)
    Changelog:   2002/01/05  nf initial version
  */
 /**
- * Sets the error code of the error that occured during
+ * Sets the error code of the error that occurred during
  * the last API function call.
  *
- * @return the error code, <code>e_err_none</code> or zero if no error occured
+ * @return the error code, <code>e_err_none</code> or zero if no error occurred
  */
 EPR_EErrCode epr_get_last_err_code(void)
 {
@@ -276,10 +276,10 @@ EPR_EErrCode epr_get_last_err_code(void)
    Changelog:   2002/01/05  nf initial version
  */
 /**
- * Sets the error message of the error that occured during
+ * Sets the error message of the error that occurred during
  * the last API function call.
  *
- * @return the error message, <code>NULL</code> if no error occured
+ * @return the error message, <code>NULL</code> if no error occurred
  */
 const char* epr_get_last_err_message(void)
 {
@@ -304,7 +304,7 @@ void epr_set_err_handler(EPR_FErrHandler err_handler)
  * @param file_path the path to the file.
  *
  * @return the file handle or
- *         <code>NULL</code> if an error occured.
+ *         <code>NULL</code> if an error occurred.
  */
 FILE* epr_open_file(char* file_path)
 {
@@ -382,7 +382,7 @@ int epr_str_to_number(const char* str)
  * @param product_id the Product identifier containing the values
  *                    for the Product
  * @return the field length computed from the given string or
- *         <code>(uint)-1</code> if an error occured.
+ *         <code>(uint)-1</code> if an error occurred.
  */
 uint epr_parse_value_count(EPR_SProductId* product_id, const char* count)
 {
@@ -433,7 +433,7 @@ uint epr_parse_value_count(EPR_SProductId* product_id, const char* count)
  * @param param_table the pointer to param_table
  *
  * @return the value of the given name or
- *         <code>(uint)-1</code> if an error occured.
+ *         <code>(uint)-1</code> if an error occurred.
  */
 uint epr_param_to_value(const char* str, EPR_SPtrArray* param_table)
 {

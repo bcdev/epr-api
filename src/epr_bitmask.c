@@ -90,8 +90,8 @@ void epr_free_bm_eval_context(EPR_SBmEvalContext* context)
  *
  * @param product_id the product ID
  * @param bm_expr the bit-mask expression
- * @param offset_x X-coordinate in pixel co-ordinates (zero-based) of the upper right raster corner to be searched for
- * @param offset_y Y-coordinate in pixel co-ordinates (zero-based) of the upper right raster corner to be searched for
+ * @param offset_x X-coordinate in pixel coordinates (zero-based) of the upper right raster corner to be searched for
+ * @param offset_y Y-coordinate in pixel coordinates (zero-based) of the upper right raster corner to be searched for
  * @param raster the instance to the buffer information was used
  *
  * @return zero for success, an error code otherwise
@@ -164,8 +164,8 @@ int epr_read_bitmask_raster(EPR_SProductId* product_id,
  * Evaluates the given bitmask expression.
  *
  * @param term the bitmask term
- * @param x the pixel's x co-ordinate
- * @param y the pixel's y co-ordinate
+ * @param x the pixel's x coordinate
+ * @param y the pixel's y coordinate
  */
 epr_boolean epr_eval_bm_term(EPR_SBmEvalContext* context, EPR_SBmTerm* term, int x, int y) {
 

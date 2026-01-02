@@ -304,7 +304,7 @@ struct EPR_ProductId
      * A table containing dynamic field info parameters.
      * Dynamic field info parameters are created at runtime because
      * the are derived from the product file contents and can
-     * not be staically stored in the record info database.
+     * not be statically stored in the record info database.
      */
     EPR_SPtrArray* param_table;
 
@@ -587,7 +587,7 @@ struct EPR_Raster
  * This information for the <code>reflec_10</code> is described with the <code>Scaling_Factor_GADS.22.10</code>
  * In <code>dataset_id</code> the searched ENVISAT product name (e.g. <code>MER_RR__2P</code>) is located.
  * <br>In the corresponding file (e.g. <code>/product/MER_RR__2P.dd</code>) the path,
- * how to find that information will be decribed.
+ * how to find that information will be described.
  * In that file, in the field number <code>22</code> there is an information about the location
  * of the searched value in the ENVISAT product data.
  *
@@ -788,7 +788,7 @@ struct EPR_Time
  *
  *
  * @param log_level the log level. All logging messages with a log level lower
- *        than the given one, will be supressed
+ *        than the given one, will be suppressed
  * @param log_handler the log handler function pointer which
  *        will be used for logging, can be <code>NULL</code>,
  *        if logging shall be disabled
@@ -825,11 +825,11 @@ void epr_close_api(void);
 /**
  * Sets the log level for the ENVISAT API. All logging
  * messages with a log level lower than the given one, will
- * be supressed, thus the log handler will not be called
+ * be suppressed, thus the log handler will not be called
  * for such messages.
  *
  * @param log_level the new log level. All logging messages with a log level lower
- *        than the given one, will be supressed
+ *        than the given one, will be suppressed
  * @return zero for success, an error code otherwise
  */
 int epr_set_log_level(EPR_ELogLevel log_level);
@@ -875,18 +875,18 @@ void epr_log_message(EPR_ELogLevel log_level, const char* log_message);
 void epr_set_err_handler(EPR_FErrHandler err_handler);
 
 /**
- * Gets the error code of the error that occured during
+ * Gets the error code of the error that occurred during
  * the last API function call.
  *
- * @return the error code, <code>e_err_none</code> or zero if no error occured
+ * @return the error code, <code>e_err_none</code> or zero if no error occurred
  */
 EPR_EErrCode epr_get_last_err_code(void);
 
 /**
- * Gets the error message of the error that occured during
+ * Gets the error message of the error that occurred during
  * the last API function call.
  *
- * @return the error message, <code>NULL</code> if no error occured
+ * @return the error message, <code>NULL</code> if no error occurred
  */
 const char* epr_get_last_err_message(void);
 
@@ -959,7 +959,7 @@ int epr_close_product(EPR_SProductId* product_id);
  * - field
  * - field element
  *
- * If <code>FILE* istream</code> is given, the ASCII file will be outputed,
+ * If <code>FILE* istream</code> is given, the ASCII file will be outputted,
  * else printed to standard output device.
  *
  * <p>In case <i>record and/or field</i>:
@@ -996,7 +996,7 @@ void epr_dump_element(const EPR_SRecord* record, uint field_index, uint element_
  *
  * @param product_id the product identifier, must not be <code>NULL</code>
  * @return the product's total scene width in pixels, or <code>0</code>
- *         if an error occured.
+ *         if an error occurred.
  */
 uint epr_get_scene_width(const EPR_SProductId* product_id);
 
@@ -1005,7 +1005,7 @@ uint epr_get_scene_width(const EPR_SProductId* product_id);
  *
  * @param product_id the product identifier, must not be <code>NULL</code>
  * @return the product's total scene height in pixels, or <code>0</code>
- *         if an error occured.
+ *         if an error occurred.
  */
 uint epr_get_scene_height(const EPR_SProductId* product_id);
 
@@ -1040,7 +1040,7 @@ uint epr_get_num_datasets(EPR_SProductId* product_id);
 EPR_SDatasetId* epr_get_dataset_id_at(EPR_SProductId* product_id, uint index);
 
 /**
- * Gets the dataset_id coresponding to the specified dataset name.
+ * Gets the dataset_id corresponding to the specified dataset name.
  *
  * @param product_id the product identifier, must not be <code>NULL</code>
  * @param dataset_name the dataset name, must not be <code>NULL</code>
@@ -1068,7 +1068,7 @@ const char* epr_get_dsd_name(const EPR_SDatasetId* dataset_id);
  * Gets the MPH record from the given <code>product_id</code>.
  *
  * @param product_id the product identifier, must not be <code>NULL</code>
- * @return the MPH record or <code>NULL</code> if an error occured.
+ * @return the MPH record or <code>NULL</code> if an error occurred.
  */
 EPR_SRecord* epr_get_mph(const EPR_SProductId* product_id);
 
@@ -1076,7 +1076,7 @@ EPR_SRecord* epr_get_mph(const EPR_SProductId* product_id);
  * Gets the SPH record from the given <code>product_id</code>.
  *
  * @param product_id the product identifier, must not be <code>NULL</code>
- * @return the SPH record or <code>NULL</code> if an error occured.
+ * @return the SPH record or <code>NULL</code> if an error occurred.
  */
 EPR_SRecord* epr_get_sph(const EPR_SProductId* product_id);
 
@@ -1084,7 +1084,7 @@ EPR_SRecord* epr_get_sph(const EPR_SProductId* product_id);
  * Gets the dataset descriptor (DSD) for the dataset specified by <code>dataset_id</code>.
  *
  * @param dataset_id the dataset identifier, must not be <code>NULL</code>
- * @return the pointer at the dsd or <code>NULL</code> if an error occured.
+ * @return the pointer at the dsd or <code>NULL</code> if an error occurred.
  */
 const EPR_SDSD* epr_get_dsd(const EPR_SDatasetId* dataset_id);
 
@@ -1092,7 +1092,7 @@ const EPR_SDSD* epr_get_dsd(const EPR_SDatasetId* dataset_id);
  * Gets the number of records of the dataset specified by <code>dataset_id</code>.
  *
  * @param dataset_id the dataset identifier, must not be <code>NULL</code>
- * @return the number of records or <code>0</code> if an error occured.
+ * @return the number of records or <code>0</code> if an error occurred.
  */
 uint epr_get_num_records(const EPR_SDatasetId* dataset_id);
 
@@ -1118,7 +1118,7 @@ EPR_SDSD* epr_get_dsd_at(const EPR_SProductId* product_id, uint dsd_index);
  *
  * @param dataset_id the dataset identifier, must not be <code>NULL</code>
  * @return the new record instance
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 EPR_SRecord* epr_create_record(EPR_SDatasetId* dataset_id);
 
@@ -1138,7 +1138,7 @@ EPR_SRecord* epr_create_record(EPR_SDatasetId* dataset_id);
  * @param record a pre-created record to reduce memory reallocation,
  *        can be <code>NULL</code> to let the function allocate a new record
  * @return the record in which the data has been read into
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 EPR_SRecord* epr_read_record(EPR_SDatasetId* dataset_id,
                              uint record_index,
@@ -1173,7 +1173,7 @@ void epr_free_record(EPR_SRecord* record);
  *
  * @param record the record identifier, must not be <code>NULL</code>
  * @param field_name the the name of required field, must not be <code>NULL</code>.
- * @return the field or <code>NULL</code> if an error occured.
+ * @return the field or <code>NULL</code> if an error occurred.
  */
 const EPR_SField* epr_get_field(const EPR_SRecord* record, const char* field_name);
 
@@ -1181,7 +1181,7 @@ const EPR_SField* epr_get_field(const EPR_SRecord* record, const char* field_nam
  * Gets the number of fields contained in the given record.
  *
  * @param record the record to be analysed, must not be <code>NULL</code>
- * @return the fields number or <code>0</code> if an error occured.
+ * @return the fields number or <code>0</code> if an error occurred.
  */
 uint epr_get_num_fields(const EPR_SRecord* record);
 
@@ -1191,7 +1191,7 @@ uint epr_get_num_fields(const EPR_SRecord* record);
  * @param record the record from the field shall be returned,
  *        must not be <code>NULL</code>
  * @param field_index the zero-based index (position within record) of the field
- * @return the field or <code>NULL</code> if an error occured.
+ * @return the field or <code>NULL</code> if an error occurred.
  */
 const EPR_SField* epr_get_field_at(const EPR_SRecord* record, uint field_index);
 
@@ -1199,7 +1199,7 @@ const EPR_SField* epr_get_field_at(const EPR_SRecord* record, uint field_index);
  * Gets the unit of the field.
  *
  * @param field the field from which the unit shall be returned, must not be <code>NULL</code>
- * @return the field unit or <code>NULL</code> if an error occured.
+ * @return the field unit or <code>NULL</code> if an error occurred.
  */
 const char* epr_get_field_unit(const EPR_SField* field);
 
@@ -1208,7 +1208,7 @@ const char* epr_get_field_unit(const EPR_SField* field);
  *
  * @param field field from which the description shall be returned, must not be <code>NULL</code>
  *
- * @return the field description or <code>NULL</code> if an error occured.
+ * @return the field description or <code>NULL</code> if an error occurred.
  */
 const char* epr_get_field_description(const EPR_SField* field);
 
@@ -1217,7 +1217,7 @@ const char* epr_get_field_description(const EPR_SField* field);
  *
  * @param field field to be analysed, must not be <code>NULL</code>
  *
- * @return the number of elements of the field or <code>0</code> if an error occured.
+ * @return the number of elements of the field or <code>0</code> if an error occurred.
  */
 uint epr_get_field_num_elems(const EPR_SField* field);
 
@@ -1226,7 +1226,7 @@ uint epr_get_field_num_elems(const EPR_SField* field);
  *
  * @param field field to be analysed, must not be <code>NULL</code>
  *
- * @return the field name or <code>NULL</code> if an error occured.
+ * @return the field name or <code>NULL</code> if an error occurred.
  */
 const char* epr_get_field_name(const EPR_SField* field);
 
@@ -1235,7 +1235,7 @@ const char* epr_get_field_name(const EPR_SField* field);
  *
  * @param field field to be analysed, must not be <code>NULL</code>
  *
- * @return the field type or <code>0</code> if an error occured.
+ * @return the field type or <code>0</code> if an error occurred.
  */
 EPR_EDataTypeId epr_get_field_type(const EPR_SField* field);
 
@@ -1375,7 +1375,7 @@ uint epr_copy_field_elems_as_doubles(const EPR_SField* field, double* buffer, ui
  * @param source_step_y the subsampling step along track of the source when reading into the raster. See text above.
  *
  * @return the new raster instance
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 EPR_SRaster* epr_create_compatible_raster(EPR_SBandId* band_id,
                                           uint source_width,
@@ -1393,7 +1393,7 @@ EPR_SRaster* epr_create_compatible_raster(EPR_SBandId* band_id,
  * @param source_step_x the subsampling step across track of the source when reading into the raster. See description of epr_create_compatible_raster.
  * @param source_step_y the subsampling step along track of the source when reading into the raster. See description of epr_create_compatible_raster.
  * @return the new raster instance
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 EPR_SRaster* epr_create_raster(EPR_EDataTypeId data_type,
                                uint source_width,
@@ -1410,7 +1410,7 @@ EPR_SRaster* epr_create_raster(EPR_EDataTypeId data_type,
  * @param source_step_x the subsampling step across track of the source when reading into the raster. See description of epr_create_compatible_raster.
  * @param source_step_y the subsampling step along track of the source when reading into the raster. See description of epr_create_compatible_raster.
  * @return the new raster instance
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 EPR_SRaster* epr_create_bitmask_raster(uint source_width,
                                        uint source_height,
@@ -1420,13 +1420,13 @@ EPR_SRaster* epr_create_bitmask_raster(uint source_width,
 /**
  * Reads (geo-)physical values of the given band of the specified source-region.
  * <p> The source-region is a defined part of the whole ENVISAT product image, which shall be read into
- * a raster. In this routine the co-ordinates are specified, where the source-region to be read starts.
+ * a raster. In this routine the coordinates are specified, where the source-region to be read starts.
  * The dimension of the region and the sub-sampling are attributes of the raster into which the data are
  * read.
  *
  * @param band_id the identified of the band to be read into the raster.
- * @param offset_x across-track source co-ordinate in pixel co-ordinates (zero-based) of the upper right corner of the source-region
- * @param offset_y along-track source co-ordinate in pixel co-ordinates (zero-based) of the upper right corner of the source-region
+ * @param offset_x across-track source coordinate in pixel coordinates (zero-based) of the upper right corner of the source-region
+ * @param offset_y along-track source coordinate in pixel coordinates (zero-based) of the upper right corner of the source-region
  * @param raster the identifier to given raster information and raster buffer
  *
  * @return zero for success, and error code otherwise
@@ -1466,7 +1466,7 @@ void* epr_get_raster_line_addr(const EPR_SRaster* raster, uint y);
  *
  * @param raster the raster identifier, must not be <code>NULL</code>
  * @return the raster's total scene width in pixels, or <code>0</code>
- *         if an error occured.
+ *         if an error occurred.
  */
 uint epr_get_raster_width(EPR_SRaster* raster);
 
@@ -1475,7 +1475,7 @@ uint epr_get_raster_width(EPR_SRaster* raster);
  *
  * @param raster the product identifier, must not be <code>NULL</code>
  * @return the raster's total scene height in pixels, or <code>0</code>
- *         if an error occured.
+ *         if an error occurred.
  */
 uint epr_get_raster_height(EPR_SRaster* raster);
 
@@ -1540,10 +1540,10 @@ void epr_free_raster(EPR_SRaster* raster);
  * (i.e. pixel) in a type-safe way. <br>
  *
  * @param raster the raster which contains the pixel, must not be <code>NULL</code>
- * @param x the (zero-based) X co-ordinate of the pixel
- * @param y the (zero-based) Y co-ordinate of the pixel
+ * @param x the (zero-based) X coordinate of the pixel
+ * @param y the (zero-based) Y coordinate of the pixel
  *
- * @return the typed value at the given co-ordinate.
+ * @return the typed value at the given coordinate.
  */
 uint epr_get_pixel_as_uint(const EPR_SRaster* raster, int x, int y);
 int epr_get_pixel_as_int(const EPR_SRaster* raster, int x, int y);
@@ -1567,13 +1567,13 @@ double epr_get_pixel_as_double(const EPR_SRaster* raster, int x, int y);
  * <p>
  *
  * @param product_id Identifier of the ENVISAT product for which the bit-mask shall be created.
- *                 This is used by the function to retreive the needed flags.
- * @param bm_expr A string holding the logical expression for the defintion of the bit-mask.
+ *                 This is used by the function to retrieve the needed flags.
+ * @param bm_expr A string holding the logical expression for the definition of the bit-mask.
  *                 In a bit-mask expression, any number of the flag-names (found in the DDDB) can
  *                 be composed with "(", ")", "NOT", "AND", "OR". Valid bit-mask expression are for example: <br>
  *                 "flags.LAND OR flags.CLOUD" or "NOT flags.WATER AND flags.TURBID_S".
- * @param offset_x across-track co-ordinate in pixel co-ordinates (zero-based) of the upper right corner of the source-region
- * @param offset_y along-track co-ordinate in pixel co-ordinates (zero-based) of the upper right corner of the source-region
+ * @param offset_x across-track coordinate in pixel coordinates (zero-based) of the upper right corner of the source-region
+ * @param offset_y along-track coordinate in pixel coordinates (zero-based) of the upper right corner of the source-region
  * @param raster the raster for the bit-mask. The data type of the raster must be either e_tid_uchar or e_tid_char.
  *
  * @return zero for success, an error code otherwise

@@ -11,7 +11,7 @@
  * This program uses 3 channels of an ENVISAT product for the generation of the RGB image.
  *
  * The created TIF-image has the same name as a ENVISAT product data file
- * however - with the extention ".tif"
+ * however - with the extension ".tif"
  *
  * Usage: create_RGB_image <ENVISAT-file-path> <output-directory>
  *                  <R-band-name> <G-band-name> <B-band-name> [<XY-step>]
@@ -21,7 +21,7 @@
  *      <R-band-name>       - the dataset name for the R-channel
  *      <G-band-name>       - the dataset name for the G-channel
  *      <B-band-name>       - the dataset name for the B-channel
- *      <XY-step>           - sub-sampling in the both directions, optinal. Default:1.
+ *      <XY-step>           - sub-sampling in the both directions, optional. Default:1.
  *
  * Example:
  *      create_RGB_image
@@ -240,7 +240,7 @@ int main(int argc, char** argv)
 /**
  * Builds the raster for the given dataset name and given product
  *
- * @return the instance of the scaned data
+ * @return the instance of the scanned data
  */
 EPR_SRaster* make_layer(EPR_SProductId* product_id,
                         const char* ds_name,

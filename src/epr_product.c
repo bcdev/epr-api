@@ -363,7 +363,7 @@ void epr_free_product_id(EPR_SProductId* product_id) {
  * Gets the scene width in pixel.
  *
  * @param product_id the product identifier, must not be <code>NULL</code>
- * @return width pixel number, or <code>0</code> if an error occured.
+ * @return width pixel number, or <code>0</code> if an error occurred.
  */
 uint epr_get_scene_width(const EPR_SProductId* product_id) {
     epr_clear_err();
@@ -380,7 +380,7 @@ uint epr_get_scene_width(const EPR_SProductId* product_id) {
  * Gets the scene height in pixel.
  *
  * @param product_id the product identifier, must not be <code>NULL</code>
- * @return height pixel number, or <code>0</code> if an error occured.
+ * @return height pixel number, or <code>0</code> if an error occurred.
  */
 uint epr_get_scene_height(const EPR_SProductId* product_id) {
     epr_clear_err();
@@ -424,7 +424,7 @@ EPR_SRecord* epr_get_mph(const EPR_SProductId* product_id) {
  *
  * @param product_id the product identifier, must not be <code>NULL</code>
  *
- * @return width pixel number, or <code>0</code> if an error occured.
+ * @return width pixel number, or <code>0</code> if an error occurred.
  */
 uint epr_compute_scene_width(const EPR_SProductId* product_id) {
     EPR_SRecord* sph_record = NULL;
@@ -465,7 +465,7 @@ uint epr_compute_scene_width(const EPR_SProductId* product_id) {
  * the minimum number of records in all measurement datasets.
  *
  * @param product_id the product identifier, must not be <code>NULL</code>
- * @return height pixel number, or <code>0</code> if an error occured.
+ * @return height pixel number, or <code>0</code> if an error occurred.
  */
 uint epr_compute_scene_height(const EPR_SProductId* product_id) {
     EPR_SDSD* dsd = NULL;

@@ -108,7 +108,7 @@ Documentation
       |- docs/
         |- html/    - API documentation for C
 
-    Aditional documentation listing the supported ENVISAT product tables (required as
+    Additional documentation listing the supported ENVISAT product tables (required as
 	a reference  for dataset-, field-, band- and flag-names) can be found at:
 
     http://www.brockmann-consult.de/beam/doc/help/general/envisat-products/index.html
@@ -116,7 +116,7 @@ Documentation
 
 Zip Archive Contents
 
-    After a successfull unzipping of the epr_api-XXX.zip archive you should get
+    After a successful unzipping of the epr_api-XXX.zip archive you should get
     a folder named epr_api-XXX with following structure:
 
     epr_api-XXX/
@@ -129,7 +129,7 @@ Zip Archive Contents
      |- VERSION.txt           - the version string
      |- CHANGELOG.txt         - the changes from version to version
      |- LICENSE.txt           - the GNU public license
-     |- makefile          - the makefile to buld the epr-c-api static library
+     |- makefile          - the makefile to build the epr-c-api static library
                             ready to use in your projects
 
 
@@ -149,6 +149,6 @@ Thank you for using the EPR API Software.
 
 --------------------------------------------------------------------------------
 The EPR API Software is licensed under the terms of the GNU General Public License
-aggreement (see the accompanying LICENSE.txt file).
+agreement (see the accompanying LICENSE.txt file).
 --------------------------------------------------------------------------------
 Brockmann Consult 2010

@@ -85,7 +85,7 @@ struct EPR_BmTerm {
  * expressions. It is used internally only.
  * <p>
  * An instance of this structure holds the product ID, references to all flag datasets
- * required to evaluate the expression as well as information about the bitmask raster beeing
+ * required to evaluate the expression as well as information about the bitmask raster being
  * created.
  *
  * @see EPR_SProductId
@@ -100,12 +100,12 @@ struct EPR_BmEvalContext
     EPR_SProductId* product_id;
 
     /**
-     * X-coordinate in pixel co-ordinates (zero-based) of the upper right corner raster.
+     * X-coordinate in pixel coordinates (zero-based) of the upper right corner raster.
      */
     int offset_x;
 
      /**
-     * Y-coordinate in pixel co-ordinates (zero-based) of the upper right corner raster.
+     * Y-coordinate in pixel coordinates (zero-based) of the upper right corner raster.
      */
     int offset_y;
 
@@ -145,8 +145,8 @@ struct EPR_BmFlagDataset {
  * for the given raster and offsets of start corner
  *
  * @param product_id the product ID
- * @param offset_x X-coordinate in pixel co-ordinates (zero-based) of the upper right corner raster to search
- * @param offset_y Y-coordinate in pixel co-ordinates (zero-based) of the upper right corner raster to search
+ * @param offset_x X-coordinate in pixel coordinates (zero-based) of the upper right corner raster to search
+ * @param offset_y Y-coordinate in pixel coordinates (zero-based) of the upper right corner raster to search
  * @param raster the bitmask_raster
  *
  * @return bit-mask evaluated context for success, and error code otherwise
@@ -206,12 +206,12 @@ void epr_free_bm_eval_context(EPR_SBmEvalContext* context);
  *
  * @param product_id the product ID
  * @param bm_expr the bit-mask expression
- * @param xo X-coordinate in pixel co-ordinates (zero-based) of the upper right corner raster to search
- * @param yo Y-coordinate in pixel co-ordinates (zero-based) of the upper right corner raster to search
- * @param raster_width  the width in pixel co-ordinates of the raster to search
- * @param raster_height the height in pixel co-ordinates of raster to search
- * @param s_x X-step in pixel co-ordinates to get the next raster to search
- * @param s_y Y-step in pixel co-ordinates to get the next raster to search
+ * @param xo X-coordinate in pixel coordinates (zero-based) of the upper right corner raster to search
+ * @param yo Y-coordinate in pixel coordinates (zero-based) of the upper right corner raster to search
+ * @param raster_width  the width in pixel coordinates of the raster to search
+ * @param raster_height the height in pixel coordinates of raster to search
+ * @param s_x X-step in pixel coordinates to get the next raster to search
+ * @param s_y Y-step in pixel coordinates to get the next raster to search
  * @param raster_buffer [BYTE] the memory buffer to save information was read
  *
  * @return zero for success, and error code otherwise
@@ -232,8 +232,8 @@ int epr_read_bitmask_data(const EPR_SProductId* product_id,
  * Evaluates the given bitmask expression.
  *
  * @param term the bitmask term
- * @param x the x co-ordinate in pixels
- * @param y the y co-ordinate in pixels
+ * @param x the x coordinate in pixels
+ * @param y the y coordinate in pixels
  */
 epr_boolean epr_eval_bm_term(EPR_SBmEvalContext* context,
                          EPR_SBmTerm* term,

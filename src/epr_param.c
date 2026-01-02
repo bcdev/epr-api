@@ -41,7 +41,7 @@
  * @param param_name the name of the parameter,
  * @param param_value the value of this parameter,
  * @return the pointer at this element
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
 */
 EPR_SParamElem* epr_create_param_elem(const char* param_name, int param_value)
 {

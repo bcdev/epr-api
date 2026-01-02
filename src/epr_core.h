@@ -128,12 +128,12 @@ struct EPR_API
     EPR_FLogHandler log_handler;
 
     /**
-     * The error code of the last error occured.
+     * The error code of the last error occurred.
      */
     EPR_EErrCode last_err_code;
 
     /**
-     * The error message of the last error occured.
+     * The error message of the last error occurred.
      */
     char* last_err_message;
 
@@ -174,8 +174,8 @@ void epr_free_product_id(EPR_SProductId* product_id);
  * it is not <code>NULL</code> and if the given log
  * level is greater than or equal to the global log level.
  *
- * @param log_level the log level (or message type) for the mesage
- * @param log_message the mesage
+ * @param log_level the log level (or message type) for the message
+ * @param log_message the message
  */
 void epr_log(EPR_ELogLevel log_level, const char* log_message);
 
@@ -184,7 +184,7 @@ void epr_log(EPR_ELogLevel log_level, const char* log_message);
  * calls this API's error handler if it is not <code>NULL</code>.
  *
  * @param err_code the error code
- * @param err_message the error mesage
+ * @param err_message the error message
  */
 void epr_set_err(EPR_EErrCode err_code, const char* err_message);
 
@@ -194,7 +194,7 @@ void epr_set_err(EPR_EErrCode err_code, const char* err_message);
  *
  * @param product_id the product identifier, must not be <code>NULL</code>
  * @return a record representing the MPH of the specified product file
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 EPR_SRecord* epr_read_mph(EPR_SProductId* product_id);
 
@@ -204,7 +204,7 @@ EPR_SRecord* epr_read_mph(EPR_SProductId* product_id);
  *
  * @param product_id the product identifier, must not be <code>NULL</code>
  * @return a record representing the MPH of the specified product file
- *         or <code>NULL</code> if an error occured.
+ *         or <code>NULL</code> if an error occurred.
  */
 EPR_SRecord* epr_read_sph(EPR_SProductId* product_id);
 
@@ -232,7 +232,7 @@ EPR_EDataTypeId epr_str_to_data_type_id(const char* str);
  * @param param_table the parameter table containing the values
  *                    for the parameter references in the string
  * @return the field length computed from the given string or
- *         <code>(uint)-1</code> if an error occured.
+ *         <code>(uint)-1</code> if an error occurred.
  */
 /*uint epr_str_to_field_length(const char* str, EPR_SParamTable* param_table);*/
 

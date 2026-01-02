@@ -76,8 +76,8 @@ float epr_get_scaling_params(EPR_SProductId* product_id,  const char* str);
  * Reads the measurement data and converts its in physical values.
  *
  * @param band_id the information about properties and quantities of ENVISAT data.
- * @param offset_x X-coordinate in pixel co-ordinates (zero-based) of the upper right corner raster to search
- * @param offset_y Y-coordinate in pixel co-ordinates (zero-based) of the upper right corner raster to search
+ * @param offset_x X-coordinate in pixel coordinates (zero-based) of the upper right corner raster to search
+ * @param offset_y Y-coordinate in pixel coordinates (zero-based) of the upper right corner raster to search
  * @param raster the instance to the buffer information was used
  *
  * @return zero for success, and error code otherwise
@@ -88,8 +88,8 @@ int epr_read_band_measurement_data(EPR_SBandId* band_id, int offset_x, int offse
  * Reads the annotation data and converts its in physical values.
  *
  * @param band_id the information about properties and quantities of ENVISAT data.
- * @param offset_x X-coordinate in pixel co-ordinates (zero-based) of the upper right corner raster to search
- * @param offset_y Y-coordinate in pixel co-ordinates (zero-based) of the upper right corner raster to search
+ * @param offset_x X-coordinate in pixel coordinates (zero-based) of the upper right corner raster to search
+ * @param offset_y Y-coordinate in pixel coordinates (zero-based) of the upper right corner raster to search
  * @param raster the instance to the buffer information was used
  *
  * @return zero for success, and error code otherwise
@@ -188,7 +188,7 @@ float epr_interpolate2D(float wi, float wj, float x00, float x10, float x01, flo
  * @param num_elems number of elements in one tie point scan-line
  * @param band_id the information about properties and quantities of ENVISAT data.
  * @param xo [PIXEL] X-coordinate (0-bazed) of the upper right corner raster to search
- * @param y_mod [PIXEL] relativ location of the point is been researched (in fly direction)
+ * @param y_mod [PIXEL] relative location of the point is been researched (in fly direction)
  * @param raster_width [PIXEL] the width of the raster is been researched
  * @param s_x [PIXEL] X-step to get the next point (in source coordinates) to search
  * @param raster_buffer the float user array to be filled with physical values

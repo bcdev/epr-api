@@ -252,7 +252,7 @@ void epr_free_dsd(EPR_SDSD* dsd)
 * @param envisat_source_file the handle of the given ENVISAT product file,
 *        must not be <code>NULL</code>
 * @param pos number of the dataset description in ENVISAT product file,
-* @return a new dataset description or <code>NULL</code> if an error occured.
+* @return a new dataset description or <code>NULL</code> if an error occurred.
 */
 EPR_SDSD* epr_read_each_dsd(FILE* envisat_source_file, int* pos)
 {
@@ -495,7 +495,7 @@ uint epr_find_first_dsd(FILE* envisat_source_file, uint sph_length)
 *
 * @param product_id the file identifier, if <code>NULL</code> the function
 *        immediately returns <code>NULL</code>.
-* @return an array of dataset descriptions or <code>NULL</code> if an error occured.
+* @return an array of dataset descriptions or <code>NULL</code> if an error occurred.
 */
 EPR_SPtrArray* epr_read_all_dsds(EPR_SProductId* product_id)
 {
