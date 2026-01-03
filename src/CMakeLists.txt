@@ -1,5 +1,6 @@
 # Copyright (c) 2013-2026 Antonio Valentino <antonio.valentino@tiscali.it>
 
+include(GNUInstallDirs)
 
 # sources
 set(SOURCES epr_api.c
@@ -74,7 +75,7 @@ endif(BUILD_TESTS)
 
 # install
 install(FILES epr_api.h epr_ptrarray.h DESTINATION include COMPONENT lib)
-install(TARGETS epr_api DESTINATION lib COMPONENT dev)
+install(TARGETS epr_api DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT dev)
 if(BUILD_STATIC_LIB)
-    install(TARGETS epr_api_static ARCHIVE DESTINATION lib COMPONENT dev)
+    install(TARGETS epr_api_static ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT dev)
 endif(BUILD_STATIC_LIB)
